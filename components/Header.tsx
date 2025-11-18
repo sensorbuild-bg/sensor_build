@@ -47,17 +47,17 @@ export default function Header() {
 
               {/* Navigation buttons centered horizontally */}
               <nav className="flex-1 flex justify-center -mt-10">
-                <div className="flex space-x-4">
+                <div className="flex space-x-12">
                   {navigation.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`text-xs font-medium transition-colors ${
+                      className={`text-lg font-bold transition-colors ${
                         pathname === item.href
                           ? "text-[#22c55e] border-b-2 border-[#22c55e] pb-0.5"
                           : lang === "en"
                           ? "text-white hover:text-[#22c55e]"
-                          : "text-gray-700 hover:text-[#22c55e]"
+                          : "text-[#22c55e] hover:text-[#16a34a]"
                       }`}
                     >
                       {item.name}
