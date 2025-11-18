@@ -22,70 +22,77 @@ export default function Header() {
   ];
 
   return (
-    <header className={`w-full border-b-2 border-[#22c55e] ${lang === 'en' ? 'bg-[#13182c]' : 'bg-white'}`}>
+    <header className={`w-full bg-transparent relative z-[50]`}>
       {/* Desktop Version */}
       <div className="hidden md:block">
+        {/* Green line extending full width of screen */}
+        <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-1 bg-[#22c55e] pointer-events-none z-20"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Navigation above the line */}
-          <nav className="flex items-center justify-between py-2">
-            <div className="flex space-x-4">
-              {navigation.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`text-xs font-medium transition-colors ${
-                    pathname === item.href
-                      ? 'text-[#22c55e] border-b-2 border-[#22c55e] pb-0.5'
-                      : lang === 'en' ? 'text-white hover:text-[#22c55e]' : 'text-gray-700 hover:text-[#22c55e]'
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-            <div className="flex items-center space-x-2">
-              <button
-                onClick={() => setLang('bg')}
-                className={`px-2 py-1 text-xs font-medium rounded ${
-                  lang === 'bg' ? 'bg-[#22c55e] text-white' : lang === 'en' ? 'text-white hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100'
-                }`}
-              >
-                BG
-              </button>
-              <button
-                onClick={() => setLang('en')}
-                className={`px-2 py-1 text-xs font-medium rounded ${
-                  lang === 'en' ? 'bg-[#22c55e] text-white' : 'text-gray-700 hover:bg-gray-100'
-                }`}
-              >
-                EN
-              </button>
-            </div>
-          </nav>
-          
           {/* Logo with line extending to the end */}
           <div className="relative py-4">
-            {/* Green line extending from logo to the end */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-0.5 bg-[#22c55e] pointer-events-none"></div>
-            <Link href="/" className="flex items-center relative z-10">
-              <div className={`pr-4 ${lang === 'en' ? 'bg-[#13182c]' : 'bg-white'}`}>
-                <Image
-                  src={lang === 'en' ? '/logodark.png' : '/logo2.webp'}
-                  alt="Sensor Build Logo"
-                  width={200}
-                  height={80}
-                  className="h-auto w-auto"
-                  priority
-                />
+            <div className="flex items-center justify-between relative z-10">
+              {/* Logo on the left */}
+              <Link href="/" className="flex items-center">
+                <div className="pr-4">
+                  <Image
+                    src={lang === 'en' ? '/logodark.png' : '/logo2.webp'}
+                    alt="Sensor Build Logo"
+                    width={200}
+                    height={80}
+                    className="h-auto w-auto"
+                    priority
+                  />
+                </div>
+              </Link>
+              
+              {/* Navigation buttons centered horizontally */}
+              <nav className="flex-1 flex justify-center">
+                <div className="flex space-x-4">
+                  {navigation.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`text-xs font-medium transition-colors ${
+                        pathname === item.href
+                          ? 'text-[#22c55e] border-b-2 border-[#22c55e] pb-0.5'
+                          : lang === 'en' ? 'text-white hover:text-[#22c55e]' : 'text-gray-700 hover:text-[#22c55e]'
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </div>
+              </nav>
+              
+              {/* Language switch on the right */}
+              <div className="flex items-center space-x-2">
+                <button
+                  onClick={() => setLang('bg')}
+                  className={`px-2 py-1 text-xs font-medium rounded ${
+                    lang === 'bg' ? 'bg-[#22c55e] text-white' : lang === 'en' ? 'text-white hover:bg-gray-700' : 'text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  BG
+                </button>
+                <button
+                  onClick={() => setLang('en')}
+                  className={`px-2 py-1 text-xs font-medium rounded ${
+                    lang === 'en' ? 'bg-[#22c55e] text-white' : 'text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  EN
+                </button>
               </div>
-            </Link>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Mobile Version */}
-      <div className="md:hidden">
-        <div className="flex items-center justify-between px-4 py-4 border-b-2 border-[#22c55e]">
+      <div className="md:hidden relative">
+        {/* Green line extending full width of screen */}
+        <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-0.5 bg-[#22c55e] pointer-events-none z-20"></div>
+        <div className="flex items-center justify-between px-4 py-4 relative z-10">
           <Link href="/" className="flex items-center">
             <Image
               src={lang === 'en' ? '/logodark.png' : '/logo2.webp'}

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
 
@@ -9,91 +10,143 @@ export default function Home() {
   const t = translations[lang].home;
 
   return (
-    <div className={lang === 'en' ? 'bg-[#13182c]' : 'bg-white'}>
-      {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-        <div className="text-center">
-          <h1 className={`text-4xl md:text-6xl font-bold mb-4 ${lang === 'en' ? 'text-white' : 'text-gray-900'}`}>
-            {t.title}
-          </h1>
-          <h2 className={`text-xl md:text-2xl mb-8 ${lang === 'en' ? 'text-white' : 'text-gray-700'}`}>
-            {t.subtitle}
-          </h2>
-          <p className="text-lg md:text-xl text-[#22c55e] font-semibold mb-12">
-            {t.tagline}
-          </p>
-          
-          <div className={`max-w-4xl mx-auto text-left space-y-6 leading-relaxed ${lang === 'en' ? 'text-white' : 'text-gray-700'}`}>
-            <p>{t.description1}</p>
-            <p>{t.description2}</p>
-            <p>{t.description3}</p>
+    <div className="relative min-h-screen">
+      {/* Background Image */}
+      <div className="fixed inset-0 z-[1]">
+        <Image
+          src="/main2.jpg"
+          alt="Background"
+          fill
+          className="object-cover"
+          priority
+          quality={90}
+        />
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/30"></div>
+      </div>
+      
+      {/* Main Content */}
+      <div className="relative z-[2] pt-16 md:pt-0">
+        {/* Hero Section with centered main text */}
+        <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-4xl mx-auto">
+            <h1 className={`text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-white drop-shadow-lg`}>
+              {t.title}
+            </h1>
+            {t.subtitle && (
+              <h2 className={`text-lg sm:text-xl md:text-3xl mb-8 text-white/90 drop-shadow-md`}>
+                {t.subtitle}
+              </h2>
+            )}
+            {t.tagline && (
+              <p className="text-base sm:text-lg md:text-2xl text-[#22c55e] font-semibold mb-12 drop-shadow-md">
+                {t.tagline}
+              </p>
+            )}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Why Choose Us Section */}
-      <section className={`py-16 md:py-24 ${lang === 'en' ? 'bg-[#1a2342]' : 'bg-gray-50'}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 ${lang === 'en' ? 'text-white' : 'text-gray-900'}`}>
-            {t.whyChooseUs}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className={`p-6 rounded-lg shadow-md border-l-4 border-[#22c55e] ${lang === 'en' ? 'bg-[#13182c]' : 'bg-white'}`}>
-              <h3 className={`text-xl font-semibold mb-3 ${lang === 'en' ? 'text-white' : 'text-gray-900'}`}>
-                {t.why1}
-              </h3>
-              <p className={lang === 'en' ? 'text-white' : 'text-gray-600'}>
-                {t.why1Desc}
-              </p>
+        {/* Additional Content Sections */}
+        {t.description1 && (
+          <section className={`relative z-[2] py-16 md:py-24 ${lang === 'en' ? 'bg-[#1a2342]/95' : 'bg-white/95'}`}>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className={`max-w-4xl mx-auto space-y-6 leading-relaxed text-center ${lang === 'en' ? 'text-white' : 'text-gray-700'}`}>
+                {t.description1 && <p className="text-lg md:text-xl">{t.description1}</p>}
+                {t.description2 && <p className="text-lg md:text-xl">{t.description2}</p>}
+                {t.description3 && <p className="text-lg md:text-xl">{t.description3}</p>}
+              </div>
             </div>
-            <div className={`p-6 rounded-lg shadow-md border-l-4 border-[#22c55e] ${lang === 'en' ? 'bg-[#13182c]' : 'bg-white'}`}>
-              <h3 className={`text-xl font-semibold mb-3 ${lang === 'en' ? 'text-white' : 'text-gray-900'}`}>
-                {t.why2}
-              </h3>
-              <p className={lang === 'en' ? 'text-white' : 'text-gray-600'}>
-                {t.why2Desc}
-              </p>
+          </section>
+        )}
+
+        {/* Why Choose Us Section */}
+        {t.whyChooseUs && (
+          <section className={`relative z-[2] py-16 md:py-24 ${lang === 'en' ? 'bg-[#13182c]/95' : 'bg-gray-50/95'}`}>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h2 className={`text-3xl md:text-4xl font-bold text-center mb-12 ${lang === 'en' ? 'text-white' : 'text-gray-900'}`}>
+                {t.whyChooseUs}
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {t.why1 && (
+                  <div className={`p-6 rounded-lg shadow-md border-l-4 border-[#22c55e] ${lang === 'en' ? 'bg-[#1a2342]' : 'bg-white'}`}>
+                    <h3 className={`text-xl font-semibold mb-3 ${lang === 'en' ? 'text-white' : 'text-gray-900'}`}>
+                      {t.why1}
+                    </h3>
+                    {t.why1Desc && (
+                      <p className={lang === 'en' ? 'text-white' : 'text-gray-600'}>
+                        {t.why1Desc}
+                      </p>
+                    )}
+                  </div>
+                )}
+                {t.why2 && (
+                  <div className={`p-6 rounded-lg shadow-md border-l-4 border-[#22c55e] ${lang === 'en' ? 'bg-[#1a2342]' : 'bg-white'}`}>
+                    <h3 className={`text-xl font-semibold mb-3 ${lang === 'en' ? 'text-white' : 'text-gray-900'}`}>
+                      {t.why2}
+                    </h3>
+                    {t.why2Desc && (
+                      <p className={lang === 'en' ? 'text-white' : 'text-gray-600'}>
+                        {t.why2Desc}
+                      </p>
+                    )}
+                  </div>
+                )}
+                {t.why3 && (
+                  <div className={`p-6 rounded-lg shadow-md border-l-4 border-[#22c55e] ${lang === 'en' ? 'bg-[#1a2342]' : 'bg-white'}`}>
+                    <h3 className={`text-xl font-semibold mb-3 ${lang === 'en' ? 'text-white' : 'text-gray-900'}`}>
+                      {t.why3}
+                    </h3>
+                    {t.why3Desc && (
+                      <p className={lang === 'en' ? 'text-white' : 'text-gray-600'}>
+                        {t.why3Desc}
+                      </p>
+                    )}
+                  </div>
+                )}
+                {t.why4 && (
+                  <div className={`p-6 rounded-lg shadow-md border-l-4 border-[#22c55e] ${lang === 'en' ? 'bg-[#1a2342]' : 'bg-white'}`}>
+                    <h3 className={`text-xl font-semibold mb-3 ${lang === 'en' ? 'text-white' : 'text-gray-900'}`}>
+                      {t.why4}
+                    </h3>
+                    {t.why4Desc && (
+                      <p className={lang === 'en' ? 'text-white' : 'text-gray-600'}>
+                        {t.why4Desc}
+                      </p>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
-            <div className={`p-6 rounded-lg shadow-md border-l-4 border-[#22c55e] ${lang === 'en' ? 'bg-[#13182c]' : 'bg-white'}`}>
-              <h3 className={`text-xl font-semibold mb-3 ${lang === 'en' ? 'text-white' : 'text-gray-900'}`}>
-                {t.why3}
-              </h3>
-              <p className={lang === 'en' ? 'text-white' : 'text-gray-600'}>
-                {t.why3Desc}
-              </p>
-            </div>
-            <div className={`p-6 rounded-lg shadow-md border-l-4 border-[#22c55e] ${lang === 'en' ? 'bg-[#13182c]' : 'bg-white'}`}>
-              <h3 className={`text-xl font-semibold mb-3 ${lang === 'en' ? 'text-white' : 'text-gray-900'}`}>
-                {t.why4}
-              </h3>
-              <p className={lang === 'en' ? 'text-white' : 'text-gray-600'}>
-                {t.why4Desc}
-              </p>
-            </div>
+          </section>
+        )}
+
+        {/* CTA Buttons Section */}
+        <section className={`relative z-[2] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 ${lang === 'en' ? 'bg-[#13182c]/95' : 'bg-white/95'}`}>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+            {t.callNow && (
+              <a
+                href="tel:+359888888888"
+                className="w-full sm:w-auto px-8 py-4 bg-[#22c55e] text-white text-lg font-semibold rounded-lg hover:bg-[#16a34a] transition-colors text-center"
+              >
+                {t.callNow}
+              </a>
+            )}
+            {t.sendMessage && (
+              <a
+                href="/contacts"
+                className="w-full sm:w-auto px-8 py-4 bg-white text-[#22c55e] text-lg font-semibold rounded-lg border-2 border-[#22c55e] hover:bg-[#22c55e] hover:text-white transition-colors text-center"
+              >
+                {t.sendMessage}
+              </a>
+            )}
           </div>
-        </div>
-      </section>
-
-      {/* CTA Buttons Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-          <a
-            href="tel:+359888888888"
-            className="w-full sm:w-auto px-8 py-4 bg-[#22c55e] text-white text-lg font-semibold rounded-lg hover:bg-[#16a34a] transition-colors text-center"
-          >
-            {t.callNow}
-          </a>
-          <a
-            href="/contacts"
-            className="w-full sm:w-auto px-8 py-4 bg-white text-[#22c55e] text-lg font-semibold rounded-lg border-2 border-[#22c55e] hover:bg-[#22c55e] hover:text-white transition-colors text-center"
-          >
-            {t.sendMessage}
-          </a>
-        </div>
-        <p className={`text-center max-w-2xl mx-auto ${lang === 'en' ? 'text-white' : 'text-gray-600'}`}>
-          {t.footerText}
-        </p>
-      </section>
+          {t.footerText && (
+            <p className={`text-center max-w-2xl mx-auto ${lang === 'en' ? 'text-white' : 'text-gray-600'}`}>
+              {t.footerText}
+            </p>
+          )}
+        </section>
+      </div>
     </div>
   );
 }
