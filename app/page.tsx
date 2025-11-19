@@ -205,7 +205,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
               {t.callNow && (
                 <a
-                  href="tel:+359888888888"
+                  href="tel:+359878344020"
                   className="w-full sm:w-auto px-8 py-4 bg-[#388644] text-white text-lg font-semibold rounded-lg hover:bg-[#2d6b35] transition-colors text-center"
                 >
                   {t.callNow}

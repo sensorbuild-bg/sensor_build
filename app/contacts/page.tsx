@@ -26,14 +26,14 @@ export default function Contacts() {
             </div>
             <h2 className={`text-2xl font-semibold mb-4 ${lang === 'bg' ? 'text-white' : 'text-gray-900'}`}>{t.phone}</h2>
             <a
-              href="tel:+359888888888"
+              href="tel:+359878344020"
               className="inline-block px-8 py-4 bg-[#388644] text-white text-lg font-semibold rounded-lg hover:bg-[#2d6b35] transition-colors mb-4"
             >
               {t.callNow}
             </a>
-            <p className={`mb-2 ${lang === 'bg' ? 'text-white' : 'text-gray-600'}`}>+359 888 888 888</p>
+            <p className={`mb-2 ${lang === 'bg' ? 'text-white' : 'text-gray-600'}`}>+359 878 344 020</p>
             <a
-              href="viber://chat?number=+359888888888"
+              href="viber://chat?number=+359878344020"
               className="text-[#388644] hover:underline"
             >
               {t.viber}
@@ -67,10 +67,10 @@ export default function Contacts() {
             </div>
             <h2 className={`text-2xl font-semibold mb-4 ${lang === 'bg' ? 'text-white' : 'text-gray-900'}`}>{t.email}</h2>
             <a
-              href="mailto:info@sensorbuild.bg"
+              href="mailto:sensorbuild@gmail.com"
               className="text-[#388644] hover:underline text-lg"
             >
-              info@sensorbuild.bg
+              sensorbuild@gmail.com
             </a>
           </div>
 
