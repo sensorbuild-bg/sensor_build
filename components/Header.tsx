@@ -22,7 +22,7 @@ export default function Header() {
   ];
 
   return (
-    <header className={`w-full bg-transparent relative`}>
+    <header className={`w-full bg-transparent relative z-50`}>
       {/* Desktop Version */}
       <div className="hidden md:block">
         {/* Green line extending full width of screen */}
@@ -165,7 +165,7 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <nav className="bg-[#22c55e] px-4 py-2">
+          <nav className="bg-[#22c55e] px-4 py-2 relative z-50">
             <div className="flex flex-col space-y-2">
               {navigation.map((item) => (
                 <Link
