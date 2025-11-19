@@ -14,7 +14,7 @@ export default function Home() {
       {/* Background Image */}
       <div className="fixed inset-0 z-[1]">
         <Image
-          src="/main2.jpg"
+          src="/main.webp"
           alt="Background"
           fill
           className="object-cover"

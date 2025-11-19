@@ -35,7 +35,7 @@ export default function Header() {
               <Link href="/" className="flex items-center">
                 <div className="pr-4">
                   <Image
-                    src={lang === "bg" ? "/logodark.png" : "/logo2.webp"}
+                    src={lang === "bg" ? "/logodark.png" : "/logo.webp"}
                     alt="Sensor Build Logo"
                     width={200}
                     height={80}
@@ -101,7 +101,7 @@ export default function Header() {
         <div className="flex items-center justify-between px-4 py-4 relative z-10">
           <Link href="/" className="flex items-center">
             <Image
-              src={lang === "bg" ? "/logodark.png" : "/logo2.webp"}
+              src={lang === "bg" ? "/logodark.png" : "/logo.webp"}
               alt="Sensor Build Logo"
               width={120}
               height={48}
