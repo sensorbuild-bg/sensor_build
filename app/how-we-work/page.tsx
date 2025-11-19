@@ -15,10 +15,10 @@ export default function HowWeWork() {
   ];
 
   return (
-    <div className={`py-16 md:py-24 ${lang === 'en' ? 'bg-[#13182c]' : 'bg-white'}`}>
+    <div className={`py-16 md:py-24 ${lang === 'bg' ? 'bg-[#13182c]' : 'bg-white'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h1 className={`text-4xl md:text-5xl font-bold mb-4 ${lang === 'en' ? 'text-white' : 'text-gray-900'}`}>
+          <h1 className={`text-4xl md:text-5xl font-bold mb-4 ${lang === 'bg' ? 'text-white' : 'text-gray-900'}`}>
             {t.title}
           </h1>
         </div>
@@ -28,21 +28,21 @@ export default function HowWeWork() {
             <div key={index} className="flex flex-col md:flex-row items-start gap-8">
               {/* Step Number Circle */}
               <div className="flex-shrink-0">
-                <div className="w-20 h-20 bg-[#22c55e] rounded-full flex items-center justify-center">
+                <div className="w-20 h-20 bg-[#388644] rounded-full flex items-center justify-center">
                   <span className="text-white text-3xl font-bold">{step.number}</span>
                 </div>
                 {/* Connecting Line (except for last step) */}
                 {index < steps.length - 1 && (
-                  <div className="hidden md:block w-1 h-24 bg-[#22c55e] mx-auto mt-4"></div>
+                  <div className="hidden md:block w-1 h-24 bg-[#388644] mx-auto mt-4"></div>
                 )}
               </div>
 
               {/* Step Content */}
               <div className="flex-1">
-                <h2 className={`text-2xl md:text-3xl font-semibold mb-4 ${lang === 'en' ? 'text-white' : 'text-gray-900'}`}>
+                <h2 className={`text-2xl md:text-3xl font-semibold mb-4 ${lang === 'bg' ? 'text-white' : 'text-gray-900'}`}>
                   {step.title}
                 </h2>
-                <p className={`text-lg leading-relaxed ${lang === 'en' ? 'text-white' : 'text-gray-600'}`}>
+                <p className={`text-lg leading-relaxed ${lang === 'bg' ? 'text-white' : 'text-gray-600'}`}>
                   {step.description}
                 </p>
               </div>

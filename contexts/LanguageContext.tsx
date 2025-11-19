@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 type Language = 'bg' | 'en';
 
@@ -13,6 +13,12 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Language>('bg');
+
+  useEffect(() => {
+    // Set body class based on language
+    document.body.classList.remove('lang-bg', 'lang-en');
+    document.body.classList.add(`lang-${lang}`);
+  }, [lang]);
 
   return (
     <LanguageContext.Provider value={{ lang, setLang }}>

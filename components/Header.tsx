@@ -26,7 +26,7 @@ export default function Header() {
       {/* Desktop Version */}
       <div className="hidden md:block">
         {/* Green line extending full width of screen */}
-        <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[0.30rem] bg-[#22c55e] pointer-events-none z-20"></div>
+        <div className="absolute left-0 right-0 top-[51%] -translate-y-1/2 h-[0.40rem] bg-[#388644] pointer-events-none z-20"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Logo with line extending to the end */}
           <div className="relative py-4">
@@ -35,7 +35,7 @@ export default function Header() {
               <Link href="/" className="flex items-center">
                 <div className="pr-4">
                   <Image
-                    src={lang === "en" ? "/logodark.png" : "/logo2.webp"}
+                    src={lang === "bg" ? "/logodark.png" : "/logo2.webp"}
                     alt="Sensor Build Logo"
                     width={200}
                     height={80}
@@ -54,10 +54,10 @@ export default function Header() {
                       href={item.href}
                       className={`text-lg font-bold transition-colors ${
                         pathname === item.href
-                          ? "text-[#22c55e] border-b-2 border-[#22c55e] pb-0.5"
-                          : lang === "en"
-                          ? "text-white hover:text-[#22c55e]"
-                          : "text-[#22c55e] hover:text-[#16a34a]"
+                          ? "text-[#388644] border-b-2 border-[#388644] pb-0.5"
+                          : lang === "bg"
+                          ? "text-white hover:text-[#388644]"
+                          : "text-[#388644] hover:text-[#2d6b35]"
                       }`}
                     >
                       {item.name}
@@ -72,8 +72,8 @@ export default function Header() {
                   onClick={() => setLang("bg")}
                   className={`px-3 py-1.5 text-xs font-semibold rounded-md text-white transition-all duration-200 ${
                     lang === "bg"
-                      ? "bg-[#16a34a] shadow-md"
-                      : "bg-[#22c55e]/40 hover:bg-[#22c55e]/60"
+                      ? "bg-[#2d6b35] shadow-md"
+                      : "bg-[#388644]/40 hover:bg-[#388644]/60"
                   }`}
                 >
                   BG
@@ -82,8 +82,8 @@ export default function Header() {
                   onClick={() => setLang("en")}
                   className={`px-3 py-1.5 text-xs font-semibold rounded-md text-white transition-all duration-200 ${
                     lang === "en"
-                      ? "bg-[#16a34a] shadow-md"
-                      : "bg-[#22c55e]/40 hover:bg-[#22c55e]/60"
+                      ? "bg-[#2d6b35] shadow-md"
+                      : "bg-[#388644]/40 hover:bg-[#388644]/60"
                   }`}
                 >
                   EN
@@ -97,11 +97,11 @@ export default function Header() {
       {/* Mobile Version */}
       <div className="md:hidden relative">
         {/* Green line extending full width of screen */}
-        <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-0.5 bg-[#22c55e] pointer-events-none z-20"></div>
+        <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-0.5 bg-[#388644] pointer-events-none z-20"></div>
         <div className="flex items-center justify-between px-4 py-4 relative z-10">
           <Link href="/" className="flex items-center">
             <Image
-              src={lang === "en" ? "/logodark.png" : "/logo2.webp"}
+              src={lang === "bg" ? "/logodark.png" : "/logo2.webp"}
               alt="Sensor Build Logo"
               width={120}
               height={48}
@@ -115,7 +115,7 @@ export default function Header() {
               <button
                 onClick={() => setLang("bg")}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-md text-white transition-all duration-200 ${
-                  lang === "bg" ? "bg-[#16a34a] shadow-md" : "bg-[#22c55e]/40"
+                  lang === "bg" ? "bg-[#2d6b35] shadow-md" : "bg-[#388644]/40"
                 }`}
               >
                 BG
@@ -123,7 +123,7 @@ export default function Header() {
               <button
                 onClick={() => setLang("en")}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-md text-white transition-all duration-200 ${
-                  lang === "en" ? "bg-[#16a34a] shadow-md" : "bg-[#22c55e]/40"
+                  lang === "en" ? "bg-[#2d6b35] shadow-md" : "bg-[#388644]/40"
                 }`}
               >
                 EN
@@ -132,7 +132,7 @@ export default function Header() {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={`p-2 rounded-md transition-colors ${
-                isMenuOpen ? "bg-[#22c55e]" : "bg-gray-100"
+                isMenuOpen ? "bg-[#388644]" : "bg-gray-100"
               }`}
               aria-label="Toggle menu"
             >
@@ -163,7 +163,7 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <nav className="bg-[#22c55e] px-4 py-2 relative z-50">
+          <nav className="bg-[#388644] px-4 py-2 relative z-50">
             <div className="flex flex-col space-y-2">
               {navigation.map((item) => (
                 <Link

@@ -26,36 +26,42 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Dark theme for English language */
-body.lang-en {
+/* Dark theme for Bulgarian language */
+body.lang-bg {
   background: #13182c;
   color: #ffffff;
 }
 
-body.lang-en .text-gray-900,
-body.lang-en .text-gray-700,
-body.lang-en .text-gray-600,
-body.lang-en h1,
-body.lang-en h2,
-body.lang-en h3,
-body.lang-en p {
+body.lang-bg .text-gray-900,
+body.lang-bg .text-gray-700,
+body.lang-bg .text-gray-600,
+body.lang-bg h1,
+body.lang-bg h2,
+body.lang-bg h3,
+body.lang-bg p {
   color: #ffffff !important;
 }
 
 /* Keep green color for tagline text */
-body.lang-en p[class*="text-[#22c55e]"],
-body.lang-en [class*="text-[#22c55e]"] {
-  color: #22c55e !important;
+body.lang-bg p[class*="text-[#388644]"],
+body.lang-bg [class*="text-[#388644]"] {
+  color: #388644 !important;
 }
 
-body.lang-en .bg-white {
+body.lang-bg .bg-white {
   background-color: #13182c !important;
 }
 
-body.lang-en .bg-gray-50 {
+body.lang-bg .bg-gray-50 {
   background-color: #1a2342 !important;
 }
 
-body.lang-en .border-gray-200 {
+body.lang-bg .border-gray-200 {
   border-color: #2d3a5a !important;
+}
+
+/* Light theme for English language */
+body.lang-en {
+  background: #ffffff !important;
+  color: #171717;
 }

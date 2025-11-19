@@ -8,13 +8,13 @@ export default function Services() {
   const t = translations[lang].services;
 
   return (
-    <div className={`py-16 md:py-24 ${lang === 'en' ? 'bg-[#13182c]' : 'bg-white'}`}>
+    <div className={`py-16 md:py-24 ${lang === 'bg' ? 'bg-[#13182c]' : 'bg-white'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className={`text-4xl md:text-5xl font-bold mb-4 ${lang === 'en' ? 'text-white' : 'text-gray-900'}`}>
+          <h1 className={`text-4xl md:text-5xl font-bold mb-4 ${lang === 'bg' ? 'text-white' : 'text-gray-900'}`}>
             {t.title}
           </h1>
-          <p className={`text-lg max-w-3xl mx-auto ${lang === 'en' ? 'text-white' : 'text-gray-600'}`}>
+          <p className={`text-lg max-w-3xl mx-auto ${lang === 'bg' ? 'text-white' : 'text-gray-600'}`}>
             {t.description}
           </p>
         </div>
@@ -23,12 +23,12 @@ export default function Services() {
           {t.services.map((service, index) => (
             <div
               key={index}
-              className={`border-2 border-[#22c55e] rounded-lg p-6 hover:shadow-lg transition-shadow ${lang === 'en' ? 'bg-[#1a2342]' : 'bg-white'}`}
+              className={`border-2 border-[#388644] rounded-lg p-6 hover:shadow-lg transition-shadow ${lang === 'bg' ? 'bg-[#1a2342]' : 'bg-white'}`}
             >
-              <h3 className={`text-xl font-semibold mb-3 ${lang === 'en' ? 'text-white' : 'text-gray-900'}`}>
+              <h3 className={`text-xl font-semibold mb-3 ${lang === 'bg' ? 'text-white' : 'text-gray-900'}`}>
                 {service.title}
               </h3>
-              <p className={lang === 'en' ? 'text-white' : 'text-gray-600'}>
+              <p className={lang === 'bg' ? 'text-white' : 'text-gray-600'}>
                 {service.desc}
               </p>
             </div>
@@ -36,10 +36,10 @@ export default function Services() {
         </div>
 
         <div className="text-center mt-12">
-          <p className={`max-w-2xl mx-auto ${lang === 'en' ? 'text-white' : 'text-gray-600'}`}>
+          <p className={`max-w-2xl mx-auto ${lang === 'bg' ? 'text-white' : 'text-gray-600'}`}>
             {t.miniText}
           </p>
-          <p className={`max-w-2xl mx-auto mt-4 ${lang === 'en' ? 'text-white' : 'text-gray-600'}`}>
+          <p className={`max-w-2xl mx-auto mt-4 ${lang === 'bg' ? 'text-white' : 'text-gray-600'}`}>
             {t.contactText}
           </p>
         </div>

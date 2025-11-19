@@ -20,10 +20,10 @@ export default function Projects() {
   ];
 
   return (
-    <div className={`py-16 md:py-24 ${lang === 'en' ? 'bg-[#13182c]' : 'bg-white'}`}>
+    <div className={`py-16 md:py-24 ${lang === 'bg' ? 'bg-[#13182c]' : 'bg-white'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className={`text-4xl md:text-5xl font-bold mb-4 ${lang === 'en' ? 'text-white' : 'text-gray-900'}`}>
+          <h1 className={`text-4xl md:text-5xl font-bold mb-4 ${lang === 'bg' ? 'text-white' : 'text-gray-900'}`}>
             {t.title}
           </h1>
         </div>
@@ -36,7 +36,7 @@ export default function Projects() {
               className="relative cursor-pointer group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow"
             >
               {/* Placeholder for project image */}
-              <div className="aspect-video bg-gradient-to-br from-[#22c55e] to-[#16a34a] flex items-center justify-center">
+              <div className="aspect-video bg-gradient-to-br from-[#388644] to-[#2d6b35] flex items-center justify-center">
                 <div className="text-center p-6">
                   <h3 className="text-2xl font-bold text-white mb-2">
                     {project.imageTitle}
