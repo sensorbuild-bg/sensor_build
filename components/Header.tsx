@@ -9,9 +9,18 @@ import { translations } from "@/lib/translations";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const { lang, setLang } = useLanguage();
   const pathname = usePathname();
   const t = translations[lang].nav;
+
+  const handleCloseMenu = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsMenuOpen(false);
+      setIsClosing(false);
+    }, 300); // Match animation duration
+  };
 
   const navigation = [
     { name: t.home, href: "/" },
@@ -164,24 +173,70 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu Overlay */}
         {isMenuOpen && (
-          <nav className="bg-gradient-to-b from-[#4da855]/90 to-[#388644]/90 backdrop-blur-sm px-4 py-2 relative z-50 animate-slide-down">
-            <div className="flex flex-col space-y-2">
-              {navigation.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={`text-white text-sm font-medium py-1.5 px-2 rounded ${
-                    pathname === item.href ? "bg-white/20" : "hover:bg-white/10"
-                  }`}
+          <>
+            {/* Dark overlay backdrop */}
+            <div
+              className="fixed inset-0 bg-black/60 z-[100] transition-opacity duration-300"
+              onClick={handleCloseMenu}
+            ></div>
+
+            {/* Menu panel */}
+            <nav
+              className={`fixed top-0 right-0 h-full w-80 bg-white shadow-xl z-[101] overflow-y-auto transform transition-transform duration-300 ease-out ${
+                isClosing ? "translate-x-full" : "translate-x-0"
+              }`}
+              style={
+                !isClosing ? { animation: "slide-in-right 0.3s ease-out" } : {}
+              }
+            >
+              {/* Close button */}
+              <div className="flex justify-end p-4">
+                <button
+                  onClick={handleCloseMenu}
+                  className="p-2 rounded-md hover:bg-gray-100 transition-colors"
+                  aria-label="Close menu"
                 >
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          </nav>
+                  <svg
+                    className="w-6 h-6 text-gray-700"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Navigation links */}
+              <div className="flex flex-col px-4 pb-8">
+                {navigation.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={handleCloseMenu}
+                    className={`text-lg font-semibold py-4 px-4 rounded transition-colors ${
+                      pathname === item.href
+                        ? lang === "bg"
+                          ? "text-[#4da855] bg-[#4da855]/10"
+                          : "text-[#4da855] bg-[#4da855]/10"
+                        : lang === "bg"
+                        ? "text-gray-800 hover:bg-gray-100"
+                        : "text-gray-800 hover:bg-gray-100"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+              </div>
+            </nav>
+          </>
         )}
       </div>
     </header>
