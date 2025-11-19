@@ -26,7 +26,7 @@ export default function Header() {
       {/* Desktop Version */}
       <div className="hidden md:block">
         {/* Green line extending full width of screen */}
-        <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-1 bg-[#22c55e] pointer-events-none z-20"></div>
+        <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-[0.30rem] bg-[#22c55e] pointer-events-none z-20"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Logo with line extending to the end */}
           <div className="relative py-4">
