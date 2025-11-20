@@ -6,6 +6,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
 import Footer from "@/components/Footer";
 import TypewriterText from "@/components/TypewriterText";
+import AnimatedDiv from "@/components/AnimatedDiv";
 
 export default function Home() {
   const { lang } = useLanguage();
@@ -104,7 +105,7 @@ export default function Home() {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {t.why1 && (
-                  <div
+                  <AnimatedDiv
                     className={`p-6 rounded-lg shadow-md border-l-4 border-[#388644] ${
                       lang === "bg" ? "bg-[#1a2342]" : "bg-white"
                     }`}
@@ -125,10 +126,10 @@ export default function Home() {
                         {t.why1Desc}
                       </p>
                     )}
-                  </div>
+                  </AnimatedDiv>
                 )}
                 {t.why2 && (
-                  <div
+                  <AnimatedDiv
                     className={`p-6 rounded-lg shadow-md border-l-4 border-[#388644] ${
                       lang === "bg" ? "bg-[#1a2342]" : "bg-white"
                     }`}
@@ -149,10 +150,10 @@ export default function Home() {
                         {t.why2Desc}
                       </p>
                     )}
-                  </div>
+                  </AnimatedDiv>
                 )}
                 {t.why3 && (
-                  <div
+                  <AnimatedDiv
                     className={`p-6 rounded-lg shadow-md border-l-4 border-[#388644] ${
                       lang === "bg" ? "bg-[#1a2342]" : "bg-white"
                     }`}
@@ -173,10 +174,10 @@ export default function Home() {
                         {t.why3Desc}
                       </p>
                     )}
-                  </div>
+                  </AnimatedDiv>
                 )}
                 {t.why4 && (
-                  <div
+                  <AnimatedDiv
                     className={`p-6 rounded-lg shadow-md border-l-4 border-[#388644] ${
                       lang === "bg" ? "bg-[#1a2342]" : "bg-white"
                     }`}
@@ -197,7 +198,7 @@ export default function Home() {
                         {t.why4Desc}
                       </p>
                     )}
-                  </div>
+                  </AnimatedDiv>
                 )}
               </div>
             </div>
