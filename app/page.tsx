@@ -11,26 +11,30 @@ export default function Home() {
   const t = translations[lang].home;
 
   return (
-    <div className="relative min-h-screen flex flex-col">
-      {/* Background Image */}
-      <div className="fixed inset-0 z-[1]">
-        <Image
-          src="/main.webp"
-          alt="Background"
-          fill
-          className="object-cover"
-          priority
-          quality={90}
-        />
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/30"></div>
-      </div>
-
+    <div
+      className={`relative min-h-screen flex flex-col ${
+        lang === "bg" ? "bg-[#13182c]" : "bg-white"
+      }`}
+    >
       {/* Main Content */}
       <div className="relative z-[2] pt-16 md:pt-0 flex-grow">
         {/* Hero Section with centered main text */}
-        <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto -mt-[20rem]">
+        <section className="relative h-[70vh] md:h-[80vh] flex items-center justify-center px-4 sm:px-6 lg:px-8">
+          {/* Background Image only behind the hero text */}
+          <div className="absolute inset-0 z-[1]">
+            <Image
+              src="/main.webp"
+              alt="Background"
+              fill
+              className="object-cover"
+              priority
+              quality={90}
+            />
+            {/* Overlay for better text readability */}
+            <div className="absolute inset-0 bg-black/30"></div>
+          </div>
+
+          <div className="relative z-[2] text-center max-w-4xl mx-auto -mt-32 md:-mt-20">
             <h1
               className={`text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-white drop-shadow-lg`}
             >
@@ -54,8 +58,8 @@ export default function Home() {
         {/* Additional Content Sections */}
         {t.description1 && (
           <section
-            className={`relative z-[2] pt-8 pb-16 md:pt-12 md:pb-24 -mt-96 md:-mt-96 ${
-              lang === "bg" ? "bg-[#1a2342]/95" : "bg-white/95"
+            className={`relative z-[3] -mt-[18vh] pt-20 pb-16 md:-mt-[18vh] md:pt-28 md:pb-24 ${
+              lang === "bg" ? "bg-[#1a2342]" : "bg-white"
             }`}
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -81,8 +85,8 @@ export default function Home() {
         {/* Why Choose Us Section */}
         {t.whyChooseUs && (
           <section
-            className={`relative z-[2] py-16 md:py-24 ${
-              lang === "bg" ? "bg-[#13182c]/95" : "bg-gray-50/95"
+            className={`relative py-16 md:py-24 ${
+              lang === "bg" ? "bg-[#13182c]" : "bg-gray-50"
             }`}
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -197,8 +201,8 @@ export default function Home() {
 
         {/* CTA Buttons Section */}
         <section
-          className={`relative z-[2] w-full px-4 sm:px-6 lg:px-8 py-16 md:py-24 ${
-            lang === "bg" ? "bg-[#1a2342]/95" : "bg-white/95"
+          className={`relative w-full px-4 sm:px-6 lg:px-8 py-16 md:py-24 ${
+            lang === "bg" ? "bg-[#1a2342]" : "bg-white"
           }`}
         >
           <div className="max-w-7xl mx-auto">
