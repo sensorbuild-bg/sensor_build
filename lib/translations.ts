@@ -9,7 +9,7 @@ export const translations = {
     },
     home: {
       title: 'Sensor Build',
-      subtitle: 'Строителство и ремонти.',
+      subtitle: 'Строителство и ремонти',
       tagline: 'Прецизност, на която можете да се доверите!',
       description1: 'Sensor Build е строително-ремонтна фирма, която поставя прецизността в основата на всяка услуга. Съчетаваме инженерни знания, модерно оборудване, качествени материали и професионален подход, за да осигурим изпълнение, което не просто изглежда добре, а издържа във времето.',
       description2: 'Специализирани сме във вътрешни ремонти, инсталации, подови системи и довършителни работи. Всеки проект се изпълнява по ясно планирани етапи, с внимание към детайла и фокус върху безопасността и дълготрайността.',
@@ -205,7 +205,7 @@ export const translations = {
     },
     home: {
       title: 'Sensor Build',
-      subtitle: 'Construction and Renovations.',
+      subtitle: 'Construction and Renovations',
       tagline: 'Precision You Can Trust!',
       description1: 'Sensor Build is a construction and renovation company that places precision at the core of every service. We combine engineering expertise, modern equipment, high-quality materials, and a professional approach to deliver results that not only look good, but stand the test of time.',
       description2: 'We specialize in interior renovations, installations, flooring systems, and finishing works. Every project is carried out through clearly planned stages, with attention to detail and a focus on safety and durability.',

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
 import Footer from "@/components/Footer";
+import TypewriterText from "@/components/TypewriterText";
 
 export default function Home() {
   const { lang } = useLanguage();
@@ -44,12 +45,16 @@ export default function Home() {
               <h2
                 className={`text-2xl sm:text-xl md:text-3xl mb-8 text-white/90 drop-shadow-md`}
               >
-                {t.subtitle}
+                <TypewriterText text={t.subtitle} speed={70} />
               </h2>
             )}
             {t.tagline && (
               <p className="text-xl sm:text-lg md:text-2xl text-[#4da855] font-semibold mb-12 drop-shadow-md">
-                {t.tagline}
+                <TypewriterText
+                  text={t.tagline}
+                  speed={70}
+                  delay={t.subtitle ? t.subtitle.length * 70 + 500 : 0}
+                />
               </p>
             )}
           </div>
