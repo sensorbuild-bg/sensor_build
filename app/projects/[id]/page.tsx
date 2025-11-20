@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
-import { useLanguage } from '@/contexts/LanguageContext';
-import { translations } from '@/lib/translations';
+import { useEffect, useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { translations } from "@/lib/translations";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from '@/components/ui/carousel';
-import { Card, CardContent } from '@/components/ui/card';
+} from "@/components/ui/carousel";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function ProjectPage() {
   const params = useParams();
@@ -31,11 +31,13 @@ export default function ProjectPage() {
 
   const project = projects[projectId];
 
-  const images = (project as any).images || ((project as any).mainImage ? [(project as any).mainImage] : []);
+  const images =
+    (project as any).images ||
+    ((project as any).mainImage ? [(project as any).mainImage] : []);
 
   useEffect(() => {
     if (!project) {
-      router.push('/projects');
+      router.push("/projects");
     }
   }, [project, router]);
 
@@ -44,12 +46,18 @@ export default function ProjectPage() {
   }
 
   return (
-    <div className={`min-h-screen ${lang === 'bg' ? 'bg-[#13182c]' : 'bg-white'}`}>
+    <div
+      className={`min-h-screen ${lang === "bg" ? "bg-[#13182c]" : "bg-white"}`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Back button */}
         <button
           onClick={() => router.back()}
-          className={`mb-8 flex items-center gap-2 ${lang === 'en' ? 'text-white hover:text-gray-300' : 'text-gray-700 hover:text-gray-900'}`}
+          className={`mb-8 flex items-center gap-2 ${
+            lang === "en"
+              ? "text-white hover:text-gray-300"
+              : "text-gray-700 hover:text-gray-900"
+          }`}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -58,15 +66,24 @@ export default function ProjectPage() {
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
           <span className="font-semibold">
-            {lang === 'bg' ? 'Назад към проекти' : 'Back to projects'}
+            {lang === "bg" ? "Назад към проекти" : "Back to projects"}
           </span>
         </button>
 
         {/* Project title */}
-        <h1 className={`text-4xl md:text-5xl font-bold mb-8 ${lang === 'bg' ? 'text-white' : 'text-gray-900'}`}>
+        <h1
+          className={`text-4xl md:text-5xl font-bold mb-8 ${
+            lang === "bg" ? "text-white" : "text-gray-900"
+          }`}
+        >
           {project.title}
         </h1>
 
@@ -93,8 +110,8 @@ export default function ProjectPage() {
               </CarouselContent>
               {images.length > 1 && (
                 <>
-                  <CarouselPrevious className="left-2 md:left-4 bg-white bg-opacity-90 hover:bg-opacity-100 text-gray-900 border-0 shadow-lg h-10 w-10" />
-                  <CarouselNext className="right-2 md:right-4 bg-white bg-opacity-90 hover:bg-opacity-100 text-gray-900 border-0 shadow-lg h-10 w-10" />
+                  <CarouselPrevious className="left-4 md:left-6 bg-transparent hover:bg-transparent text-white border-0 shadow-none h-12 w-12" />
+                  <CarouselNext className="right-2 md:right-2 bg-transparent hover:bg-transparent text-white border-0 shadow-none h-12 w-12" />
                 </>
               )}
             </Carousel>
@@ -107,7 +124,9 @@ export default function ProjectPage() {
             {project.content.map((paragraph, index) => (
               <p
                 key={index}
-                className={`text-lg leading-relaxed ${lang === 'en' ? 'text-white' : 'text-gray-700'}`}
+                className={`text-lg leading-relaxed ${
+                  lang === "en" ? "text-white" : "text-gray-700"
+                }`}
               >
                 {paragraph}
               </p>
@@ -118,4 +137,3 @@ export default function ProjectPage() {
     </div>
   );
 }
-
