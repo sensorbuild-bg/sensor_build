@@ -16,7 +16,7 @@ export default function Footer() {
           </div>
           <div className="flex items-center space-x-6 md:ml-4 ml-8">
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/profile.php?id=61582272743716"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center space-x-2 hover:text-[#388644] transition-colors"

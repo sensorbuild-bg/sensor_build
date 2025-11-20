@@ -156,12 +156,12 @@ export const translations = {
       email: 'Имейл',
       workingHours: 'Работно време',
       workingHoursText: {
-        weekdays: 'Понеделник - Петък: 08:00 - 18:00',
-        saturday: 'Събота: 09:00 - 14:00',
+        weekdays: 'Понеделник - Петък: 09:00 - 18:00',
+        saturday: 'Събота: Почивен ден',
         sunday: 'Неделя: Почивен ден',
       },
       location: 'Локация',
-      locationText: 'България',
+      locationText: 'София, България',
     },
     footer: {
       copyright: `© ${new Date().getFullYear()} Sensor Build. Всички права запазени.`,
@@ -326,12 +326,12 @@ export const translations = {
       email: 'Email',
       workingHours: 'Working hours',
       workingHoursText: {
-        weekdays: 'Monday - Friday: 08:00 - 18:00',
-        saturday: 'Saturday: 09:00 - 14:00',
+        weekdays: 'Monday - Friday: 09:00 - 18:00',
+        saturday: 'Saturday: Day off',
         sunday: 'Sunday: Day off',
       },
       location: 'Location',
-      locationText: 'Bulgaria',
+      locationText: 'Sofia, Bulgaria',
     },
     footer: {
       copyright: `© ${new Date().getFullYear()} Sensor Build. All rights reserved.`,

@@ -49,7 +49,7 @@ export default function Contacts() {
             </div>
             <h2 className={`text-2xl font-semibold mb-4 ${lang === 'bg' ? 'text-white' : 'text-gray-900'}`}>{t.messenger}</h2>
             <a
-              href="https://m.me/sensorbuild"
+              href="https://www.facebook.com/messages/t/865781333275058"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-8 py-4 bg-[#0084ff] text-white text-lg font-semibold rounded-lg hover:bg-[#0066cc] transition-colors"
