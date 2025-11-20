@@ -231,13 +231,15 @@ export default function Home() {
               )}
             </div>
             {t.footerText && (
-              <p
-                className={`text-center max-w-2xl mx-auto ${
-                  lang === "bg" ? "text-white" : "text-gray-600"
-                }`}
-              >
-                {t.footerText}
-              </p>
+              <AnimatedDiv className="max-w-2xl mx-auto">
+                <p
+                  className={`text-center ${
+                    lang === "bg" ? "text-white" : "text-gray-600"
+                  }`}
+                >
+                  {t.footerText}
+                </p>
+              </AnimatedDiv>
             )}
           </div>
         </section>

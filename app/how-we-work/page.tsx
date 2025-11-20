@@ -2,6 +2,7 @@
 
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
+import AnimatedDiv from '@/components/AnimatedDiv';
 
 export default function HowWeWork() {
   const { lang } = useLanguage();
@@ -25,7 +26,7 @@ export default function HowWeWork() {
 
         <div className="space-y-12">
           {steps.map((step, index) => (
-            <div key={index} className="flex flex-col md:flex-row items-start gap-8">
+            <AnimatedDiv key={index} className="flex flex-col md:flex-row items-start gap-8">
               {/* Step Number Circle */}
               <div className="flex-shrink-0">
                 <div className="w-20 h-20 bg-[#388644] rounded-full flex items-center justify-center">
@@ -46,7 +47,7 @@ export default function HowWeWork() {
                   {step.description}
                 </p>
               </div>
-            </div>
+            </AnimatedDiv>
           ))}
         </div>
       </div>

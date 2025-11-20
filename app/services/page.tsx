@@ -2,6 +2,7 @@
 
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
+import AnimatedDiv from '@/components/AnimatedDiv';
 
 export default function Services() {
   const { lang } = useLanguage();
@@ -21,7 +22,7 @@ export default function Services() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {t.services.map((service, index) => (
-            <div
+            <AnimatedDiv
               key={index}
               className={`border-2 border-[#388644] rounded-lg p-6 hover:shadow-lg transition-shadow ${lang === 'bg' ? 'bg-[#1a2342]' : 'bg-white'}`}
             >
@@ -31,7 +32,7 @@ export default function Services() {
               <p className={lang === 'bg' ? 'text-white' : 'text-gray-600'}>
                 {service.desc}
               </p>
-            </div>
+            </AnimatedDiv>
           ))}
         </div>
 
