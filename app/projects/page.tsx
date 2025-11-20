@@ -23,7 +23,7 @@ export default function Projects() {
         lang === "bg" ? "bg-[#13182c]" : "bg-white"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h1
             className={`text-4xl md:text-5xl font-bold mb-4 ${
@@ -34,7 +34,7 @@ export default function Projects() {
           </h1>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {projects.map((project, index) => (
             <Link
               key={index}
@@ -44,7 +44,7 @@ export default function Projects() {
               {/* Project image or placeholder */}
               {(project as any).mainImage ? (
                 <>
-                  <div className="aspect-[3/4] relative overflow-hidden bg-gray-100 rounded-lg">
+                  <div className="aspect-[3/4] relative overflow-hidden bg-gray-100 rounded-lg max-w-[280px] mx-auto md:max-w-none">
                     <img
                       src={(project as any).mainImage}
                       alt={project.imageTitle}

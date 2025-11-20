@@ -24,6 +24,7 @@ export default function ProjectPage() {
   const project = projects[projectId];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const images = (project as any).images || ((project as any).mainImage ? [(project as any).mainImage] : []);
 
@@ -39,11 +40,30 @@ export default function ProjectPage() {
   }
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+      setIsTransitioning(false);
+    }, 150);
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+      setIsTransitioning(false);
+    }, 150);
+  };
+
+  const goToImage = (index: number) => {
+    if (isTransitioning || index === currentImageIndex) return;
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentImageIndex(index);
+      setIsTransitioning(false);
+    }, 150);
   };
 
   return (
@@ -78,12 +98,21 @@ export default function ProjectPage() {
           <div className="mb-12">
             <div className="flex justify-center">
               <div className="relative max-w-md w-full">
-                <div className="relative aspect-[3/4] w-full flex items-center justify-center">
-                  <img
-                    src={images[currentImageIndex]}
-                    alt={`${project.imageTitle} ${currentImageIndex + 1}`}
-                    className="w-full h-full object-contain rounded-lg"
-                  />
+                <div className="relative aspect-[3/4] w-full flex items-center justify-center overflow-hidden">
+                  <div className="relative w-full h-full">
+                    {images.map((image: string, index: number) => (
+                      <img
+                        key={index}
+                        src={image}
+                        alt={`${project.imageTitle} ${index + 1}`}
+                        className={`absolute inset-0 w-full h-full object-contain rounded-lg transition-opacity duration-300 ${
+                          index === currentImageIndex
+                            ? 'opacity-100 z-10'
+                            : 'opacity-0 z-0'
+                        }`}
+                      />
+                    ))}
+                  </div>
                   {images.length > 1 && (
                     <>
                       {/* Previous button */}
@@ -127,7 +156,7 @@ export default function ProjectPage() {
                         {images.map((_: string, index: number) => (
                           <button
                             key={index}
-                            onClick={() => setCurrentImageIndex(index)}
+                            onClick={() => goToImage(index)}
                             className={`rounded-full transition-all ${
                               index === currentImageIndex
                                 ? 'bg-gray-900 w-8 h-2'
