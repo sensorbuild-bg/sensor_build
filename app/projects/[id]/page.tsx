@@ -124,7 +124,7 @@ export default function ProjectPage() {
                       </div>
                       {/* Image indicators */}
                       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2 bg-white bg-opacity-80 px-3 py-1.5 rounded-full">
-                        {images.map((_, index) => (
+                        {images.map((_: string, index: number) => (
                           <button
                             key={index}
                             onClick={() => setCurrentImageIndex(index)}
