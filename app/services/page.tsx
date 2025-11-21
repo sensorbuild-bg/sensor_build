@@ -12,7 +12,7 @@ export default function Services() {
     <div className={`py-16 md:py-24 ${lang === 'bg' ? 'bg-[#13182c]' : 'bg-white'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h1 className={`text-4xl md:text-5xl font-bold mb-4 ${lang === 'bg' ? 'text-white' : 'text-gray-900'}`}>
+          <h1 className={`text-4xl md:text-5xl font-noah-bold mb-4 ${lang === 'bg' ? 'text-white' : 'text-gray-900'}`}>
             {t.title}
           </h1>
           <p className={`text-lg max-w-3xl mx-auto ${lang === 'bg' ? 'text-white' : 'text-gray-600'}`}>

@@ -80,7 +80,7 @@ export default function ProjectPage() {
 
         {/* Project title */}
         <h1
-          className={`text-4xl md:text-5xl font-bold mb-8 ${
+          className={`text-4xl md:text-5xl font-noah-bold mb-8 ${
             lang === "bg" ? "text-white" : "text-gray-900"
           }`}
         >

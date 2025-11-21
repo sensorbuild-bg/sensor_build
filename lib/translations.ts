@@ -32,6 +32,7 @@ export const translations = {
       description: 'Предлагаме голям набор от услуги в сектора на довършителните работи в строителството. Реализираме проекти в нови сгради, къщи и апартаменти и осъществяваме основни, освежителни и частични ремонти на съществуващи площи.',
       services: [
         { title: 'Цялостни или частични вътрешни ремонти', desc: 'Професионални ремонти с внимание към всеки детайл.' },
+        { title: 'Ремонти на Офисни Пространства', desc: 'Структурно окабеляване, СОТ, ПБ, интернет, видеонаблюдение и аварийно осветление.' },
         { title: 'Ел. инсталации (прецизно разпределение и монтаж)', desc: 'Безопасни и надеждни електрически инсталации.' },
         { title: 'ВиК инсталации', desc: 'Водопроводни и канализационни системи.' },
         { title: 'Гипсокартон и шпакловки', desc: 'Прецизно изравняване на стени и тавани.' },
@@ -228,6 +229,7 @@ export const translations = {
       description: 'We offer a wide range of services in the field of construction finishing works. We complete projects in new buildings, houses, and apartments, and we perform full, refreshing, or partial renovations of existing spaces.',
       services: [
         { title: 'Full or partial interior renovations', desc: 'Professional renovations with attention to every detail.' },
+        { title: 'Office Space Renovations', desc: 'Structured cabling, security alarm systems, fire safety, internet, video surveillance, and emergency lighting.' },
         { title: 'Electrical installations (precise layout and installation)', desc: 'Safe and reliable electrical installations.' },
         { title: 'Plumbing installations', desc: 'Water supply and drainage systems.' },
         { title: 'Drywall and plastering', desc: 'Precise leveling of walls and ceilings.' },

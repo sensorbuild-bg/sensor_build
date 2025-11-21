@@ -38,7 +38,7 @@ export default function Home() {
 
           <div className="relative z-[2] text-center max-w-4xl mx-auto -mt-32 md:-mt-20">
             <h1
-              className={`text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-white drop-shadow-lg`}
+              className={`text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-noah-bold mb-6 text-white drop-shadow-lg`}
             >
               {t.title}
             </h1>
@@ -97,7 +97,7 @@ export default function Home() {
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2
-                className={`text-3xl md:text-4xl font-bold text-center mb-12 ${
+                className={`text-3xl md:text-4xl font-noah-bold text-center mb-12 ${
                   lang === "bg" ? "text-white" : "text-gray-900"
                 }`}
               >
