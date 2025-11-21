@@ -50,7 +50,7 @@ export default function Home() {
               </h2>
             )}
             {t.tagline && (
-              <p className="text-xl sm:text-lg md:text-2xl text-[#4da855] font-semibold mb-12 drop-shadow-md">
+              <p className="text-xl sm:text-lg md:text-2xl text-white font-semibold mb-12 drop-shadow-md">
                 <TypewriterText
                   text={t.tagline}
                   speed={70}
