@@ -39,7 +39,7 @@ export default function Header() {
       {/* Desktop Version */}
       <div className="hidden md:block">
         {/* Green line extending full width of screen */}
-        <div className="absolute left-0 right-0 top-[51%] -translate-y-1/2 h-[0.35rem] bg-gradient-to-r from-[#4da855] to-[#388644] pointer-events-none z-20"></div>
+        <div className="absolute left-0 right-0 top-[51%] -translate-y-1/2 h-[0.35rem] bg-gradient-to-r from-[#62b946] to-[#0c5447] pointer-events-none z-20"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Logo with line extending to the end */}
           <div className="relative py-4">
@@ -111,7 +111,7 @@ export default function Header() {
       {/* Mobile Version */}
       <div className="md:hidden relative">
         {/* Green line extending full width of screen */}
-        <div className="absolute left-0 right-0 top-[50.5%] -translate-y-1/2 h-[0.23rem] bg-gradient-to-r from-[#4da855] to-[#388644] pointer-events-none z-20"></div>
+        <div className="absolute left-0 right-0 top-[50.5%] -translate-y-1/2 h-[0.23rem] bg-gradient-to-r from-[#62b946] to-[#0c5447] pointer-events-none z-20"></div>
         <div className="flex items-center justify-between px-4 py-4 relative z-10">
           <Link href="/" className="flex items-center">
             <Image

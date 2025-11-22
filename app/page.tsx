@@ -38,7 +38,7 @@ export default function Home() {
 
           <div className="relative z-[2] text-center max-w-4xl mx-auto -mt-32 md:-mt-20">
             <h1
-              className={`text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-noah-bold mb-6 text-white drop-shadow-lg`}
+              className={`text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-noah-bold mb-6 text-white drop-shadow-lg uppercase`}
             >
               {t.title}
             </h1>
@@ -50,7 +50,7 @@ export default function Home() {
               </h2>
             )}
             {t.tagline && (
-              <p className="text-xl sm:text-lg md:text-2xl text-white font-semibold mb-12 drop-shadow-md">
+              <p className="text-xl sm:text-lg md:text-2xl text-[#4da855] font-semibold mb-12 drop-shadow-md">
                 <TypewriterText
                   text={t.tagline}
                   speed={70}
