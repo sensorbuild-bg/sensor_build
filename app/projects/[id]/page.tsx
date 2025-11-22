@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import Image from "next/image";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
 import {
@@ -10,6 +11,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -35,11 +37,30 @@ export default function ProjectPage() {
     (project as any).images ||
     ((project as any).mainImage ? [(project as any).mainImage] : []);
 
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
   useEffect(() => {
     if (!project) {
       router.push("/projects");
     }
   }, [project, router]);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
+  const scrollTo = (index: number) => {
+    api?.scrollTo(index);
+  };
 
   if (!project) {
     return null;
@@ -89,40 +110,73 @@ export default function ProjectPage() {
 
         {/* Images carousel */}
         {images.length > 0 && (
-          <div className="mb-12 flex justify-center">
-            <Carousel className="w-full max-w-md">
-              <CarouselContent className="-ml-0">
+          <div className="mb-12">
+            <div className="flex justify-center mb-6">
+              <Carousel setApi={setApi} className="w-full max-w-md">
+                <CarouselContent className="-ml-0">
+                  {images.map((image: string, index: number) => (
+                    <CarouselItem key={index} className="pl-0">
+                      <div className="p-0">
+                        <Card className="border-0 shadow-none bg-transparent">
+                          <CardContent className="flex aspect-[3/4] items-center justify-center p-0">
+                            <Image
+                              src={image}
+                              alt={`${project.imageTitle} ${index + 1}`}
+                              width={800}
+                              height={1067}
+                              className="w-full h-full object-contain rounded-lg"
+                            />
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                {images.length > 1 && (
+                  <>
+                    <CarouselPrevious
+                      className={`left-4 md:left-6 bg-transparent hover:bg-transparent border-0 shadow-none h-12 w-12 ${
+                        lang === "bg" ? "text-white" : "text-gray-900"
+                      }`}
+                    />
+                    <CarouselNext
+                      className={`right-2 md:right-2 bg-transparent hover:bg-transparent border-0 shadow-none h-12 w-12 ${
+                        lang === "bg" ? "text-white" : "text-gray-900"
+                      }`}
+                    />
+                  </>
+                )}
+              </Carousel>
+            </div>
+
+            {/* Thumbnail navigation */}
+            {images.length > 1 && (
+              <div className="flex justify-center gap-2 md:gap-3 overflow-x-auto pb-2 px-4">
                 {images.map((image: string, index: number) => (
-                  <CarouselItem key={index} className="pl-0">
-                    <div className="p-0">
-                      <Card className="border-0 shadow-none bg-transparent">
-                        <CardContent className="flex aspect-[3/4] items-center justify-center p-0">
-                          <img
-                            src={image}
-                            alt={`${project.imageTitle} ${index + 1}`}
-                            className="w-full h-full object-contain rounded-lg"
-                          />
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </CarouselItem>
+                  <button
+                    key={index}
+                    onClick={() => scrollTo(index)}
+                    className={`relative flex-shrink-0 w-20 h-20 md:w-24 md:h-24 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
+                      current === index
+                        ? "border-[#388644] scale-110 shadow-lg"
+                        : "border-transparent opacity-60 hover:opacity-100 hover:scale-105"
+                    }`}
+                    aria-label={`Go to image ${index + 1}`}
+                  >
+                    <Image
+                      src={image}
+                      alt={`Thumbnail ${index + 1}`}
+                      fill
+                      className="object-cover"
+                      sizes="80px"
+                    />
+                    {current === index && (
+                      <div className="absolute inset-0 bg-[#388644]/20"></div>
+                    )}
+                  </button>
                 ))}
-              </CarouselContent>
-              {images.length > 1 && (
-                <>
-                  <CarouselPrevious
-                    className={`left-4 md:left-6 bg-transparent hover:bg-transparent border-0 shadow-none h-12 w-12 ${
-                      lang === "bg" ? "text-white" : "text-gray-900"
-                    }`}
-                  />
-                  <CarouselNext
-                    className={`right-2 md:right-2 bg-transparent hover:bg-transparent border-0 shadow-none h-12 w-12 ${
-                      lang === "bg" ? "text-white" : "text-gray-900"
-                    }`}
-                  />
-                </>
-              )}
-            </Carousel>
+              </div>
+            )}
           </div>
         )}
 
