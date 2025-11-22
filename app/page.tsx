@@ -2,15 +2,55 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
 import Footer from "@/components/Footer";
 import TypewriterText from "@/components/TypewriterText";
 import AnimatedDiv from "@/components/AnimatedDiv";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 
 export default function Home() {
   const { lang } = useLanguage();
   const t = translations[lang].home;
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  const projectImages = [
+    "/project4/20251008_150415_main-ezgif.com-jpg-to-webp-converter.webp",
+    "/project6/20250925_132227_main.webp",
+    "/project5/20251109_145613_main-ezgif.com-jpg-to-webp-converter.webp",
+    "/20250713_183946.webp",
+  ];
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      api.scrollNext();
+    }, 4000); // Change slide every 4 seconds
+
+    return () => clearInterval(interval);
+  }, [api]);
 
   return (
     <div
@@ -204,6 +244,71 @@ export default function Home() {
             </div>
           </section>
         )}
+
+        {/* Projects Slideshow Section */}
+        <section
+          className={`relative py-16 md:py-24 ${
+            lang === "bg" ? "bg-[#1a2342]" : "bg-white"
+          }`}
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2
+              className={`text-3xl md:text-4xl font-noah-bold text-center mb-12 ${
+                lang === "bg" ? "text-white" : "text-gray-900"
+              }`}
+            >
+              {lang === "bg" ? "Нашите проекти" : "Our Projects"}
+            </h2>
+            <Link href="/projects" className="block group">
+              <Carousel
+                setApi={setApi}
+                opts={{
+                  align: "center",
+                  loop: true,
+                  containScroll: "trimSnaps",
+                }}
+                className="w-full"
+              >
+                <CarouselContent className="-ml-2 md:-ml-4 lg:-ml-8">
+                  {projectImages.map((image, index) => {
+                    const isActive = current === index;
+                    return (
+                      <CarouselItem
+                        key={index}
+                        className="pl-2 md:pl-4 lg:pl-8 basis-[85%] md:basis-1/2 lg:basis-[45%]"
+                      >
+                        <div
+                          className={`relative aspect-[3/4] overflow-hidden rounded-lg shadow-lg group-hover:shadow-xl transition-all duration-500 ${
+                            isActive
+                              ? "lg:scale-110 lg:z-10 lg:shadow-2xl"
+                              : "lg:scale-90 lg:opacity-70"
+                          }`}
+                        >
+                          <Image
+                            src={image}
+                            alt={`Project ${index + 1}`}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 45vw"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div className="absolute bottom-4 left-4 right-4">
+                              <p className="text-white text-sm font-semibold">
+                                {lang === "bg"
+                                  ? "Вижте проектите"
+                                  : "View Projects"}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </CarouselItem>
+                    );
+                  })}
+                </CarouselContent>
+              </Carousel>
+            </Link>
+          </div>
+        </section>
 
         {/* CTA Buttons Section */}
         <section
