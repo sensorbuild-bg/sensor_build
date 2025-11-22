@@ -128,6 +128,13 @@ export const translations = {
       project4: {
         title: 'Подово отопление',
         imageTitle: 'Изграждане на водно подово отопление',
+        mainImage: '/project4/20251008_150415_main-ezgif.com-jpg-to-webp-converter.webp',
+        images: [
+          '/project4/20251008_150415_main-ezgif.com-jpg-to-webp-converter.webp',
+          '/project4/20251008_150718-ezgif.com-jpg-to-webp-converter.webp',
+          '/project4/20251008_152831-ezgif.com-jpg-to-webp-converter.webp',
+          '/project4/20251016_181739-ezgif.com-jpg-to-webp-converter.webp',
+        ],
         content: [
           'Извършваме цялостно изграждане на водно подово отопление, което осигурява комфорт, равномерно затопляне и енергийна ефективност. Какво включва процесът:',
           'Подготовка на основата – поставяме периметрална лента по стените и подреждаме топлоизолационните подложки, които създават стабилна основа за системата.',
@@ -160,9 +167,10 @@ export const translations = {
         mainImage: '/project6/20250925_132227_main.webp',
         images: [
           '/project6/20250925_132227_main.webp',
-          '/project6/20241219_163427.webp',
+          '/project6/20241219_163424-ezgif.com-jpg-to-webp-converter.webp',
           '/project6/20251001_145701.webp',
           '/project6/20251115_182915.webp',
+          '/project6/20251115_182920-ezgif.com-jpg-to-webp-converter.webp',
         ],
         content: [
           'Извършваме на цялостен монтаж на осветление – от стандартни осветителни тела до модерни LED системи и скрито осветление. Какво включва услугата:',
@@ -332,6 +340,13 @@ export const translations = {
       project4: {
         title: 'Underfloor Heating',
         imageTitle: 'Water Underfloor Heating Installation',
+        mainImage: '/project4/20251008_150415_main-ezgif.com-jpg-to-webp-converter.webp',
+        images: [
+          '/project4/20251008_150415_main-ezgif.com-jpg-to-webp-converter.webp',
+          '/project4/20251008_150718-ezgif.com-jpg-to-webp-converter.webp',
+          '/project4/20251008_152831-ezgif.com-jpg-to-webp-converter.webp',
+          '/project4/20251016_181739-ezgif.com-jpg-to-webp-converter.webp',
+        ],
         content: [
           'We install complete water underfloor heating systems that provide comfort, even heating, and high energy efficiency:',
           'Base preparation – installing edge insulation strips and arranging thermal insulation panels.',
@@ -364,9 +379,10 @@ export const translations = {
         mainImage: '/project6/20250925_132227_main.webp',
         images: [
           '/project6/20250925_132227_main.webp',
-          '/project6/20241219_163427.webp',
+          '/project6/20241219_163424-ezgif.com-jpg-to-webp-converter.webp',
           '/project6/20251001_145701.webp',
           '/project6/20251115_182915.webp',
+          '/project6/20251115_182920-ezgif.com-jpg-to-webp-converter.webp',
         ],
         content: [
           'We perform complete lighting installation — from standard fixtures to modern LED systems and hidden lighting. The service includes:',
