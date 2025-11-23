@@ -244,7 +244,7 @@ export default function Contacts() {
           <div className="flex justify-center">
             <AnimatedDiv>
               <a
-                href="https://www.instagram.com/park.decor/?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBExQ3FNZmJuSWM1VmpQMXk1N3NydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR7DVvPRNyx8z7vSfsa1zRtTaH9fPS6F9FXSKcsQdAdAQ8O4WzEIz-jXvZps9Q_aem_saKG-a9eKwZDiTnlQhYH3w"
+                href="https://www.instagram.com/park.decor/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block transition-transform hover:scale-105"
