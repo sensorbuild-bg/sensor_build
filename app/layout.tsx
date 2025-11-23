@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sensor Build - Майсторски услуги",
-  description: "Sensor Build - професионални майсторски услуги",
+  title: "Sensor Build - Строителство и ремонти",
+  description: "Sensor Build - професионално строителство и ремонти",
 };
 
 export default function RootLayout({
