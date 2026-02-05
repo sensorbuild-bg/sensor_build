@@ -151,8 +151,8 @@ export const translations = {
         mainImage: '/project5/20251109_145613_main-ezgif.com-jpg-to-webp-converter.webp',
         images: [
          // стари
-    '/project5/20251109_145613_main-ezgif-com-jpg-to-webp-converter.webp',
-    '/project5/20251109_084251-ezgif-com-jpg-to-webp-converter.webp',
+    '/project5/20251109_145613_main-ezgif.com-jpg-to-webp-converter.webp',
+    '/project5/20251109_084251-ezgif.com-jpg-to-webp-converter.webp',
 
     // нови
     '/project5/20251207-living-room-gypsum-before.webp',
@@ -369,8 +369,8 @@ export const translations = {
         mainImage: '/project5/20251109_145613_main-ezgif.com-jpg-to-webp-converter.webp',
         images: [
           // стари
-    '/project5/20251109_145613_main-ezgif-com-jpg-to-webp-converter.webp',
-    '/project5/20251109_084251-ezgif-com-jpg-to-webp-converter.webp',
+    '/project5/20251109_145613_main-ezgif.com-jpg-to-webp-converter.webp',
+    '/project5/20251109_084251-ezgif.com-jpg-to-webp-converter.webp',
 
     // нови
     '/project5/20251207-living-room-gypsum-before.webp',
