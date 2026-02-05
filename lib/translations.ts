@@ -150,8 +150,14 @@ export const translations = {
         imageTitle: 'Гипсокартон',
         mainImage: '/project5/20251109_145613_main-ezgif.com-jpg-to-webp-converter.webp',
         images: [
-          '/project5/20251109_084251-ezgif.com-jpg-to-webp-converter.webp',
-          '/project5/20251109_145613_main-ezgif.com-jpg-to-webp-converter.webp',
+         // стари
+    '/project5/20251109_145613_main-ezgif-com-jpg-to-webp-converter.webp',
+    '/project5/20251109_084251-ezgif-com-jpg-to-webp-converter.webp',
+
+    // нови
+    '/project5/20251207-living-room-gypsum-before.webp',
+    '/project5/20251223-living-room-gypsum-after.webp',
+  ],
         ],
         content: [
           'Извършваме полагане на гипсокартон. Какво включват процесите:',
@@ -363,8 +369,14 @@ export const translations = {
         imageTitle: 'Drywall',
         mainImage: '/project5/20251109_145613_main-ezgif.com-jpg-to-webp-converter.webp',
         images: [
-          '/project5/20251109_145613_main-ezgif.com-jpg-to-webp-converter.webp',
-          '/project5/20251109_084251-ezgif.com-jpg-to-webp-converter.webp',
+          // стари
+    '/project5/20251109_145613_main-ezgif-com-jpg-to-webp-converter.webp',
+    '/project5/20251109_084251-ezgif-com-jpg-to-webp-converter.webp',
+
+    // нови
+    '/project5/20251207-living-room-gypsum-before.webp',
+    '/project5/20251223-living-room-gypsum-after.webp',
+  ],
         ],
         content: [
           'We perform full drywall installation. The process includes:',
