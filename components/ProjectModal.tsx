@@ -71,6 +71,22 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
                   alt={`${project.imageTitle} ${currentImageIndex + 1}`}
                   className="w-full h-auto rounded-lg object-cover"
                 />
+                {/* Thumbnails */}
+<div className="grid grid-cols-4 gap-3 mt-4">
+  {images.map((img, index) => (
+    <img
+      key={index}
+      src={img}
+      onClick={() => setCurrentImageIndex(index)}
+      className={`cursor-pointer rounded-md border ${
+        index === currentImageIndex
+          ? 'border-green-500'
+          : 'border-transparent'
+      }`}
+      alt={`thumbnail ${index + 1}`}
+    />
+  ))}
+</div>
                 {images.length > 1 && (
                   <>
                     {/* Previous button */}
