@@ -376,7 +376,6 @@ export const translations = {
     '/project5/20251207-living-room-gypsum-before.webp',
     '/project5/20251223-living-room-gypsum-after.webp',
   ],
-        ],
         content: [
           'We perform full drywall installation. The process includes:',
           'Inspection and preparation – measurements, planning, and selecting the most suitable system.',
