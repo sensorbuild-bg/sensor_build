@@ -1,4 +1,3 @@
-import BackButton from '@/components/BackButton';
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -7,6 +6,7 @@ import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import ThemeProvider from "@/components/ThemeProvider";
 import { Analytics } from "@vercel/analytics/next";
+import GlobalBackButton from "@/components/GlobalBackButton"; // ✅ добави това
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,13 +30,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="bg">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <LanguageProvider>
           <ThemeProvider>
             <Header />
+
+            {/* ✅ BackButton на всички страници, без / */}
+            <GlobalBackButton />
+
             <main className="min-h-screen">{children}</main>
+
             <Footer />
           </ThemeProvider>
         </LanguageProvider>
