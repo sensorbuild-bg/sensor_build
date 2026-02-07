@@ -53,7 +53,7 @@ export default function Header() {
             <div className="flex items-center justify-between relative z-10">
               {/* Logo on the left */}
               <Link href="/" className="flex items-center -ml-4">
-                <div className="pr-4">
+               <div className="pr-6 xl:pr-12">
                   <Image
                     src={lang === "bg" ? "/logodark.png" : "/logo.webp"}
                     alt="Sensor Build Logo"
