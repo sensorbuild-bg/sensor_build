@@ -52,7 +52,7 @@ export default function Header() {
           <div className="relative py-4">
             <div className="flex items-center justify-between relative z-10">
               {/* Logo on the left */}
-              <Link href="/" className="flex items-center">
+              <Link href="/" className="flex items-center -ml-4">
                 <div className="pr-4">
                   <Image
                     src={lang === "bg" ? "/logodark.png" : "/logo.webp"}
@@ -88,7 +88,7 @@ export default function Header() {
               </nav>
 
               {/* Language switch on the right */}
-              <div className="flex items-center space-x-1 -mt-12">
+              <div className="flex items-center space-x-1 -mt-12 ml-6">
                 <button
                   onClick={() => setLang("bg")}
                   className={`px-3 py-1.5 text-xs font-semibold rounded-md text-white transition-all duration-200 ${
