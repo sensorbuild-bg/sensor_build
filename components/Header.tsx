@@ -71,7 +71,7 @@ export default function Header() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`text-lg font-bold transition-colors ${
+                      className={`whitespace-nowrap text-lg font-bold transition-colors ${
                         pathname === item.href
                           ? lang === "bg"
                             ? "text-white border-b-2 border-white pb-0.5"
