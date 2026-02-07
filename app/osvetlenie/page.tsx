@@ -89,25 +89,25 @@ export default function LightingPage() {
             name: "Vivalux ceiling light with motion sensor LEO F30 SR36",
             desc:
               "A motion-sensor ceiling light for entrances, corridors and common areas. Automatic switching for everyday convenience.",
-            price: "from … € / pc (delivery + installation)",
+            price: "from … € / pcs (delivery + installation)",
           },
           {
             name: "Vivalux outdoor wall light BERGAMO 1xGU10 – black",
             desc:
               "Minimal outdoor wall light for terraces and entrances. Weather-resistant and suitable for long-term use.",
-            price: "from … € / pc (delivery + installation)",
+            price: "from … € / pcs (delivery + installation)",
           },
           {
             name: "Vivalux LED ceiling light LUCAS 36W – black + wood",
             desc:
               "Decorative ceiling light with selectable color temperature, suitable for living rooms, kitchens and offices.",
-            price: "from … € / pc (delivery + installation)",
+            price: "from … € / pcs (delivery + installation)",
           },
           {
             name: "Vivalux industrial fixture JEX PC BASE 222 LED – 1200 mm",
             desc:
               "Practical lighting solution for garages, storage rooms and work areas with higher lighting needs.",
-            price: "from … € / pc (delivery + installation)",
+            price: "from … € / pcs (delivery + installation)",
           },
         ],
         metaTitle: "Vivalux Lighting – Supply & Installation | Sensor Build",
