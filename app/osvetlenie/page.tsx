@@ -47,25 +47,25 @@ export default function LightingPage() {
             name: "Vivalux плафониера със сензор LEO F30 SR36",
             desc:
               "Плафониера със сензор за движение, подходяща за входове, коридори и общи части. Осигурява автоматично включване и удобство при ежедневно ползване.",
-            price: "от … € / бр. (доставка + монтаж)",
+            price: "от 35€ / бр. (доставка + монтаж)",
           },
           {
             name: "Vivalux фасаден аплик BERGAMO 1xGU10 – черно",
             desc:
               "Фасаден аплик с изчистен дизайн, подходящ за тераси, входове и външни пространства. Устойчив на атмосферни условия и подходящ за дългосрочна експлоатация.",
-            price: "от … € / бр. (доставка + монтаж)",
+            price: "от 40€ / бр. (доставка + монтаж)",
           },
           {
             name: "Vivalux LED плафон LUCAS LED 36W – черно + дърво",
             desc:
               "Декоративен LED плафон с избор на цветна температура, подходящ за дневни, кухни и офис пространства. Съчетава функционалност и топъл визуален акцент.",
-            price: "от … € / бр. (доставка + монтаж)",
+            price: "от 115€ / бр. (доставка + монтаж)",
           },
           {
             name: "Vivalux индустриално осветително тяло JEX PC BASE 222 LED – 1200 mm",
             desc:
               "Практично и надеждно осветително тяло за гаражи, складове, сервизни помещения и работни зони. Подходящо за пространства с повишени изисквания към осветеността.",
-            price: "от … € / бр. (доставка + монтаж)",
+            price: "от 45€ / бр. (доставка + монтаж)",
           },
         ],
         metaTitle: "Осветление Vivalux – доставка и монтаж | Sensor Build",
@@ -89,25 +89,25 @@ export default function LightingPage() {
             name: "Vivalux ceiling light with motion sensor LEO F30 SR36",
             desc:
               "A motion-sensor ceiling light for entrances, corridors and common areas. Automatic switching for everyday convenience.",
-            price: "from … € / pcs (delivery + installation)",
+            price: "from 35€ / pcs (delivery + installation)",
           },
           {
             name: "Vivalux outdoor wall light BERGAMO 1xGU10 – black",
             desc:
               "Minimal outdoor wall light for terraces and entrances. Weather-resistant and suitable for long-term use.",
-            price: "from … € / pcs (delivery + installation)",
+            price: "from 40€ / pcs (delivery + installation)",
           },
           {
             name: "Vivalux LED ceiling light LUCAS 36W – black + wood",
             desc:
               "Decorative ceiling light with selectable color temperature, suitable for living rooms, kitchens and offices.",
-            price: "from … € / pcs (delivery + installation)",
+            price: "from 115€ / pcs (delivery + installation)",
           },
           {
             name: "Vivalux industrial fixture JEX PC BASE 222 LED – 1200 mm",
             desc:
               "Practical lighting solution for garages, storage rooms and work areas with higher lighting needs.",
-            price: "from … € / pcs (delivery + installation)",
+            price: "from 45€ / pcs (delivery + installation)",
           },
         ],
         metaTitle: "Vivalux Lighting – Supply & Installation | Sensor Build",
