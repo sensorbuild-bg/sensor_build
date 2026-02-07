@@ -33,14 +33,19 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <LanguageProvider>
           <ThemeProvider>
-            <Header />
+           <Header />
 
-            {/* ✅ BackButton на всички страници, без / */}
-            <GlobalBackButton />
+{/* 🔙 BackButton – горе */}
+<GlobalBackButton />
 
-            <main className="min-h-screen">{children}</main>
+<main className="min-h-screen">
+  {children}
+</main>
 
-            <Footer />
+{/* 🔙 BackButton – долу */}
+<GlobalBackButton />
+
+<Footer />
           </ThemeProvider>
         </LanguageProvider>
         <Analytics />
