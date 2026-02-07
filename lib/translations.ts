@@ -3,6 +3,7 @@ export const translations = {
     nav: {
       home: 'Начало',
       services: 'Нашите услуги',
+      lighting: "Осветление",
       howWeWork: 'Как работим',
       projects: 'Проекти',
       contacts: 'Контакти',
@@ -221,6 +222,7 @@ export const translations = {
     nav: {
       home: 'Home',
       services: 'Our Services',
+      lighting: "Lighting",
       howWeWork: 'How We Work',
       projects: 'Projects',
       contacts: 'Contacts',
