@@ -22,21 +22,41 @@ export default function Services() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-      {t.services.map((service, index) => {
+     {t.services.map((service, index) => {
   const isLighting =
     service.title.toLowerCase().includes('освет') ||
     service.title.toLowerCase().includes('lighting');
 
   const Card = (
     <AnimatedDiv
-      className={`border-2 border-[#388644] rounded-lg p-6 hover:shadow-lg transition-shadow ${
-        lang === 'bg' ? 'bg-[#1a2342]' : 'bg-white'
-      }`}
+      className={`relative rounded-lg p-6 transition-all duration-300
+        ${
+          isLighting
+            ? `
+              border-2 border-[#62b946]
+              shadow-[0_0_0_2px_rgba(98,185,70,0.25)]
+              hover:shadow-[0_0_25px_rgba(98,185,70,0.35)]
+              hover:scale-[1.02]
+              cursor-pointer
+            `
+            : 'border-2 border-[#388644] hover:shadow-lg'
+        }
+        ${lang === 'bg' ? 'bg-[#1a2342]' : 'bg-white'}
+      `}
     >
-      <h3 className={`text-xl font-semibold mb-3 ${lang === 'bg' ? 'text-white' : 'text-gray-900'}`}>
+      <h3
+        className={`text-xl font-semibold mb-3 flex items-center justify-between
+          ${lang === 'bg' ? 'text-white' : 'text-gray-900'}
+        `}
+      >
         {service.title}
+
+        {isLighting && (
+          <span className="text-[#62b946] text-lg ml-2">→</span>
+        )}
       </h3>
-      <p className={lang === 'bg' ? 'text-white' : 'text-gray-600'}>
+
+      <p className={lang === 'bg' ? 'text-white/90' : 'text-gray-600'}>
         {service.desc}
       </p>
     </AnimatedDiv>
