@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
 import AnimatedDiv from '@/components/AnimatedDiv';
@@ -21,19 +22,34 @@ export default function Services() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {t.services.map((service, index) => (
-            <AnimatedDiv
-              key={index}
-              className={`border-2 border-[#388644] rounded-lg p-6 hover:shadow-lg transition-shadow ${lang === 'bg' ? 'bg-[#1a2342]' : 'bg-white'}`}
-            >
-              <h3 className={`text-xl font-semibold mb-3 ${lang === 'bg' ? 'text-white' : 'text-gray-900'}`}>
-                {service.title}
-              </h3>
-              <p className={lang === 'bg' ? 'text-white' : 'text-gray-600'}>
-                {service.desc}
-              </p>
-            </AnimatedDiv>
-          ))}
+      {t.services.map((service, index) => {
+  const isLighting =
+    service.title.toLowerCase().includes('освет') ||
+    service.title.toLowerCase().includes('lighting');
+
+  const Card = (
+    <AnimatedDiv
+      className={`border-2 border-[#388644] rounded-lg p-6 hover:shadow-lg transition-shadow ${
+        lang === 'bg' ? 'bg-[#1a2342]' : 'bg-white'
+      }`}
+    >
+      <h3 className={`text-xl font-semibold mb-3 ${lang === 'bg' ? 'text-white' : 'text-gray-900'}`}>
+        {service.title}
+      </h3>
+      <p className={lang === 'bg' ? 'text-white' : 'text-gray-600'}>
+        {service.desc}
+      </p>
+    </AnimatedDiv>
+  );
+
+  return isLighting ? (
+    <Link key={index} href="/osvetlenie" className="block">
+      {Card}
+    </Link>
+  ) : (
+    <div key={index}>{Card}</div>
+  );
+})}
         </div>
 
         <div className="text-center mt-12">
