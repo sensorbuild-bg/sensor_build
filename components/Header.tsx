@@ -126,7 +126,7 @@ export default function Header() {
           } bg-gradient-to-r from-[#62b946] to-[#0c5447] pointer-events-none z-20`}
         ></div>
         <div className="flex items-center justify-between px-4 py-4 relative z-10">
-          <Link href="/" className="flex items-center">
+         <Link href="/" className="flex items-center -ml-6">
             <Image
               src={lang === "bg" ? "/logodark.png" : "/logo.webp"}
               alt="Sensor Build Logo"
