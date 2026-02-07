@@ -170,14 +170,14 @@ export default function LightingPage() {
 
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {content.items.map((p, i) => (
-            <article
-              key={p.name}
-              className={`group rounded-2xl border p-4 transition ${
-                lang === "bg"
-                  ? "border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/7"
-                  : "border-black/10 bg-black/5 hover:border-black/20 hover:bg-black/7"
-              }`}
-            >
+        <article
+  key={p.name}
+  className={`group rounded-2xl border-2 p-4 transition ${
+    lang === "bg"
+      ? "border-[#2d6b35] bg-transparent hover:border-[#4da855]"
+      : "border-[#2d6b35] bg-white hover:border-[#4da855]"
+  }`}
+>
               <div className={`relative aspect-[4/3] overflow-hidden rounded-xl ${lang === "bg" ? "bg-white/5" : "bg-black/5"}`}>
                 <Image
                   src={products[i].img}
@@ -193,7 +193,13 @@ export default function LightingPage() {
                 {p.desc}
               </p>
 
-              <div className={`mt-4 rounded-xl border p-3 ${lang === "bg" ? "border-white/10 bg-black/20" : "border-black/10 bg-black/5"}`}>
+              <div
+  className={`mt-4 rounded-xl border-2 p-3 ${
+    lang === "bg"
+      ? "border-[#2d6b35] bg-transparent"
+      : "border-[#2d6b35] bg-white"
+  }`}
+>
                 <p className={`text-xs ${lang === "bg" ? "text-white/60" : "text-black/60"}`}>
                   {content.priceLabel}
                 </p>
@@ -201,14 +207,14 @@ export default function LightingPage() {
               </div>
 
               <div className="mt-4">
-                <Link
-                  href="/contacts"
-                  className={`inline-flex w-full items-center justify-center rounded-xl border px-4 py-2.5 text-sm font-medium transition ${
-                    lang === "bg"
-                      ? "border-white/15 bg-white/5 text-white/90 hover:bg-white/10 hover:border-white/25"
-                      : "border-black/15 bg-black/5 text-black/90 hover:bg-black/10 hover:border-black/25"
-                  }`}
-                >
+         <Link
+  href="/contacts"
+  className={`inline-flex w-full items-center justify-center rounded-xl border-2 px-4 py-2.5 text-sm font-semibold transition ${
+    lang === "bg"
+      ? "border-[#2d6b35] text-white hover:border-[#4da855] hover:text-[#4da855]"
+      : "border-[#2d6b35] text-black hover:border-[#4da855] hover:text-[#4da855]"
+  }`}
+>
                   {content.cta}
                 </Link>
               </div>
