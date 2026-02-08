@@ -104,14 +104,14 @@ export default function Home() {
               </h2>
             )}
             {t.tagline && (
-              <p className="text-xl sm:text-lg md:text-2xl text-[#4da855] font-semibold mb-12 drop-shadow-md">
-                <TypewriterText
-                  text={t.tagline}
-                  speed={70}
-                  delay={t.subtitle ? t.subtitle.length * 70 + 500 : 0}
-                />
-              </p>
-            )}
+  <p className="inline-block text-lg sm:text-xl md:text-3xl text-[#4da855] font-semibold mb-12 drop-shadow-md px-4 py-2 rounded-xl bg-white/55 backdrop-blur-sm border border-white/25 shadow-sm animate-fadeInUpSoft">
+    <TypewriterText
+      text={t.tagline}
+      speed={70}
+      delay={t.subtitle ? t.subtitle.length * 70 + 500 : 0}
+    />
+  </p>
+)}
           </div>
         </section>
 
