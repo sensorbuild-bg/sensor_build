@@ -92,13 +92,13 @@ export default function Home() {
 
           <div className="relative z-[2] text-center max-w-4xl mx-auto -mt-32 md:-mt-20">
             <h1
-              className={`text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-noah-bold mb-6 text-white drop-shadow-lg uppercase`}
+              className={`text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-noah-bold mb-2 text-white drop-shadow-lg uppercase`}
             >
               {t.title}
             </h1>
             {t.subtitle && (
               <h2
-                className={`text-2xl sm:text-xl md:text-3xl mb-3 text-white/90 drop-shadow-md`}
+                className={`text-2xl sm:text-xl md:text-3xl mb-8 text-white/90 drop-shadow-md`}
               >
                 <TypewriterText text={t.subtitle} speed={70} />
               </h2>
