@@ -103,14 +103,30 @@ export default function Home() {
                 <TypewriterText text={t.subtitle} speed={70} />
               </h2>
             )}
-            {t.tagline && (
- <p className="inline-block text-lg sm:text-xl md:text-3xl text-[#2D6B35] font-semibold mb-12 px-4 py-2 rounded-xl bg-[#13182C]/65 backdrop-blur-sm border border-white/20 shadow-sm animate-fadeInUpSoft">
-    <TypewriterText
-      text={t.tagline}
-      speed={70}
-      delay={t.subtitle ? t.subtitle.length * 70 + 500 : 0}
-    />
-  </p>
+{t.tagline && (
+  <div className="mb-12 flex justify-center">
+    <span
+      className="
+        inline-flex items-center
+        px-5 py-2
+        rounded-xl
+        bg-white/60
+        backdrop-blur-sm
+        border border-white/25
+        shadow-sm
+        text-[#2D6B35]
+        text-lg sm:text-xl md:text-2xl
+        font-semibold
+        drop-shadow-sm
+      "
+    >
+      <TypewriterText
+        text={t.tagline}
+        speed={70}
+        delay={t.subtitle ? t.subtitle.length * 70 + 500 : 0}
+      />
+    </span>
+  </div>
 )}
           </div>
         </section>
