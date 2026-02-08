@@ -98,7 +98,7 @@ export default function Home() {
             </h1>
             {t.subtitle && (
               <h2
-                className={`text-2xl sm:text-xl md:text-3xl mb-8 text-white/90 drop-shadow-md`}
+                className={`text-2xl sm:text-xl md:text-3xl mb-3 text-white/90 drop-shadow-md`}
               >
                 <TypewriterText text={t.subtitle} speed={70} />
               </h2>
