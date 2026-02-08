@@ -149,3 +149,12 @@ img[alt="Sensor Build Logo"] {
   transform: translateX(100%);
   transition: transform 0.3s ease-out;
 }
+
+@keyframes fadeInUpSoft {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeInUpSoft {
+  animation: fadeInUpSoft 700ms ease-out both;
+}
