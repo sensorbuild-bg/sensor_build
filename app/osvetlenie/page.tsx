@@ -123,7 +123,7 @@ export default function LightingPage() {
   }
 
   return (
-    <main className={`min-h-screen ${lang === "bg" ? "bg-[#1A2342] text-white" : "bg-white text-black"}`}>
+    <main className={`min-h-screen ${lang === "bg" ? "bg-[#13182C] text-white" : "bg-white text-black"}`}>
       <section className="relative overflow-hidden border-b border-white/10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
           <p className={`${lang === "bg" ? "text-white/70" : "text-black/60"} text-sm tracking-wide`}>
