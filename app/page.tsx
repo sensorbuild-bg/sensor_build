@@ -104,7 +104,7 @@ export default function Home() {
               </h2>
             )}
             {t.tagline && (
-  <p className="inline-block text-lg sm:text-xl md:text-3xl text-[#4da855] font-semibold mb-12 drop-shadow-md px-4 py-2 rounded-xl bg-white/55 backdrop-blur-sm border border-white/25 shadow-sm animate-fadeInUpSoft">
+  <p className="inline-block text-lg sm:text-xl md:text-3xl text-[#2D6B35] font-semibold mb-12 drop-shadow-md px-4 py-2 rounded-xl bg-white/55 backdrop-blur-sm border border-[#2D6B35]/20 shadow-sm animate-fadeInUpSoft">
     <TypewriterText
       text={t.tagline}
       speed={70}
