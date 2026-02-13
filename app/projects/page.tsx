@@ -38,10 +38,10 @@ export default function Projects() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {projects.map((project, index) => (
             <AnimatedDiv key={index}>
-              <Link
-                href={`/projects/${index}`}
-                className="relative cursor-pointer group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow block"
-              >
+            <Link
+  href={`/projects/${index}`}
+  className="relative cursor-pointer group rounded-lg shadow-md hover:shadow-xl transition-shadow block"
+>
                 {/* Project image or placeholder */}
                 {(project as any).mainImage ? (
                   <>
@@ -62,9 +62,9 @@ export default function Projects() {
                         lang === "bg" ? "text-white" : "text-gray-900"
                       }`}
                     >
-                      <h3 className="text-xl font-semibold leading-snug break-words line-clamp-2">
-                        {project.imageTitle}
-                      </h3>
+                    <h3 className="text-xl font-semibold leading-snug break-words whitespace-normal">
+  {project.imageTitle}
+</h3>
                     </div>
                   </>
                 ) : (
