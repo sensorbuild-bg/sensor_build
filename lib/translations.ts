@@ -90,7 +90,7 @@ export const translations = {
       },
       project2: {
         title: 'Ел. инсталации',
-        imageTitle: 'Цялостно изграждане на електрическа',
+        imageTitle: 'Цялостно изграждане на електрическа инсталация',
         mainImage: '/project2/20250806_190332_main-ezgif.com-jpg-to-webp-converter.webp',
         images: [
           '/project2/20250806_190332_main-ezgif.com-jpg-to-webp-converter.webp',
