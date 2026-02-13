@@ -32,7 +32,7 @@ export default function Home() {
   // ⚠️ ВАЖНО: id тук е 0..5 (защото /projects/[id] при теб е по индекс)
   const projectSlides: Slide[] = [
     { id: 0, image: "/project1/main.webp", labelBg: "Освежителен ремонт", labelEn: "Refresh renovation" },
-    { id: 1, image: "/project2/main.webp", labelBg: "Цялостно изграждане на електрическа инсталация", labelEn: "Complete electrical installation" },
+    { id: 1, image: "/project2/20250806_190332_main-ezgif.com-jpg-to-webp-converter.webp", labelBg: "Цялостно изграждане на електрическа инсталация", labelEn: "Complete electrical installation" },
     { id: 2, image: "/project3/main.webp", labelBg: "ВиК инсталации", labelEn: "Plumbing installations" },
     { id: 3, image: "/project4/main.webp", labelBg: "Изграждане на водно подово отопление", labelEn: "Hydronic underfloor heating" },
     { id: 4, image: "/project5/main.webp", labelBg: "Гипсокартон", labelEn: "Drywall" },
