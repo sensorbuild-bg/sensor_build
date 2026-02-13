@@ -57,15 +57,27 @@ export default function Projects() {
                         </span>
                       </div>
                     </div>
-                    <div
-                      className={`mt-4 text-center ${
-                        lang === "bg" ? "text-white" : "text-gray-900"
-                      }`}
-                    >
-                    <h3 className="text-xl font-semibold leading-snug break-words whitespace-normal">
-  {project.imageTitle}
-</h3>
-                    </div>
+         <div
+  className={`mt-4 text-center ${
+    lang === "bg" ? "text-white" : "text-gray-900"
+  }`}
+>
+  <h3 className="text-xl font-semibold leading-snug break-words whitespace-normal">
+    {project.imageTitle}
+  </h3>
+
+  <div className="mt-3 flex justify-center">
+    <span
+      className={`inline-flex items-center justify-center rounded-lg border-2 px-4 py-2 text-sm font-semibold transition ${
+        lang === "bg"
+          ? "border-[#2d6b35] text-white hover:border-[#4da855] hover:text-[#4da855]"
+          : "border-[#2d6b35] text-gray-900 hover:border-[#4da855] hover:text-[#4da855]"
+      }`}
+    >
+      {lang === "bg" ? "Отвори проект" : "Open project"}
+    </span>
+  </div>
+</div>
                   </>
                 ) : (
                   <div className="aspect-video bg-gradient-to-br from-[#388644] to-[#2d6b35] flex items-center justify-center">
