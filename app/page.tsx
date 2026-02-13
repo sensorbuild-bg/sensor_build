@@ -331,7 +331,7 @@ const projectSlides = [
   className="w-full"
 >
   <CarouselContent className="-ml-2 md:-ml-4 lg:-ml-8">
-    {projectImages.map((image, index) => {
+   {projectSlides.map((slide, index) => {
       const isActive = current === index;
 
       return (
@@ -339,15 +339,15 @@ const projectSlides = [
           key={index}
           className="pl-2 md:pl-4 lg:pl-8 basis-[85%] md:basis-1/2 lg:basis-[45%]"
         >
-          <Link href={`/projects/${index}`} className="block group">
+          alt={lang === "bg" ? slide.labelBg : slide.labelEn}
             <div
               className={`relative aspect-[3/4] overflow-hidden rounded-lg shadow-lg group-hover:shadow-xl transition-all duration-500 ${
                 isActive ? "lg:scale-110 lg:z-10 lg:shadow-2xl" : "lg:scale-90 lg:opacity-70"
               }`}
             >
               <Image
-                src={image}
-                alt={`Project ${index + 1}`}
+                src={slide.image}
+                alt={lang === "bg" ? slide.labelBg : slide.labelEn}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 45vw"
