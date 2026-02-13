@@ -57,7 +57,7 @@ export default function Projects() {
                         </span>
                       </div>
                     </div>
-         <div
+   <div
   className={`mt-4 text-center ${
     lang === "bg" ? "text-white" : "text-gray-900"
   }`}
@@ -66,13 +66,9 @@ export default function Projects() {
     {project.imageTitle}
   </h3>
 
-  <div className="mt-3 flex justify-center">
+  <div className="mt-4 flex justify-center">
     <span
-      className={`inline-flex items-center justify-center rounded-lg border-2 px-4 py-2 text-sm font-semibold transition ${
-        lang === "bg"
-          ? "border-[#2d6b35] text-white hover:border-[#4da855] hover:text-[#4da855]"
-          : "border-[#2d6b35] text-gray-900 hover:border-[#4da855] hover:text-[#4da855]"
-      }`}
+      className="inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold bg-[#388644] text-white shadow-md hover:bg-[#2d6b35] hover:scale-105 transform transition-all duration-300"
     >
       {lang === "bg" ? "Отвори проект" : "Open project"}
     </span>
