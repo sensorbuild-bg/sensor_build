@@ -260,7 +260,7 @@ export default function Home() {
             >
               {lang === "bg" ? "Нашите проекти" : "Our Projects"}
             </h2>
-
+            
             <Carousel
               setApi={setApi}
               opts={{ align: "center", loop: true, containScroll: "trimSnaps" }}
