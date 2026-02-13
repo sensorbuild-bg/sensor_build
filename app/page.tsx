@@ -294,144 +294,98 @@ export default function Home() {
           </section>
         )}
 
-        {/* PROJECTS SLIDESHOW */}
-        <section
-          className={`relative py-16 md:py-24 ${
-            lang === "bg" ? "bg-[#1a2342]" : "bg-white"
-          }`}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2
-              className={`text-3xl md:text-4xl font-noah-bold text-center mb-12 ${
-                lang === "bg" ? "text-white" : "text-gray-900"
-              }`}
+       {/* PROJECTS SLIDESHOW */}
+<section
+  className={`relative py-16 md:py-24 ${
+    lang === "bg" ? "bg-[#1a2342]" : "bg-white"
+  }`}
+>
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2
+      className={`text-3xl md:text-4xl font-noah-bold text-center mb-12 ${
+        lang === "bg" ? "text-white" : "text-gray-900"
+      }`}
+    >
+      {lang === "bg" ? "Нашите проекти" : "Our Projects"}
+    </h2>
+
+    <Carousel
+      setApi={setApi}
+      opts={{ align: "center", loop: true, containScroll: "trimSnaps" }}
+      className="w-full"
+    >
+      {/* ВАЖНО: даваме въздух и разрешаваме overflow */}
+      <CarouselContent className="-ml-2 md:-ml-4 lg:-ml-8 py-10 overflow-visible">
+        {projectSlides.map((slide, index) => {
+          const isActive = current === index;
+
+          return (
+            <CarouselItem
+              key={slide.id}
+              className="pl-2 md:pl-4 lg:pl-8 basis-[85%] md:basis-1/2 lg:basis-[45%] overflow-visible"
             >
-              {lang === "bg" ? "Нашите проекти" : "Our Projects"}
-            </h2>
-
-            <Carousel
-              setApi={setApi}
-              opts={{ align: "center", loop: true, containScroll: "trimSnaps" }}
-              className="w-full"
-            >
-              <CarouselContent className="-ml-2 md:-ml-4 lg:-ml-8">
-                {projectSlides.map((slide, index) => {
-                  const isActive = current === index;
-
-                  return (
-                    <CarouselItem
-                      key={slide.id}
-                      className="pl-2 md:pl-4 lg:pl-8 basis-[85%] md:basis-1/2 lg:basis-[45%]"
-                    >
-                      <Link
-                        href={`/projects/${slide.id}`}
-                        className="block group"
-                      >
-                        <div
-                          className={`relative aspect-[3/4] overflow-hidden rounded-lg shadow-lg transition-all duration-500 ${
-                            isActive
-                              ? "lg:scale-110 lg:z-10 lg:shadow-2xl"
-                              : "lg:scale-90 lg:opacity-80"
-                          }`}
-                        >
-                          <Image
-                            src={slide.image}
-                            alt={lang === "bg" ? slide.labelBg : slide.labelEn}
-                            fill
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 45vw"
-                          />
-
-                          {/* Always-visible bottom panel (mobile friendly) */}
-                          <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/70 via-black/25 to-transparent">
-                            <p className="text-white text-sm font-semibold line-clamp-2">
-                              {lang === "bg" ? slide.labelBg : slide.labelEn}
-                            </p>
-
-                            {/* Fix: button never gets cut - full width on mobile */}
-                            <div className="mt-3">
-                              <span className="inline-flex w-full sm:w-auto items-center justify-center rounded-lg bg-[#388644] px-4 py-2 text-white text-sm font-semibold">
-                                {lang === "bg"
-                                  ? "Отвори проект"
-                                  : "Open project"}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </Link>
-                    </CarouselItem>
-                  );
-                })}
-              </CarouselContent>
-
-              {/* Arrows on the sides (so you can always go back/forward) */}
-              <CarouselPrevious
-                className="left-3 md:left-4 top-1/2 -translate-y-1/2
-                           h-11 w-11 md:h-12 md:w-12
-                           p-0
-                           flex items-center justify-center
-                           rounded-lg
-                           bg-[#13182c]/70 backdrop-blur-sm
-                           border border-white/20 shadow-lg
-                           text-white
-                           hover:bg-[#13182c]/90 hover:scale-105
-                           transition-all duration-200"
-              />
-              <CarouselNext
-                className="right-3 md:right-4 top-1/2 -translate-y-1/2
-                           h-11 w-11 md:h-12 md:w-12
-                           p-0
-                           flex items-center justify-center
-                           rounded-lg
-                           bg-[#13182c]/70 backdrop-blur-sm
-                           border border-white/20 shadow-lg
-                           text-white
-                           hover:bg-[#13182c]/90 hover:scale-105
-                           transition-all duration-200"
-              />
-            </Carousel>
-          </div>
-        </section>
-
-        {/* CTA BUTTONS */}
-        <section
-          className={`relative w-full px-4 sm:px-6 lg:px-8 py-16 md:py-24 ${
-            lang === "bg" ? "bg-[#1a2342]" : "bg-white"
-          }`}
-        >
-          <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-              {t.callNow && (
-                <a
-                  href={isMobile ? "tel:+359878344020" : "/contacts"}
-                  className="w-full sm:w-auto px-8 py-4 bg-[#388644] text-white text-lg font-semibold rounded-lg hover:bg-[#2d6b35] transition-colors text-center"
-                >
-                  {t.callNow}
-                </a>
-              )}
-              {t.sendMessage && (
-                <a
-                  href="/contacts"
-                  className="w-full sm:w-auto px-8 py-4 bg-white text-[#388644] text-lg font-semibold rounded-lg border-2 border-[#388644] hover:bg-[#388644] hover:text-white transition-colors text-center"
-                >
-                  {t.sendMessage}
-                </a>
-              )}
-            </div>
-
-            {t.footerText && (
-              <AnimatedDiv className="max-w-2xl mx-auto">
-                <p
-                  className={`text-center ${
-                    lang === "bg" ? "text-white" : "text-gray-600"
+              <Link href={`/projects/${slide.id}`} className="block group">
+                {/* Карта: вече НЕ я режем с overflow-hidden */}
+                <div
+                  className={`relative aspect-[3/4] rounded-lg shadow-lg transition-all duration-500 ${
+                    isActive
+                      ? "lg:scale-110 lg:z-10 lg:shadow-2xl"
+                      : "lg:scale-90 lg:opacity-80"
                   }`}
                 >
-                  {t.footerText}
-                </p>
-              </AnimatedDiv>
-            )}
-          </div>
-        </section>
+                  {/* Снимка (само тя е overflow-hidden за красиви ръбове) */}
+                  <div className="absolute inset-0 overflow-hidden rounded-lg">
+                    <Image
+                      src={slide.image}
+                      alt={lang === "bg" ? slide.labelBg : slide.labelEn}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 45vw"
+                    />
+                    <div className="absolute inset-0 bg-black/20" />
+                  </div>
+
+                  {/* Центриран панел + повдигнат бутон */}
+                  <div className="absolute inset-x-0 bottom-0 px-4 pb-4 pt-10 bg-gradient-to-t from-black/75 via-black/35 to-transparent">
+                    <div className="flex flex-col items-center text-center">
+                      <p className="text-white text-base font-semibold leading-snug line-clamp-2 max-w-[90%]">
+                        {lang === "bg" ? slide.labelBg : slide.labelEn}
+                      </p>
+
+                      <span className="mt-3 inline-flex items-center justify-center rounded-lg bg-[#388644] px-5 py-2 text-white text-sm font-semibold shadow-md">
+                        {lang === "bg" ? "Отвори проект" : "Open project"}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </CarouselItem>
+          );
+        })}
+      </CarouselContent>
+
+      {/* Стрелки */}
+      <CarouselPrevious
+        className="left-3 md:left-4 top-1/2 -translate-y-1/2
+                   h-11 w-11 md:h-12 md:w-12
+                   p-0 flex items-center justify-center
+                   rounded-lg bg-[#13182c]/70 backdrop-blur-sm
+                   border border-white/20 shadow-lg
+                   text-white hover:bg-[#13182c]/90 hover:scale-105
+                   transition-all duration-200"
+      />
+      <CarouselNext
+        className="right-3 md:right-4 top-1/2 -translate-y-1/2
+                   h-11 w-11 md:h-12 md:w-12
+                   p-0 flex items-center justify-center
+                   rounded-lg bg-[#13182c]/70 backdrop-blur-sm
+                   border border-white/20 shadow-lg
+                   text-white hover:bg-[#13182c]/90 hover:scale-105
+                   transition-all duration-200"
+      />
+    </Carousel>
+  </div>
+</section>
       </div>
     </div>
   );
