@@ -289,54 +289,53 @@ export default function Home() {
             >
               {lang === "bg" ? "Нашите проекти" : "Our Projects"}
             </h2>
-            <Link href="/projects" className="block group">
-              <Carousel
-                setApi={setApi}
-                opts={{
-                  align: "center",
-                  loop: true,
-                  containScroll: "trimSnaps",
-                }}
-                className="w-full"
-              >
-                <CarouselContent className="-ml-2 md:-ml-4 lg:-ml-8">
-                  {projectImages.map((image, index) => {
-                    const isActive = current === index;
-                    return (
-                      <CarouselItem
-                        key={index}
-                        className="pl-2 md:pl-4 lg:pl-8 basis-[85%] md:basis-1/2 lg:basis-[45%]"
-                      >
-                        <div
-                          className={`relative aspect-[3/4] overflow-hidden rounded-lg shadow-lg group-hover:shadow-xl transition-all duration-500 ${
-                            isActive
-                              ? "lg:scale-110 lg:z-10 lg:shadow-2xl"
-                              : "lg:scale-90 lg:opacity-70"
-                          }`}
-                        >
-                          <Image
-                            src={image}
-                            alt={`Project ${index + 1}`}
-                            fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-500"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 45vw"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <div className="absolute bottom-4 left-4 right-4">
-                              <p className="text-white text-sm font-semibold">
-                                {lang === "bg"
-                                  ? "Вижте проектите"
-                                  : "View Projects"}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </CarouselItem>
-                    );
-                  })}
-                </CarouselContent>
-              </Carousel>
-            </Link>
+          <Carousel
+  setApi={setApi}
+  opts={{
+    align: "center",
+    loop: true,
+    containScroll: "trimSnaps",
+  }}
+  className="w-full"
+>
+  <CarouselContent className="-ml-2 md:-ml-4 lg:-ml-8">
+    {projectImages.map((image, index) => {
+      const isActive = current === index;
+
+      return (
+        <CarouselItem
+          key={index}
+          className="pl-2 md:pl-4 lg:pl-8 basis-[85%] md:basis-1/2 lg:basis-[45%]"
+        >
+          <Link href={`/projects/${index}`} className="block group">
+            <div
+              className={`relative aspect-[3/4] overflow-hidden rounded-lg shadow-lg group-hover:shadow-xl transition-all duration-500 ${
+                isActive ? "lg:scale-110 lg:z-10 lg:shadow-2xl" : "lg:scale-90 lg:opacity-70"
+              }`}
+            >
+              <Image
+                src={image}
+                alt={`Project ${index + 1}`}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 45vw"
+              />
+
+              {/* CTA overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-4 left-4 right-4">
+                  <p className="text-white text-sm font-semibold">
+                    {lang === "bg" ? "Отвори проекта" : "Open project"}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </CarouselItem>
+      );
+    })}
+  </CarouselContent>
+</Carousel>
           </div>
         </section>
 
