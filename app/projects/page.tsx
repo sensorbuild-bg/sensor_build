@@ -38,10 +38,10 @@ export default function Projects() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {projects.map((project, index) => (
             <AnimatedDiv key={index}>
-              <Link
-                href={`/projects/${index}`}
-                className="relative cursor-pointer group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow block"
-              >
+            <Link
+  href={`/projects/${index}`}
+  className="relative cursor-pointer group rounded-lg shadow-md hover:shadow-xl transition-shadow block"
+>
                 {/* Project image or placeholder */}
                 {(project as any).mainImage ? (
                   <>
@@ -57,15 +57,23 @@ export default function Projects() {
                         </span>
                       </div>
                     </div>
-                    <div
-                      className={`mt-4 text-center ${
-                        lang === "bg" ? "text-white" : "text-gray-900"
-                      }`}
-                    >
-                      <h3 className="text-xl font-semibold">
-                        {project.imageTitle}
-                      </h3>
-                    </div>
+   <div
+  className={`mt-4 text-center ${
+    lang === "bg" ? "text-white" : "text-gray-900"
+  }`}
+>
+  <h3 className="text-xl font-semibold leading-snug break-words whitespace-normal">
+    {project.imageTitle}
+  </h3>
+
+  <div className="mt-4 flex justify-center">
+    <span
+      className="inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold bg-[#388644] text-white shadow-md hover:bg-[#2d6b35] hover:scale-105 transform transition-all duration-300"
+    >
+      {lang === "bg" ? "Отвори проект" : "Open project"}
+    </span>
+  </div>
+</div>
                   </>
                 ) : (
                   <div className="aspect-video bg-gradient-to-br from-[#388644] to-[#2d6b35] flex items-center justify-center">
