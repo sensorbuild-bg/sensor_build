@@ -8,7 +8,6 @@ export default function BackButton() {
   const router = useRouter();
   const { lang } = useLanguage();
 
-  // true когато си в /projects/[id] (например /projects/0, /projects/5 и т.н.)
   const isProjectDetails =
     pathname.startsWith("/projects/") && pathname !== "/projects";
 
@@ -21,11 +20,8 @@ export default function BackButton() {
     : "Back";
 
   const handleClick = () => {
-    if (isProjectDetails) {
-      router.push("/projects");
-    } else {
-      router.back();
-    }
+    if (isProjectDetails) router.push("/projects");
+    else router.back();
   };
 
   return (
