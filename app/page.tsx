@@ -33,10 +33,10 @@ export default function Home() {
   const projectSlides: Slide[] = [
     { id: 0, image: "/project1/main.webp", labelBg: "Освежителен ремонт", labelEn: "Refresh renovation" },
     { id: 1, image: "/project2/20250806_190332_main-ezgif.com-jpg-to-webp-converter.webp", labelBg: "Цялостно изграждане на електрическа инсталация", labelEn: "Complete electrical installation" },
-    { id: 2, image: "/project3/main.webp", labelBg: "ВиК инсталации", labelEn: "Plumbing installations" },
-    { id: 3, image: "/project4/main.webp", labelBg: "Изграждане на водно подово отопление", labelEn: "Hydronic underfloor heating" },
-    { id: 4, image: "/project5/main.webp", labelBg: "Гипсокартон", labelEn: "Drywall" },
-    { id: 5, image: "/project6/main.webp", labelBg: "Осветление", labelEn: "Lighting" },
+    { id: 2, image: "/project3/20250723_174911_main.webp", labelBg: "ВиК инсталации", labelEn: "Plumbing installations" },
+    { id: 3, image: "/project4/20251008_150415_main-ezgif.com-jpg-to-webp-converter.webp", labelBg: "Изграждане на водно подово отопление", labelEn: "Hydronic underfloor heating" },
+    { id: 4, image: "/project5/20251109_145613_main-ezgif.com-jpg-to-webp-converter.webp", labelBg: "Гипсокартон", labelEn: "Drywall" },
+    { id: 5, image: "/project6/20250925_132227_main.webp", labelBg: "Осветление", labelEn: "Lighting" },
   ];
 
   useEffect(() => {
