@@ -62,7 +62,7 @@ export default function Projects() {
                         lang === "bg" ? "text-white" : "text-gray-900"
                       }`}
                     >
-                      <h3 className="text-xl font-semibold">
+                      <h3 className="text-xl font-semibold leading-snug break-words line-clamp-2">
                         {project.imageTitle}
                       </h3>
                     </div>
