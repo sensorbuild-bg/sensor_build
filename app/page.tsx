@@ -11,11 +11,13 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
 
 type Slide = {
-  id: number; // това е ID-то за /projects/[id] (0..5)
+  id: number; // /projects/[id] (0..5)
   image: string;
   labelBg: string;
   labelEn: string;
@@ -29,14 +31,46 @@ export default function Home() {
   const [current, setCurrent] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
-  // ⚠️ ВАЖНО: id тук е 0..5 (защото /projects/[id] при теб е по индекс)
+  // IMPORTANT: id is 0..5 because /projects/[id] is index-based in your app
   const projectSlides: Slide[] = [
-    { id: 0, image: "/project1/main.webp", labelBg: "Освежителен ремонт", labelEn: "Refresh renovation" },
-    { id: 1, image: "/project2/20250806_190332_main-ezgif.com-jpg-to-webp-converter.webp", labelBg: "Цялостно изграждане на електрическа инсталация", labelEn: "Complete electrical installation" },
-    { id: 2, image: "/project3/20250723_174911_main.webp", labelBg: "ВиК инсталации", labelEn: "Plumbing installations" },
-    { id: 3, image: "/project4/20251008_150415_main-ezgif.com-jpg-to-webp-converter.webp", labelBg: "Изграждане на водно подово отопление", labelEn: "Hydronic underfloor heating" },
-    { id: 4, image: "/project5/20251109_145613_main-ezgif.com-jpg-to-webp-converter.webp", labelBg: "Гипсокартон", labelEn: "Drywall" },
-    { id: 5, image: "/project6/20250925_132227_main.webp", labelBg: "Осветление", labelEn: "Lighting" },
+    {
+      id: 0,
+      image: "/project1/main.webp",
+      labelBg: "Освежителен ремонт",
+      labelEn: "Refresh renovation",
+    },
+    {
+      id: 1,
+      image:
+        "/project2/20250806_190332_main-ezgif.com-jpg-to-webp-converter.webp",
+      labelBg: "Цялостно изграждане на електрическа инсталация",
+      labelEn: "Complete electrical installation",
+    },
+    {
+      id: 2,
+      image: "/project3/20250723_174911_main.webp",
+      labelBg: "ВиК инсталации",
+      labelEn: "Plumbing installations",
+    },
+    {
+      id: 3,
+      image: "/project4/20251008_150415_main-ezgif.com-jpg-to-webp-converter.webp",
+      labelBg: "Изграждане на водно подово отопление",
+      labelEn: "Hydronic underfloor heating",
+    },
+    {
+      id: 4,
+      image:
+        "/project5/20251109_145613_main-ezgif.com-jpg-to-webp-converter.webp",
+      labelBg: "Гипсокартон",
+      labelEn: "Drywall",
+    },
+    {
+      id: 5,
+      image: "/project6/20250925_132227_main.webp",
+      labelBg: "Осветление",
+      labelEn: "Lighting",
+    },
   ];
 
   useEffect(() => {
@@ -48,7 +82,6 @@ export default function Home() {
 
   useEffect(() => {
     if (!api) return;
-
     const interval = setInterval(() => api.scrollNext(), 4000);
     return () => clearInterval(interval);
   }, [api]);
@@ -73,9 +106,8 @@ export default function Home() {
         lang === "bg" ? "bg-[#13182c]" : "bg-white"
       }`}
     >
-      {/* Main Content */}
       <div className="relative z-[2] pt-16 md:pt-0 flex-grow">
-        {/* Hero Section */}
+        {/* HERO */}
         <section className="relative h-[70vh] md:h-[80vh] flex items-center justify-center px-4 sm:px-6 lg:px-8">
           <div className="absolute inset-0 z-[1]">
             <Image
@@ -114,7 +146,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Additional Content */}
+        {/* DESCRIPTION */}
         {t.description1 && (
           <section
             className={`relative z-[3] -mt-[18vh] pt-20 pb-16 md:-mt-[18vh] md:pt-28 md:pb-24 ${
@@ -141,7 +173,7 @@ export default function Home() {
           </section>
         )}
 
-        {/* Why Choose Us */}
+        {/* WHY CHOOSE US */}
         {t.whyChooseUs && (
           <section
             className={`relative py-16 md:py-24 ${
@@ -172,7 +204,11 @@ export default function Home() {
                       {t.why1}
                     </h3>
                     {t.why1Desc && (
-                      <p className={lang === "bg" ? "text-white" : "text-gray-600"}>
+                      <p
+                        className={
+                          lang === "bg" ? "text-white" : "text-gray-600"
+                        }
+                      >
                         {t.why1Desc}
                       </p>
                     )}
@@ -193,7 +229,11 @@ export default function Home() {
                       {t.why2}
                     </h3>
                     {t.why2Desc && (
-                      <p className={lang === "bg" ? "text-white" : "text-gray-600"}>
+                      <p
+                        className={
+                          lang === "bg" ? "text-white" : "text-gray-600"
+                        }
+                      >
                         {t.why2Desc}
                       </p>
                     )}
@@ -214,7 +254,11 @@ export default function Home() {
                       {t.why3}
                     </h3>
                     {t.why3Desc && (
-                      <p className={lang === "bg" ? "text-white" : "text-gray-600"}>
+                      <p
+                        className={
+                          lang === "bg" ? "text-white" : "text-gray-600"
+                        }
+                      >
                         {t.why3Desc}
                       </p>
                     )}
@@ -235,7 +279,11 @@ export default function Home() {
                       {t.why4}
                     </h3>
                     {t.why4Desc && (
-                      <p className={lang === "bg" ? "text-white" : "text-gray-600"}>
+                      <p
+                        className={
+                          lang === "bg" ? "text-white" : "text-gray-600"
+                        }
+                      >
                         {t.why4Desc}
                       </p>
                     )}
@@ -246,7 +294,7 @@ export default function Home() {
           </section>
         )}
 
-        {/* Projects Slideshow */}
+        {/* PROJECTS SLIDESHOW */}
         <section
           className={`relative py-16 md:py-24 ${
             lang === "bg" ? "bg-[#1a2342]" : "bg-white"
@@ -260,7 +308,7 @@ export default function Home() {
             >
               {lang === "bg" ? "Нашите проекти" : "Our Projects"}
             </h2>
-            
+
             <Carousel
               setApi={setApi}
               opts={{ align: "center", loop: true, containScroll: "trimSnaps" }}
@@ -275,7 +323,10 @@ export default function Home() {
                       key={slide.id}
                       className="pl-2 md:pl-4 lg:pl-8 basis-[85%] md:basis-1/2 lg:basis-[45%]"
                     >
-                      <Link href={`/projects/${slide.id}`} className="block group">
+                      <Link
+                        href={`/projects/${slide.id}`}
+                        className="block group"
+                      >
                         <div
                           className={`relative aspect-[3/4] overflow-hidden rounded-lg shadow-lg transition-all duration-500 ${
                             isActive
@@ -291,13 +342,19 @@ export default function Home() {
                             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 45vw"
                           />
 
-                          {/* Винаги видим долен панел (работи и на мобилно) */}
-                          <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
+                          {/* Always-visible bottom panel (mobile friendly) */}
+                          <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/70 via-black/25 to-transparent">
                             <p className="text-white text-sm font-semibold line-clamp-2">
                               {lang === "bg" ? slide.labelBg : slide.labelEn}
                             </p>
-                            <div className="mt-2 inline-flex items-center justify-center rounded-lg bg-[#388644] px-4 py-2 text-white text-sm font-semibold">
-                              {lang === "bg" ? "Отвори проект" : "Open project"}
+
+                            {/* Fix: button never gets cut - full width on mobile */}
+                            <div className="mt-3">
+                              <span className="inline-flex w-full sm:w-auto items-center justify-center rounded-lg bg-[#388644] px-4 py-2 text-white text-sm font-semibold">
+                                {lang === "bg"
+                                  ? "Отвори проект"
+                                  : "Open project"}
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -306,11 +363,37 @@ export default function Home() {
                   );
                 })}
               </CarouselContent>
+
+              {/* Arrows on the sides (so you can always go back/forward) */}
+              <CarouselPrevious
+                className="left-3 md:left-4 top-1/2 -translate-y-1/2
+                           h-11 w-11 md:h-12 md:w-12
+                           p-0
+                           flex items-center justify-center
+                           rounded-lg
+                           bg-[#13182c]/70 backdrop-blur-sm
+                           border border-white/20 shadow-lg
+                           text-white
+                           hover:bg-[#13182c]/90 hover:scale-105
+                           transition-all duration-200"
+              />
+              <CarouselNext
+                className="right-3 md:right-4 top-1/2 -translate-y-1/2
+                           h-11 w-11 md:h-12 md:w-12
+                           p-0
+                           flex items-center justify-center
+                           rounded-lg
+                           bg-[#13182c]/70 backdrop-blur-sm
+                           border border-white/20 shadow-lg
+                           text-white
+                           hover:bg-[#13182c]/90 hover:scale-105
+                           transition-all duration-200"
+              />
             </Carousel>
           </div>
         </section>
 
-        {/* CTA Buttons */}
+        {/* CTA BUTTONS */}
         <section
           className={`relative w-full px-4 sm:px-6 lg:px-8 py-16 md:py-24 ${
             lang === "bg" ? "bg-[#1a2342]" : "bg-white"
