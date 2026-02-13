@@ -131,23 +131,31 @@ export default function ProjectPage() {
 
                 {images.length > 1 && (
                   <>
-                    <CarouselPrevious
-                      className="left-4 md:left-6 h-12 w-12 rounded-lg
-                                 bg-[#13182c]/80 backdrop-blur-sm
-                                 border border-white/20 shadow-lg
-                                 text-white
-                                 hover:bg-[#13182c] hover:scale-105
-                                 transition-all duration-300"
-                    />
+                 <CarouselPrevious
+  className="absolute left-4 top-1/2 -translate-y-1/2
+             h-12 w-12
+             flex items-center justify-center
+             p-0
+             rounded-lg
+             bg-[#13182c]/80 backdrop-blur-sm
+             border border-white/20 shadow-lg
+             text-white
+             hover:bg-[#13182c] hover:scale-105
+             transition-all duration-300"
+/>
 
-                    <CarouselNext
-                      className="right-4 md:right-6 h-12 w-12 rounded-lg
-                                 bg-[#13182c]/80 backdrop-blur-sm
-                                 border border-white/20 shadow-lg
-                                 text-white
-                                 hover:bg-[#13182c] hover:scale-105
-                                 transition-all duration-300"
-                    />
+<CarouselNext
+  className="absolute right-4 top-1/2 -translate-y-1/2
+             h-12 w-12
+             flex items-center justify-center
+             p-0
+             rounded-lg
+             bg-[#13182c]/80 backdrop-blur-sm
+             border border-white/20 shadow-lg
+             text-white
+             hover:bg-[#13182c] hover:scale-105
+             transition-all duration-300"
+/>
                   </>
                 )}
               </Carousel>
