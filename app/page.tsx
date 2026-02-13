@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
-import Footer from "@/components/Footer";
 import TypewriterText from "@/components/TypewriterText";
 import AnimatedDiv from "@/components/AnimatedDiv";
 import {
@@ -15,82 +14,52 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 
+type Slide = {
+  id: number; // това е ID-то за /projects/[id] (0..5)
+  image: string;
+  labelBg: string;
+  labelEn: string;
+};
+
 export default function Home() {
   const { lang } = useLanguage();
   const t = translations[lang].home;
+
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
-const projectSlides = [
-  {
-    id: 1,
-    image: "/project1/main.webp",
-    labelBg: "Проект 1",
-    labelEn: "Project 1",
-  },
-  {
-    id: 2,
-    image: "/project2/main.webp",
-    labelBg: "Проект 2",
-    labelEn: "Project 2",
-  },
-  {
-    id: 3,
-    image: "/project3/main.webp",
-    labelBg: "Проект 3",
-    labelEn: "Project 3",
-  },
-  {
-    id: 4,
-    image: "/project4/main.webp",
-    labelBg: "Проект 4",
-    labelEn: "Project 4",
-  },
-  {
-    id: 5,
-    image: "/project5/main.webp",
-    labelBg: "Проект 5",
-    labelEn: "Project 5",
-  },
-  {
-    id: 6,
-    image: "/project6/main.webp",
-    labelBg: "Проект 6",
-    labelEn: "Project 6",
-  },
-] as const;
+  // ⚠️ ВАЖНО: id тук е 0..5 (защото /projects/[id] при теб е по индекс)
+  const projectSlides: Slide[] = [
+    { id: 0, image: "/project1/main.webp", labelBg: "Освежителен ремонт", labelEn: "Refresh renovation" },
+    { id: 1, image: "/project2/main.webp", labelBg: "Цялостно изграждане на електрическа инсталация", labelEn: "Complete electrical installation" },
+    { id: 2, image: "/project3/main.webp", labelBg: "ВиК инсталации", labelEn: "Plumbing installations" },
+    { id: 3, image: "/project4/main.webp", labelBg: "Изграждане на водно подово отопление", labelEn: "Hydronic underfloor heating" },
+    { id: 4, image: "/project5/main.webp", labelBg: "Гипсокартон", labelEn: "Drywall" },
+    { id: 5, image: "/project6/main.webp", labelBg: "Осветление", labelEn: "Lighting" },
+  ];
 
   useEffect(() => {
-    if (!api) {
-      return;
-    }
+    if (!api) return;
 
     setCurrent(api.selectedScrollSnap());
-
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap());
-    });
+    api.on("select", () => setCurrent(api.selectedScrollSnap()));
   }, [api]);
 
   useEffect(() => {
-    if (!api) {
-      return;
-    }
+    if (!api) return;
 
-    const interval = setInterval(() => {
-      api.scrollNext();
-    }, 4000); // Change slide every 4 seconds
-
+    const interval = setInterval(() => api.scrollNext(), 4000);
     return () => clearInterval(interval);
   }, [api]);
 
   useEffect(() => {
     const checkMobile = () => {
-      const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      ) || window.innerWidth < 768;
-      setIsMobile(isMobileDevice);
+      const mobileUA =
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        );
+      setIsMobile(mobileUA || window.innerWidth < 768);
     };
 
     checkMobile();
@@ -106,9 +75,8 @@ const projectSlides = [
     >
       {/* Main Content */}
       <div className="relative z-[2] pt-16 md:pt-0 flex-grow">
-        {/* Hero Section with centered main text */}
+        {/* Hero Section */}
         <section className="relative h-[70vh] md:h-[80vh] flex items-center justify-center px-4 sm:px-6 lg:px-8">
-          {/* Background Image only behind the hero text */}
           <div className="absolute inset-0 z-[1]">
             <Image
               src="/main.webp"
@@ -118,52 +86,35 @@ const projectSlides = [
               priority
               quality={90}
             />
-            {/* Overlay for better text readability */}
-            <div className="absolute inset-0 bg-black/30"></div>
+            <div className="absolute inset-0 bg-black/30" />
           </div>
 
           <div className="relative z-[2] text-center max-w-4xl mx-auto -mt-32 md:-mt-20">
-            <h1
-              className={`text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-noah-bold mb-2 text-white drop-shadow-lg uppercase`}
-            >
+            <h1 className="text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-noah-bold mb-2 text-white drop-shadow-lg uppercase">
               {t.title}
             </h1>
+
             {t.subtitle && (
-              <h2
-                className={`text-2xl sm:text-xl md:text-3xl mb-8 text-white/90 drop-shadow-md`}
-              >
+              <h2 className="text-2xl sm:text-xl md:text-3xl mb-8 text-white/90 drop-shadow-md">
                 <TypewriterText text={t.subtitle} speed={70} />
               </h2>
             )}
-{t.tagline && (
-  <div className="mb-12 flex justify-center">
-    <span
-      className="
-        inline-flex items-center
-        px-5 py-2
-        rounded-xl
-        bg-white/60
-        backdrop-blur-sm
-        border border-white/25
-        shadow-sm
-        text-[#2D6B35]
-        text-lg sm:text-xl md:text-2xl
-        font-semibold
-        drop-shadow-sm
-      "
-    >
-      <TypewriterText
-        text={t.tagline}
-        speed={70}
-        delay={t.subtitle ? t.subtitle.length * 70 + 500 : 0}
-      />
-    </span>
-  </div>
-)}
+
+            {t.tagline && (
+              <div className="mb-12 flex justify-center">
+                <span className="inline-flex items-center px-5 py-2 rounded-xl bg-white/60 backdrop-blur-sm border border-white/25 shadow-sm text-[#2D6B35] text-lg sm:text-xl md:text-2xl font-semibold drop-shadow-sm">
+                  <TypewriterText
+                    text={t.tagline}
+                    speed={70}
+                    delay={t.subtitle ? t.subtitle.length * 70 + 500 : 0}
+                  />
+                </span>
+              </div>
+            )}
           </div>
         </section>
 
-        {/* Additional Content Sections */}
+        {/* Additional Content */}
         {t.description1 && (
           <section
             className={`relative z-[3] -mt-[18vh] pt-20 pb-16 md:-mt-[18vh] md:pt-28 md:pb-24 ${
@@ -190,7 +141,7 @@ const projectSlides = [
           </section>
         )}
 
-        {/* Why Choose Us Section */}
+        {/* Why Choose Us */}
         {t.whyChooseUs && (
           <section
             className={`relative py-16 md:py-24 ${
@@ -205,6 +156,7 @@ const projectSlides = [
               >
                 {t.whyChooseUs}
               </h2>
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {t.why1 && (
                   <AnimatedDiv
@@ -220,16 +172,13 @@ const projectSlides = [
                       {t.why1}
                     </h3>
                     {t.why1Desc && (
-                      <p
-                        className={
-                          lang === "bg" ? "text-white" : "text-gray-600"
-                        }
-                      >
+                      <p className={lang === "bg" ? "text-white" : "text-gray-600"}>
                         {t.why1Desc}
                       </p>
                     )}
                   </AnimatedDiv>
                 )}
+
                 {t.why2 && (
                   <AnimatedDiv
                     className={`p-6 rounded-lg shadow-md border-l-4 border-[#388644] ${
@@ -244,16 +193,13 @@ const projectSlides = [
                       {t.why2}
                     </h3>
                     {t.why2Desc && (
-                      <p
-                        className={
-                          lang === "bg" ? "text-white" : "text-gray-600"
-                        }
-                      >
+                      <p className={lang === "bg" ? "text-white" : "text-gray-600"}>
                         {t.why2Desc}
                       </p>
                     )}
                   </AnimatedDiv>
                 )}
+
                 {t.why3 && (
                   <AnimatedDiv
                     className={`p-6 rounded-lg shadow-md border-l-4 border-[#388644] ${
@@ -268,16 +214,13 @@ const projectSlides = [
                       {t.why3}
                     </h3>
                     {t.why3Desc && (
-                      <p
-                        className={
-                          lang === "bg" ? "text-white" : "text-gray-600"
-                        }
-                      >
+                      <p className={lang === "bg" ? "text-white" : "text-gray-600"}>
                         {t.why3Desc}
                       </p>
                     )}
                   </AnimatedDiv>
                 )}
+
                 {t.why4 && (
                   <AnimatedDiv
                     className={`p-6 rounded-lg shadow-md border-l-4 border-[#388644] ${
@@ -292,11 +235,7 @@ const projectSlides = [
                       {t.why4}
                     </h3>
                     {t.why4Desc && (
-                      <p
-                        className={
-                          lang === "bg" ? "text-white" : "text-gray-600"
-                        }
-                      >
+                      <p className={lang === "bg" ? "text-white" : "text-gray-600"}>
                         {t.why4Desc}
                       </p>
                     )}
@@ -307,7 +246,7 @@ const projectSlides = [
           </section>
         )}
 
-        {/* Projects Slideshow Section */}
+        {/* Projects Slideshow */}
         <section
           className={`relative py-16 md:py-24 ${
             lang === "bg" ? "bg-[#1a2342]" : "bg-white"
@@ -321,57 +260,57 @@ const projectSlides = [
             >
               {lang === "bg" ? "Нашите проекти" : "Our Projects"}
             </h2>
-          <Carousel
-  setApi={setApi}
-  opts={{
-    align: "center",
-    loop: true,
-    containScroll: "trimSnaps",
-  }}
-  className="w-full"
->
-  <CarouselContent className="-ml-2 md:-ml-4 lg:-ml-8">
-   {projectSlides.map((slide, index) => {
-      const isActive = current === index;
 
-      return (
-        <CarouselItem
-          key={index}
-          className="pl-2 md:pl-4 lg:pl-8 basis-[85%] md:basis-1/2 lg:basis-[45%]"
-        >
-          alt={lang === "bg" ? slide.labelBg : slide.labelEn}
-            <div
-              className={`relative aspect-[3/4] overflow-hidden rounded-lg shadow-lg group-hover:shadow-xl transition-all duration-500 ${
-                isActive ? "lg:scale-110 lg:z-10 lg:shadow-2xl" : "lg:scale-90 lg:opacity-70"
-              }`}
+            <Carousel
+              setApi={setApi}
+              opts={{ align: "center", loop: true, containScroll: "trimSnaps" }}
+              className="w-full"
             >
-              <Image
-                src={slide.image}
-                alt={lang === "bg" ? slide.labelBg : slide.labelEn}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 45vw"
-              />
+              <CarouselContent className="-ml-2 md:-ml-4 lg:-ml-8">
+                {projectSlides.map((slide, index) => {
+                  const isActive = current === index;
 
-              {/* CTA overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-4 left-4 right-4">
-                  <p className="text-white text-sm font-semibold">
-                    {lang === "bg" ? "Отвори проекта" : "Open project"}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Link>
-        </CarouselItem>
-      );
-    })}
-  </CarouselContent>
-</Carousel>
+                  return (
+                    <CarouselItem
+                      key={slide.id}
+                      className="pl-2 md:pl-4 lg:pl-8 basis-[85%] md:basis-1/2 lg:basis-[45%]"
+                    >
+                      <Link href={`/projects/${slide.id}`} className="block group">
+                        <div
+                          className={`relative aspect-[3/4] overflow-hidden rounded-lg shadow-lg transition-all duration-500 ${
+                            isActive
+                              ? "lg:scale-110 lg:z-10 lg:shadow-2xl"
+                              : "lg:scale-90 lg:opacity-80"
+                          }`}
+                        >
+                          <Image
+                            src={slide.image}
+                            alt={lang === "bg" ? slide.labelBg : slide.labelEn}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 45vw"
+                          />
+
+                          {/* Винаги видим долен панел (работи и на мобилно) */}
+                          <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
+                            <p className="text-white text-sm font-semibold line-clamp-2">
+                              {lang === "bg" ? slide.labelBg : slide.labelEn}
+                            </p>
+                            <div className="mt-2 inline-flex items-center justify-center rounded-lg bg-[#388644] px-4 py-2 text-white text-sm font-semibold">
+                              {lang === "bg" ? "Отвори проект" : "Open project"}
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    </CarouselItem>
+                  );
+                })}
+              </CarouselContent>
+            </Carousel>
           </div>
         </section>
 
-        {/* CTA Buttons Section */}
+        {/* CTA Buttons */}
         <section
           className={`relative w-full px-4 sm:px-6 lg:px-8 py-16 md:py-24 ${
             lang === "bg" ? "bg-[#1a2342]" : "bg-white"
@@ -396,6 +335,7 @@ const projectSlides = [
                 </a>
               )}
             </div>
+
             {t.footerText && (
               <AnimatedDiv className="max-w-2xl mx-auto">
                 <p
