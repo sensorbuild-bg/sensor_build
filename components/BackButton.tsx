@@ -8,14 +8,11 @@ export default function BackButton() {
   const router = useRouter();
   const { lang } = useLanguage();
 
-  // ❌ НЕ показвай на началната страница
+  // ❌ НЕ показвай бутона само на началната страница
   if (pathname === "/") return null;
 
   const isProjectDetails =
     pathname.startsWith("/projects/") && pathname !== "/projects";
-
-  // ❌ НЕ показвай и на списъка с проекти
-  if (pathname === "/projects") return null;
 
   const label = isProjectDetails
     ? lang === "bg"
@@ -26,8 +23,11 @@ export default function BackButton() {
     : "Back";
 
   const handleClick = () => {
-    if (isProjectDetails) router.push("/projects");
-    else router.back();
+    if (isProjectDetails) {
+      router.push("/projects");
+    } else {
+      router.back();
+    }
   };
 
   return (
