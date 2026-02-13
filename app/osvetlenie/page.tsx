@@ -8,19 +8,19 @@ import { translations } from "@/lib/translations";
 const products = [
   {
     key: "leo",
-    img: "/images/lighting/leo-f30-sr36.jpg.jpg",
+    img: "/images/lighting/leo-f30-sr36.jpg",
   },
   {
     key: "bergamo",
-    img: "/images/lighting/bergamo-gu10.jpg.jpg",
+    img: "/images/lighting/bergamo-gu10.jpg",
   },
   {
     key: "lucas",
-    img: "/images/lighting/lucas-led-36w.jpg.jpg",
+    img: "/images/lighting/lucas-led-36w.jpg",
   },
   {
     key: "jex",
-    img: "/images/lighting/jex-1200.jpg.jpg",
+    img: "/images/lighting/jex-1200.jpg",
   },
 ] as const;
 
