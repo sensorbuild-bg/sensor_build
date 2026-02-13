@@ -22,12 +22,44 @@ export default function Home() {
   const [current, setCurrent] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
-  const projectImages = [
-    "/project4/20251008_150415_main-ezgif.com-jpg-to-webp-converter.webp",
-    "/project6/20250925_132227_main.webp",
-    "/project5/20251109_145613_main-ezgif.com-jpg-to-webp-converter.webp",
-    "/20250713_183946.webp",
-  ];
+const projectSlides = [
+  {
+    id: 1,
+    image: "/project1/main.webp",
+    labelBg: "Проект 1",
+    labelEn: "Project 1",
+  },
+  {
+    id: 2,
+    image: "/project2/main.webp",
+    labelBg: "Проект 2",
+    labelEn: "Project 2",
+  },
+  {
+    id: 3,
+    image: "/project3/main.webp",
+    labelBg: "Проект 3",
+    labelEn: "Project 3",
+  },
+  {
+    id: 4,
+    image: "/project4/main.webp",
+    labelBg: "Проект 4",
+    labelEn: "Project 4",
+  },
+  {
+    id: 5,
+    image: "/project5/main.webp",
+    labelBg: "Проект 5",
+    labelEn: "Project 5",
+  },
+  {
+    id: 6,
+    image: "/project6/main.webp",
+    labelBg: "Проект 6",
+    labelEn: "Project 6",
+  },
+] as const;
 
   useEffect(() => {
     if (!api) {
