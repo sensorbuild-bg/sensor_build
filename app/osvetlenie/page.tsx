@@ -7,7 +7,8 @@ import { useRouter } from "next/navigation";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
 
-type Category = "interior" | "exterior" | "industrial" | "emergency";
+type Category = "interior" | "exterior" | "industrial" | "emergency" | "commonAreas";
+
 type Subcategory =
   | "interiorWall"
   | "interiorCeiling"
@@ -17,22 +18,35 @@ type Subcategory =
   | "chandeliers"
   | "exteriorWall"
   | "exteriorCeiling"
-  | "garden";
+  | "garden"
+  | "commonCeiling"
+  | "commonWall";
+
+type SocketType = "GU10" | "E27" | "E14" | "Integrated LED";
 
 type Product = {
   id: string;
   img: string;
+
   name: { bg: string; en: string };
   desc: { bg: string; en: string };
+
   priceEur: number;
 
   category: Category;
   subcategory?: Subcategory;
 
+  // качества (използваме ги вече за филтри/баджове)
   flickerFree?: boolean;
   ra90?: boolean;
-  ip?: string; // e.g. "IP20", "IP44", "IP65"
+  ip?: string; // "IP20", "IP44", "IP65"...
   dimmable?: boolean;
+
+  // подготвяме ги за бъдещи филтри (засега само съхраняваме)
+  socket?: SocketType;
+  powerW?: number;
+  cct?: string; // "3000K", "4000K", "CCT 3000-6000K"
+  sensor?: boolean;
 };
 
 const heroImages = [
@@ -41,27 +55,31 @@ const heroImages = [
   "/images/lighting/hero-3.jpg",
 ];
 
-// ✅ Плейсхолдър (после ще ги заменим с твоите реални ~20)
+// ✅ Плейсхолдърни продукти (ще ги сменяме с реалните)
 const products: Product[] = [
   {
-    id: "leo",
-    img: "/images/lighting/leo-f30-sr36.jpg",
+    id: "leo-f30-sr36",
+    img: "/images/lighting/common-areas/leo-f30-sr36-sensor-ceiling.jpg",
     name: {
       bg: "Vivalux плафониера със сензор LEO F30 SR36",
       en: "Vivalux ceiling light with motion sensor LEO F30 SR36",
     },
     desc: {
-      bg: "Плафониера със сензор за движение, подходяща за входове, коридори и общи части.",
-      en: "Motion-sensor ceiling light for entrances and common areas.",
+      bg: "Практична плафониера със сензор за движение, подходяща за входове, стълбища, коридори и общи части. Осигурява автоматично включване и икономия на електроенергия.",
+      en: "Practical motion-sensor ceiling light suitable for entrances, staircases, corridors and common areas. Provides automatic activation and energy efficiency.",
     },
     priceEur: 35,
-    category: "interior",
-    subcategory: "interiorCeiling",
-    flickerFree: true,
-    ra90: false,
+    category: "commonAreas",
+    subcategory: "commonCeiling",
     ip: "IP20",
+    flickerFree: false,
+    ra90: false,
     dimmable: false,
+    socket: "E27",
+    sensor: true,
   },
+
+  // примерни (ще ги замениш/ще ги подредим)
   {
     id: "bergamo",
     img: "/images/lighting/bergamo-gu10.jpg",
@@ -80,25 +98,7 @@ const products: Product[] = [
     ra90: true,
     ip: "IP44",
     dimmable: false,
-  },
-  {
-    id: "lucas",
-    img: "/images/lighting/lucas-led-36w.jpg",
-    name: {
-      bg: "Vivalux LED плафон LUCAS 36W – черно + дърво",
-      en: "Vivalux LED ceiling light LUCAS 36W – black + wood",
-    },
-    desc: {
-      bg: "Декоративен LED плафон с избор на цветна температура.",
-      en: "Decorative ceiling light with selectable color temperature.",
-    },
-    priceEur: 115,
-    category: "interior",
-    subcategory: "interiorCeiling",
-    flickerFree: false,
-    ra90: true,
-    ip: "IP20",
-    dimmable: false,
+    socket: "GU10",
   },
   {
     id: "jex",
@@ -117,6 +117,9 @@ const products: Product[] = [
     ra90: false,
     ip: "IP65",
     dimmable: false,
+    socket: "Integrated LED",
+    powerW: 36,
+    cct: "4000K",
   },
 ];
 
@@ -127,10 +130,12 @@ function Badge({
   children: React.ReactNode;
   lang: "bg" | "en";
 }) {
+  // BG: “неон”/премиум на тъмно; EN: зелено, чисто
   const cls =
     lang === "bg"
       ? "border-[#2d6b35] text-[#7dff94] bg-transparent"
       : "border-[#2d6b35] text-[#2d6b35] bg-transparent";
+
   return (
     <span className={`inline-flex items-center rounded-full border px-2 py-0.5 text-xs ${cls}`}>
       {children}
@@ -151,10 +156,12 @@ function TogglePill({
 }) {
   const base =
     "inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm transition";
+
   const onCls =
     lang === "bg"
       ? "border-[#2d6b35] text-[#7dff94] bg-[#0f1426]"
       : "border-[#2d6b35] text-[#2d6b35] bg-white";
+
   const offCls =
     lang === "bg"
       ? "border-[#2d6b35] text-white bg-transparent hover:bg-white/5"
@@ -170,9 +177,7 @@ function TogglePill({
       <span
         className={`h-4 w-4 rounded-sm border ${
           checked
-            ? lang === "bg"
-              ? "border-[#2d6b35] bg-[#2d6b35]"
-              : "border-[#2d6b35] bg-[#2d6b35]"
+            ? "border-[#2d6b35] bg-[#2d6b35]"
             : lang === "bg"
               ? "border-white/40 bg-transparent"
               : "border-gray-300 bg-transparent"
@@ -190,17 +195,19 @@ function CardShell({
   children: React.ReactNode;
   lang: "bg" | "en";
 }) {
+  // EN: без сиво, пак зелено
   const cls =
     lang === "bg"
       ? "border-2 border-[#2d6b35] bg-transparent"
       : "border border-[#2d6b35] bg-white";
+
   return <div className={`rounded-2xl p-4 ${cls}`}>{children}</div>;
 }
 
 export default function LightingPage() {
   const router = useRouter();
   const { lang } = useLanguage();
-  const t = translations[lang]; // (оставям както е при теб)
+  const t = translations[lang]; // (оставям го, както е при теб)
 
   const content =
     lang === "bg"
@@ -209,9 +216,8 @@ export default function LightingPage() {
           h1: "Осветление Vivalux – доставка и монтаж",
           lead:
             "Осветлението се подбира за жилищни, офис и общи части, като се съобразява комфортът за очите и реалните условия на обекта. Предлагаме и градинско осветление.",
-          sectionTitle: "Подбрани осветители",
-          note:
-            "Посочените цени включват осветителното тяло, доставка и стандартен монтаж.",
+          sectionTitle: "Каталог осветители",
+          note: "Посочените цени включват осветителното тяло, доставка и стандартен монтаж.",
           cta: "Запитване",
 
           heroCta1: "Разгледай каталога",
@@ -230,14 +236,18 @@ export default function LightingPage() {
           onlyIp: "Само с IP защита",
           onlyDimmable: "Само димируеми",
 
+          dimLabel: "Димируемо",
+          sensorLabel: "Сензор",
           priceFrom: "Цена от",
           priceSub: "с включени доставка и монтаж",
 
+          categoriesTitle: "Видове осветление",
           categories: {
             interior: "Интериорно осветление",
             exterior: "Външно осветление",
             industrial: "Индустриално осветление",
             emergency: "Аварийно осветление",
+            commonAreas: "Осветление за стълбища и общи части",
           },
           subs: {
             interiorWall: "Аплици",
@@ -249,9 +259,10 @@ export default function LightingPage() {
             exteriorWall: "Фасадни аплици",
             exteriorCeiling: "Външни плафониери",
             garden: "Градински осветителни тела",
+            commonCeiling: "Плафониери и тела за общи части",
+            commonWall: "Аплици за общи части",
           },
 
-          dimLabel: "Димируемо",
           metaTitle: "Осветление Vivalux – доставка и монтаж | Sensor Build",
           metaDesc: "Професионално LED осветление с включена доставка и монтаж.",
         }
@@ -260,9 +271,8 @@ export default function LightingPage() {
           h1: "Vivalux Lighting – Supply & Installation",
           lead:
             "Lighting is selected for residential and commercial spaces with visual comfort and real site conditions in mind. We also provide garden lighting.",
-          sectionTitle: "Selected fixtures",
-          note:
-            "Prices include the fixture, delivery and standard installation.",
+          sectionTitle: "Lighting catalog",
+          note: "Prices include the fixture, delivery and standard installation.",
           cta: "Request",
 
           heroCta1: "View catalog",
@@ -281,14 +291,18 @@ export default function LightingPage() {
           onlyIp: "IP rated only",
           onlyDimmable: "Dimmable only",
 
+          dimLabel: "Dimmable",
+          sensorLabel: "Sensor",
           priceFrom: "Price from",
           priceSub: "delivery & installation included",
 
+          categoriesTitle: "Lighting types",
           categories: {
             interior: "Interior lighting",
             exterior: "Outdoor lighting",
             industrial: "Industrial lighting",
             emergency: "Emergency lighting",
+            commonAreas: "Staircase & common area lighting",
           },
           subs: {
             interiorWall: "Wall lights",
@@ -300,14 +314,15 @@ export default function LightingPage() {
             exteriorWall: "Outdoor wall lights",
             exteriorCeiling: "Outdoor ceiling lights",
             garden: "Garden lighting",
+            commonCeiling: "Common area ceiling lights",
+            commonWall: "Common area wall lights",
           },
 
-          dimLabel: "Dimmable",
           metaTitle: "Vivalux Lighting – Supply & Installation | Sensor Build",
           metaDesc: "Professional LED lighting with delivery and installation included.",
         };
 
-  // meta (твоя подход)
+  // meta (както го правеше)
   if (typeof document !== "undefined") {
     document.title = content.metaTitle;
     const meta = document.querySelector('meta[name="description"]');
@@ -315,6 +330,8 @@ export default function LightingPage() {
   }
 
   const [heroIndex, setHeroIndex] = useState(0);
+
+  // филтри (активни сега)
   const [onlyFlicker, setOnlyFlicker] = useState(false);
   const [onlyRa, setOnlyRa] = useState(false);
   const [onlyIp, setOnlyIp] = useState(false);
@@ -344,7 +361,9 @@ export default function LightingPage() {
       exterior: {},
       industrial: {},
       emergency: {},
+      commonAreas: {},
     };
+
     for (const p of filtered) {
       const sub = p.subcategory ?? "__root__";
       if (!out[p.category][sub]) out[p.category][sub] = [];
@@ -384,13 +403,15 @@ export default function LightingPage() {
                 <p className={`text-sm ${lang === "bg" ? "opacity-80 text-white" : "text-white/90"}`}>
                   {content.kicker}
                 </p>
+
                 <h1 className="mt-3 text-3xl font-semibold md:text-5xl text-white">
                   {content.h1}
                 </h1>
+
                 <p className="mt-4 max-w-3xl text-white/85">{content.lead}</p>
 
                 <div className="mt-6 flex flex-wrap gap-3">
-                  {/* ✅ правильното зелено (outline) */}
+                  {/* ✅ правилното зелено (outline) */}
                   <a
                     href="#catalog"
                     className="inline-flex items-center justify-center rounded-xl border-2 border-[#2d6b35] px-5 py-3 text-sm font-semibold text-[#7dff94] hover:border-[#4da855] hover:text-[#4da855]"
@@ -450,6 +471,7 @@ export default function LightingPage() {
           <h2 className="text-xl font-semibold">{content.sectionTitle}</h2>
           <p className={`mt-2 ${mutedText}`}>{content.note}</p>
 
+          {/* Filters (активните) */}
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <TogglePill checked={onlyFlicker} onChange={setOnlyFlicker} label={content.onlyFlicker} lang={lang} />
             <TogglePill checked={onlyRa} onChange={setOnlyRa} label={content.onlyRa} lang={lang} />
@@ -457,7 +479,7 @@ export default function LightingPage() {
             <TogglePill checked={onlyDimmable} onChange={setOnlyDimmable} label={content.onlyDimmable} lang={lang} />
           </div>
 
-          {/* categories - collapsed by default */}
+          {/* Categories (collapsed by default) */}
           <div className="mt-8 space-y-4">
             {(Object.keys(content.categories) as Category[]).map((cat) => {
               const catObj = tree[cat];
@@ -482,6 +504,8 @@ export default function LightingPage() {
                         "exteriorWall",
                         "exteriorCeiling",
                         "garden",
+                        "commonCeiling",
+                        "commonWall",
                       ] as Subcategory[]
                     )
                       .filter((sub) => (catObj[sub]?.length ?? 0) > 0)
@@ -506,11 +530,14 @@ export default function LightingPage() {
                                     />
                                   </div>
 
+                                  {/* badges */}
                                   <div className="mt-3 flex flex-wrap gap-2">
                                     {p.flickerFree && <Badge lang={lang}>Flicker-Free</Badge>}
                                     {p.ra90 && <Badge lang={lang}>Ra≥90</Badge>}
                                     {p.ip && <Badge lang={lang}>{p.ip}</Badge>}
                                     {p.dimmable && <Badge lang={lang}>{content.dimLabel}</Badge>}
+                                    {p.sensor && <Badge lang={lang}>{content.sensorLabel}</Badge>}
+                                    {p.socket && <Badge lang={lang}>{p.socket}</Badge>}
                                   </div>
 
                                   <h3 className="mt-3 text-base font-semibold">{name}</h3>
@@ -539,35 +566,6 @@ export default function LightingPage() {
                           </div>
                         </div>
                       ))}
-
-                    {(catObj["__root__"]?.length ?? 0) > 0 ? (
-                      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                        {catObj["__root__"].map((p) => {
-                          const name = lang === "bg" ? p.name.bg : p.name.en;
-                          const desc = lang === "bg" ? p.desc.bg : p.desc.en;
-
-                          return (
-                            <article key={p.id} className={`rounded-2xl p-4 ${greenBorder}`}>
-                              <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-white">
-                                <Image src={p.img} alt={name} fill className="object-cover" />
-                              </div>
-                              <h3 className="mt-4 text-base font-semibold">{name}</h3>
-                              <p className={`mt-2 text-sm ${mutedText}`}>{desc}</p>
-                              <button
-                                onClick={() => goContacts(p)}
-                                className={`mt-4 inline-flex w-full items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold ${
-                                  lang === "bg"
-                                    ? "border-2 border-[#2d6b35] hover:text-[#4da855] hover:border-[#4da855]"
-                                    : "border border-[#2d6b35] text-black hover:bg-[#2d6b35] hover:text-white"
-                                }`}
-                              >
-                                {content.cta}
-                              </button>
-                            </article>
-                          );
-                        })}
-                      </div>
-                    ) : null}
                   </div>
                 </details>
               );
