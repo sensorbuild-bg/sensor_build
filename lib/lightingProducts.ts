@@ -20,7 +20,7 @@ export const lightingProducts = [
     remoteControl: false,
     price: 110,
     currency: "EUR",
-    image: "/images/lighting/interior/chandeliers/meandra-p-led-54w-black-cct.jpg"
+    image: "/images/lighting/interior/chandeliers/meandra-p-led-54w-black-cct.jpg",
   },
 
   {
@@ -44,7 +44,7 @@ export const lightingProducts = [
     remoteControl: false,
     price: 110,
     currency: "EUR",
-    image: "/images/lighting/interior/ceiling/lucas-led-30w-black-wood-cct.jpg"
+    image: "/images/lighting/interior/ceiling/lucas-led-30w-black-wood-cct.jpg",
   },
 
   {
@@ -68,7 +68,7 @@ export const lightingProducts = [
     remoteControl: false,
     price: 140,
     currency: "EUR",
-    image: "/images/lighting/interior/ceiling/campo-led-36w-black-white-wood-cct.jpg"
+    image: "/images/lighting/interior/ceiling/campo-led-36w-black-white-wood-cct.jpg",
   },
 
   {
@@ -91,7 +91,7 @@ export const lightingProducts = [
     motionSensor: false,
     price: 175,
     currency: "EUR",
-    image: "/images/lighting/interior/ceiling/dorothy-led-74w-cct-remote.jpg"
+    image: "/images/lighting/interior/ceiling/dorothy-led-74w-cct-remote.jpg",
   },
 
   {
@@ -115,6 +115,6 @@ export const lightingProducts = [
     remoteControl: false,
     price: 85,
     currency: "EUR",
-    image: "/images/lighting/interior/ceiling/river-led-24w-black-4000k.jpg"
-  }
+    image: "/images/lighting/interior/ceiling/river-led-24w-black-4000k.jpg",
+  },
 ];
