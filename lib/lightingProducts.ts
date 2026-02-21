@@ -109,7 +109,7 @@ export const lightingProducts = [
     cri: "≥80",
     lifetime: 20000,
     beamAngle: 120,
-    flickerFree: true,
+    flickerFree: false, 
     motionSensor: false,
     dimmable: false,
     remoteControl: false,
