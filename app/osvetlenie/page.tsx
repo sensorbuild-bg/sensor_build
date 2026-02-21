@@ -49,7 +49,7 @@ type Product = {
   dimmable?: boolean;
   sensor?: boolean;
 
-  // подготвени за бъдещи филтри (засега само съхраняваме)
+  // подготвени за бъдещи филтри
   socket?: SocketType;
   powerW?: number;
   cct?: string; // "3000K", "4000K", "CCT 3000-6000K"
@@ -61,8 +61,8 @@ const heroImages = [
   "/images/lighting/hero-3.jpg",
 ];
 
-// ✅ Текущи продукти (ще добавяме още по screenshot + цена)
-const products: Product[] = [
+// ✅ Ръчно добавени продукти (примерни/външни/общи части)
+const manualProducts: Product[] = [
   {
     id: "leo-f30-sr36",
     img: "/images/lighting/common-areas/leo-f30-sr36-sensor-ceiling.jpg",
@@ -85,7 +85,6 @@ const products: Product[] = [
     socket: "E27",
   },
 
-  // Примерни (заменяме/разширяваме)
   {
     id: "bergamo",
     img: "/images/lighting/bergamo-gu10.jpg",
@@ -199,7 +198,7 @@ function CardShell({
 export default function LightingPage() {
   const router = useRouter();
   const { lang } = useLanguage();
-  const _t = translations[lang]; // държим го, за да няма warning ако ти трябва по-нататък
+  const _t = translations[lang];
 
   const content =
     lang === "bg"
@@ -335,7 +334,7 @@ export default function LightingPage() {
             "Professional LED lighting with delivery and installation included.",
         };
 
-  // meta (както до момента)
+  // meta
   if (typeof document !== "undefined") {
     document.title = content.metaTitle;
     const meta = document.querySelector('meta[name="description"]');
@@ -345,16 +344,67 @@ export default function LightingPage() {
   // hero
   const [heroIndex, setHeroIndex] = useState(0);
 
-  // активни филтри
+  // toggles
   const [onlyFlicker, setOnlyFlicker] = useState(false);
   const [onlyRa, setOnlyRa] = useState(false);
   const [onlyIp, setOnlyIp] = useState(false);
   const [onlyDimmable, setOnlyDimmable] = useState(false);
   const [onlySensor, setOnlySensor] = useState(false);
 
-  // dropdown филтри
+  // dropdowns
   const [socketFilter, setSocketFilter] = useState<SocketType | "all">("all");
   const [ipMin, setIpMin] = useState<number | "all">("all");
+
+  // ✅ Превръщаме imported lightingProducts към твоя Product формат
+  const importedProducts: Product[] = useMemo(() => {
+    return lightingProducts.map((p: any) => {
+      const isChandelier = p.type === "chandelier";
+
+      const socket: SocketType =
+        p.socket === "GU10" || p.socket === "E27" || p.socket === "E14"
+          ? p.socket
+          : "Integrated LED";
+
+      const cctStr = Array.isArray(p.cct)
+        ? `CCT ${p.cct.join(" / ")}`
+        : typeof p.cct === "string"
+          ? p.cct
+          : "";
+
+      return {
+        id: p.id,
+        img: p.image,
+        name: { bg: p.name, en: p.name }, // временно еднакви
+        desc: { bg: "", en: "" }, // може да добавим по-късно
+        priceEur: Number(p.price ?? 0),
+
+        category: (p.category as Category) ?? "interior",
+        subcategory:
+          (p.subcategory as Subcategory) ??
+          (p.category === "interior"
+            ? isChandelier
+              ? "chandeliers"
+              : "interiorCeiling"
+            : undefined),
+
+        flickerFree: Boolean(p.flickerFree),
+        ra90: Boolean(p.ra90), // ако някой ден го добавим
+        ip: p.ip,
+        dimmable: Boolean(p.dimmable),
+        sensor: Boolean(p.motionSensor),
+
+        socket,
+        powerW: typeof p.power === "number" ? p.power : undefined,
+        cct: cctStr,
+      };
+    });
+  }, []);
+
+  // ✅ Финален списък (manual + imported)
+  const products: Product[] = useMemo(
+    () => [...manualProducts, ...importedProducts],
+    [importedProducts]
+  );
 
   // ✅ auto-rotate hero
   useEffect(() => {
@@ -371,22 +421,20 @@ export default function LightingPage() {
       if (onlyDimmable && !p.dimmable) return false;
       if (onlySensor && !p.sensor) return false;
 
-      // Socket filter (ако е избран)
       if (socketFilter !== "all" && p.socket !== socketFilter) return false;
 
-      // IP filter
       const ipVal = parseIp(p.ip);
-
       if (onlyIp && ipVal === null) return false;
 
       if (ipMin !== "all") {
         if (ipVal === null) return false;
-        if (ipVal < ipMin) return false; // IP >= избраното
+        if (ipVal < ipMin) return false;
       }
 
       return true;
     });
   }, [
+    products,
     onlyFlicker,
     onlyRa,
     onlyIp,
@@ -421,9 +469,7 @@ export default function LightingPage() {
     lang === "bg" ? "bg-[#13182C] text-white" : "bg-white text-black";
   const mutedText = lang === "bg" ? "opacity-70" : "text-gray-700";
   const greenBorder =
-    lang === "bg"
-      ? "border-2 border-[#2d6b35]"
-      : "border border-[#2d6b35]";
+    lang === "bg" ? "border-2 border-[#2d6b35]" : "border border-[#2d6b35]";
 
   return (
     <main className={`min-h-screen ${pageBg}`}>
@@ -612,7 +658,7 @@ export default function LightingPage() {
             </select>
           </div>
 
-          {/* categories (collapsed by default) */}
+          {/* categories */}
           <div className="mt-8 space-y-4">
             {(Object.keys(content.categories) as Category[]).map((cat) => {
               const catObj = tree[cat];
@@ -688,9 +734,11 @@ export default function LightingPage() {
                                   <h3 className="mt-3 text-base font-semibold">
                                     {name}
                                   </h3>
-                                  <p className={`mt-2 text-sm ${mutedText}`}>
-                                    {desc}
-                                  </p>
+                                  {desc ? (
+                                    <p className={`mt-2 text-sm ${mutedText}`}>
+                                      {desc}
+                                    </p>
+                                  ) : null}
 
                                   <div className={`mt-4 rounded-xl p-3 ${greenBorder}`}>
                                     <p className="text-sm font-semibold">
