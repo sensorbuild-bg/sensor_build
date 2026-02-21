@@ -1,5 +1,6 @@
 "use client";
 
+import { lightingProducts } from "@/lib/lightingProducts";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState, useEffect } from "react";
