@@ -1,83 +1,120 @@
-export type LightingCategory = "interior" | "exterior" | "industrial" | "emergency";
-
-export type LightingSubcategory =
-  | "interiorWall"
-  | "interiorCeiling"
-  | "downlights"
-  | "panels"
-  | "track"
-  | "chandeliers"
-  | "exteriorWall"
-  | "exteriorCeiling"
-  | "garden";
-
-export type Product = {
-  id: string;
-  brand: "Vivalux";
-  titleBg: string;
-  descriptionBg: string;
-  priceEur: number;
-  image: string;
-
-  category: LightingCategory;
-  subcategory?: LightingSubcategory;
-
-  flickerFree?: boolean;
-  ra90?: boolean;
-
-  ip?: string;     // напр. "IP65"
-  power?: string;  // напр. "36W"
-  cct?: string;    // напр. "3000K/4000K"
-};
-
-export const lightingProducts: Product[] = [
+export const lightingProducts = [
   {
-    id: "bergamo-1xgu10",
-    brand: "Vivalux",
-    titleBg: "Фасаден аплик BERGAMO 1×GU10 – черно",
-    descriptionBg: "Изчистен дизайн, подходящ за фасади и входове.",
-    priceEur: 40,
-    image: "/images/lighting/bergamo-gu10.jpg",
-    category: "exterior",
-    subcategory: "exteriorWall",
-    flickerFree: true,
-    ra90: true,
-    ip: "IP44",
-  },
-  {
-    id: "leo-f30-sr36",
-    brand: "Vivalux",
-    titleBg: "Плафониера със сензор LEO F30 SR36",
-    descriptionBg: "За коридори и общи части, удобство и икономичност.",
-    priceEur: 35,
-    image: "/images/lighting/leo-f30-sr36.jpg",
+    id: "meandra-p-led-54w-black-cct",
+    name: "LED Полилей MEANDRA-P LED 54W Черен CCT 3000-4000-6000K",
     category: "interior",
-    subcategory: "interiorCeiling",
+    type: "chandelier",
+    mount: "ceiling",
+    power: 54,
+    color: "черен",
+    cct: ["3000K", "4000K", "6000K"],
+    voltage: "230V",
+    frequency: "50/60Hz",
+    ip: "IP20",
+    cri: "≥80",
+    lifetime: 15000,
+    beamAngle: 120,
     flickerFree: true,
-    ra90: false,
+    motionSensor: false,
+    dimmable: false,
+    remoteControl: false,
+    price: 110,
+    currency: "EUR",
+    image: "/images/lighting/interior/chandeliers/meandra-p-led-54w-black-cct.jpg"
   },
+
   {
-    id: "lucas-36w",
-    brand: "Vivalux",
-    titleBg: "LED плафон LUCAS 36W – черно + дърво",
-    descriptionBg: "Декоративен плафон с избор на цветна температура.",
-    priceEur: 115,
-    image: "/images/lighting/lucas-led-36w.jpg",
+    id: "lucas-led-30w-black-wood-cct",
+    name: "LED Плафон LUCAS LED 30W Черно + Дърво CCT 3000-4000-6400K",
     category: "interior",
-    subcategory: "interiorCeiling",
-    flickerFree: false,
-    ra90: true,
-  },
-  {
-    id: "jex-1200",
-    brand: "Vivalux",
-    titleBg: "Индустриално тяло JEX PC BASE 222 – 1200 mm",
-    descriptionBg: "Практично решение за гаражи, складове и работни зони.",
-    priceEur: 45,
-    image: "/images/lighting/jex-1200.jpg",
-    category: "industrial",
+    type: "ceiling",
+    mount: "ceiling",
+    power: 30,
+    color: "черно+дърво",
+    cct: ["3000K", "4000K", "6400K"],
+    voltage: "230V",
+    frequency: "50/60Hz",
+    ip: "IP20",
+    cri: "≥80",
+    lifetime: 15000,
+    beamAngle: 120,
     flickerFree: true,
-    ra90: false,
-    ip: "IP65",
+    motionSensor: false,
+    dimmable: false,
+    remoteControl: false,
+    price: 110,
+    currency: "EUR",
+    image: "/images/lighting/interior/ceiling/lucas-led-30w-black-wood-cct.jpg"
   },
+
+  {
+    id: "campo-led-36w-black-white-wood-cct",
+    name: "LED Плафон CAMPO LED 36W Черно/Бяло + Дърво CCT 3000-4000-6400K",
+    category: "interior",
+    type: "ceiling",
+    mount: "ceiling",
+    power: 36,
+    color: "черно/бяло+дърво",
+    cct: ["3000K", "4000K", "6400K"],
+    voltage: "230V",
+    frequency: "50/60Hz",
+    ip: "IP20",
+    cri: "≥80",
+    lifetime: 30000,
+    beamAngle: 120,
+    flickerFree: true,
+    motionSensor: false,
+    dimmable: false,
+    remoteControl: false,
+    price: 140,
+    currency: "EUR",
+    image: "/images/lighting/interior/ceiling/campo-led-36w-black-white-wood-cct.jpg"
+  },
+
+  {
+    id: "dorothy-led-74w-cct-remote",
+    name: "LED Плафониера DOROTHY LED 74W CCT 3000-6000K с дистанционно",
+    category: "interior",
+    type: "ceiling",
+    mount: "ceiling",
+    power: 74,
+    cct: ["3000K", "4000K", "6000K"],
+    voltage: "230V",
+    frequency: "50/60Hz",
+    ip: "IP20",
+    cri: "≥80",
+    lifetime: 15000,
+    beamAngle: 120,
+    flickerFree: true,
+    dimmable: true,
+    remoteControl: true,
+    motionSensor: false,
+    price: 175,
+    currency: "EUR",
+    image: "/images/lighting/interior/ceiling/dorothy-led-74w-cct-remote.jpg"
+  },
+
+  {
+    id: "river-led-24w-black-4000k",
+    name: "LED Плафон RIVER LED 24W Черен 4000K",
+    category: "interior",
+    type: "ceiling",
+    mount: "ceiling",
+    power: 24,
+    color: "черен",
+    cct: ["4000K"],
+    voltage: "230V",
+    frequency: "50/60Hz",
+    ip: "IP20",
+    cri: "≥80",
+    lifetime: 20000,
+    beamAngle: 120,
+    flickerFree: true,
+    motionSensor: false,
+    dimmable: false,
+    remoteControl: false,
+    price: 85,
+    currency: "EUR",
+    image: "/images/lighting/interior/ceiling/river-led-24w-black-4000k.jpg"
+  }
 ];
