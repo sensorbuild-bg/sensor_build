@@ -37,9 +37,9 @@ export default function Header() {
         lang === "bg" ? "bg-[#13182c]" : "bg-white"
       }`}
     >
-      {/* ================= DESKTOP (>=1024px) ================= */}
-      <div className="hidden lg:block">
-        {/* Green line */}
+      {/* ================= DESKTOP (>= xl / 1280px) ================= */}
+      <div className="hidden xl:block">
+        {/* Green line extending full width of screen */}
         <div
           className={`absolute left-0 right-0 ${
             lang === "en" ? "top-[50.9%]" : "top-[51%]"
@@ -51,8 +51,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative py-4">
             <div className="flex items-center justify-between relative z-10">
-              
-              {/* Logo */}
+              {/* Logo on the left */}
               <Link href="/" className="flex items-center -ml-4">
                 <div className="pr-6 xl:pr-12">
                   <Image
@@ -66,7 +65,6 @@ export default function Header() {
                 </div>
               </Link>
 
-              {/* Navigation */}
               <nav className="flex-1 flex justify-center -mt-10">
                 <div className="flex space-x-12">
                   {navigation.map((item) => (
@@ -89,7 +87,7 @@ export default function Header() {
                 </div>
               </nav>
 
-              {/* Language Switch */}
+              {/* Language switch on the right */}
               <div className="flex items-center space-x-1 -mt-12 ml-6">
                 <button
                   onClick={() => setLang("bg")}
@@ -112,16 +110,14 @@ export default function Header() {
                   EN
                 </button>
               </div>
-
             </div>
           </div>
         </div>
       </div>
 
-      {/* ================= MOBILE + TABLET (<1024px) ================= */}
-      <div className="lg:hidden relative">
-
-        {/* Green line */}
+      {/* ================= MOBILE + TABLET (< xl / 1280px) ================= */}
+      <div className="xl:hidden relative">
+        {/* Green line extending full width of screen */}
         <div
           className={`absolute left-0 right-0 ${
             lang === "en" ? "top-[50.7%]" : "top-[50.6%]"
@@ -131,9 +127,7 @@ export default function Header() {
         ></div>
 
         <div className="flex items-center justify-between px-4 py-4 relative z-10">
-          
-          {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center ">
             <Image
               src={lang === "bg" ? "/logodark.png" : "/logo.webp"}
               alt="Sensor Build Logo"
@@ -144,7 +138,6 @@ export default function Header() {
             />
           </Link>
 
-          {/* Right side */}
           <div className="flex items-center space-x-2 -mt-12">
             <div className="flex items-center space-x-1">
               <button
@@ -169,7 +162,6 @@ export default function Header() {
               </button>
             </div>
 
-            {/* Burger */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-md transition-colors bg-transparent"
@@ -212,13 +204,29 @@ export default function Header() {
               className={`fixed top-0 right-0 h-full w-80 bg-white shadow-xl z-[101] overflow-y-auto transform transition-transform duration-300 ease-out ${
                 isClosing ? "translate-x-full" : "translate-x-0"
               }`}
+              style={
+                !isClosing ? { animation: "slide-in-right 0.3s ease-out" } : {}
+              }
             >
               <div className="flex justify-end p-4">
                 <button
                   onClick={handleCloseMenu}
                   className="p-2 rounded-md hover:bg-gray-100 transition-colors"
+                  aria-label="Close menu"
                 >
-                  ✕
+                  <svg
+                    className="w-6 h-6 text-gray-700"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
                 </button>
               </div>
 
