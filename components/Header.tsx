@@ -19,7 +19,7 @@ export default function Header() {
     setTimeout(() => {
       setIsMenuOpen(false);
       setIsClosing(false);
-    }, 300); // Match animation duration
+    }, 300);
   };
 
   const navigation = [
@@ -37,10 +37,9 @@ export default function Header() {
         lang === "bg" ? "bg-[#13182c]" : "bg-white"
       }`}
     >
-      {/* Desktop Version */}
-      {/* ✅ ПРОМЯНА: md:block -> lg:block (десктоп меню чак от голям таблет/desktop) */}
+      {/* ================= DESKTOP (>=1024px) ================= */}
       <div className="hidden lg:block">
-        {/* Green line extending full width of screen */}
+        {/* Green line */}
         <div
           className={`absolute left-0 right-0 ${
             lang === "en" ? "top-[50.9%]" : "top-[51%]"
@@ -50,10 +49,10 @@ export default function Header() {
         ></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Logo with line extending to the end */}
           <div className="relative py-4">
             <div className="flex items-center justify-between relative z-10">
-              {/* Logo on the left */}
+              
+              {/* Logo */}
               <Link href="/" className="flex items-center -ml-4">
                 <div className="pr-6 xl:pr-12">
                   <Image
@@ -67,6 +66,7 @@ export default function Header() {
                 </div>
               </Link>
 
+              {/* Navigation */}
               <nav className="flex-1 flex justify-center -mt-10">
                 <div className="flex space-x-12">
                   {navigation.map((item) => (
@@ -89,7 +89,7 @@ export default function Header() {
                 </div>
               </nav>
 
-              {/* Language switch on the right */}
+              {/* Language Switch */}
               <div className="flex items-center space-x-1 -mt-12 ml-6">
                 <button
                   onClick={() => setLang("bg")}
@@ -112,15 +112,16 @@ export default function Header() {
                   EN
                 </button>
               </div>
+
             </div>
           </div>
         </div>
       </div>
 
-      {/* Mobile Version */}
-      {/* ✅ ПРОМЯНА: md:hidden -> lg:hidden (мобилната версия важи и за малки таблети) */}
+      {/* ================= MOBILE + TABLET (<1024px) ================= */}
       <div className="lg:hidden relative">
-        {/* Green line extending full width of screen */}
+
+        {/* Green line */}
         <div
           className={`absolute left-0 right-0 ${
             lang === "en" ? "top-[50.7%]" : "top-[50.6%]"
@@ -130,7 +131,9 @@ export default function Header() {
         ></div>
 
         <div className="flex items-center justify-between px-4 py-4 relative z-10">
-          <Link href="/" className="flex items-center ">
+          
+          {/* Logo */}
+          <Link href="/" className="flex items-center">
             <Image
               src={lang === "bg" ? "/logodark.png" : "/logo.webp"}
               alt="Sensor Build Logo"
@@ -141,12 +144,15 @@ export default function Header() {
             />
           </Link>
 
+          {/* Right side */}
           <div className="flex items-center space-x-2 -mt-12">
             <div className="flex items-center space-x-1">
               <button
                 onClick={() => setLang("bg")}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-md text-white transition-all duration-200 ${
-                  lang === "bg" ? "bg-[#2d6b35] shadow-md" : "bg-[#388644]/40"
+                  lang === "bg"
+                    ? "bg-[#2d6b35] shadow-md"
+                    : "bg-[#388644]/40"
                 }`}
               >
                 BG
@@ -154,13 +160,16 @@ export default function Header() {
               <button
                 onClick={() => setLang("en")}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-md text-white transition-all duration-200 ${
-                  lang === "en" ? "bg-[#2d6b35] shadow-md" : "bg-[#388644]/40"
+                  lang === "en"
+                    ? "bg-[#2d6b35] shadow-md"
+                    : "bg-[#388644]/40"
                 }`}
               >
                 EN
               </button>
             </div>
 
+            {/* Burger */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-md transition-colors bg-transparent"
@@ -194,45 +203,25 @@ export default function Header() {
         {/* Mobile Menu Overlay */}
         {isMenuOpen && (
           <>
-            {/* Dark overlay backdrop */}
             <div
               className="fixed inset-0 bg-black/60 z-[100] transition-opacity duration-300"
               onClick={handleCloseMenu}
             ></div>
 
-            {/* Menu panel */}
             <nav
               className={`fixed top-0 right-0 h-full w-80 bg-white shadow-xl z-[101] overflow-y-auto transform transition-transform duration-300 ease-out ${
                 isClosing ? "translate-x-full" : "translate-x-0"
               }`}
-              style={
-                !isClosing ? { animation: "slide-in-right 0.3s ease-out" } : {}
-              }
             >
-              {/* Close button */}
               <div className="flex justify-end p-4">
                 <button
                   onClick={handleCloseMenu}
                   className="p-2 rounded-md hover:bg-gray-100 transition-colors"
-                  aria-label="Close menu"
                 >
-                  <svg
-                    className="w-6 h-6 text-gray-700"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
+                  ✕
                 </button>
               </div>
 
-              {/* Navigation links */}
               <div className="flex flex-col px-4 pb-8">
                 {navigation.map((item) => (
                   <Link
