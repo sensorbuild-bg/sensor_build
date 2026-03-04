@@ -346,15 +346,22 @@ export default function LightingPage() {
         }
       }
 
-      return {
-        id: String(p.id),
-        img: String(p.image ?? ""),
-        name: { bg: String(p.name ?? ""), en: String(p.name ?? "") },
-        desc: {
-          bg: String(p.marketingText ?? ""),
-          en: String(p.marketingText ?? ""),
-        },
-        priceEur: Number(p.price ?? 0),
+     return {
+  id: String(p.id),
+  img: String(p.image ?? ""),
+
+  // BG / EN
+  name: {
+    bg: String(p.name ?? ""),
+    en: String(p.nameEn ?? p.name ?? ""),
+  },
+
+  desc: {
+    bg: String(p.marketingText ?? ""),
+    en: String(p.marketingTextEn ?? p.marketingText ?? ""),
+  },
+
+  priceEur: Number(p.price ?? 0),
 
         category: mappedCategory,
         subcategory: mappedSub,
