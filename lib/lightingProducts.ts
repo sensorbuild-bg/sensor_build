@@ -636,8 +636,6 @@ export const lightingProducts: LightingProduct[] = [
   motionSensor: false,
   price: 45,
   currency: "EUR",
-  codeRequest: "VIV004257",
-  article: "ORADEA/R 1xGU10 N/M IP65",
   image: "/images/lighting/exterior/garden/oradea-r-gu10-ip65-vivalux.jpg",
 },
 {
@@ -657,8 +655,6 @@ export const lightingProducts: LightingProduct[] = [
   motionSensor: false,
   price: 40,
   currency: "EUR",
-  codeRequest: "VIV004313",
-  article: "ACER/SP GU10 BK IP65",
   image: "/images/lighting/exterior/garden/acer-sp-gu10-ip65-vivalux.jpg",
 },
 {
@@ -680,8 +676,6 @@ export const lightingProducts: LightingProduct[] = [
   motionSensor: false,
   price: 45,
   currency: "EUR",
-  codeRequest: "VIV004342",
-  article: "PULSAR LED 0.8W IP65",
   image: "/images/lighting/exterior/garden/pulsar-led-ip65-vivalux.jpg",
 },
 ];
