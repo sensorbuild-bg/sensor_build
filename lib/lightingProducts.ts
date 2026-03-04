@@ -288,7 +288,6 @@ export const lightingProducts = [
     power: 15,
     cct: "4000K",
   }
-
 ];
 
   // ---------------------------
