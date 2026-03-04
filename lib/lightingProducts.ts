@@ -181,10 +181,10 @@ export const lightingProducts = [
   },
 
   // ---------------------------
-  // INDUSTRIAL
+  // INDUSTRIAL (ИМЕНАТА СА 1:1 С КАЧЕНИТЕ ФАЙЛОВЕ)
   // ---------------------------
   {
-    id: "jex-pc-base-222-led-1200mm-2xg13",
+    id: "jex-pc-base-222-1200mm",
     name: "Индустриално осветително тяло JEX PC BASE 222 LED 1200 mm 2xG13",
     marketingText:
       "Здрав корпус и IP65 защита – надеждно решение за складове, халета и помещения с прах и влага.",
@@ -202,7 +202,7 @@ export const lightingProducts = [
   },
 
   {
-    id: "jex-pc-base-224-led-1500mm-2xg13",
+    id: "jex-pc-base-224-1500mm",
     name: "Индустриално осветително тяло JEX PC BASE 224 LED 1500 mm 2xG13",
     marketingText:
       "Удължено тяло за по-голямо покритие и IP65 защита – подходящо за работни зони и индустриални пространства.",
@@ -220,7 +220,7 @@ export const lightingProducts = [
   },
 
   {
-    id: "kent-led-18w-600mm-4000k-ip65",
+    id: "kent-led-18w-600mm-4000k",
     name: "Индустриално LED осветително тяло KENT LED 18W 600mm 4000K IP65",
     marketingText:
       "Компактно и икономично LED решение с 4000K неутрална светлина – идеално за сервизни помещения и коридори.",
@@ -242,7 +242,7 @@ export const lightingProducts = [
   },
 
   {
-    id: "kent-led-36w-1200mm-4000k-ip65",
+    id: "kent-led-36w-1200mm-4000k",
     name: "Индустриално LED осветително тяло KENT LED 36W 1200mm 4000K IP65",
     marketingText:
       "Равномерна светлина и IP65 защита – стабилен избор за складове, работни зони и помещения с високи изисквания.",
@@ -264,7 +264,7 @@ export const lightingProducts = [
   },
 
   {
-    id: "kent-led-45w-1500mm-4000k-ip65",
+    id: "kent-led-45w-1500mm-4000k",
     name: "Индустриално LED осветително тяло KENT LED 45W 1500mm 4000K IP65",
     marketingText:
       "Силен светлинен поток, 4000K и IP65 защита – отличен избор за халета и големи помещения, където се търси надеждна светлина.",
