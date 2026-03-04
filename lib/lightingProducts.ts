@@ -615,4 +615,99 @@ export const lightingProducts: LightingProduct[] = [
     currency: "EUR",
     image: "/images/lighting/industrial/kent-led-45w-1500mm-4000k.jpg",
   },
+   // ---------------------------
+  // GARDEN
+  // ---------------------------
+  {
+  id: "oradea-r",
+  nameBg: "Осветително тяло за земя ORADEA/R",
+  nameEn: "In-ground light ORADEA/R",
+
+  descriptionBg:
+    "Компактно осветително тяло за вграждане в земя, подходящо за градински алеи, дворове и декоративно осветление. Работи с крушка GU10 и има защита IP65 за надеждна външна употреба.",
+
+  descriptionEn:
+    "Compact in-ground light suitable for garden pathways, yards and decorative outdoor lighting. Uses a GU10 bulb and features IP65 protection for reliable exterior use.",
+
+  category: "exterior",
+  subcategory: "garden",
+
+  socket: "GU10",
+  ip: "IP65",
+
+  motionSensor: false,
+
+  price: 45,
+
+  brand: "Vivalux",
+
+  code: "VIV004257",
+  article: "ORADEA/R 1xGU10 N/M IP65",
+
+  images: [
+    "/images/lighting/garden/oradea-r-gu10-ip65-vivalux.jpg"
+  ]
+},
+
+{
+  id: "acer-sp",
+  nameBg: "Градински прожектор ACER/SP",
+  nameEn: "Garden spike spotlight ACER/SP",
+
+  descriptionBg:
+    "Практичен градински прожектор с колче за монтаж в почва или тревни площи. Позволява насочено осветяване на растения, фасади и декоративни елементи. Работи с крушка GU10 и е защитен с IP65.",
+
+  descriptionEn:
+    "Practical garden spotlight with spike for installation in soil or grass areas. Ideal for illuminating plants, facades and decorative elements. Uses a GU10 bulb and features IP65 protection.",
+
+  category: "exterior",
+  subcategory: "garden",
+
+  socket: "GU10",
+  ip: "IP65",
+
+  motionSensor: false,
+
+  price: 40,
+
+  brand: "Vivalux",
+
+  code: "VIV004313",
+  article: "ACER/SP GU10 BK IP65",
+
+  images: [
+    "/images/lighting/garden/acer-sp-gu10-ip65-vivalux.jpg"
+  ]
+},
+
+{
+  id: "pulsar-led",
+  nameBg: "LED осветително тяло за земя PULSAR",
+  nameEn: "LED in-ground light PULSAR",
+
+  descriptionBg:
+    "Компактно LED осветително тяло за вграждане в настилки, алеи и дворове. С интегриран LED източник и защита IP65 за надеждна работа при външни условия.",
+
+  descriptionEn:
+    "Compact LED in-ground light designed for installation in pavements, pathways and outdoor areas. Features an integrated LED source and IP65 protection for outdoor use.",
+
+  category: "exterior",
+  subcategory: "garden",
+
+  socket: "Integrated LED",
+  ip: "IP65",
+
+  motionSensor: false,
+
+  price: 45,
+
+  brand: "Vivalux",
+
+  code: "VIV004342",
+  article: "PULSAR LED 0.8W IP65",
+
+  images: [
+    "/images/lighting/garden/pulsar-led-ip65-vivalux.jpg"
+  ]
+}
 ];
