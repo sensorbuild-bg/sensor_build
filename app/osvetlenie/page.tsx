@@ -42,17 +42,15 @@ type Product = {
   category: Category;
   subcategory?: Subcategory;
 
-  // активни качества (ползваме ги за филтри/баджове)
   flickerFree?: boolean;
   ra90?: boolean;
-  ip?: string; // "IP20", "IP44", "IP65"...
+  ip?: string;
   dimmable?: boolean;
   sensor?: boolean;
 
-  // подготвени за бъдещи филтри
   socket?: SocketType;
   powerW?: number;
-  cct?: string; // "3000K", "4000K", "CCT 3000-6000K"
+  cct?: string;
 };
 
 const heroImages = [
@@ -60,7 +58,6 @@ const heroImages = [
   "/images/lighting/hero-2.jpg",
   "/images/lighting/hero-3.jpg",
 ];
-
 
 function parseIp(ip?: string): number | null {
   if (!ip) return null;
@@ -177,14 +174,12 @@ export default function LightingPage() {
           whyRaText:
             "Високият цветопредавателен индекс прави цветовете по-естествени и пространството по-приятно. Това е ключово за интериори с висок естетически стандарт.",
 
-          // филтри
           onlyFlicker: "Само Flicker-Free",
           onlyRa: "Само Ra≥90",
           onlyIp: "Само с IP защита",
           onlyDimmable: "Само димируеми",
           onlySensor: "Само със сензор",
 
-          // dropdowns
           socketLabel: "Цокъл",
           socketAll: "Всички",
           ipLabel: "IP защита",
@@ -202,20 +197,23 @@ export default function LightingPage() {
             industrial: "Индустриално осветление",
             emergency: "Аварийно осветление",
             commonAreas: "Осветление за стълбища и общи части",
-          },
+          } as Record<Category, string>,
+
           subs: {
             interiorWall: "Аплици",
             interiorCeiling: "Плафониери",
             downlights: "LED луни",
             panels: "LED панели",
-            track: "Релсови осветителни системи",
+            track: "Релсови системи",
             chandeliers: "LED полилеи",
             exteriorWall: "Фасадни аплици",
             exteriorCeiling: "Външни плафониери",
-            garden: "Градински осветителни тела",
-            commonCeiling: "Плафониери и тела за общи части",
-            commonWall: "Аплици за общи части",
-          },
+            garden: "Градинско осветление",
+            commonCeiling: "Тела за общи части (таван)",
+            commonWall: "Тела за общи части (стена)",
+          } as Record<Subcategory, string>,
+
+          rootTitle: "Осветителни тела",
 
           metaTitle: "Осветление Vivalux – доставка и монтаж | Sensor Build",
           metaDesc:
@@ -242,14 +240,12 @@ export default function LightingPage() {
           whyRaText:
             "High CRI delivers more natural colors and a better perception of materials and finishes — ideal for premium interiors.",
 
-          // filters
           onlyFlicker: "Flicker-Free only",
           onlyRa: "Ra≥90 only",
           onlyIp: "IP rated only",
           onlyDimmable: "Dimmable only",
           onlySensor: "With sensor only",
 
-          // dropdowns
           socketLabel: "Socket",
           socketAll: "All",
           ipLabel: "IP rating",
@@ -267,7 +263,8 @@ export default function LightingPage() {
             industrial: "Industrial lighting",
             emergency: "Emergency lighting",
             commonAreas: "Staircase & common area lighting",
-          },
+          } as Record<Category, string>,
+
           subs: {
             interiorWall: "Wall lights",
             interiorCeiling: "Ceiling lights",
@@ -278,22 +275,23 @@ export default function LightingPage() {
             exteriorWall: "Outdoor wall lights",
             exteriorCeiling: "Outdoor ceiling lights",
             garden: "Garden lighting",
-            commonCeiling: "Common area ceiling lights",
-            commonWall: "Common area wall lights",
-          },
+            commonCeiling: "Common ceiling lights",
+            commonWall: "Common wall lights",
+          } as Record<Subcategory, string>,
 
-          metaTitle:
-            "Vivalux Lighting – Supply & Installation | Sensor Build",
+          rootTitle: "Fixtures",
+
+          metaTitle: "Vivalux Lighting – Supply & Installation | Sensor Build",
           metaDesc:
             "Professional LED lighting with delivery and installation included.",
         };
 
-  // meta
-  if (typeof document !== "undefined") {
+  // meta (client-only)
+  useEffect(() => {
     document.title = content.metaTitle;
     const meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute("content", content.metaDesc);
-  }
+  }, [content.metaTitle, content.metaDesc]);
 
   // hero
   const [heroIndex, setHeroIndex] = useState(0);
@@ -309,7 +307,7 @@ export default function LightingPage() {
   const [socketFilter, setSocketFilter] = useState<SocketType | "all">("all");
   const [ipMin, setIpMin] = useState<number | "all">("all");
 
-  // ✅ Превръщаме imported lightingProducts към твоя Product формат
+  // map imported products to local Product format
   const importedProducts: Product[] = useMemo(() => {
     return lightingProducts.map((p: any) => {
       const isChandelier = p.type === "chandelier";
@@ -325,24 +323,44 @@ export default function LightingPage() {
           ? p.cct
           : "";
 
+      // map categories: your data uses "common-areas", UI uses "commonAreas"
+      const mappedCategory: Category =
+        p.category === "common-areas"
+          ? "commonAreas"
+          : (p.category as Category) ?? "interior";
+
+      // try to map a usable subcategory automatically
+      let mappedSub: Subcategory | undefined = p.subcategory as Subcategory | undefined;
+
+      if (!mappedSub) {
+        if (mappedCategory === "interior") {
+          mappedSub = isChandelier ? "chandeliers" : "interiorCeiling";
+        } else if (mappedCategory === "exterior") {
+          // if you later add type "garden" etc, you can refine
+          mappedSub = "exteriorCeiling";
+        } else if (mappedCategory === "commonAreas") {
+          mappedSub = "commonCeiling";
+        } else {
+          // industrial / emergency can safely be root
+          mappedSub = undefined;
+        }
+      }
+
       return {
-        id: p.id,
-        img: p.image,
-        name: { bg: p.name, en: p.name }, // временно еднакви
-        desc: { bg: "", en: "" }, // може да добавим по-късно
+        id: String(p.id),
+        img: String(p.image ?? ""),
+        name: { bg: String(p.name ?? ""), en: String(p.name ?? "") },
+        desc: {
+          bg: String(p.marketingText ?? ""),
+          en: String(p.marketingText ?? ""),
+        },
         priceEur: Number(p.price ?? 0),
 
-        category: (p.category as Category) ?? "interior",
-        subcategory:
-          (p.subcategory as Subcategory) ??
-          (p.category === "interior"
-            ? isChandelier
-              ? "chandeliers"
-              : "interiorCeiling"
-            : undefined),
+        category: mappedCategory,
+        subcategory: mappedSub,
 
         flickerFree: Boolean(p.flickerFree),
-        ra90: Boolean(p.ra90), // ако някой ден го добавим
+        ra90: Boolean(p.ra90),
         ip: p.ip,
         dimmable: Boolean(p.dimmable),
         sensor: Boolean(p.motionSensor),
@@ -354,13 +372,9 @@ export default function LightingPage() {
     });
   }, []);
 
-  // ✅ Финален списък (manual + imported)
-  const products: Product[] = useMemo(
-    () => [...manualProducts, ...importedProducts],
-    [importedProducts]
-  );
+  const products: Product[] = importedProducts;
 
-  // ✅ auto-rotate hero
+  // auto-rotate hero
   useEffect(() => {
     const id = window.setInterval(() => {
       setHeroIndex((prev) => (prev + 1) % heroImages.length);
@@ -621,6 +635,11 @@ export default function LightingPage() {
               );
               if (!hasAny) return null;
 
+              // 🔥 IMPORTANT: render ALL subkeys incl "__root__"
+              const subsToRender = Object.keys(catObj).filter(
+                (k) => (catObj[k]?.length ?? 0) > 0
+              );
+
               return (
                 <details key={cat} className={`rounded-2xl p-4 ${greenBorder}`}>
                   <summary className="cursor-pointer select-none text-base font-semibold">
@@ -628,30 +647,18 @@ export default function LightingPage() {
                   </summary>
 
                   <div className="mt-5 space-y-8">
-                    {(
-                      [
-                        "interiorWall",
-                        "interiorCeiling",
-                        "downlights",
-                        "panels",
-                        "track",
-                        "chandeliers",
-                        "exteriorWall",
-                        "exteriorCeiling",
-                        "garden",
-                        "commonCeiling",
-                        "commonWall",
-                      ] as Subcategory[]
-                    )
-                      .filter((sub) => (catObj[sub]?.length ?? 0) > 0)
-                      .map((sub) => (
-                        <div key={sub}>
-                          <div className="mb-3 text-sm font-semibold">
-                            {content.subs[sub]}
-                          </div>
+                    {subsToRender.map((subKey) => {
+                      const title =
+                        subKey === "__root__"
+                          ? content.rootTitle
+                          : (content.subs as any)[subKey] ?? subKey;
+
+                      return (
+                        <div key={subKey}>
+                          <div className="mb-3 text-sm font-semibold">{title}</div>
 
                           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                            {catObj[sub]!.map((p) => {
+                            {catObj[subKey]!.map((p) => {
                               const name = lang === "bg" ? p.name.bg : p.name.en;
                               const desc = lang === "bg" ? p.desc.bg : p.desc.en;
 
@@ -680,9 +687,13 @@ export default function LightingPage() {
                                       <Badge lang={lang}>{content.dimLabel}</Badge>
                                     )}
                                     {p.sensor && (
-                                      <Badge lang={lang}>{content.sensorLabel}</Badge>
+                                      <Badge lang={lang}>
+                                        {content.sensorLabel}
+                                      </Badge>
                                     )}
-                                    {p.socket && <Badge lang={lang}>{p.socket}</Badge>}
+                                    {p.socket && (
+                                      <Badge lang={lang}>{p.socket}</Badge>
+                                    )}
                                   </div>
 
                                   <h3 className="mt-3 text-base font-semibold">
@@ -719,7 +730,8 @@ export default function LightingPage() {
                             })}
                           </div>
                         </div>
-                      ))}
+                      );
+                    })}
                   </div>
                 </details>
               );
