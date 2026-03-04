@@ -139,7 +139,7 @@ export const lightingProducts = [
   {
     id: "bergamo-1",
     name: "Фасаден аплик BERGAMO 1xGU10",
-    image: "/images/lighting/exterior/wall/bergamo-1xgu10-ip65.jpg",
+   image: "/images/lighting/exterior/wall/bergamo-wall-ip65-gu10.jpg",
     price: 40,
     category: "exterior",
     subcategory: "exteriorWall",
