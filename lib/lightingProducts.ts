@@ -620,95 +620,68 @@ export const lightingProducts: LightingProduct[] = [
   // GARDEN
   // ---------------------------
   {
-  id: "oradea-r",
-  nameBg: "Осветително тяло за земя ORADEA/R",
-  nameEn: "In-ground light ORADEA/R",
-
-  descriptionBg:
-    "Компактно осветително тяло за вграждане в земя, подходящо за градински алеи, дворове и декоративно осветление. Работи с крушка GU10 и има защита IP65 за надеждна външна употреба.",
-
-  descriptionEn:
-    "Compact in-ground light suitable for garden pathways, yards and decorative outdoor lighting. Uses a GU10 bulb and features IP65 protection for reliable exterior use.",
-
+  id: "oradea-r-gu10-ip65-nickel",
+  name: "Осветително тяло за земя ORADEA/R · 1xGU10 · Никел мат · IP65",
+  nameEn: "ORADEA/R In-ground Light · 1xGU10 · Matte Nickel · IP65",
+  marketingText:
+    "Компактно тяло за вграждане в земя – идеално за алеи и дворни зони, с GU10 фасунга и защита IP65 за външни условия.",
+  marketingTextEn:
+    "Compact in-ground light — perfect for pathways and outdoor areas, with a GU10 socket and IP65 protection for exterior use.",
   category: "exterior",
   subcategory: "garden",
-
+  voltage: "230V",
+  frequency: "50/60Hz",
   socket: "GU10",
   ip: "IP65",
-
   motionSensor: false,
-
   price: 45,
-
-  brand: "Vivalux",
-
-  code: "VIV004257",
+  currency: "EUR",
+  codeRequest: "VIV004257",
   article: "ORADEA/R 1xGU10 N/M IP65",
-
-  images: [
-    "/images/lighting/garden/oradea-r-gu10-ip65-vivalux.jpg"
-  ]
+  image: "/images/lighting/exterior/garden/oradea-r-gu10-ip65-vivalux.jpg",
 },
-
 {
-  id: "acer-sp",
-  nameBg: "Градински прожектор ACER/SP",
-  nameEn: "Garden spike spotlight ACER/SP",
-
-  descriptionBg:
-    "Практичен градински прожектор с колче за монтаж в почва или тревни площи. Позволява насочено осветяване на растения, фасади и декоративни елементи. Работи с крушка GU10 и е защитен с IP65.",
-
-  descriptionEn:
-    "Practical garden spotlight with spike for installation in soil or grass areas. Ideal for illuminating plants, facades and decorative elements. Uses a GU10 bulb and features IP65 protection.",
-
+  id: "acer-sp-gu10-ip65-black",
+  name: "Градински прожектор ACER/SP · GU10 · Черен · IP65",
+  nameEn: "ACER/SP Garden Spike Spotlight · GU10 · Black · IP65",
+  marketingText:
+    "Градински прожектор с колче за лесен монтаж в почва – насочваш светлината към растения, фасади и декоративни елементи. IP65 и GU10 фасунга.",
+  marketingTextEn:
+    "Garden spike spotlight for easy installation in soil — aim the light at plants, facades, or decorative elements. IP65 protection and GU10 socket.",
   category: "exterior",
   subcategory: "garden",
-
+  voltage: "230V",
+  frequency: "50/60Hz",
   socket: "GU10",
   ip: "IP65",
-
   motionSensor: false,
-
   price: 40,
-
-  brand: "Vivalux",
-
-  code: "VIV004313",
+  currency: "EUR",
+  codeRequest: "VIV004313",
   article: "ACER/SP GU10 BK IP65",
-
-  images: [
-    "/images/lighting/garden/acer-sp-gu10-ip65-vivalux.jpg"
-  ]
+  image: "/images/lighting/exterior/garden/acer-sp-gu10-ip65-vivalux.jpg",
 },
-
 {
-  id: "pulsar-led",
-  nameBg: "LED осветително тяло за земя PULSAR",
-  nameEn: "LED in-ground light PULSAR",
-
-  descriptionBg:
-    "Компактно LED осветително тяло за вграждане в настилки, алеи и дворове. С интегриран LED източник и защита IP65 за надеждна работа при външни условия.",
-
-  descriptionEn:
-    "Compact LED in-ground light designed for installation in pavements, pathways and outdoor areas. Features an integrated LED source and IP65 protection for outdoor use.",
-
+  id: "pulsar-led-0-8w-ip65",
+  name: "LED осветително тяло за земя PULSAR LED · 0.8W · IP65",
+  nameEn: "PULSAR LED In-ground Light · 0.8W · IP65",
+  marketingText:
+    "LED тяло за вграждане в настилки и алеи – компактно, устойчиво и подходящо за външни условия. Интегриран LED източник и IP65 защита.",
+  marketingTextEn:
+    "LED in-ground light for pavements and pathways — compact, durable and suitable for outdoor use. Integrated LED source and IP65 protection.",
   category: "exterior",
   subcategory: "garden",
-
+  power: 0.8,
+  voltage: "230V",
+  frequency: "50/60Hz",
   socket: "Integrated LED",
   ip: "IP65",
-
+  lifetime: 30000,
   motionSensor: false,
-
   price: 45,
-
-  brand: "Vivalux",
-
-  code: "VIV004342",
+  currency: "EUR",
+  codeRequest: "VIV004342",
   article: "PULSAR LED 0.8W IP65",
-
-  images: [
-    "/images/lighting/garden/pulsar-led-ip65-vivalux.jpg"
-  ]
-}
+  image: "/images/lighting/exterior/garden/pulsar-led-ip65-vivalux.jpg",
+},
 ];
