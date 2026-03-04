@@ -277,7 +277,7 @@ export const lightingProducts = [
   },
 
   // CEILING
-  {
+   {
     id: "dolce",
     name: "LED плафониера DOLCE/SQ 15W",
     image: "/images/lighting/exterior/ceiling/dolce-sq-led-15w-4000k-ip65-black.jpg",
@@ -287,60 +287,59 @@ export const lightingProducts = [
     ip: "IP65",
     power: 15,
     cct: "4000K",
-  }
-];
+  },
 
   // ---------------------------
   // EMERGENCY
   // ---------------------------
-{
-  id: "castor-led-5w-ip65-exit",
-  name: "Аварийно осветително тяло CASTOR LED 5W IP65 EXIT",
-  marketingText:
-    "Надеждна EXIT табела с висока защита IP65 – подходяща за стълбища, изходи и обществени сгради при аварийни ситуации.",
-  category: "emergency",
-  type: "exit-sign",
-  mount: "wall",
-  power: 5,
-  battery: "Li-Ion 3.7V 2200mAh",
-  voltage: "110-240V",
-  frequency: "50/60Hz",
-  ip: "IP65",
-  beamAngle: 120,
-  flickerFree: false,
-  motionSensor: false,
-  dimmable: false,
-  remoteControl: false,
-  price: 50,
-  currency: "EUR",
-  image: "/images/lighting/emergency/castor-led-5w-ip65-exit.jpg",
-},
+  {
+    id: "castor-led-5w-ip65-exit",
+    name: "Аварийно осветително тяло CASTOR LED 5W IP65 EXIT",
+    marketingText:
+      "Надеждна EXIT табела с висока защита IP65 – подходяща за стълбища, изходи и обществени сгради при аварийни ситуации.",
+    category: "emergency",
+    type: "exit-sign",
+    mount: "wall",
+    power: 5,
+    battery: "Li-Ion 3.7V 2200mAh",
+    voltage: "110-240V",
+    frequency: "50/60Hz",
+    ip: "IP65",
+    beamAngle: 120,
+    flickerFree: false,
+    motionSensor: false,
+    dimmable: false,
+    remoteControl: false,
+    price: 50,
+    currency: "EUR",
+    image: "/images/lighting/emergency/castor-led-5w-ip65-exit.jpg",
+  },
 
-{
-  id: "racer-led-m-3w-emergency",
-  name: "Аварийно LED осветително тяло RACER LED-M 3W",
-  marketingText:
-    "Компактно аварийно осветление с Li-Ion батерия – осигурява видимост и безопасност в коридори, стълбища и общи части.",
-  category: "emergency",
-  type: "emergency-lamp",
-  mount: "wall",
-  power: 3,
-  battery: "Li-Ion 3.7V 1000mAh",
-  voltage: "230V",
-  frequency: "50/60Hz",
-  ip: "IP20",
-  beamAngle: 120,
-  flickerFree: false,
-  motionSensor: false,
-  dimmable: false,
-  remoteControl: false,
-  price: 35,
-  currency: "EUR",
-  image: "/images/lighting/emergency/racer-led-m-3w-emergency.jpg",
-},
+  {
+    id: "racer-led-m-3w-emergency",
+    name: "Аварийно LED осветително тяло RACER LED-M 3W",
+    marketingText:
+      "Компактно аварийно осветление с Li-Ion батерия – осигурява видимост и безопасност в коридори, стълбища и общи части.",
+    category: "emergency",
+    type: "emergency-lamp",
+    mount: "wall",
+    power: 3,
+    battery: "Li-Ion 3.7V 1000mAh",
+    voltage: "230V",
+    frequency: "50/60Hz",
+    ip: "IP20",
+    beamAngle: 120,
+    flickerFree: false,
+    motionSensor: false,
+    dimmable: false,
+    remoteControl: false,
+    price: 35,
+    currency: "EUR",
+    image: "/images/lighting/emergency/racer-led-m-3w-emergency.jpg",
+  },
 
   // ---------------------------
-  // INDUSTRIAL (ИМЕНАТА СА 1:1 С КАЧЕНИТЕ ФАЙЛОВЕ)
+  // INDUSTRIAL
   // ---------------------------
   {
     id: "jex-pc-base-222-1200mm",
