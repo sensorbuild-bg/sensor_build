@@ -131,6 +131,166 @@ export const lightingProducts = [
     image: "/images/lighting/interior/ceiling/river-led-24w-black-4000k.jpg",
   },
 
+   // ---------------------------
+  // Exterior
+  // ---------------------------
+  
+    // BERGAMO
+  {
+    id: "bergamo-1",
+    name: "Фасаден аплик BERGAMO 1xGU10",
+    image: "/images/lighting/exterior/wall/bergamo-1xgu10-ip65.jpg",
+    price: 40,
+    category: "exterior",
+    subcategory: "exteriorWall",
+    ip: "IP65",
+    socket: "GU10",
+  },
+
+  {
+    id: "bergamo-2",
+    name: "Фасаден аплик BERGAMO 2xGU10",
+    image: "/images/lighting/exterior/wall/bergamo-2xgu10-ip65.jpg",
+    price: 50,
+    category: "exterior",
+    subcategory: "exteriorWall",
+    ip: "IP65",
+    socket: "GU10",
+  },
+
+  // ARUBA
+  {
+    id: "aruba-white",
+    name: "LED фасаден аплик ARUBA 6W бял",
+    image: "/images/lighting/exterior/wall/aruba-led-6w-cct-ip65.jpg",
+    price: 40,
+    category: "exterior",
+    subcategory: "exteriorWall",
+    ip: "IP65",
+    power: 6,
+    cct: ["3000K", "4000K", "6400K"],
+  },
+
+  {
+    id: "aruba-black",
+    name: "LED фасаден аплик ARUBA 6W черен",
+    image: "/images/lighting/exterior/wall/aruba-led-6w-black-cct-ip65.jpg",
+    price: 40,
+    category: "exterior",
+    subcategory: "exteriorWall",
+    ip: "IP65",
+    power: 6,
+    cct: ["3000K", "4000K", "6400K"],
+  },
+
+  // SEOUL
+  {
+    id: "seoul",
+    name: "Фасаден аплик SEOUL/W 1xGU10",
+    image: "/images/lighting/exterior/wall/seoul-w-1xgu10-ip44-black.jpg",
+    price: 45,
+    category: "exterior",
+    subcategory: "exteriorWall",
+    ip: "IP44",
+    socket: "GU10",
+  },
+
+  // PORTO R
+  {
+    id: "porto-r-1",
+    name: "Фасаден аплик PORTO/R 1xGU10",
+    image: "/images/lighting/exterior/wall/porto-r-1xgu10-ip44-black.jpg",
+    price: 40,
+    category: "exterior",
+    subcategory: "exteriorWall",
+    ip: "IP44",
+    socket: "GU10",
+  },
+
+  {
+    id: "porto-r-2",
+    name: "Фасаден аплик PORTO/R 2xGU10",
+    image: "/images/lighting/exterior/wall/porto-r-2xgu10-ip44-black.jpg",
+    price: 45,
+    category: "exterior",
+    subcategory: "exteriorWall",
+    ip: "IP44",
+    socket: "GU10",
+  },
+
+  // PORTO SQ
+  {
+    id: "porto-sq-white",
+    name: "Фасаден аплик PORTO/SQ 1xGU10 бял",
+    image: "/images/lighting/exterior/wall/porto-sq-1xgu10-ip44-white.jpg",
+    price: 40,
+    category: "exterior",
+    subcategory: "exteriorWall",
+    ip: "IP44",
+    socket: "GU10",
+  },
+
+  {
+    id: "porto-sq-black",
+    name: "Фасаден аплик PORTO/SQ 1xGU10 черен",
+    image: "/images/lighting/exterior/wall/porto-sq-1xgu10-ip44-black.jpg",
+    price: 40,
+    category: "exterior",
+    subcategory: "exteriorWall",
+    ip: "IP44",
+    socket: "GU10",
+  },
+
+  {
+    id: "porto-sq-2-white",
+    name: "Фасаден аплик PORTO/SQ 2xGU10 бял",
+    image: "/images/lighting/exterior/wall/porto-sq-2xgu10-ip44-white.jpg",
+    price: 45,
+    category: "exterior",
+    subcategory: "exteriorWall",
+    ip: "IP44",
+    socket: "GU10",
+  },
+
+  {
+    id: "porto-sq-2-black",
+    name: "Фасаден аплик PORTO/SQ 2xGU10 черен",
+    image: "/images/lighting/exterior/wall/porto-sq-2xgu10-ip44-black.jpg",
+    price: 45,
+    category: "exterior",
+    subcategory: "exteriorWall",
+    ip: "IP44",
+    socket: "GU10",
+  },
+
+  // CAPRI
+  {
+    id: "capri",
+    name: "LED фасаден аплик CAPRI/O 12W",
+    image: "/images/lighting/exterior/wall/capri-o-led-12w-4000k-ip54-white.jpg",
+    price: 40,
+    category: "exterior",
+    subcategory: "exteriorWall",
+    ip: "IP54",
+    power: 12,
+    cct: "4000K",
+  },
+
+  // CEILING
+  {
+    id: "dolce",
+    name: "LED плафониера DOLCE/SQ 15W",
+    image: "/images/lighting/exterior/ceiling/dolce-sq-led-15w-4000k-ip65-black.jpg",
+    price: 40,
+    category: "exterior",
+    subcategory: "exteriorCeiling",
+    ip: "IP65",
+    power: 15,
+    cct: "4000K",
+  }
+
+];
+
   // ---------------------------
   // EMERGENCY
   // ---------------------------
