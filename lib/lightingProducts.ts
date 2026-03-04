@@ -13,6 +13,7 @@ export type LightingSubcategory =
   | "chandeliers"
   | "exteriorWall"
   | "exteriorCeiling"
+  | "garden"
   | "industrial"
   | "emergency"
   | "commonCeiling"
