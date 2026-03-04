@@ -1,7 +1,12 @@
 export const lightingProducts = [
+  // ---------------------------
+  // INTERIOR
+  // ---------------------------
   {
     id: "meandra-p-led-54w-black-cct",
     name: "LED Полилей MEANDRA-P LED 54W Черен CCT 3000-4000-6000K",
+    marketingText:
+      "Елегантен акцент за модерен интериор – избираш цветната температура според настроението и получаваш равномерна светлина.",
     category: "interior",
     type: "chandelier",
     mount: "ceiling",
@@ -26,6 +31,8 @@ export const lightingProducts = [
   {
     id: "lucas-led-30w-black-wood-cct",
     name: "LED Плафон LUCAS LED 30W Черно + Дърво CCT 3000-4000-6400K",
+    marketingText:
+      "Топъл дизайн с дървесен акцент и практично CCT – подходящ за дневна, кухня или коридор.",
     category: "interior",
     type: "ceiling",
     mount: "ceiling",
@@ -50,6 +57,8 @@ export const lightingProducts = [
   {
     id: "campo-led-36w-black-white-wood-cct",
     name: "LED Плафон CAMPO LED 36W Черно/Бяло + Дърво CCT 3000-4000-6400K",
+    marketingText:
+      "Силен светлинен поток и стилна комбинация черно/бяло с дърво – осветява равномерно и прави помещението по-уютно.",
     category: "interior",
     type: "ceiling",
     mount: "ceiling",
@@ -74,6 +83,8 @@ export const lightingProducts = [
   {
     id: "dorothy-led-74w-cct-remote",
     name: "LED Плафониера DOROTHY LED 74W CCT 3000-6000K с дистанционно",
+    marketingText:
+      "Максимален комфорт с дистанционно и димиране – настройваш светлината за работа, почивка или вечерна атмосфера за секунди.",
     category: "interior",
     type: "ceiling",
     mount: "ceiling",
@@ -97,6 +108,8 @@ export const lightingProducts = [
   {
     id: "river-led-24w-black-4000k",
     name: "LED Плафон RIVER LED 24W Черен 4000K",
+    marketingText:
+      "Изчистен черен дизайн и неутрална светлина 4000K – практично решение за ежедневни пространства и бърз монтаж.",
     category: "interior",
     type: "ceiling",
     mount: "ceiling",
@@ -109,12 +122,166 @@ export const lightingProducts = [
     cri: "≥80",
     lifetime: 20000,
     beamAngle: 120,
-    flickerFree: false, 
+    flickerFree: false,
     motionSensor: false,
     dimmable: false,
     remoteControl: false,
     price: 85,
     currency: "EUR",
     image: "/images/lighting/interior/ceiling/river-led-24w-black-4000k.jpg",
+  },
+
+  // ---------------------------
+  // EMERGENCY
+  // ---------------------------
+  {
+    id: "castor-led-5w-ip65-exit",
+    name: "Аварийно осветително тяло CASTOR LED 5W IP65 EXIT",
+    marketingText:
+      "Надеждна EXIT табела с висока защита IP65 – подходяща за стълбища, изходи и обществени сгради при аварийни ситуации.",
+    category: "emergency",
+    type: "exit-sign",
+    mount: "wall",
+    power: 5,
+    battery: "Li-Ion 3.7V 2200mAh",
+    voltage: "110-240V",
+    frequency: "50/60Hz",
+    ip: "IP65",
+    beamAngle: 120,
+    flickerFree: true,
+    motionSensor: false,
+    dimmable: false,
+    remoteControl: false,
+    price: 50,
+    currency: "EUR",
+    image: "/images/lighting/emergency/castor-led-5w-ip65-exit.jpg",
+  },
+
+  {
+    id: "racer-led-m-3w-emergency",
+    name: "Аварийно LED осветително тяло RACER LED-M 3W",
+    marketingText:
+      "Компактно аварийно осветление с Li-Ion батерия – осигурява видимост и безопасност в коридори, стълбища и общи части.",
+    category: "emergency",
+    type: "emergency-lamp",
+    mount: "wall",
+    power: 3,
+    battery: "Li-Ion 3.7V 1000mAh",
+    voltage: "230V",
+    frequency: "50/60Hz",
+    ip: "IP20",
+    beamAngle: 120,
+    flickerFree: true,
+    motionSensor: false,
+    dimmable: false,
+    remoteControl: false,
+    price: 35,
+    currency: "EUR",
+    image: "/images/lighting/emergency/racer-led-m-3w-emergency.jpg",
+  },
+
+  // ---------------------------
+  // INDUSTRIAL
+  // ---------------------------
+  {
+    id: "jex-pc-base-222-led-1200mm-2xg13",
+    name: "Индустриално осветително тяло JEX PC BASE 222 LED 1200 mm 2xG13",
+    marketingText:
+      "Здрав корпус и IP65 защита – надеждно решение за складове, халета и помещения с прах и влага.",
+    category: "industrial",
+    type: "batten",
+    mount: "ceiling",
+    length: 1200,
+    socket: "2xG13",
+    voltage: "230V",
+    frequency: "50/60Hz",
+    ip: "IP65",
+    price: 45,
+    currency: "EUR",
+    image: "/images/lighting/industrial/jex-pc-base-222-1200mm.jpg",
+  },
+
+  {
+    id: "jex-pc-base-224-led-1500mm-2xg13",
+    name: "Индустриално осветително тяло JEX PC BASE 224 LED 1500 mm 2xG13",
+    marketingText:
+      "Удължено тяло за по-голямо покритие и IP65 защита – подходящо за работни зони и индустриални пространства.",
+    category: "industrial",
+    type: "batten",
+    mount: "ceiling",
+    length: 1500,
+    socket: "2xG13",
+    voltage: "230V",
+    frequency: "50/60Hz",
+    ip: "IP65",
+    price: 55,
+    currency: "EUR",
+    image: "/images/lighting/industrial/jex-pc-base-224-1500mm.jpg",
+  },
+
+  {
+    id: "kent-led-18w-600mm-4000k-ip65",
+    name: "Индустриално LED осветително тяло KENT LED 18W 600mm 4000K IP65",
+    marketingText:
+      "Компактно и икономично LED решение с 4000K неутрална светлина – идеално за сервизни помещения и коридори.",
+    category: "industrial",
+    type: "batten",
+    mount: "ceiling",
+    power: 18,
+    length: 600,
+    cct: ["4000K"],
+    voltage: "230V",
+    frequency: "50/60Hz",
+    ip: "IP65",
+    cri: "≥80",
+    lifetime: 30000,
+    beamAngle: 120,
+    price: 35,
+    currency: "EUR",
+    image: "/images/lighting/industrial/kent-led-18w-600mm-4000k.jpg",
+  },
+
+  {
+    id: "kent-led-36w-1200mm-4000k-ip65",
+    name: "Индустриално LED осветително тяло KENT LED 36W 1200mm 4000K IP65",
+    marketingText:
+      "Равномерна светлина и IP65 защита – стабилен избор за складове, работни зони и помещения с високи изисквания.",
+    category: "industrial",
+    type: "batten",
+    mount: "ceiling",
+    power: 36,
+    length: 1200,
+    cct: ["4000K"],
+    voltage: "230V",
+    frequency: "50/60Hz",
+    ip: "IP65",
+    cri: "≥80",
+    lifetime: 30000,
+    beamAngle: 120,
+    price: 45,
+    currency: "EUR",
+    image: "/images/lighting/industrial/kent-led-36w-1200mm-4000k.jpg",
+  },
+
+  {
+    id: "kent-led-45w-1500mm-4000k-ip65",
+    name: "Индустриално LED осветително тяло KENT LED 45W 1500mm 4000K IP65",
+    marketingText:
+      "Силен светлинен поток, 4000K и IP65 защита – отличен избор за халета и големи помещения, където се търси надеждна светлина.",
+    category: "industrial",
+    type: "batten",
+    mount: "ceiling",
+    power: 45,
+    length: 1500,
+    cct: ["4000K"],
+    voltage: "230V",
+    frequency: "50/60Hz",
+    ip: "IP65",
+    cri: "≥80",
+    lifetime: 30000,
+    beamAngle: 120,
+    price: 50,
+    currency: "EUR",
+    image: "/images/lighting/industrial/kent-led-45w-1500mm-4000k.jpg",
   },
 ];
