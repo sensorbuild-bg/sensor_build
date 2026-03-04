@@ -61,52 +61,6 @@ const heroImages = [
   "/images/lighting/hero-3.jpg",
 ];
 
-// ✅ Ръчно добавени продукти (примерни/външни/общи части)
-const manualProducts: Product[] = [
-  {
-    id: "leo-f30-sr36",
-    img: "/images/lighting/common-areas/leo-f30-sr36-sensor-ceiling.jpg",
-    name: {
-      bg: "Vivalux плафониера със сензор LEO F30 SR36",
-      en: "Vivalux ceiling light with motion sensor LEO F30 SR36",
-    },
-    desc: {
-      bg: "Практична плафониера със сензор за движение, подходяща за входове, стълбища, коридори и общи части. Осигурява автоматично включване и икономия на електроенергия.",
-      en: "Practical motion-sensor ceiling light suitable for entrances, staircases, corridors and common areas. Provides automatic activation and energy efficiency.",
-    },
-    priceEur: 35,
-    category: "commonAreas",
-    subcategory: "commonCeiling",
-    ip: "IP20",
-    flickerFree: false,
-    ra90: false,
-    dimmable: false,
-    sensor: true,
-    socket: "E27",
-  },
-
-  {
-    id: "bergamo",
-    img: "/images/lighting/bergamo-gu10.jpg",
-    name: {
-      bg: "Vivalux фасаден аплик BERGAMO 1xGU10 – черно",
-      en: "Vivalux outdoor wall light BERGAMO 1xGU10 – black",
-    },
-    desc: {
-      bg: "Фасаден аплик с изчистен дизайн, устойчив на атмосферни условия.",
-      en: "Minimal outdoor wall light, weather-resistant.",
-    },
-    priceEur: 40,
-    category: "exterior",
-    subcategory: "exteriorWall",
-    flickerFree: true,
-    ra90: true,
-    ip: "IP44",
-    dimmable: false,
-    sensor: false,
-    socket: "GU10",
-  },
-];
 
 function parseIp(ip?: string): number | null {
   if (!ip) return null;
