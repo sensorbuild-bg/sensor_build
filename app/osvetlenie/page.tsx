@@ -667,15 +667,15 @@ export default function LightingPage() {
                                   key={p.id}
                                   className={`rounded-2xl p-4 ${greenBorder}`}
                                 >
-                                  <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-white">
-                                    <Image
-                                      src={p.img}
-                                      alt={name}
-                                      fill
-                                      className="object-cover"
-                                      sizes="(max-width: 1024px) 50vw, 25vw"
-                                    />
-                                  </div>
+                               <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-white p-3">
+  <Image
+    src={p.img}
+    alt={name}
+    fill
+    className="object-contain"
+    sizes="(max-width: 1024px) 50vw, 25vw"
+  />
+</div>
 
                                   <div className="mt-3 flex flex-wrap gap-2">
                                     {p.flickerFree && (
