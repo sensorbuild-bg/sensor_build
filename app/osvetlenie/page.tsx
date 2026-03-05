@@ -18,6 +18,7 @@ type Category =
 type Subcategory =
   | "interiorWall"
   | "interiorCeiling"
+  | "interiorDecorative"
   | "downlights"
   | "panels"
   | "track"
