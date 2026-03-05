@@ -203,6 +203,7 @@ export default function LightingPage() {
           subs: {
             interiorWall: "Аплици",
             interiorCeiling: "Плафониери",
+            interiorDecorative: "Декоративно осветление",
             downlights: "LED луни",
             panels: "LED панели",
             track: "Релсови системи",
@@ -212,6 +213,8 @@ export default function LightingPage() {
             garden: "Градинско осветление",
             commonCeiling: "Тела за общи части (таван)",
             commonWall: "Тела за общи части (стена)",
+            industrial: "Индустриални осветители",
+            emergency: "Аварийни осветители",
           } as Record<Subcategory, string>,
 
           rootTitle: "Осветителни тела",
@@ -269,6 +272,7 @@ export default function LightingPage() {
           subs: {
             interiorWall: "Wall lights",
             interiorCeiling: "Ceiling lights",
+            interiorDecorative: "Decorative lighting",
             downlights: "LED downlights",
             panels: "LED panels",
             track: "Track systems",
@@ -278,6 +282,8 @@ export default function LightingPage() {
             garden: "Garden lighting",
             commonCeiling: "Common ceiling lights",
             commonWall: "Common wall lights",
+            industrial: "Industrial fixtures",
+            emergency: "Emergency fixtures",
           } as Record<Subcategory, string>,
 
           rootTitle: "Fixtures",
