@@ -719,7 +719,7 @@ export const lightingProducts: LightingProduct[] = [
   price: 40,
   currency: "EUR",
   image: "/images/lighting/common-areas/leo-f30-sr36-sensor-ceiling.jpg",
-}
+},
   // ---------------------------
   // INDUSTRIAL
   // ---------------------------
