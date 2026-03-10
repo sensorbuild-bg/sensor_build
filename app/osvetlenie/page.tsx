@@ -39,6 +39,10 @@ type Product = {
   desc: { bg: string; en: string };
 
   priceEur: number;
+  unit?: { bg: string; en: string };
+
+  category: Category;
+  subcategory?: Subcategory;
 
   category: Category;
   subcategory?: Subcategory;
@@ -353,7 +357,7 @@ export default function LightingPage() {
         }
       }
 
-     return {
+ return {
   id: String(p.id),
   img: String(p.image ?? ""),
 
@@ -369,6 +373,7 @@ export default function LightingPage() {
   },
 
   priceEur: Number(p.price ?? 0),
+  unit: p.unit,
 
         category: mappedCategory,
         subcategory: mappedSub,
@@ -720,10 +725,13 @@ export default function LightingPage() {
                                   ) : null}
 
                                   <div className={`mt-4 rounded-xl p-3 ${greenBorder}`}>
-                                    <p className="text-sm font-semibold">
-                                      {content.priceFrom} {p.priceEur} € /{" "}
-                                      {lang === "bg" ? "бр." : "pcs"}
-                                    </p>
+                                   <p className="text-sm font-semibold">
+  {content.priceFrom}{" "}
+  {lang === "bg"
+    ? p.priceEur.toLocaleString("bg-BG")
+    : p.priceEur.toLocaleString("en-US")}{" "}
+  € / {lang === "bg" ? p.unit?.bg ?? "бр." : p.unit?.en ?? "pcs"}
+</p>
                                     <p className={`text-xs ${mutedText}`}>
                                       {content.priceSub}
                                     </p>
