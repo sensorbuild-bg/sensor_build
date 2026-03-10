@@ -323,10 +323,13 @@ export default function LightingPage() {
     return lightingProducts.map((p: any) => {
       const isChandelier = p.type === "chandelier";
 
-      const socket: SocketType =
-        p.socket === "GU10" || p.socket === "E27" || p.socket === "E14"
-          ? p.socket
-          : "Integrated LED";
+     const socket: SocketType =
+  p.socket === "GU10" ||
+  p.socket === "E27" ||
+  p.socket === "E14" ||
+  p.socket === "G13"
+    ? p.socket
+    : "Integrated LED";
 
       const cctStr = Array.isArray(p.cct)
         ? `CCT ${p.cct.join(" / ")}`
