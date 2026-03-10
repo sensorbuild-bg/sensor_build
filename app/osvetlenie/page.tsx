@@ -44,9 +44,6 @@ type Product = {
   category: Category;
   subcategory?: Subcategory;
 
-  category: Category;
-  subcategory?: Subcategory;
-
   flickerFree?: boolean;
   ra90?: boolean;
   ip?: string;
