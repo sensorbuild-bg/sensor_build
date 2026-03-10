@@ -209,14 +209,17 @@ export const lightingProducts: LightingProduct[] = [
   // ---------------------------
   // INTERIOR (DECORATIVE) ✅ НОВО
   // ---------------------------
-  {
-     id: "elit-led-320-cob-24vdc-4000k-5m",
+{
+  id: "elit-led-320-cob-24vdc-4000k-5m",
   name: "LED лента ELIT LED · 320 COB · 24VDC · 4000K · 5m",
   nameEn: "ELIT LED Strip · 320 COB · 24VDC · 4000K · 5m",
+
   marketingText:
     "Декоративна COB LED лента за интериор – равномерна светлина без видими диоди, висок CRI и възможност за димиране.",
+
   marketingTextEn:
     "Decorative COB LED strip for interiors — uniform light without visible diodes, high CRI and dimmable operation.",
+
   category: "interior",
   subcategory: "interiorDecorative",
 
@@ -227,18 +230,24 @@ export const lightingProducts: LightingProduct[] = [
   voltage: "24VDC",
 
   cri: "≥90",
+  flickerFree: true,
+
   lifetime: 25000,
   beamAngle: 120,
 
   dimmable: true,
   motionSensor: false,
 
-   price: 7.5,
-    currency: "EUR",
+  price: 7.5,
+  currency: "EUR",
 
-   unit: {
-  bg: "л.м.",
-  en: "l.m."
+  unit: {
+    bg: "л.м.",
+    en: "l.m."
+  },
+
+  image:
+    "/images/lighting/interior/decorative/elit-led-320-cob-24vdc-4000k-5m.jpg",
 }, 
     
     image:
@@ -266,6 +275,7 @@ export const lightingProducts: LightingProduct[] = [
   voltage: "24VDC",
 
   cri: "≥90",
+    flickerFree: true,
   lifetime: 25000,
   beamAngle: 120,
 
