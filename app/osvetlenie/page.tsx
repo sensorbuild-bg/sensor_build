@@ -26,6 +26,7 @@ type Subcategory =
   | "exteriorWall"
   | "exteriorCeiling"
   | "garden"
+  | "exteriorLedStrips"
   | "commonCeiling"
   | "commonWall";
 
