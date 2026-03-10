@@ -30,8 +30,7 @@ type Subcategory =
   | "commonCeiling"
   | "commonWall";
 
-type SocketType = "GU10" | "E27" | "E14" | "Integrated LED";
-
+type SocketType = "GU10" | "E27" | "E14" | "G13" | "Integrated LED";
 type Product = {
   id: string;
   img: string;
@@ -619,6 +618,7 @@ export default function LightingPage() {
       <option value="GU10">GU10</option>
       <option value="E27">E27</option>
       <option value="E14">E14</option>
+      <option value="G13">G13</option>
       <option value="Integrated LED">Integrated LED</option>
     </select>
   </div>
