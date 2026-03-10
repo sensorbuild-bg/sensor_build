@@ -378,11 +378,11 @@ export default function LightingPage() {
         category: mappedCategory,
         subcategory: mappedSub,
 
-        flickerFree: Boolean(p.flickerFree),
-        ra90: Boolean(p.ra90),
-        ip: p.ip,
-        dimmable: Boolean(p.dimmable),
-        sensor: Boolean(p.motionSensor),
+      flickerFree: Boolean(p.flickerFree),
+ra90: p.cri === "≥90",
+ip: p.ip,
+dimmable: Boolean(p.dimmable),
+sensor: Boolean(p.motionSensor),
 
         socket,
         powerW: typeof p.power === "number" ? p.power : undefined,
