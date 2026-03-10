@@ -70,25 +70,7 @@ export type LightingProduct = {
   image: string;
 };
 
-{
-  id: "leo-f30-sr36-sensor",
-  name: "Плафониера със сензор за движение LEO F30 SR36",
-  nameEn: "LEO F30 SR36 Motion Sensor Ceiling Light",
-  marketingText:
-    "Плафониера със сензор за движение – идеално решение за коридори, стълбища и входове.",
-  marketingTextEn:
-    "Ceiling light with motion sensor – ideal for corridors, staircases and entrances.",
-  category: "commonAreas",
-  subcategory: "commonCeiling",
-  ip: "IP20",
-  socket: "E27",
-  sensor: true,
-  voltage: "230V",
-  frequency: "50/60Hz",
-  price: 40,
-  currency: "EUR",
-  image: "/images/lighting/common-areas/leo-f30-sr36-sensor-ceiling.jpg",
-}
+
 
 export const lightingProducts: LightingProduct[] = [
   // ---------------------------
@@ -716,6 +698,28 @@ export const lightingProducts: LightingProduct[] = [
     image: "/images/lighting/emergency/racer-led-m-3w-emergency.jpg",
   },
 
+  // ---------------------------
+// COMMON AREAS (STAIRCASES & CORRIDORS)
+// ---------------------------
+{
+  id: "leo-f30-sr36-sensor",
+  name: "Плафониера със сензор за движение LEO F30 SR36",
+  nameEn: "LEO F30 SR36 Motion Sensor Ceiling Light",
+  marketingText:
+    "Плафониера със сензор за движение – идеално решение за коридори, стълбища и входове.",
+  marketingTextEn:
+    "Ceiling light with motion sensor – ideal for corridors, staircases and entrances.",
+  category: "commonAreas",
+  subcategory: "commonCeiling",
+  ip: "IP20",
+  socket: "E27",
+  sensor: true,
+  voltage: "230V",
+  frequency: "50/60Hz",
+  price: 40,
+  currency: "EUR",
+  image: "/images/lighting/common-areas/leo-f30-sr36-sensor-ceiling.jpg",
+}
   // ---------------------------
   // INDUSTRIAL
   // ---------------------------
