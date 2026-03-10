@@ -51,6 +51,7 @@ type Product = {
   dimmable?: boolean;
   sensor?: boolean;
 
+  voltage?: string;
   socket?: SocketType;
   powerW?: number;
   cct?: string;
@@ -185,6 +186,8 @@ export default function LightingPage() {
 
           socketLabel: "Цокъл",
           socketAll: "Всички",
+          voltageLabel: "Волтаж",
+          voltageAll: "Всички",
           ipLabel: "IP защита",
           ipAll: "Всички",
           ipFrom: "Минимум",
@@ -255,6 +258,8 @@ export default function LightingPage() {
 
           socketLabel: "Socket",
           socketAll: "All",
+          voltageLabel: "Voltage",
+          voltageAll: "All",
           ipLabel: "IP rating",
           ipAll: "All",
           ipFrom: "Minimum",
@@ -297,28 +302,24 @@ export default function LightingPage() {
             "Professional LED lighting with delivery and installation included.",
         };
 
-  // meta (client-only)
   useEffect(() => {
     document.title = content.metaTitle;
     const meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute("content", content.metaDesc);
   }, [content.metaTitle, content.metaDesc]);
 
-  // hero
   const [heroIndex, setHeroIndex] = useState(0);
 
-  // toggles
   const [onlyFlicker, setOnlyFlicker] = useState(false);
   const [onlyRa, setOnlyRa] = useState(false);
   const [onlyIp, setOnlyIp] = useState(false);
   const [onlyDimmable, setOnlyDimmable] = useState(false);
   const [onlySensor, setOnlySensor] = useState(false);
 
-  // dropdowns
   const [socketFilter, setSocketFilter] = useState<SocketType | "all">("all");
+  const [voltageFilter, setVoltageFilter] = useState<string | "all">("all");
   const [ipMin, setIpMin] = useState<number | "all">("all");
 
-  // map imported products to local Product format
   const importedProducts: Product[] = useMemo(() => {
     return lightingProducts.map((p: any) => {
       const isChandelier = p.type === "chandelier";
@@ -334,56 +335,53 @@ export default function LightingPage() {
           ? p.cct
           : "";
 
-      // map categories: your data uses "common-areas", UI uses "commonAreas"
       const mappedCategory: Category =
         p.category === "common-areas"
           ? "commonAreas"
           : (p.category as Category) ?? "interior";
 
-      // try to map a usable subcategory automatically
-      let mappedSub: Subcategory | undefined = p.subcategory as Subcategory | undefined;
+      let mappedSub: Subcategory | undefined =
+        p.subcategory as Subcategory | undefined;
 
       if (!mappedSub) {
         if (mappedCategory === "interior") {
           mappedSub = isChandelier ? "chandeliers" : "interiorCeiling";
         } else if (mappedCategory === "exterior") {
-          // if you later add type "garden" etc, you can refine
           mappedSub = "exteriorCeiling";
         } else if (mappedCategory === "commonAreas") {
           mappedSub = "commonCeiling";
         } else {
-          // industrial / emergency can safely be root
           mappedSub = undefined;
         }
       }
 
- return {
-  id: String(p.id),
-  img: String(p.image ?? ""),
+      return {
+        id: String(p.id),
+        img: String(p.image ?? ""),
 
-  // BG / EN
-  name: {
-    bg: String(p.name ?? ""),
-    en: String(p.nameEn ?? p.name ?? ""),
-  },
+        name: {
+          bg: String(p.name ?? ""),
+          en: String(p.nameEn ?? p.name ?? ""),
+        },
 
-  desc: {
-    bg: String(p.marketingText ?? ""),
-    en: String(p.marketingTextEn ?? p.marketingText ?? ""),
-  },
+        desc: {
+          bg: String(p.marketingText ?? ""),
+          en: String(p.marketingTextEn ?? p.marketingText ?? ""),
+        },
 
-  priceEur: Number(p.price ?? 0),
-  unit: p.unit,
+        priceEur: Number(p.price ?? 0),
+        unit: p.unit,
 
         category: mappedCategory,
         subcategory: mappedSub,
 
-      flickerFree: Boolean(p.flickerFree),
-ra90: p.cri === "≥90",
-ip: p.ip,
-dimmable: Boolean(p.dimmable),
-sensor: Boolean(p.motionSensor),
+        flickerFree: Boolean(p.flickerFree),
+        ra90: p.cri === "≥90",
+        ip: p.ip,
+        dimmable: Boolean(p.dimmable),
+        sensor: Boolean(p.motionSensor),
 
+        voltage: p.voltage,
         socket,
         powerW: typeof p.power === "number" ? p.power : undefined,
         cct: cctStr,
@@ -393,7 +391,6 @@ sensor: Boolean(p.motionSensor),
 
   const products: Product[] = importedProducts;
 
-  // auto-rotate hero
   useEffect(() => {
     const id = window.setInterval(() => {
       setHeroIndex((prev) => (prev + 1) % heroImages.length);
@@ -409,6 +406,16 @@ sensor: Boolean(p.motionSensor),
       if (onlySensor && !p.sensor) return false;
 
       if (socketFilter !== "all" && p.socket !== socketFilter) return false;
+
+      if (voltageFilter !== "all") {
+        const v = p.voltage ?? "";
+
+        if (voltageFilter === "220V") {
+          if (v !== "220V" && v !== "230V") return false;
+        } else {
+          if (v !== voltageFilter) return false;
+        }
+      }
 
       const ipVal = parseIp(p.ip);
       if (onlyIp && ipVal === null) return false;
@@ -428,6 +435,7 @@ sensor: Boolean(p.motionSensor),
     onlyDimmable,
     onlySensor,
     socketFilter,
+    voltageFilter,
     ipMin,
   ]);
 
@@ -461,7 +469,6 @@ sensor: Boolean(p.motionSensor),
   return (
     <main className={`min-h-screen ${pageBg}`}>
       <section className="mx-auto max-w-7xl px-4 py-10">
-        {/* HERO */}
         <div className={`relative overflow-hidden rounded-3xl ${greenBorder}`}>
           <div className="relative h-[38vh] min-h-[320px]">
             <Image
@@ -534,7 +541,6 @@ sensor: Boolean(p.motionSensor),
           </div>
         </div>
 
-        {/* WHY */}
         <div className="mt-10">
           <h2 className="text-xl font-semibold">{content.whyTitle}</h2>
           <div className="mt-4 grid gap-6 md:grid-cols-2">
@@ -546,6 +552,7 @@ sensor: Boolean(p.motionSensor),
                 {content.whyFlickerText}
               </p>
             </CardShell>
+
             <CardShell lang={lang}>
               <h3 className="text-base font-semibold">{content.whyRaTitle}</h3>
               <p className={`mt-2 text-sm ${mutedText}`}>{content.whyRaText}</p>
@@ -553,12 +560,10 @@ sensor: Boolean(p.motionSensor),
           </div>
         </div>
 
-        {/* CATALOG */}
         <section id="catalog" className="mt-12">
           <h2 className="text-xl font-semibold">{content.sectionTitle}</h2>
           <p className={`mt-2 ${mutedText}`}>{content.note}</p>
 
-          {/* toggles */}
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <TogglePill
               checked={onlyFlicker}
@@ -592,7 +597,6 @@ sensor: Boolean(p.motionSensor),
             />
           </div>
 
-          {/* dropdowns */}
           <div className="mt-4 flex flex-wrap items-center gap-3">
             <span
               className={`text-sm font-semibold ${
@@ -623,6 +627,30 @@ sensor: Boolean(p.motionSensor),
                 lang === "bg" ? "text-white/80" : "text-gray-700"
               }`}
             >
+              {content.voltageLabel}:
+            </span>
+
+            <select
+              value={voltageFilter}
+              onChange={(e) =>
+                setVoltageFilter(e.target.value === "all" ? "all" : e.target.value)
+              }
+              className={`rounded-xl px-4 py-2 text-sm font-semibold outline-none ${greenBorder} ${
+                lang === "bg" ? "bg-[#0f1426] text-white" : "bg-white text-black"
+              }`}
+            >
+              <option value="all">{content.voltageAll}</option>
+              <option value="12VDC">12VDC</option>
+              <option value="24VDC">24VDC</option>
+              <option value="220V">220V</option>
+              <option value="110–240V">110–240V</option>
+            </select>
+
+            <span
+              className={`text-sm font-semibold ${
+                lang === "bg" ? "text-white/80" : "text-gray-700"
+              }`}
+            >
               {content.ipLabel} ({content.ipFrom}):
             </span>
 
@@ -645,7 +673,6 @@ sensor: Boolean(p.motionSensor),
             </select>
           </div>
 
-                  {/* categories */}
           <div className="mt-8 space-y-4">
             {(Object.keys(content.categories) as Category[]).map((cat) => {
               const catObj = tree[cat];
@@ -685,6 +712,9 @@ sensor: Boolean(p.motionSensor),
                               const name = lang === "bg" ? p.name.bg : p.name.en;
                               const desc = lang === "bg" ? p.desc.bg : p.desc.en;
 
+                              const voltageBadge =
+                                p.voltage === "230V" ? "220V" : p.voltage;
+
                               return (
                                 <article
                                   key={p.id}
@@ -712,8 +742,9 @@ sensor: Boolean(p.motionSensor),
                                     {p.sensor && (
                                       <Badge lang={lang}>{content.sensorLabel}</Badge>
                                     )}
-                                    {p.socket && (
-                                      <Badge lang={lang}>{p.socket}</Badge>
+                                    {p.socket && <Badge lang={lang}>{p.socket}</Badge>}
+                                    {voltageBadge && (
+                                      <Badge lang={lang}>{voltageBadge}</Badge>
                                     )}
                                   </div>
 
@@ -733,7 +764,10 @@ sensor: Boolean(p.motionSensor),
                                       {lang === "bg"
                                         ? p.priceEur.toLocaleString("bg-BG")
                                         : p.priceEur.toLocaleString("en-US")}{" "}
-                                      € / {lang === "bg" ? p.unit?.bg ?? "бр." : p.unit?.en ?? "pcs"}
+                                      € /{" "}
+                                      {lang === "bg"
+                                        ? p.unit?.bg ?? "бр."
+                                        : p.unit?.en ?? "pcs"}
                                     </p>
                                     <p className={`text-xs ${mutedText}`}>
                                       {content.priceSub}
@@ -766,4 +800,4 @@ sensor: Boolean(p.motionSensor),
       </section>
     </main>
   );
-}
+}}
