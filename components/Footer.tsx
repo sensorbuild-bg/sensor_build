@@ -7,7 +7,7 @@ function PhoneIcon() {
   return (
     <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#388644]">
       <svg
-        className="h-5 w-5 text-white"
+        className="h-5 w-5 text-[#0f1426]"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -25,7 +25,7 @@ function EmailIcon() {
   return (
     <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#388644]">
       <svg
-        className="h-5 w-5 text-white"
+        className="h-5 w-5 text-[#0f1426]"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
