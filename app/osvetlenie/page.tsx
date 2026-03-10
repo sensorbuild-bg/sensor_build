@@ -800,4 +800,4 @@ export default function LightingPage() {
       </section>
     </main>
   );
-}}
+}
