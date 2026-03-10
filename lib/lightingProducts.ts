@@ -206,6 +206,69 @@ export const lightingProducts: LightingProduct[] = [
     image: "/images/lighting/interior/ceiling/river-led-24w-black-4000k.jpg",
   },
 
+  {
+  id: "flat-led-18w-600mm-4000k",
+  name: "LED линейно осветително тяло FLAT LED · 18W · 600 mm · 4000K",
+  nameEn: "FLAT LED Linear Ceiling Light · 18W · 600 mm · 4000K",
+  marketingText:
+    "Компактно линейно осветително тяло за кухни, коридори и сервизни помещения. Осигурява равномерна светлина и комфорт без трептене.",
+  marketingTextEn:
+    "Compact linear lighting fixture for kitchens, corridors and utility spaces. Provides uniform light with flicker-free comfort.",
+  category: "interior",
+  subcategory: "interiorCeiling",
+  ip: "IP20",
+  flickerFree: true,
+  voltage: "230V",
+  frequency: "50/60Hz",
+  power: 18,
+  cct: "4000K",
+  price: 32,
+  currency: "EUR",
+  image: "/images/lighting/interior/ceiling/flat-led-18w-600mm-4000k.jpg",
+},
+
+{
+  id: "flat-led-36w-1200mm-4000k",
+  name: "LED линейно осветително тяло FLAT LED · 36W · 1200 mm · 4000K",
+  nameEn: "FLAT LED Linear Ceiling Light · 36W · 1200 mm · 4000K",
+  marketingText:
+    "Линейно осветление с по-голяма дължина и мощност – подходящо за кухни, офиси и работни помещения.",
+  marketingTextEn:
+    "Longer and more powerful linear lighting solution suitable for kitchens, offices and workspaces.",
+  category: "interior",
+  subcategory: "interiorCeiling",
+  ip: "IP20",
+  flickerFree: true,
+  voltage: "230V",
+  frequency: "50/60Hz",
+  power: 36,
+  cct: "4000K",
+  price: 41,
+  currency: "EUR",
+  image: "/images/lighting/interior/ceiling/flat-led-36w-1200mm-4000k.jpg",
+},
+
+{
+  id: "flat-led-45w-1500mm-4000k",
+  name: "LED линейно осветително тяло FLAT LED · 45W · 1500 mm · 4000K",
+  nameEn: "FLAT LED Linear Ceiling Light · 45W · 1500 mm · 4000K",
+  marketingText:
+    "Удължено линейно осветително тяло с висока мощност за по-големи помещения и работни пространства.",
+  marketingTextEn:
+    "Extended linear lighting fixture with higher output for larger rooms and workspaces.",
+  category: "interior",
+  subcategory: "interiorCeiling",
+  ip: "IP20",
+  flickerFree: true,
+  voltage: "230V",
+  frequency: "50/60Hz",
+  power: 45,
+  cct: "4000K",
+  price: 50,
+  currency: "EUR",
+  image: "/images/lighting/interior/ceiling/flat-led-45w-1500mm-4000k.jpg",
+},
+
   // ---------------------------
   // INTERIOR (DECORATIVE) ✅ НОВО
   // ---------------------------
