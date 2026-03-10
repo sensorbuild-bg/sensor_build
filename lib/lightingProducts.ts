@@ -226,8 +226,8 @@ export const lightingProducts: LightingProduct[] = [
   dimmable: true,
   motionSensor: false,
 
-  // ✅ ЦЕНА
-  priceOnRequest: true,
+   price: 7.5,
+    currency: "EUR",
    
     image:
       "/images/lighting/interior/decorative/elit-led-320-cob-24vdc-4000k-5m.jpg",
