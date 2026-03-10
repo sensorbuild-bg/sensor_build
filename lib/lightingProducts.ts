@@ -836,7 +836,7 @@ export const lightingProducts: LightingProduct[] = [
     en: "l.m.",
   },
 
-  image:
-    "/images/lighting/exterior/led-strips/orlo-led-4000k-ip65-12vdc-5m.jpg",
+ image:
+"/images/lighting/exterior/garden/orlo-led-4000k-ip65-12vdc-5m.jpg",
 },
 ];
