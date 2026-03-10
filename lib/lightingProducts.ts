@@ -11,6 +11,7 @@ export type LightingSubcategory =
   | "interiorCeiling"
   | "interiorWall"
   | "chandeliers"
+  | "interiorDecorative" // ✅ НОВО: декоративно (интериорно)
   | "exteriorWall"
   | "exteriorCeiling"
   | "garden"
@@ -54,9 +55,16 @@ export type LightingProduct = {
   remoteControl?: boolean;
 
   // Price
-  price: number;
-  currency: "EUR";
+  priceOnRequest?: boolean; // ✅ НОВО: „По запитване“
+  price?: number; // ✅ вече е optional
+  currency?: "EUR"; // ✅ вече е optional
 
+    // ✅ Единица за продажба
+  unit?: {
+    bg: string;
+    en: string;
+  };
+  
   // Image in /public
   image: string;
 };
@@ -198,6 +206,45 @@ export const lightingProducts: LightingProduct[] = [
   },
 
   // ---------------------------
+  // INTERIOR (DECORATIVE) ✅ НОВО
+  // ---------------------------
+  {
+     id: "elit-led-320-cob-24vdc-4000k-5m",
+  name: "LED лента ELIT LED · 320 COB · 24VDC · 4000K · 5m",
+  nameEn: "ELIT LED Strip · 320 COB · 24VDC · 4000K · 5m",
+  marketingText:
+    "Декоративна COB LED лента за интериор – равномерна светлина без видими диоди, висок CRI и възможност за димиране.",
+  marketingTextEn:
+    "Decorative COB LED strip for interiors — uniform light without visible diodes, high CRI and dimmable operation.",
+  category: "interior",
+  subcategory: "interiorDecorative",
+
+  socket: "Integrated LED",
+  ip: "IP20",
+
+  cct: "4000K",
+  voltage: "24VDC",
+
+  cri: "≥90",
+  lifetime: 25000,
+  beamAngle: 120,
+
+  dimmable: true,
+  motionSensor: false,
+
+   price: 7.5,
+    currency: "EUR",
+
+   unit: {
+  bg: "л.м.",
+  en: "l.m."
+}, 
+    
+    image:
+      "/images/lighting/interior/decorative/elit-led-320-cob-24vdc-4000k-5m.jpg",
+  },
+
+  // ---------------------------
   // EXTERIOR (WALL)
   // ---------------------------
   {
@@ -216,7 +263,6 @@ export const lightingProducts: LightingProduct[] = [
     frequency: "50/60Hz",
     price: 40,
     currency: "EUR",
-    // ✅ това е реалното име от папката ти
     image: "/images/lighting/exterior/wall/bergamo-wall-ip65-gu10.jpg",
   },
   {
@@ -237,7 +283,6 @@ export const lightingProducts: LightingProduct[] = [
     currency: "EUR",
     image: "/images/lighting/exterior/wall/bergamo-2xgu10-ip65.jpg",
   },
-
   {
     id: "aruba-white",
     name: "LED фасаден аплик ARUBA LED 6W бял CCT (3000/4000/6400K)",
@@ -282,7 +327,6 @@ export const lightingProducts: LightingProduct[] = [
     currency: "EUR",
     image: "/images/lighting/exterior/wall/aruba-led-6w-black-cct-ip65.jpg",
   },
-
   {
     id: "seoul",
     name: "Фасаден аплик SEOUL/W 1xGU10 черен",
@@ -301,7 +345,6 @@ export const lightingProducts: LightingProduct[] = [
     currency: "EUR",
     image: "/images/lighting/exterior/wall/seoul-w-1xgu10-ip44-black.jpg",
   },
-
   {
     id: "porto-r-1",
     name: "Фасаден аплик PORTO/R 1xGU10 черен",
@@ -338,7 +381,6 @@ export const lightingProducts: LightingProduct[] = [
     currency: "EUR",
     image: "/images/lighting/exterior/wall/porto-r-2xgu10-ip44-black.jpg",
   },
-
   {
     id: "porto-sq-1-white",
     name: "Фасаден аплик PORTO/SQ 1xGU10 бял",
@@ -411,7 +453,6 @@ export const lightingProducts: LightingProduct[] = [
     currency: "EUR",
     image: "/images/lighting/exterior/wall/porto-sq-2xgu10-ip44-black.jpg",
   },
-
   {
     id: "capri-o-led-12w-4000k-ip54-white",
     name: "LED фасаден аплик CAPRI/O LED 12W 4000K бял IP54",
@@ -616,66 +657,67 @@ export const lightingProducts: LightingProduct[] = [
     currency: "EUR",
     image: "/images/lighting/industrial/kent-led-45w-1500mm-4000k.jpg",
   },
-   // ---------------------------
+
+  // ---------------------------
   // GARDEN
   // ---------------------------
   {
-  id: "oradea-r-gu10-ip65-nickel",
-  name: "Осветително тяло за земя ORADEA/R · 1xGU10 · Никел мат · IP65",
-  nameEn: "ORADEA/R In-ground Light · 1xGU10 · Matte Nickel · IP65",
-  marketingText:
-    "Компактно тяло за вграждане в земя – идеално за алеи и дворни зони, с GU10 фасунга и защита IP65 за външни условия.",
-  marketingTextEn:
-    "Compact in-ground light — perfect for pathways and outdoor areas, with a GU10 socket and IP65 protection for exterior use.",
-  category: "exterior",
-  subcategory: "garden",
-  voltage: "230V",
-  frequency: "50/60Hz",
-  socket: "GU10",
-  ip: "IP65",
-  motionSensor: false,
-  price: 45,
-  currency: "EUR",
-  image: "/images/lighting/exterior/garden/oradea-r-gu10-ip65-vivalux.jpg",
-},
-{
-  id: "acer-sp-gu10-ip65-black",
-  name: "Градински прожектор ACER/SP · GU10 · Черен · IP65",
-  nameEn: "ACER/SP Garden Spike Spotlight · GU10 · Black · IP65",
-  marketingText:
-    "Градински прожектор с колче за лесен монтаж в почва – насочваш светлината към растения, фасади и декоративни елементи. IP65 и GU10 фасунга.",
-  marketingTextEn:
-    "Garden spike spotlight for easy installation in soil — aim the light at plants, facades, or decorative elements. IP65 protection and GU10 socket.",
-  category: "exterior",
-  subcategory: "garden",
-  voltage: "230V",
-  frequency: "50/60Hz",
-  socket: "GU10",
-  ip: "IP65",
-  motionSensor: false,
-  price: 40,
-  currency: "EUR",
-  image: "/images/lighting/exterior/garden/acer-sp-gu10-ip65-vivalux.jpg",
-},
-{
-  id: "pulsar-led-0-8w-ip65",
-  name: "LED осветително тяло за земя PULSAR LED · 0.8W · IP65",
-  nameEn: "PULSAR LED In-ground Light · 0.8W · IP65",
-  marketingText:
-    "LED тяло за вграждане в настилки и алеи – компактно, устойчиво и подходящо за външни условия. Интегриран LED източник и IP65 защита.",
-  marketingTextEn:
-    "LED in-ground light for pavements and pathways — compact, durable and suitable for outdoor use. Integrated LED source and IP65 protection.",
-  category: "exterior",
-  subcategory: "garden",
-  power: 0.8,
-  voltage: "230V",
-  frequency: "50/60Hz",
-  socket: "Integrated LED",
-  ip: "IP65",
-  lifetime: 30000,
-  motionSensor: false,
-  price: 45,
-  currency: "EUR",
-  image: "/images/lighting/exterior/garden/pulsar-led-ip65-vivalux.jpg",
-},
+    id: "oradea-r-gu10-ip65-nickel",
+    name: "Осветително тяло за земя ORADEA/R · 1xGU10 · Никел мат · IP65",
+    nameEn: "ORADEA/R In-ground Light · 1xGU10 · Matte Nickel · IP65",
+    marketingText:
+      "Компактно тяло за вграждане в земя – идеално за алеи и дворни зони, с GU10 фасунга и защита IP65 за външни условия.",
+    marketingTextEn:
+      "Compact in-ground light — perfect for pathways and outdoor areas, with a GU10 socket and IP65 protection for exterior use.",
+    category: "exterior",
+    subcategory: "garden",
+    voltage: "230V",
+    frequency: "50/60Hz",
+    socket: "GU10",
+    ip: "IP65",
+    motionSensor: false,
+    price: 45,
+    currency: "EUR",
+    image: "/images/lighting/exterior/garden/oradea-r-gu10-ip65-vivalux.jpg",
+  },
+  {
+    id: "acer-sp-gu10-ip65-black",
+    name: "Градински прожектор ACER/SP · GU10 · Черен · IP65",
+    nameEn: "ACER/SP Garden Spike Spotlight · GU10 · Black · IP65",
+    marketingText:
+      "Градински прожектор с колче за лесен монтаж в почва – насочваш светлината към растения, фасади и декоративни елементи. IP65 и GU10 фасунга.",
+    marketingTextEn:
+      "Garden spike spotlight for easy installation in soil — aim the light at plants, facades, or decorative elements. IP65 protection and GU10 socket.",
+    category: "exterior",
+    subcategory: "garden",
+    voltage: "230V",
+    frequency: "50/60Hz",
+    socket: "GU10",
+    ip: "IP65",
+    motionSensor: false,
+    price: 40,
+    currency: "EUR",
+    image: "/images/lighting/exterior/garden/acer-sp-gu10-ip65-vivalux.jpg",
+  },
+  {
+    id: "pulsar-led-0-8w-ip65",
+    name: "LED осветително тяло за земя PULSAR LED · 0.8W · IP65",
+    nameEn: "PULSAR LED In-ground Light · 0.8W · IP65",
+    marketingText:
+      "LED тяло за вграждане в настилки и алеи – компактно, устойчиво и подходящо за външни условия. Интегриран LED източник и IP65 защита.",
+    marketingTextEn:
+      "LED in-ground light for pavements and pathways — compact, durable and suitable for outdoor use. Integrated LED source and IP65 protection.",
+    category: "exterior",
+    subcategory: "garden",
+    power: 0.8,
+    voltage: "230V",
+    frequency: "50/60Hz",
+    socket: "Integrated LED",
+    ip: "IP65",
+    lifetime: 30000,
+    motionSensor: false,
+    price: 45,
+    currency: "EUR",
+    image: "/images/lighting/exterior/garden/pulsar-led-ip65-vivalux.jpg",
+  },
 ];

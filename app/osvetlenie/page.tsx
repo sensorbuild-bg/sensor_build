@@ -18,6 +18,7 @@ type Category =
 type Subcategory =
   | "interiorWall"
   | "interiorCeiling"
+  | "interiorDecorative"
   | "downlights"
   | "panels"
   | "track"
@@ -38,6 +39,7 @@ type Product = {
   desc: { bg: string; en: string };
 
   priceEur: number;
+  unit?: { bg: string; en: string };
 
   category: Category;
   subcategory?: Subcategory;
@@ -202,6 +204,7 @@ export default function LightingPage() {
           subs: {
             interiorWall: "Аплици",
             interiorCeiling: "Плафониери",
+            interiorDecorative: "Декоративно осветление",
             downlights: "LED луни",
             panels: "LED панели",
             track: "Релсови системи",
@@ -211,6 +214,8 @@ export default function LightingPage() {
             garden: "Градинско осветление",
             commonCeiling: "Тела за общи части (таван)",
             commonWall: "Тела за общи части (стена)",
+            industrial: "Индустриални осветители",
+            emergency: "Аварийни осветители",
           } as Record<Subcategory, string>,
 
           rootTitle: "Осветителни тела",
@@ -268,6 +273,7 @@ export default function LightingPage() {
           subs: {
             interiorWall: "Wall lights",
             interiorCeiling: "Ceiling lights",
+            interiorDecorative: "Decorative lighting",
             downlights: "LED downlights",
             panels: "LED panels",
             track: "Track systems",
@@ -277,6 +283,8 @@ export default function LightingPage() {
             garden: "Garden lighting",
             commonCeiling: "Common ceiling lights",
             commonWall: "Common wall lights",
+            industrial: "Industrial fixtures",
+            emergency: "Emergency fixtures",
           } as Record<Subcategory, string>,
 
           rootTitle: "Fixtures",
@@ -346,7 +354,7 @@ export default function LightingPage() {
         }
       }
 
-     return {
+ return {
   id: String(p.id),
   img: String(p.image ?? ""),
 
@@ -362,6 +370,7 @@ export default function LightingPage() {
   },
 
   priceEur: Number(p.price ?? 0),
+  unit: p.unit,
 
         category: mappedCategory,
         subcategory: mappedSub,
@@ -713,10 +722,13 @@ export default function LightingPage() {
                                   ) : null}
 
                                   <div className={`mt-4 rounded-xl p-3 ${greenBorder}`}>
-                                    <p className="text-sm font-semibold">
-                                      {content.priceFrom} {p.priceEur} € /{" "}
-                                      {lang === "bg" ? "бр." : "pcs"}
-                                    </p>
+                                   <p className="text-sm font-semibold">
+  {content.priceFrom}{" "}
+  {lang === "bg"
+    ? p.priceEur.toLocaleString("bg-BG")
+    : p.priceEur.toLocaleString("en-US")}{" "}
+  € / {lang === "bg" ? p.unit?.bg ?? "бр." : p.unit?.en ?? "pcs"}
+</p>
                                     <p className={`text-xs ${mutedText}`}>
                                       {content.priceSub}
                                     </p>
