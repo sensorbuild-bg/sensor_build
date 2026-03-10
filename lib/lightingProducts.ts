@@ -21,7 +21,7 @@ export type LightingSubcategory =
   | "commonCeiling"
   | "commonWall";
 
-export type SocketType = "GU10" | "E27" | "E14" | "Integrated LED" | "2xG13";
+export type SocketType = "GU10" | "E27" | "E14" | "Integrated LED" | "G13";
 
 export type LightingProduct = {
   id: string;
@@ -69,6 +69,8 @@ export type LightingProduct = {
   // Image in /public
   image: string;
 };
+
+
 
 export const lightingProducts: LightingProduct[] = [
   // ---------------------------
@@ -205,6 +207,69 @@ export const lightingProducts: LightingProduct[] = [
     currency: "EUR",
     image: "/images/lighting/interior/ceiling/river-led-24w-black-4000k.jpg",
   },
+
+  {
+  id: "flat-led-18w-600mm-4000k",
+  name: "LED линейно осветително тяло FLAT LED · 18W · 600 mm · 4000K",
+  nameEn: "FLAT LED Linear Ceiling Light · 18W · 600 mm · 4000K",
+  marketingText:
+    "Компактно линейно осветително тяло за кухни, коридори и сервизни помещения. Осигурява равномерна светлина и комфорт без трептене.",
+  marketingTextEn:
+    "Compact linear lighting fixture for kitchens, corridors and utility spaces. Provides uniform light with flicker-free comfort.",
+  category: "interior",
+  subcategory: "interiorCeiling",
+  ip: "IP20",
+  flickerFree: true,
+  voltage: "230V",
+  frequency: "50/60Hz",
+  power: 18,
+  cct: "4000K",
+  price: 32,
+  currency: "EUR",
+  image: "/images/lighting/interior/ceiling/flat-led-18w-600mm-4000k.jpg",
+},
+
+{
+  id: "flat-led-36w-1200mm-4000k",
+  name: "LED линейно осветително тяло FLAT LED · 36W · 1200 mm · 4000K",
+  nameEn: "FLAT LED Linear Ceiling Light · 36W · 1200 mm · 4000K",
+  marketingText:
+    "Линейно осветление с по-голяма дължина и мощност – подходящо за кухни, офиси и работни помещения.",
+  marketingTextEn:
+    "Longer and more powerful linear lighting solution suitable for kitchens, offices and workspaces.",
+  category: "interior",
+  subcategory: "interiorCeiling",
+  ip: "IP20",
+  flickerFree: true,
+  voltage: "230V",
+  frequency: "50/60Hz",
+  power: 36,
+  cct: "4000K",
+  price: 36,
+  currency: "EUR",
+  image: "/images/lighting/interior/ceiling/flat-led-36w-1200mm-4000k.jpg",
+},
+
+{
+  id: "flat-led-45w-1500mm-4000k",
+  name: "LED линейно осветително тяло FLAT LED · 45W · 1500 mm · 4000K",
+  nameEn: "FLAT LED Linear Ceiling Light · 45W · 1500 mm · 4000K",
+  marketingText:
+    "Удължено линейно осветително тяло с висока мощност за по-големи помещения и работни пространства.",
+  marketingTextEn:
+    "Extended linear lighting fixture with higher output for larger rooms and workspaces.",
+  category: "interior",
+  subcategory: "interiorCeiling",
+  ip: "IP20",
+  flickerFree: true,
+  voltage: "230V",
+  frequency: "50/60Hz",
+  power: 45,
+  cct: "4000K",
+  price: 41,
+  currency: "EUR",
+  image: "/images/lighting/interior/ceiling/flat-led-45w-1500mm-4000k.jpg",
+},
 
   // ---------------------------
   // INTERIOR (DECORATIVE) ✅ НОВО
@@ -634,6 +699,88 @@ export const lightingProducts: LightingProduct[] = [
   },
 
   // ---------------------------
+// COMMON AREAS (STAIRCASES & CORRIDORS)
+// ---------------------------
+{
+  id: "leo-f30-sr36-sensor",
+  name: "Плафониера със сензор за движение LEO F30 SR36",
+  nameEn: "LEO F30 SR36 Motion Sensor Ceiling Light",
+  marketingText:
+    "Плафониера със сензор за движение – идеално решение за коридори, стълбища и входове.",
+  marketingTextEn:
+    "Ceiling light with motion sensor – ideal for corridors, staircases and entrances.",
+  category: "commonAreas",
+  subcategory: "commonCeiling",
+  ip: "IP20",
+  socket: "E27",
+  motionSensor: true,
+  voltage: "230V",
+  frequency: "50/60Hz",
+  price: 38,
+  currency: "EUR",
+  image: "/images/lighting/common-areas/leo-f30-sr36-sensor-ceiling.jpg",
+},
+
+  {
+  id: "dion-led-11w-sr36-sensor",
+  name: "LED луна за вграждане със сензор за движение DION LED 11W SR36",
+  nameEn: "DION LED 11W Recessed Downlight with Motion Sensor SR36",
+  marketingText:
+    "Вградена LED луна със сензор за движение – практично решение за коридори, стълбища и входни пространства в общи части.",
+  marketingTextEn:
+    "Recessed LED downlight with motion sensor – a practical solution for corridors, staircases and entrance areas in common spaces.",
+  category: "commonAreas",
+  subcategory: "commonCeiling",
+  ip: "IP20",
+  socket: "Integrated LED",
+  motionSensor: true,
+  voltage: "230V",
+  frequency: "50/60Hz",
+  power: 11,
+  cct: "4000K",
+  cri: "≥80",
+  lifetime: 50000,
+  beamAngle: 120,
+  price: 41,
+  currency: "EUR",
+  image: "/images/lighting/common-areas/dion-led-11w-sr36-sensor.jpg",
+},
+
+  {
+  id: "kena-led-12w-mw36-ip44",
+  name: "LED плафониера с микровълнов сензор KENA LED · 12W · MW36 · IP44",
+  nameEn: "KENA LED Ceiling Light with Microwave Sensor · 12W · MW36 · IP44",
+
+  marketingText:
+    "LED плафониера с микровълнов сензор за движение – подходяща за коридори, стълбища, входове и общи части. IP44 защита за по-надеждна работа.",
+
+  marketingTextEn:
+    "LED ceiling light with microwave motion sensor – ideal for corridors, staircases, entrances and common areas. IP44 protection for reliable operation.",
+
+  category: "commonAreas",
+  subcategory: "commonCeiling",
+
+  socket: "Integrated LED",
+  ip: "IP44",
+
+  power: 12,
+  cct: "4000K",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  cri: "≥80",
+  lifetime: 50000,
+  beamAngle: 120,
+
+  motionSensor: true,
+
+  price: 49,
+  currency: "EUR",
+
+  image: "/images/lighting/common-areas/kena-led-12w-mw36-ip44.jpg",
+},
+  
+  // ---------------------------
   // INDUSTRIAL
   // ---------------------------
   {
@@ -647,7 +794,7 @@ export const lightingProducts: LightingProduct[] = [
     category: "industrial",
     subcategory: "industrial",
     ip: "IP65",
-    socket: "2xG13",
+    socket: "G13",
     voltage: "230V",
     frequency: "50/60Hz",
     price: 45,
@@ -665,7 +812,7 @@ export const lightingProducts: LightingProduct[] = [
     category: "industrial",
     subcategory: "industrial",
     ip: "IP65",
-    socket: "2xG13",
+    socket: "G13",
     voltage: "230V",
     frequency: "50/60Hz",
     price: 55,
