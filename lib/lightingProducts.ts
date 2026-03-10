@@ -216,7 +216,6 @@ export const lightingProducts: LightingProduct[] = [
 
   marketingText:
     "Декоративна COB LED лента за интериор – равномерна светлина без видими диоди, висок CRI и възможност за димиране.",
-
   marketingTextEn:
     "Decorative COB LED strip for interiors — uniform light without visible diodes, high CRI and dimmable operation.",
 
@@ -231,7 +230,6 @@ export const lightingProducts: LightingProduct[] = [
 
   cri: "≥90",
   flickerFree: true,
-
   lifetime: 25000,
   beamAngle: 120,
 
@@ -243,17 +241,12 @@ export const lightingProducts: LightingProduct[] = [
 
   unit: {
     bg: "л.м.",
-    en: "l.m."
+    en: "l.m.",
   },
 
   image:
     "/images/lighting/interior/decorative/elit-led-320-cob-24vdc-4000k-5m.jpg",
-}, 
-    
-    image:
-      "/images/lighting/interior/decorative/elit-led-320-cob-24vdc-4000k-5m.jpg",
-  },
-
+},
   {
   id: "brix-led-360-cob-digital-24vdc-4000k-5m",
   name: "LED дигитална лента BRIX LED · 360 COB · 24VDC · 4000K · 5m",
