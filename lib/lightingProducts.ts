@@ -840,7 +840,7 @@ export const lightingProducts: LightingProduct[] = [
 
   unit: {
     bg: "л.м.",
-    en: "l.m."
+    en: "l.m.",
   },
 
   image:
