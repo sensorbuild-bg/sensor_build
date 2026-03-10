@@ -228,7 +228,12 @@ export const lightingProducts: LightingProduct[] = [
 
    price: 7.5,
     currency: "EUR",
-   
+
+   unit: {
+  bg: "л.м.",
+  en: "l.m."
+}, 
+    
     image:
       "/images/lighting/interior/decorative/elit-led-320-cob-24vdc-4000k-5m.jpg",
   },
