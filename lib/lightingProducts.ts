@@ -15,6 +15,7 @@ export type LightingSubcategory =
   | "exteriorWall"
   | "exteriorCeiling"
   | "garden"
+  | "exteriorLedStrips"
   | "industrial"
   | "emergency"
   | "commonCeiling"
