@@ -645,113 +645,115 @@ sensor: Boolean(p.motionSensor),
             </select>
           </div>
 
-          {/* categories */}
-          <div className="mt-8 space-y-4">
-            {(Object.keys(content.categories) as Category[]).map((cat) => {
-              const catObj = tree[cat];
-              const hasAny = Object.keys(catObj).some(
-                (k) => (catObj[k]?.length ?? 0) > 0
-              );
-              if (!hasAny) return null;
+         {/* categories */}
+<div className="mt-8 space-y-4">
+  {(Object.keys(content.categories) as Category[]).map((cat) => {
+    const catObj = tree[cat];
+    const hasAny = Object.keys(catObj).some(
+      (k) => (catObj[k]?.length ?? 0) > 0
+    );
+    if (!hasAny) return null;
 
-              // 🔥 IMPORTANT: render ALL subkeys incl "__root__"
-              const subsToRender = Object.keys(catObj).filter(
-                (k) => (catObj[k]?.length ?? 0) > 0
-              );
-
-              return (
-                <details key={cat} className={`rounded-2xl p-4 ${greenBorder}`}>
-                  <summary className="cursor-pointer select-none text-base font-semibold">
-                    {content.categories[cat]}
-                  </summary>
-
-                 <div className="mt-5 space-y-4">
-  {subsToRender.map((subKey) => {
-    const title =
-      subKey === "__root__"
-        ? content.rootTitle
-        : (content.subs as any)[subKey] ?? subKey;
+    const subsToRender = Object.keys(catObj).filter(
+      (k) => (catObj[k]?.length ?? 0) > 0
+    );
 
     return (
-      <details
-        key={subKey}
-        className={`rounded-2xl p-4 ${greenBorder}`}
-      >
-        <summary className="cursor-pointer select-none text-sm font-semibold">
-          {title}
+      <details key={cat} className={`rounded-2xl p-4 ${greenBorder}`}>
+        <summary className="cursor-pointer select-none text-base font-semibold">
+          {content.categories[cat]}
         </summary>
 
-        <div className="mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {catObj[subKey]!.map((p) => {
-            const name = lang === "bg" ? p.name.bg : p.name.en;
-            const desc = lang === "bg" ? p.desc.bg : p.desc.en;
+        <div className="mt-5 space-y-4">
+          {subsToRender.map((subKey) => {
+            const title =
+              subKey === "__root__"
+                ? content.rootTitle
+                : (content.subs as any)[subKey] ?? subKey;
 
             return (
-              <article
-                key={p.id}
+              <details
+                key={subKey}
                 className={`rounded-2xl p-4 ${greenBorder}`}
               >
-                <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-white p-3">
-                  <Image
-                    src={p.img}
-                    alt={name}
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 1024px) 50vw, 25vw"
-                  />
+                <summary className="cursor-pointer select-none text-sm font-semibold">
+                  {title}
+                </summary>
+
+                <div className="mt-5 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                  {catObj[subKey]!.map((p) => {
+                    const name = lang === "bg" ? p.name.bg : p.name.en;
+                    const desc = lang === "bg" ? p.desc.bg : p.desc.en;
+
+                    return (
+                      <article
+                        key={p.id}
+                        className={`rounded-2xl p-4 ${greenBorder}`}
+                      >
+                        <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-white p-3">
+                          <Image
+                            src={p.img}
+                            alt={name}
+                            fill
+                            className="object-contain"
+                            sizes="(max-width: 1024px) 50vw, 25vw"
+                          />
+                        </div>
+
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          {p.flickerFree && (
+                            <Badge lang={lang}>Flicker-Free</Badge>
+                          )}
+                          {p.ra90 && <Badge lang={lang}>Ra≥90</Badge>}
+                          {p.ip && <Badge lang={lang}>{p.ip}</Badge>}
+                          {p.dimmable && (
+                            <Badge lang={lang}>{content.dimLabel}</Badge>
+                          )}
+                          {p.sensor && (
+                            <Badge lang={lang}>{content.sensorLabel}</Badge>
+                          )}
+                          {p.socket && <Badge lang={lang}>{p.socket}</Badge>}
+                        </div>
+
+                        <h3 className="mt-3 text-base font-semibold">
+                          {name}
+                        </h3>
+
+                        {desc ? (
+                          <p className={`mt-2 text-sm ${mutedText}`}>{desc}</p>
+                        ) : null}
+
+                        <div className={`mt-4 rounded-xl p-3 ${greenBorder}`}>
+                          <p className="text-sm font-semibold">
+                            {content.priceFrom}{" "}
+                            {lang === "bg"
+                              ? p.priceEur.toLocaleString("bg-BG")
+                              : p.priceEur.toLocaleString("en-US")}{" "}
+                            € /{" "}
+                            {lang === "bg"
+                              ? p.unit?.bg ?? "бр."
+                              : p.unit?.en ?? "pcs"}
+                          </p>
+                          <p className={`text-xs ${mutedText}`}>
+                            {content.priceSub}
+                          </p>
+                        </div>
+
+                        <button
+                          onClick={() => goContacts(p)}
+                          className={`mt-4 inline-flex w-full items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold ${
+                            lang === "bg"
+                              ? "border-2 border-[#2d6b35] hover:text-[#4da855] hover:border-[#4da855]"
+                              : "border border-[#2d6b35] text-black hover:bg-[#2d6b35] hover:text-white"
+                          }`}
+                        >
+                          {content.cta}
+                        </button>
+                      </article>
+                    );
+                  })}
                 </div>
-
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {p.flickerFree && (
-                    <Badge lang={lang}>Flicker-Free</Badge>
-                  )}
-                  {p.ra90 && <Badge lang={lang}>Ra≥90</Badge>}
-                  {p.ip && <Badge lang={lang}>{p.ip}</Badge>}
-                  {p.dimmable && (
-                    <Badge lang={lang}>{content.dimLabel}</Badge>
-                  )}
-                  {p.sensor && (
-                    <Badge lang={lang}>{content.sensorLabel}</Badge>
-                  )}
-                  {p.socket && (
-                    <Badge lang={lang}>{p.socket}</Badge>
-                  )}
-                </div>
-
-                <h3 className="mt-3 text-base font-semibold">
-                  {name}
-                </h3>
-
-                {desc ? (
-                  <p className={`mt-2 text-sm ${mutedText}`}>
-                    {desc}
-                  </p>
-                ) : null}
-
-                <div className={`mt-4 rounded-xl p-3 ${greenBorder}`}>
-                  <p className="text-sm font-semibold">
-                    {content.priceFrom}{" "}
-                    {lang === "bg"
-                      ? p.priceEur.toLocaleString("bg-BG")
-                      : p.priceEur.toLocaleString("en-US")}{" "}
-                    € / {lang === "bg" ? p.unit?.bg ?? "бр." : p.unit?.en ?? "pcs"}
-                  </p>
-                  <p className={`text-xs ${mutedText}`}>
-                    {content.priceSub}
-                  </p>
-                </div>
-
-                <button
-                  onClick={() => goContacts(p)}
-                  className={`mt-4 inline-flex w-full items-center justify-center rounded-xl px-4 py-2.5 text-sm font-semibold ${
-                    lang === "bg"
-                      ? "border-2 border-[#2d6b35] hover:text-[#4da855] hover:border-[#4da855]"
-                      : "border border-[#2d6b35] text-black hover:bg-[#2d6b35] hover:text-white"
-                  }`}
-                >
-                  {content.cta}
-                </button>
-              </article>
+              </details>
             );
           })}
         </div>
