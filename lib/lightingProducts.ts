@@ -797,7 +797,7 @@ export const lightingProducts: LightingProduct[] = [
     currency: "EUR",
     image: "/images/lighting/exterior/garden/pulsar-led-ip65-vivalux.jpg",
   },
-];
+
 {
   id: "orlo-led-4000k-ip65-12vdc-5m",
   name: "LED лента ORLO LED · 4000K · 12VDC · IP65 · 5m",
@@ -835,3 +835,4 @@ export const lightingProducts: LightingProduct[] = [
   image:
     "/images/lighting/exterior/led-strips/orlo-led-4000k-ip65-12vdc-5m.jpg",
 },
+];
