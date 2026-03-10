@@ -21,7 +21,7 @@ export type LightingSubcategory =
   | "commonCeiling"
   | "commonWall";
 
-export type SocketType = "GU10" | "E27" | "E14" | "Integrated LED" | "2xG13";
+export type SocketType = "GU10" | "E27" | "E14" | "Integrated LED" | "G13";
 
 export type LightingProduct = {
   id: string;
