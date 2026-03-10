@@ -244,6 +244,83 @@ export const lightingProducts: LightingProduct[] = [
       "/images/lighting/interior/decorative/elit-led-320-cob-24vdc-4000k-5m.jpg",
   },
 
+  {
+  id: "brix-led-360-cob-digital-24vdc-4000k-5m",
+  name: "LED дигитална лента BRIX LED · 360 COB · 24VDC · 4000K · 5m",
+  nameEn: "BRIX LED Digital Strip · 360 COB · 24VDC · 4000K · 5m",
+
+  marketingText:
+    "Дигитална COB LED лента с chasing ефект – създава динамични светлинни сцени без видими диоди. Подходяща за модерни интериори, ниши и декоративно осветление.",
+
+  marketingTextEn:
+    "Digital COB LED strip with chasing effect — creates dynamic lighting scenes without visible diodes. Ideal for modern interiors, niches and decorative lighting.",
+
+  category: "interior",
+  subcategory: "interiorDecorative",
+
+  socket: "Integrated LED",
+  ip: "IP20",
+
+  cct: "4000K",
+  voltage: "24VDC",
+
+  cri: "≥90",
+  lifetime: 25000,
+  beamAngle: 120,
+
+  dimmable: true,
+  motionSensor: false,
+
+  price: 11,
+  currency: "EUR",
+
+  unit: {
+    bg: "л.м.",
+    en: "l.m."
+  },
+
+  image:
+    "/images/lighting/interior/decorative/brix-led-360-cob-digital-24vdc-4000k-5m.jpg",
+},
+
+{
+  id: "rgb-mega-led-30-smd5050-12vdc-5m",
+  name: "LED лента RGB MEGA LED · 30 SMD5050 · 12VDC · 5m",
+  nameEn: "RGB MEGA LED Strip · 30 SMD5050 · 12VDC · 5m",
+
+  marketingText:
+    "RGB LED лента за декоративно осветление – позволява създаване на цветни светлинни ефекти и атмосфера в интериора.",
+
+  marketingTextEn:
+    "RGB LED strip for decorative lighting — allows creation of colorful lighting effects and ambience in interiors.",
+
+  category: "interior",
+  subcategory: "interiorDecorative",
+
+  socket: "Integrated LED",
+  ip: "IP20",
+
+  cct: "RGB",
+  voltage: "12VDC",
+
+  lifetime: 25000,
+  beamAngle: 120,
+
+  dimmable: true,
+  motionSensor: false,
+
+  price: 7,
+  currency: "EUR",
+
+  unit: {
+    bg: "л.м.",
+    en: "l.m."
+  },
+
+  image:
+    "/images/lighting/interior/decorative/rgb-mega-led-30-smd5050-12vdc-5m.jpg",
+},
+
   // ---------------------------
   // EXTERIOR (WALL)
   // ---------------------------
@@ -721,3 +798,40 @@ export const lightingProducts: LightingProduct[] = [
     image: "/images/lighting/exterior/garden/pulsar-led-ip65-vivalux.jpg",
   },
 ];
+{
+  id: "orlo-led-4000k-ip65-12vdc-5m",
+  name: "LED лента ORLO LED · 4000K · 12VDC · IP65 · 5m",
+  nameEn: "ORLO LED Strip · 4000K · 12VDC · IP65 · 5m",
+
+  marketingText:
+    "Водоустойчива LED лента с IP65 защита – подходяща за фасади, тераси, градини и външни декоративни решения.",
+
+  marketingTextEn:
+    "Waterproof LED strip with IP65 protection — suitable for facades, terraces, gardens and outdoor decorative lighting.",
+
+  category: "exterior",
+  subcategory: "exteriorLedStrips",
+
+  socket: "Integrated LED",
+  ip: "IP65",
+
+  cct: "4000K",
+  voltage: "12VDC",
+
+  lifetime: 25000,
+  beamAngle: 120,
+
+  dimmable: true,
+  motionSensor: false,
+
+  price: 7,
+  currency: "EUR",
+
+  unit: {
+    bg: "л.м.",
+    en: "l.m."
+  },
+
+  image:
+    "/images/lighting/exterior/led-strips/orlo-led-4000k-ip65-12vdc-5m.jpg",
+},
