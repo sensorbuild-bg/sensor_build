@@ -59,6 +59,12 @@ export type LightingProduct = {
   price?: number; // ✅ вече е optional
   currency?: "EUR"; // ✅ вече е optional
 
+    // ✅ Единица за продажба
+  unit?: {
+    bg: string;
+    en: string;
+  };
+  
   // Image in /public
   image: string;
 };
