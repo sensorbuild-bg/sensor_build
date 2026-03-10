@@ -720,6 +720,32 @@ export const lightingProducts: LightingProduct[] = [
   currency: "EUR",
   image: "/images/lighting/common-areas/leo-f30-sr36-sensor-ceiling.jpg",
 },
+
+  {
+  id: "dion-led-11w-sr36-sensor",
+  name: "LED луна за вграждане със сензор за движение DION LED 11W SR36",
+  nameEn: "DION LED 11W Recessed Downlight with Motion Sensor SR36",
+  marketingText:
+    "Вградена LED луна със сензор за движение – практично решение за коридори, стълбища и входни пространства в общи части.",
+  marketingTextEn:
+    "Recessed LED downlight with motion sensor – a practical solution for corridors, staircases and entrance areas in common spaces.",
+  category: "commonAreas",
+  subcategory: "commonCeiling",
+  ip: "IP20",
+  socket: "Integrated LED",
+  motionSensor: true,
+  voltage: "230V",
+  frequency: "50/60Hz",
+  power: 11,
+  cct: "4000K",
+  cri: "≥80",
+  lifetime: 50000,
+  beamAngle: 120,
+  price: 41,
+  currency: "EUR",
+  image: "/images/lighting/common-areas/dion-led-11w-sr36-sensor.jpg",
+},
+  
   // ---------------------------
   // INDUSTRIAL
   // ---------------------------
