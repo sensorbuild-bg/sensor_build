@@ -745,6 +745,40 @@ export const lightingProducts: LightingProduct[] = [
   currency: "EUR",
   image: "/images/lighting/common-areas/dion-led-11w-sr36-sensor.jpg",
 },
+
+  {
+  id: "kena-led-12w-mw36-ip44",
+  name: "LED плафониера с микровълнов сензор KENA LED · 12W · MW36 · IP44",
+  nameEn: "KENA LED Ceiling Light with Microwave Sensor · 12W · MW36 · IP44",
+
+  marketingText:
+    "LED плафониера с микровълнов сензор за движение – подходяща за коридори, стълбища, входове и общи части. IP44 защита за по-надеждна работа.",
+
+  marketingTextEn:
+    "LED ceiling light with microwave motion sensor – ideal for corridors, staircases, entrances and common areas. IP44 protection for reliable operation.",
+
+  category: "commonAreas",
+  subcategory: "commonCeiling",
+
+  socket: "Integrated LED",
+  ip: "IP44",
+
+  power: 12,
+  cct: "4000K",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  cri: "≥80",
+  lifetime: 50000,
+  beamAngle: 120,
+
+  motionSensor: true,
+
+  price: 49,
+  currency: "EUR",
+
+  image: "/images/lighting/common-areas/kena-led-12w-mw36-ip44.jpg",
+},
   
   // ---------------------------
   // INDUSTRIAL
