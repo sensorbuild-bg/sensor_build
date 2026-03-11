@@ -337,7 +337,7 @@ export const lightingProducts: LightingProduct[] = [
   motionSensor: false,
   dimmable: false,
 
-  price: 39,
+  price: 40,
   currency: "EUR",
 
   image: "/images/lighting/interior/spots/frodo-sp794-e27-black.jpg",
