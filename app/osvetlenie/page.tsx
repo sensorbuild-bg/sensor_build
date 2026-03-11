@@ -469,10 +469,10 @@ export default function LightingPage() {
     lang === "bg" ? "border-2 border-[#2d6b35]" : "border border-[#2d6b35]";
 
   return (
-    <main className={`min-h-screen ${pageBg}`}>
+   <main className={`min-h-screen ${pageBg} pt-[110px] md:pt-[120px]`}>
       <section className="mx-auto max-w-7xl px-4 py-10">
         <div className={`relative overflow-hidden rounded-3xl ${greenBorder}`}>
-          <div className="relative h-[38vh] min-h-[320px]">
+          <div className="relative h-[42vh] min-h-[360px] sm:h-[38vh] sm:min-h-[320px]">
             <Image
               src={heroImages[heroIndex]}
               alt={content.h1}
