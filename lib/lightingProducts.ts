@@ -11,7 +11,8 @@ export type LightingSubcategory =
   | "interiorCeiling"
   | "interiorWall"
   | "chandeliers"
-  | "interiorDecorative" // ✅ НОВО: декоративно (интериорно)
+  | "spots"
+  | "interiorDecorative" 
   | "exteriorWall"
   | "exteriorCeiling"
   | "garden"
