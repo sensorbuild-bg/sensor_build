@@ -362,7 +362,7 @@ export const lightingProducts: LightingProduct[] = [
 
   ip: "IP20",
 
-  price: 52,
+  price: 56,
   currency: "EUR",
 
   image: "/images/lighting/interior/spots/frodo-sp795-2xe27-white.jpg",
