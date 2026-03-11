@@ -23,6 +23,7 @@ type Subcategory =
   | "panels"
   | "track"
   | "chandeliers"
+  | "spots"
   | "exteriorWall"
   | "exteriorCeiling"
   | "garden"
@@ -212,6 +213,7 @@ export default function LightingPage() {
             panels: "LED панели",
             track: "Релсови системи",
             chandeliers: "LED полилеи",
+            spots: "Спотове",
             exteriorWall: "Фасадни аплици",
             exteriorCeiling: "Външни плафониери",
             garden: "Градинско осветление",
@@ -284,6 +286,7 @@ export default function LightingPage() {
             panels: "LED panels",
             track: "Track systems",
             chandeliers: "LED chandeliers",
+            spots: "Spots",
             exteriorWall: "Outdoor wall lights",
             exteriorCeiling: "Outdoor ceiling lights",
             garden: "Garden lighting",
