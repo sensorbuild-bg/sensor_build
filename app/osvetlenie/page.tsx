@@ -469,80 +469,81 @@ export default function LightingPage() {
     lang === "bg" ? "border-2 border-[#2d6b35]" : "border border-[#2d6b35]";
 
   return (
-   <main className={`min-h-screen ${pageBg} pt-[110px] md:pt-[120px]`}>
-      <section className="mx-auto max-w-7xl px-4 py-10">
-        <div className={`relative overflow-hidden rounded-3xl ${greenBorder}`}>
-          <div className="relative h-[42vh] min-h-[360px] sm:h-[38vh] sm:min-h-[320px]">
-            <Image
-              src={heroImages[heroIndex]}
-              alt={content.h1}
-              fill
-              className="object-cover"
-              priority
-              sizes="100vw"
-            />
+ <main className={`min-h-screen ${pageBg} pt-[110px] md:pt-[120px]`}>
+  <section className="mx-auto max-w-7xl px-4 py-10">
+    <div className={`relative overflow-hidden rounded-3xl ${greenBorder}`}>
+      <div className="relative h-[42vh] min-h-[360px] sm:h-[38vh] sm:min-h-[320px]">
+        <Image
+          src={heroImages[heroIndex]}
+          alt={content.h1}
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+        />
 
-            <div
-              className={`absolute inset-0 ${
-                lang === "bg" ? "bg-black/55" : "bg-black/25"
+        <div
+          className={`absolute inset-0 ${
+            lang === "bg" ? "bg-black/55" : "bg-black/25"
+          }`}
+        />
+
+        <div className="absolute inset-0 flex items-end p-5 sm:p-6 md:p-10">
+          <div className="max-w-3xl">
+            <p
+              className={`text-sm ${
+                lang === "bg" ? "opacity-80 text-white" : "text-white/90"
               }`}
-            />
+            >
+              {content.kicker}
+            </p>
 
-            <div className="absolute inset-0 flex items-end p-6 md:p-10">
-              <div className="max-w-3xl">
-                <p
-                  className={`text-sm ${
-                    lang === "bg" ? "opacity-80 text-white" : "text-white/90"
+            <h1 className="mt-3 text-2xl font-semibold leading-tight text-white sm:text-3xl md:text-5xl">
+              {content.h1}
+            </h1>
+
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-white/85 sm:mt-4 sm:text-base">
+              {content.lead}
+            </p>
+
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href="#catalog"
+                className="inline-flex items-center justify-center rounded-xl border-2 border-[#2d6b35] px-5 py-3 text-sm font-semibold text-[#7dff94] hover:border-[#4da855] hover:text-[#4da855]"
+              >
+                {content.heroCta1}
+              </a>
+
+              <Link
+                href="/contacts"
+                className={`inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold ${
+                  lang === "bg"
+                    ? "bg-[#2d6b35] text-white hover:bg-[#4da855]"
+                    : "border border-white text-white hover:bg-white/10"
+                }`}
+              >
+                {content.heroCta2}
+              </Link>
+            </div>
+
+            <div className="mt-6 flex gap-2">
+              {heroImages.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setHeroIndex(i)}
+                  className={`h-2.5 w-10 rounded-full border ${
+                    i === heroIndex
+                      ? "border-[#2d6b35] bg-[#2d6b35]"
+                      : "border-white/30 bg-white/10 hover:bg-white/15"
                   }`}
-                >
-                  {content.kicker}
-                </p>
-
-                <h1 className="mt-3 text-3xl font-semibold md:text-5xl text-white">
-                  {content.h1}
-                </h1>
-
-                <p className="mt-4 max-w-3xl text-white/85">{content.lead}</p>
-
-                <div className="mt-6 flex flex-wrap gap-3">
-                  <a
-                    href="#catalog"
-                    className="inline-flex items-center justify-center rounded-xl border-2 border-[#2d6b35] px-5 py-3 text-sm font-semibold text-[#7dff94] hover:border-[#4da855] hover:text-[#4da855]"
-                  >
-                    {content.heroCta1}
-                  </a>
-
-                  <Link
-                    href="/contacts"
-                    className={`inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold ${
-                      lang === "bg"
-                        ? "bg-[#2d6b35] text-white hover:bg-[#4da855]"
-                        : "border border-white text-white hover:bg-white/10"
-                    }`}
-                  >
-                    {content.heroCta2}
-                  </Link>
-                </div>
-
-                <div className="mt-6 flex gap-2">
-                  {heroImages.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setHeroIndex(i)}
-                      className={`h-2.5 w-10 rounded-full border ${
-                        i === heroIndex
-                          ? "border-[#2d6b35] bg-[#2d6b35]"
-                          : "border-white/30 bg-white/10 hover:bg-white/15"
-                      }`}
-                      aria-label={`Hero ${i + 1}`}
-                    />
-                  ))}
-                </div>
-              </div>
+                  aria-label={`Hero ${i + 1}`}
+                />
+              ))}
             </div>
           </div>
         </div>
-
+      </div>
+    </div>
         <div className="mt-10">
           <h2 className="text-xl font-semibold">{content.whyTitle}</h2>
           <div className="mt-4 grid gap-6 md:grid-cols-2">
