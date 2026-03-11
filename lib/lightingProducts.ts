@@ -779,6 +779,108 @@ export const lightingProducts: LightingProduct[] = [
 
   image: "/images/lighting/common-areas/kena-led-12w-mw36-ip44.jpg",
 },
+
+  {
+  id: "aura-led-10w-sr14-ip54-sensor",
+  name: "LED аплик със сензор за движение AURA LED · 10W · SR14 · IP54",
+  nameEn: "AURA LED Wall Light with Motion Sensor · 10W · SR14 · IP54",
+
+  marketingText:
+    "LED аплик със сензор за движение – подходящ за коридори, стълбища, входове и външни общи части. IP54 защита за надеждна работа.",
+
+  marketingTextEn:
+    "LED wall light with motion sensor – suitable for corridors, staircases, entrances and outdoor common areas. IP54 protection for reliable operation.",
+
+  category: "commonAreas",
+  subcategory: "commonWall",
+
+  socket: "Integrated LED",
+  ip: "IP54",
+
+  power: 10,
+  cct: "4000K",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  cri: "≥80",
+  lifetime: 50000,
+  beamAngle: 120,
+
+  motionSensor: true,
+
+  price: 43,
+  currency: "EUR",
+
+  image: "/images/lighting/common-areas/aura-led-10w-sr14-ip54-wall.jpg",
+},
+
+{
+  id: "lima-led-10w-sr16-ip44-sensor",
+  name: "LED аплик със сензор за движение LIMA LED · 10W · SR16 · IP44",
+  nameEn: "LIMA LED Wall Light with Motion Sensor · 10W · SR16 · IP44",
+
+  marketingText:
+    "LED аплик със сензор за движение – подходящ за коридори, стълбища, входове и общи части. IP44 защита за надеждна работа.",
+
+  marketingTextEn:
+    "LED wall light with motion sensor – suitable for corridors, staircases, entrances and common areas. IP44 protection for reliable operation.",
+
+  category: "commonAreas",
+  subcategory: "commonWall",
+
+  socket: "Integrated LED",
+  ip: "IP44",
+
+  power: 10,
+  cct: "4000K",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  cri: "≥80",
+  lifetime: 25000,
+  beamAngle: 120,
+
+  motionSensor: true,
+
+  price: 45,
+  currency: "EUR",
+
+  image: "/images/lighting/common-areas/lima-led-10w-sr16-ip44-wall.jpg",
+},
+
+{
+  id: "tanis-led-15w-sr14-ip65-sensor",
+  name: "LED аплик със сензор за движение TANIS LED · 15W · SR14 · IP65",
+  nameEn: "TANIS LED Wall Light with Motion Sensor · 15W · SR14 · IP65",
+
+  marketingText:
+    "LED аплик със сензор за движение – подходящ за фасади, входове, коридори и външни общи части. IP65 защита за надеждна работа на открито.",
+
+  marketingTextEn:
+    "LED wall light with motion sensor – suitable for facades, entrances, corridors and outdoor common areas. IP65 protection for reliable outdoor operation.",
+
+  category: "commonAreas",
+  subcategory: "commonWall",
+
+  socket: "Integrated LED",
+  ip: "IP65",
+
+  power: 15,
+  cct: "4000K",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  cri: "≥80",
+  lifetime: 50000,
+  beamAngle: 120,
+
+  motionSensor: true,
+
+  price: 45,
+  currency: "EUR",
+
+  image: "/images/lighting/common-areas/tanis-led-15w-sr14-ip65-wall.jpg",
+},
   
   // ---------------------------
   // INDUSTRIAL
