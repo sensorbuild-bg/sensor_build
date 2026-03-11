@@ -11,7 +11,8 @@ export type LightingSubcategory =
   | "interiorCeiling"
   | "interiorWall"
   | "chandeliers"
-  | "interiorDecorative" // ✅ НОВО: декоративно (интериорно)
+  | "spots"
+  | "interiorDecorative" 
   | "exteriorWall"
   | "exteriorCeiling"
   | "garden"
@@ -102,6 +103,108 @@ export const lightingProducts: LightingProduct[] = [
     currency: "EUR",
     image: "/images/lighting/interior/chandeliers/meandra-p-led-54w-black-cct.jpg",
   },
+  {
+  id: "meandra-c-led-54w-gold-cct",
+  name: "LED Плафон MEANDRA-C LED · 54W · Злато · CCT-SWITCH · 3000–4000–6000K",
+  nameEn: "MEANDRA-C LED Ceiling Light · 54W · Gold · CCT-SWITCH · 3000–4000–6000K",
+
+  marketingText:
+    "Декоративен LED плафон в златист финиш за модерен интериор – избор на цветна температура според пространството и равномерна светлина с елегантно излъчване.",
+
+  marketingTextEn:
+    "Decorative LED ceiling light in a gold finish for modern interiors – selectable color temperature and even light distribution with an elegant look.",
+
+  category: "interior",
+  subcategory: "chandeliers",
+
+  power: 54,
+  cct: ["3000K", "4000K", "6000K"],
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+  cri: "≥80",
+  lifetime: 15000,
+  beamAngle: 120,
+
+  flickerFree: true,
+  motionSensor: false,
+  dimmable: false,
+  remoteControl: false,
+
+  price: 117,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/chandeliers/meandra-c-led-54w-gold-cct.jpg",
+},
+  {
+  id: "dream-led-56w-cct",
+  name: "LED Полилей DREAM LED · 56W · CCT-SWITCH · 3000–4000–6400K",
+  nameEn: "DREAM LED Chandelier · 56W · CCT-SWITCH · 3000–4000–6400K",
+
+  marketingText:
+    "Модерен LED полилей с елегантна форма и избор на цветна температура – подходящ за дневни, трапезарии и модерни интериори.",
+
+  marketingTextEn:
+    "Modern LED chandelier with an elegant shape and selectable color temperature – ideal for living rooms, dining areas and contemporary interiors.",
+
+  category: "interior",
+  subcategory: "chandeliers",
+
+  power: 56,
+  cct: ["3000K", "4000K", "6400K"],
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+  cri: "≥80",
+  lifetime: 25000,
+  beamAngle: 120,
+
+  flickerFree: false,
+  motionSensor: false,
+  dimmable: false,
+  remoteControl: false,
+
+  price: 115,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/chandeliers/dream-led-56w-cct.jpg",
+},
+  {
+  id: "marea-led-60w-black-cct",
+  name: "LED Полилей MAREA LED · 60W · Черно · CCT-SWITCH · 3000–4000–6000K",
+  nameEn: "MAREA LED Chandelier · 60W · Black · CCT-SWITCH · 3000–4000–6000K",
+
+  marketingText:
+    "Модерен LED полилей с динамична форма и избор на цветна температура – стилен акцент за дневни, трапезарии и модерни интериори.",
+
+  marketingTextEn:
+    "Modern LED chandelier with a dynamic design and selectable color temperature – a stylish centerpiece for living rooms, dining areas and contemporary interiors.",
+
+  category: "interior",
+  subcategory: "chandeliers",
+
+  power: 60,
+  cct: ["3000K", "4000K", "6000K"],
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+  cri: "≥80",
+  lifetime: 15000,
+  beamAngle: 120,
+
+  flickerFree: true,
+  motionSensor: false,
+  dimmable: false,
+  remoteControl: false,
+
+  price: 130,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/chandeliers/marea-led-60w-black-cct.jpg",
+},
   {
     id: "lucas-led-30w-black-wood-cct",
     name: "LED Плафон LUCAS LED 30W Черно + Дърво CCT 3000–4000–6400K",
@@ -208,6 +311,263 @@ export const lightingProducts: LightingProduct[] = [
     image: "/images/lighting/interior/ceiling/river-led-24w-black-4000k.jpg",
   },
 
+  // ---------------------------
+// INTERIOR – SPOTS
+// ---------------------------
+  {
+  id: "frodo-sp794-e27-black",
+  name: "Спот FRODO · SP794 · 1xE27 · Черен",
+  nameEn: "FRODO Spot · SP794 · 1xE27 · Black",
+
+  marketingText:
+    "Индустриален спот с метална решетка и декоративен дървесен акцент – подходящ за модерни и индустриални интериори.",
+
+  marketingTextEn:
+    "Industrial-style spot with metal cage and wood accent – perfect for modern and industrial interiors.",
+
+  category: "interior",
+  subcategory: "spots",
+
+  socket: "E27",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+
+  motionSensor: false,
+  dimmable: false,
+
+  price: 39,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/spots/frodo-sp794-e27-black.jpg",
+},
+
+  {
+  id: "frodo-sp795-2xe27-white",
+  name: "Спот FRODO SP795 · 2xE27 · Бял",
+  nameEn: "FRODO Spot SP795 · 2xE27 · White",
+
+  marketingText:
+    "Двоен декоративен спот с индустриален дизайн и метална решетка – подходящ за акцентно осветление.",
+  marketingTextEn:
+    "Double decorative spot with industrial metal cage design – ideal for accent lighting.",
+
+  category: "interior",
+  subcategory: "spots",
+
+  socket: "E27",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+
+  price: 56,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/spots/frodo-sp795-2xe27-white.jpg",
+},
+
+{
+  id: "frodo-sp796-4xe27-black",
+  name: "Спот FRODO SP796 · 4xE27 · Черен",
+  nameEn: "FRODO Spot SP796 · 4xE27 · Black",
+
+  marketingText:
+    "Линеен спот с четири осветителни тела – индустриален стил с метална решетка.",
+  marketingTextEn:
+    "Linear four-light spot with industrial metal cage design.",
+
+  category: "interior",
+  subcategory: "spots",
+
+  socket: "E27",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+
+  price: 88,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/spots/frodo-sp796-4xe27-black.jpg",
+},
+
+{
+  id: "maya-sp777-e14-black",
+  name: "Спот MAYA SP777 · 1xE14 · Черен",
+  nameEn: "MAYA Spot SP777 · 1xE14 · Black",
+
+  marketingText:
+    "Компактен декоративен спот с метална решетка – подходящ за модерни интериори.",
+  marketingTextEn:
+    "Compact decorative spot with metal cage – suitable for modern interiors.",
+
+  category: "interior",
+  subcategory: "spots",
+
+  socket: "E14",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+
+  price: 41,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/spots/maya-sp777-e14-black.jpg",
+},
+
+{
+  id: "maya-sp778-2xe14-black",
+  name: "Линеен спот MAYA SP778 · 2xE14 · Черен",
+  nameEn: "MAYA Linear Spot SP778 · 2xE14 · Black",
+
+  marketingText:
+    "Линеен декоративен спот с два източника на светлина и метална решетка.",
+  marketingTextEn:
+    "Linear decorative spot with two light sources and metal cage design.",
+
+  category: "interior",
+  subcategory: "spots",
+
+  socket: "E14",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+
+  price: 52,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/spots/maya-sp778-2xe14-black.jpg",
+},
+
+{
+  id: "maya-sp779-3xe14-black",
+  name: "Спираловиден спот MAYA SP779 · 3xE14 · Черен",
+  nameEn: "MAYA Spiral Spot SP779 · 3xE14 · Black",
+
+  marketingText:
+    "Спираловиден декоративен спот с три осветителни тела и индустриален дизайн.",
+  marketingTextEn:
+    "Spiral decorative spot with three light sources and industrial design.",
+
+  category: "interior",
+  subcategory: "spots",
+
+  socket: "E14",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+
+  price: 70,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/spots/maya-sp779-3xe14-black.jpg",
+},
+
+{
+  id: "benito-sp728-1sq-gu10-black",
+  name: "Спот BENITO SP728-1SQ · 1xGU10 · Черен",
+  nameEn: "BENITO Spot SP728-1SQ · 1xGU10 · Black",
+
+  marketingText:
+    "Модерен таванен спот с дървесен акцент и цилиндрично тяло.",
+  marketingTextEn:
+    "Modern ceiling spot with wood accent and cylindrical body.",
+
+  category: "interior",
+  subcategory: "spots",
+
+  socket: "GU10",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+
+  price: 41,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/spots/benito-sp728-1sq-gu10-black.jpg",
+},
+
+{
+  id: "benito-sp731-4sq-gu10-black",
+  name: "Спот BENITO SP731-4SQ · 4xGU10 · Черен",
+  nameEn: "BENITO Spot SP731-4SQ · 4xGU10 · Black",
+
+  marketingText:
+    "Квадратен таванен спот с четири осветителни тела и дървесен акцент.",
+  marketingTextEn:
+    "Square ceiling spot with four light sources and wood accent.",
+
+  category: "interior",
+  subcategory: "spots",
+
+  socket: "GU10",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+
+  price: 85,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/spots/benito-sp731-4sq-gu10-black.jpg",
+},
+
+{
+  id: "king-sp734-4l-gu10-black",
+  name: "Линеен спот KING SP734-4L · 4xGU10 · Черен",
+  nameEn: "KING Linear Spot SP734-4L · 4xGU10 · Black",
+
+  marketingText:
+    "Модерен линеен спот с четири регулируеми осветителни тела.",
+  marketingTextEn:
+    "Modern linear spot with four adjustable light heads.",
+
+  category: "interior",
+  subcategory: "spots",
+
+  socket: "GU10",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+
+  price: 61,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/spots/king-sp734-4l-gu10-black.jpg",
+},
+
+{
+  id: "king-sp718-gu10-white",
+  name: "Спот KING SP718 · GU10 · Бял",
+  nameEn: "KING Spot SP718 · GU10 · White",
+
+  marketingText:
+    "Стилен стенен спот с превключвател – подходящ за спалня или акцентно осветление.",
+  marketingTextEn:
+    "Stylish wall spot with switch – perfect for bedside or accent lighting.",
+
+  category: "interior",
+  subcategory: "spots",
+
+  socket: "GU10",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+
+  price: 38,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/spots/king-sp718-gu10-white.jpg",
+},
+  
   {
   id: "flat-led-18w-600mm-4000k",
   name: "LED линейно осветително тяло FLAT LED · 18W · 600 mm · 4000K",
@@ -778,6 +1138,108 @@ export const lightingProducts: LightingProduct[] = [
   currency: "EUR",
 
   image: "/images/lighting/common-areas/kena-led-12w-mw36-ip44.jpg",
+},
+
+  {
+  id: "aura-led-10w-sr14-ip54-sensor",
+  name: "LED аплик със сензор за движение AURA LED · 10W · SR14 · IP54",
+  nameEn: "AURA LED Wall Light with Motion Sensor · 10W · SR14 · IP54",
+
+  marketingText:
+    "LED аплик със сензор за движение – подходящ за коридори, стълбища, входове и външни общи части. IP54 защита за надеждна работа.",
+
+  marketingTextEn:
+    "LED wall light with motion sensor – suitable for corridors, staircases, entrances and outdoor common areas. IP54 protection for reliable operation.",
+
+  category: "commonAreas",
+  subcategory: "commonWall",
+
+  socket: "Integrated LED",
+  ip: "IP54",
+
+  power: 10,
+  cct: "4000K",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  cri: "≥80",
+  lifetime: 50000,
+  beamAngle: 120,
+
+  motionSensor: true,
+
+  price: 43,
+  currency: "EUR",
+
+  image: "/images/lighting/common-areas/aura-led-10w-sr14-ip54-wall.jpg",
+},
+
+{
+  id: "lima-led-10w-sr16-ip44-sensor",
+  name: "LED аплик със сензор за движение LIMA LED · 10W · SR16 · IP44",
+  nameEn: "LIMA LED Wall Light with Motion Sensor · 10W · SR16 · IP44",
+
+  marketingText:
+    "LED аплик със сензор за движение – подходящ за коридори, стълбища, входове и общи части. IP44 защита за надеждна работа.",
+
+  marketingTextEn:
+    "LED wall light with motion sensor – suitable for corridors, staircases, entrances and common areas. IP44 protection for reliable operation.",
+
+  category: "commonAreas",
+  subcategory: "commonWall",
+
+  socket: "Integrated LED",
+  ip: "IP44",
+
+  power: 10,
+  cct: "4000K",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  cri: "≥80",
+  lifetime: 25000,
+  beamAngle: 120,
+
+  motionSensor: true,
+
+  price: 45,
+  currency: "EUR",
+
+  image: "/images/lighting/common-areas/lima-led-10w-sr16-ip44-wall.jpg",
+},
+
+{
+  id: "tanis-led-15w-sr14-ip65-sensor",
+  name: "LED аплик със сензор за движение TANIS LED · 15W · SR14 · IP65",
+  nameEn: "TANIS LED Wall Light with Motion Sensor · 15W · SR14 · IP65",
+
+  marketingText:
+    "LED аплик със сензор за движение – подходящ за фасади, входове, коридори и външни общи части. IP65 защита за надеждна работа на открито.",
+
+  marketingTextEn:
+    "LED wall light with motion sensor – suitable for facades, entrances, corridors and outdoor common areas. IP65 protection for reliable outdoor operation.",
+
+  category: "commonAreas",
+  subcategory: "commonWall",
+
+  socket: "Integrated LED",
+  ip: "IP65",
+
+  power: 15,
+  cct: "4000K",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  cri: "≥80",
+  lifetime: 50000,
+  beamAngle: 120,
+
+  motionSensor: true,
+
+  price: 45,
+  currency: "EUR",
+
+  image: "/images/lighting/common-areas/tanis-led-15w-sr14-ip65-wall.jpg",
 },
   
   // ---------------------------
