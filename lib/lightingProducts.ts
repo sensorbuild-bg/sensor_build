@@ -103,6 +103,108 @@ export const lightingProducts: LightingProduct[] = [
     image: "/images/lighting/interior/chandeliers/meandra-p-led-54w-black-cct.jpg",
   },
   {
+  id: "meandra-c-led-54w-gold-cct",
+  name: "LED Плафон MEANDRA-C LED · 54W · Злато · CCT-SWITCH · 3000–4000–6000K",
+  nameEn: "MEANDRA-C LED Ceiling Light · 54W · Gold · CCT-SWITCH · 3000–4000–6000K",
+
+  marketingText:
+    "Декоративен LED плафон в златист финиш за модерен интериор – избор на цветна температура според пространството и равномерна светлина с елегантно излъчване.",
+
+  marketingTextEn:
+    "Decorative LED ceiling light in a gold finish for modern interiors – selectable color temperature and even light distribution with an elegant look.",
+
+  category: "interior",
+  subcategory: "chandeliers",
+
+  power: 54,
+  cct: ["3000K", "4000K", "6000K"],
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+  cri: "≥80",
+  lifetime: 15000,
+  beamAngle: 120,
+
+  flickerFree: true,
+  motionSensor: false,
+  dimmable: false,
+  remoteControl: false,
+
+  price: 117,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/chandeliers/meandra-c-led-54w-gold-cct.jpg",
+},
+  {
+  id: "dream-led-56w-cct",
+  name: "LED Полилей DREAM LED · 56W · CCT-SWITCH · 3000–4000–6400K",
+  nameEn: "DREAM LED Chandelier · 56W · CCT-SWITCH · 3000–4000–6400K",
+
+  marketingText:
+    "Модерен LED полилей с елегантна форма и избор на цветна температура – подходящ за дневни, трапезарии и модерни интериори.",
+
+  marketingTextEn:
+    "Modern LED chandelier with an elegant shape and selectable color temperature – ideal for living rooms, dining areas and contemporary interiors.",
+
+  category: "interior",
+  subcategory: "chandeliers",
+
+  power: 56,
+  cct: ["3000K", "4000K", "6400K"],
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+  cri: "≥80",
+  lifetime: 25000,
+  beamAngle: 120,
+
+  flickerFree: falsee,
+  motionSensor: false,
+  dimmable: false,
+  remoteControl: false,
+
+  price: 115,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/chandeliers/dream-led-56w-cct.jpg",
+},
+  {
+  id: "marea-led-60w-black-cct",
+  name: "LED Полилей MAREA LED · 60W · Черно · CCT-SWITCH · 3000–4000–6000K",
+  nameEn: "MAREA LED Chandelier · 60W · Black · CCT-SWITCH · 3000–4000–6000K",
+
+  marketingText:
+    "Модерен LED полилей с динамична форма и избор на цветна температура – стилен акцент за дневни, трапезарии и модерни интериори.",
+
+  marketingTextEn:
+    "Modern LED chandelier with a dynamic design and selectable color temperature – a stylish centerpiece for living rooms, dining areas and contemporary interiors.",
+
+  category: "interior",
+  subcategory: "chandeliers",
+
+  power: 60,
+  cct: ["3000K", "4000K", "6000K"],
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+  cri: "≥80",
+  lifetime: 15000,
+  beamAngle: 120,
+
+  flickerFree: true,
+  motionSensor: false,
+  dimmable: false,
+  remoteControl: false,
+
+  price: 130,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/chandeliers/marea-led-60w-black-cct.jpg",
+},
+  {
     id: "lucas-led-30w-black-wood-cct",
     name: "LED Плафон LUCAS LED 30W Черно + Дърво CCT 3000–4000–6400K",
     nameEn: "LUCAS LED Ceiling Light 30W CCT 3000–4000–6400K Black + Wood",
