@@ -312,6 +312,35 @@ export const lightingProducts: LightingProduct[] = [
   },
 
   {
+  id: "frodo-sp794-e27-black",
+  name: "Спот FRODO · SP794 · 1xE27 · Черен",
+  nameEn: "FRODO Spot · SP794 · 1xE27 · Black",
+
+  marketingText:
+    "Индустриален спот с метална решетка и декоративен дървесен акцент – подходящ за модерни и индустриални интериори.",
+
+  marketingTextEn:
+    "Industrial-style spot with metal cage and wood accent – perfect for modern and industrial interiors.",
+
+  category: "interior",
+  subcategory: "spots",
+
+  socket: "E27",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+
+  motionSensor: false,
+  dimmable: false,
+
+  price: 37,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/spots/frodo-sp794-e27-black.jpg",
+},
+  
+  {
   id: "flat-led-18w-600mm-4000k",
   name: "LED линейно осветително тяло FLAT LED · 18W · 600 mm · 4000K",
   nameEn: "FLAT LED Linear Ceiling Light · 18W · 600 mm · 4000K",
