@@ -160,7 +160,7 @@ export const lightingProducts: LightingProduct[] = [
   lifetime: 25000,
   beamAngle: 120,
 
-  flickerFree: falsee,
+  flickerFree: false,
   motionSensor: false,
   dimmable: false,
   remoteControl: false,
