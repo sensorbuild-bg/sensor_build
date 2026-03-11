@@ -311,6 +311,9 @@ export const lightingProducts: LightingProduct[] = [
     image: "/images/lighting/interior/ceiling/river-led-24w-black-4000k.jpg",
   },
 
+  // ---------------------------
+// INTERIOR – SPOTS
+// ---------------------------
   {
   id: "frodo-sp794-e27-black",
   name: "Спот FRODO · SP794 · 1xE27 · Черен",
@@ -334,10 +337,235 @@ export const lightingProducts: LightingProduct[] = [
   motionSensor: false,
   dimmable: false,
 
-  price: 37,
+  price: 39,
   currency: "EUR",
 
   image: "/images/lighting/interior/spots/frodo-sp794-e27-black.jpg",
+},
+
+  {
+  id: "frodo-sp795-2xe27-white",
+  name: "Спот FRODO SP795 · 2xE27 · Бял",
+  nameEn: "FRODO Spot SP795 · 2xE27 · White",
+
+  marketingText:
+    "Двоен декоративен спот с индустриален дизайн и метална решетка – подходящ за акцентно осветление.",
+  marketingTextEn:
+    "Double decorative spot with industrial metal cage design – ideal for accent lighting.",
+
+  category: "interior",
+  subcategory: "spots",
+
+  socket: "E27",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+
+  price: 52,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/spots/frodo-sp795-2xe27-white.jpg",
+},
+
+{
+  id: "frodo-sp796-4xe27-black",
+  name: "Спот FRODO SP796 · 4xE27 · Черен",
+  nameEn: "FRODO Spot SP796 · 4xE27 · Black",
+
+  marketingText:
+    "Линеен спот с четири осветителни тела – индустриален стил с метална решетка.",
+  marketingTextEn:
+    "Linear four-light spot with industrial metal cage design.",
+
+  category: "interior",
+  subcategory: "spots",
+
+  socket: "E27",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+
+  price: 88,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/spots/frodo-sp796-4xe27-black.jpg",
+},
+
+{
+  id: "maya-sp777-e14-black",
+  name: "Спот MAYA SP777 · 1xE14 · Черен",
+  nameEn: "MAYA Spot SP777 · 1xE14 · Black",
+
+  marketingText:
+    "Компактен декоративен спот с метална решетка – подходящ за модерни интериори.",
+  marketingTextEn:
+    "Compact decorative spot with metal cage – suitable for modern interiors.",
+
+  category: "interior",
+  subcategory: "spots",
+
+  socket: "E14",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+
+  price: 41,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/spots/maya-sp777-e14-black.jpg",
+},
+
+{
+  id: "maya-sp778-2xe14-black",
+  name: "Линеен спот MAYA SP778 · 2xE14 · Черен",
+  nameEn: "MAYA Linear Spot SP778 · 2xE14 · Black",
+
+  marketingText:
+    "Линеен декоративен спот с два източника на светлина и метална решетка.",
+  marketingTextEn:
+    "Linear decorative spot with two light sources and metal cage design.",
+
+  category: "interior",
+  subcategory: "spots",
+
+  socket: "E14",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+
+  price: 52,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/spots/maya-sp778-2xe14-black.jpg",
+},
+
+{
+  id: "maya-sp779-3xe14-black",
+  name: "Спираловиден спот MAYA SP779 · 3xE14 · Черен",
+  nameEn: "MAYA Spiral Spot SP779 · 3xE14 · Black",
+
+  marketingText:
+    "Спираловиден декоративен спот с три осветителни тела и индустриален дизайн.",
+  marketingTextEn:
+    "Spiral decorative spot with three light sources and industrial design.",
+
+  category: "interior",
+  subcategory: "spots",
+
+  socket: "E14",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+
+  price: 70,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/spots/maya-sp779-3xe14-black.jpg",
+},
+
+{
+  id: "benito-sp728-1sq-gu10-black",
+  name: "Спот BENITO SP728-1SQ · 1xGU10 · Черен",
+  nameEn: "BENITO Spot SP728-1SQ · 1xGU10 · Black",
+
+  marketingText:
+    "Модерен таванен спот с дървесен акцент и цилиндрично тяло.",
+  marketingTextEn:
+    "Modern ceiling spot with wood accent and cylindrical body.",
+
+  category: "interior",
+  subcategory: "spots",
+
+  socket: "GU10",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+
+  price: 41,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/spots/benito-sp728-1sq-gu10-black.jpg",
+},
+
+{
+  id: "benito-sp731-4sq-gu10-black",
+  name: "Спот BENITO SP731-4SQ · 4xGU10 · Черен",
+  nameEn: "BENITO Spot SP731-4SQ · 4xGU10 · Black",
+
+  marketingText:
+    "Квадратен таванен спот с четири осветителни тела и дървесен акцент.",
+  marketingTextEn:
+    "Square ceiling spot with four light sources and wood accent.",
+
+  category: "interior",
+  subcategory: "spots",
+
+  socket: "GU10",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+
+  price: 85,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/spots/benito-sp731-4sq-gu10-black.jpg",
+},
+
+{
+  id: "king-sp734-4l-gu10-black",
+  name: "Линеен спот KING SP734-4L · 4xGU10 · Черен",
+  nameEn: "KING Linear Spot SP734-4L · 4xGU10 · Black",
+
+  marketingText:
+    "Модерен линеен спот с четири регулируеми осветителни тела.",
+  marketingTextEn:
+    "Modern linear spot with four adjustable light heads.",
+
+  category: "interior",
+  subcategory: "spots",
+
+  socket: "GU10",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+
+  price: 61,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/spots/king-sp734-4l-gu10-black.jpg",
+},
+
+{
+  id: "king-sp718-gu10-white",
+  name: "Спот KING SP718 · GU10 · Бял",
+  nameEn: "KING Spot SP718 · GU10 · White",
+
+  marketingText:
+    "Стилен стенен спот с превключвател – подходящ за спалня или акцентно осветление.",
+  marketingTextEn:
+    "Stylish wall spot with switch – perfect for bedside or accent lighting.",
+
+  category: "interior",
+  subcategory: "spots",
+
+  socket: "GU10",
+  voltage: "230V",
+  frequency: "50/60Hz",
+
+  ip: "IP20",
+
+  price: 38,
+  currency: "EUR",
+
+  image: "/images/lighting/interior/spots/king-sp718-gu10-white.jpg",
 },
   
   {
