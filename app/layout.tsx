@@ -6,7 +6,8 @@ import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import ThemeProvider from "@/components/ThemeProvider";
 import { Analytics } from "@vercel/analytics/next";
-import GlobalBackButton from "@/components/GlobalBackButton"; // ✅ добави това
+import GlobalBackButton from "@/components/GlobalBackButton";
+import Script from "next/script"; // ✅ ДОБАВЕНО
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,29 +26,49 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="bg">
+      
+      {/* ✅ GOOGLE ANALYTICS */}
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-8XJ5QBF4L2"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-8XJ5QBF4L2');
+          `}
+        </Script>
+      </head>
+
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <LanguageProvider>
           <ThemeProvider>
-           <Header />
+            
+            <Header />
 
-{/* 🔙 BackButton – горе */}
-<GlobalBackButton />
+            {/* 🔙 BackButton – горе */}
+            <GlobalBackButton />
 
-<main className="min-h-screen">
-  {children}
-</main>
+            <main className="min-h-screen">
+              {children}
+            </main>
 
-{/* 🔙 BackButton – долу */}
-<GlobalBackButton />
+            {/* 🔙 BackButton – долу */}
+            <GlobalBackButton />
 
-<Footer />
+            <Footer />
+
           </ThemeProvider>
         </LanguageProvider>
+
         <Analytics />
       </body>
     </html>
