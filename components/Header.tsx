@@ -26,7 +26,11 @@ export default function Header() {
     { name: t.home, href: "/" },
     { name: t.services, href: "/services" },
     { name: t.lighting, href: "/osvetlenie" },
-    { name: t.howWeWork, href: "/how-we-work" },
+    {
+      name: lang === "bg" ? "Цени" : "Prices",
+      href: "/prices",
+      highlight: true,
+    },
     { name: t.projects, href: "/projects" },
     { name: t.contacts, href: "/contacts" },
   ];
@@ -39,7 +43,6 @@ export default function Header() {
     >
       {/* ================= DESKTOP (>= xl / 1280px) ================= */}
       <div className="hidden xl:block">
-        {/* Green line extending full width of screen */}
         <div
           className={`absolute left-0 right-0 ${
             lang === "en" ? "top-[50.9%]" : "top-[51%]"
@@ -51,7 +54,6 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative py-4">
             <div className="flex items-center justify-between relative z-10">
-              {/* Logo on the left */}
               <Link href="/" className="flex items-center -ml-4">
                 <div className="pr-6 xl:pr-12">
                   <Image
@@ -73,9 +75,13 @@ export default function Header() {
                       href={item.href}
                       className={`whitespace-nowrap text-lg font-bold transition-colors ${
                         pathname === item.href
-                          ? lang === "bg"
+                          ? item.highlight
+                            ? "text-[#62b946] border-b-2 border-[#62b946] pb-0.5"
+                            : lang === "bg"
                             ? "text-white border-b-2 border-white pb-0.5"
                             : "text-black border-b-2 border-black pb-0.5"
+                          : item.highlight
+                          ? "text-[#62b946] hover:text-[#7fd15f]"
                           : lang === "bg"
                           ? "text-white hover:text-[#4da855]"
                           : "text-black hover:text-[#4da855]"
@@ -87,7 +93,6 @@ export default function Header() {
                 </div>
               </nav>
 
-              {/* Language switch on the right */}
               <div className="flex items-center space-x-1 -mt-12 ml-6">
                 <button
                   onClick={() => setLang("bg")}
@@ -117,7 +122,6 @@ export default function Header() {
 
       {/* ================= MOBILE + TABLET (< xl / 1280px) ================= */}
       <div className="xl:hidden relative">
-        {/* Green line extending full width of screen */}
         <div
           className={`absolute left-0 right-0 ${
             lang === "en" ? "top-[50.7%]" : "top-[50.6%]"
@@ -192,7 +196,6 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Menu Overlay */}
         {isMenuOpen && (
           <>
             <div
@@ -238,7 +241,11 @@ export default function Header() {
                     onClick={handleCloseMenu}
                     className={`text-lg font-semibold py-4 px-4 rounded transition-colors ${
                       pathname === item.href
-                        ? "text-[#4da855] bg-[#4da855]/10"
+                        ? item.highlight
+                          ? "text-[#4da855] bg-[#4da855]/10"
+                          : "text-[#4da855] bg-[#4da855]/10"
+                        : item.highlight
+                        ? "text-[#2d6b35] hover:bg-[#4da855]/10"
                         : "text-gray-800 hover:bg-gray-100"
                     }`}
                   >
