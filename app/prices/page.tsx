@@ -28,7 +28,7 @@ export default function PricesPage() {
             }`}
           >
             {isBg
-              ? 'Ориентировъчни цени за ремонтни дейности с включени материали.'
+              ? 'Ремонтни дейности с включени материали.'
               : 'Estimated prices for renovation services including materials.'}
           </p>
         </div>
