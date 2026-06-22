@@ -31,11 +31,10 @@ export default function Home() {
 
   const copy = isBg
     ? {
-        brand: "Sensor Build",
-        heroTitle: "Ремонт и осветление, изпълнени точно, чисто и по план.",
-        heroSubtitle:
-          "Строително-ремонтни услуги за жилища, офиси и търговски пространства — от първия оглед до финалния детайл.",
-        heroTagline: "Прецизност, на която можете да се доверите!",
+        title: "SENSOR BUILD",
+        subtitle: "Строителство и ремонти",
+        tagline: "Прецизност, на която можете да се доверите!",
+
         primaryCta: "Заяви оглед",
         secondaryCta: "Виж услуги и цени",
 
@@ -52,7 +51,7 @@ export default function Home() {
         services: [
           {
             title: "Основни и освежителни ремонти",
-            desc: "Подготовка, шпакловки, боядисване, довършителни работи и обновяване на жилищни и офис пространства.",
+            desc: "От къртене, почистване и извозване до шпакловка, боядисване и финални довършителни работи за жилища, офиси и търговски пространства.",
             href: "/services",
           },
           {
@@ -72,7 +71,17 @@ export default function Home() {
           },
           {
             title: "Подово отопление",
-            desc: "Планиране и изпълнение на водно подово отопление с внимание към детайла и последващите слоеве.",
+            desc: "Изпълнение на подово отопление според системата на обекта — с подготовка на основата и съобразяване с последващите настилки.",
+            href: "/services",
+          },
+          {
+            title: "Подови настилки",
+            desc: "Подготовка на основата и монтаж на подови покрития според помещението, натоварването и желания финален вид.",
+            href: "/services",
+          },
+          {
+            title: "Ремонти на бани",
+            desc: "ВиК, подготовка на основи, хидроизолация, облицовки, настилки и довършителни работи за цялостно завършване на баня.",
             href: "/services",
           },
           {
@@ -108,6 +117,11 @@ export default function Home() {
           },
         ],
 
+        projectsTitle: "Реални проекти и процес на работа",
+        projectsSubtitle:
+          "Вижте част от изпълнените дейности — от инсталации и подготвителни работи до завършен детайл.",
+        openProject: "Отвори проект",
+
         whyTitle: "Защо Sensor Build?",
         why: [
           {
@@ -128,23 +142,17 @@ export default function Home() {
           },
         ],
 
-        projectsTitle: "Реални проекти и процес на работа",
-        projectsSubtitle:
-          "Вижте част от изпълнените дейности — от инсталации и подготвителни работи до завършен детайл.",
-        openProject: "Отвори проект",
-
         finalTitle: "Планирате ремонт?",
         finalText:
-          "Започнете с оглед и ясна оферта. Опишете какво искате да направите или се свържете с нас директно.",
+          "Обадете се или ни пишете, за да уточним обекта, дейностите и възможностите за изпълнение.",
         finalPrimary: "Свържи се с нас",
         finalSecondary: "Виж цени",
       }
     : {
-        brand: "Sensor Build",
-        heroTitle: "Renovation and lighting, delivered precisely and cleanly.",
-        heroSubtitle:
-          "Construction and renovation services for homes, offices and commercial spaces — from the first site visit to the final detail.",
-        heroTagline: "Precision you can trust!",
+        title: "SENSOR BUILD",
+        subtitle: "Construction and Renovations",
+        tagline: "Precision you can trust!",
+
         primaryCta: "Request a visit",
         secondaryCta: "View services and prices",
 
@@ -161,7 +169,7 @@ export default function Home() {
         services: [
           {
             title: "Full and refresh renovations",
-            desc: "Preparation, plastering, painting, finishing works and improvement of residential and office spaces.",
+            desc: "From demolition, cleaning and disposal to plastering, painting and final finishing works for homes, offices and commercial spaces.",
             href: "/services",
           },
           {
@@ -181,7 +189,17 @@ export default function Home() {
           },
           {
             title: "Underfloor heating",
-            desc: "Planning and installation of hydronic underfloor heating with attention to every layer.",
+            desc: "Execution of underfloor heating according to the system of the site, with base preparation and coordination with the following floor layers.",
+            href: "/services",
+          },
+          {
+            title: "Floor coverings",
+            desc: "Base preparation and installation of floor coverings according to the room, load and desired final look.",
+            href: "/services",
+          },
+          {
+            title: "Bathroom renovations",
+            desc: "Plumbing, base preparation, waterproofing, wall and floor tiling, and finishing works for complete bathroom renovation.",
             href: "/services",
           },
           {
@@ -217,6 +235,11 @@ export default function Home() {
           },
         ],
 
+        projectsTitle: "Real projects and work process",
+        projectsSubtitle:
+          "See part of our completed work — from installations and preparation to final details.",
+        openProject: "Open project",
+
         whyTitle: "Why Sensor Build?",
         why: [
           {
@@ -237,14 +260,9 @@ export default function Home() {
           },
         ],
 
-        projectsTitle: "Real projects and work process",
-        projectsSubtitle:
-          "See part of our completed work — from installations and preparation to final details.",
-        openProject: "Open project",
-
         finalTitle: "Planning a renovation?",
         finalText:
-          "Start with a site visit and a clear offer. Describe what you want to do or contact us directly.",
+          "Call or message us so we can clarify the site, the activities and the execution options.",
         finalPrimary: "Contact us",
         finalSecondary: "View prices",
       };
@@ -273,8 +291,8 @@ export default function Home() {
       id: 3,
       image:
         "/project4/20251008_150415_main-ezgif.com-jpg-to-webp-converter.webp",
-      labelBg: "Изграждане на водно подово отопление",
-      labelEn: "Hydronic underfloor heating",
+      labelBg: "Изграждане на подово отопление",
+      labelEn: "Underfloor heating",
     },
     {
       id: 4,
@@ -324,7 +342,7 @@ export default function Home() {
     >
       <div className="relative z-[2] pt-16 md:pt-0 flex-grow">
         {/* HERO */}
-        <section className="relative min-h-[86vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <section className="relative h-[70vh] md:h-[80vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
           <div className="absolute inset-0 z-[1]">
             <Image
               src="/main.webp"
@@ -334,69 +352,54 @@ export default function Home() {
               priority
               quality={90}
             />
-            <div className="absolute inset-0 bg-black/55" />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/30 to-[#13182c]" />
+            <div className="absolute inset-0 bg-black/30" />
           </div>
 
-          <div className="relative z-[2] max-w-6xl mx-auto text-center pt-10">
-            <div className="mb-5 inline-flex items-center rounded-full border border-white/25 bg-white/10 px-5 py-2 text-white/90 backdrop-blur-sm">
-              <span className="text-sm md:text-base tracking-[0.25em] uppercase">
-                {copy.brand}
-              </span>
-            </div>
-
-            <h1 className="mx-auto max-w-5xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-noah-bold leading-tight text-white drop-shadow-lg">
-              {copy.heroTitle}
+          <div className="relative z-[2] text-center max-w-5xl mx-auto -mt-24 md:-mt-20">
+            <h1 className="text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-noah-bold mb-2 text-white drop-shadow-lg uppercase">
+              {copy.title}
             </h1>
 
-            <p className="mx-auto mt-6 max-w-3xl text-lg md:text-2xl leading-relaxed text-white/90 drop-shadow-md">
-              {copy.heroSubtitle}
-            </p>
+            <h2 className="text-2xl sm:text-xl md:text-3xl mb-8 text-white/90 drop-shadow-md">
+              <TypewriterText text={copy.subtitle} speed={70} />
+            </h2>
 
-            <div className="mt-7 flex justify-center">
-              <span className="inline-flex items-center px-5 py-2 rounded-xl bg-white/70 backdrop-blur-sm border border-white/30 shadow-sm text-[#2D6B35] text-lg sm:text-xl md:text-2xl font-semibold">
-                <TypewriterText text={copy.heroTagline} speed={60} />
+            <div className="mb-8 flex justify-center">
+              <span className="inline-flex items-center px-5 py-2 rounded-xl bg-white/60 backdrop-blur-sm border border-white/25 shadow-sm text-[#2D6B35] text-lg sm:text-xl md:text-2xl font-semibold drop-shadow-sm">
+                <TypewriterText
+                  text={copy.tagline}
+                  speed={70}
+                  delay={copy.subtitle.length * 70 + 500}
+                />
               </span>
-            </div>
-
-            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/contacts"
-                className="w-full sm:w-auto rounded-xl bg-[#388644] px-8 py-4 text-center text-white text-base md:text-lg font-semibold shadow-lg transition-all duration-200 hover:bg-[#2D6B35] hover:-translate-y-0.5"
-              >
-                {copy.primaryCta}
-              </Link>
-
-              <Link
-                href="/prices"
-                className="w-full sm:w-auto rounded-xl border border-white/35 bg-white/10 px-8 py-4 text-center text-white text-base md:text-lg font-semibold backdrop-blur-sm transition-all duration-200 hover:bg-white/20 hover:-translate-y-0.5"
-              >
-                {copy.secondaryCta}
-              </Link>
             </div>
           </div>
         </section>
 
         {/* TRUST STRIP */}
-        <section className={`relative z-[4] -mt-14 px-4 sm:px-6 lg:px-8`}>
-          <div className="max-w-7xl mx-auto">
+        <section
+          className={`relative z-[4] py-8 md:py-10 ${
+            isBg ? "bg-[#13182c]" : "bg-gray-50"
+          }`}
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div
-              className={`grid grid-cols-2 lg:grid-cols-4 gap-3 rounded-2xl border p-4 shadow-2xl backdrop-blur-md ${
+              className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 rounded-2xl border p-4 shadow-xl ${
                 isBg
-                  ? "bg-[#1a2342]/95 border-white/10"
-                  : "bg-white/95 border-gray-200"
+                  ? "bg-[#1a2342] border-white/10"
+                  : "bg-white border-gray-200"
               }`}
             >
               {copy.trust.map((item) => (
                 <div
                   key={item}
-                  className={`flex items-center justify-center gap-2 rounded-xl px-3 py-4 text-center text-sm md:text-base font-semibold ${
+                  className={`flex items-center justify-center gap-3 rounded-xl px-4 py-5 text-center text-base md:text-lg font-semibold ${
                     isBg
                       ? "bg-[#13182c] text-white"
                       : "bg-gray-50 text-gray-900"
                   }`}
                 >
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#388644] text-white text-sm">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#388644] text-white text-lg">
                     ✓
                   </span>
                   <span>{item}</span>
@@ -408,7 +411,7 @@ export default function Home() {
 
         {/* SERVICES */}
         <section
-          className={`relative py-20 md:py-28 ${
+          className={`relative py-16 md:py-24 ${
             isBg ? "bg-[#13182c]" : "bg-gray-50"
           }`}
         >
@@ -421,6 +424,7 @@ export default function Home() {
               >
                 {copy.servicesTitle}
               </h2>
+
               <p
                 className={`mt-4 text-lg md:text-xl leading-relaxed ${
                   isBg ? "text-white/75" : "text-gray-600"
@@ -430,7 +434,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8">
               {copy.services.map((service) => (
                 <AnimatedDiv
                   key={service.title}
@@ -490,6 +494,7 @@ export default function Home() {
                 >
                   {copy.processTitle}
                 </h2>
+
                 <p
                   className={`mt-5 text-lg md:text-xl leading-relaxed ${
                     isBg ? "text-white/75" : "text-gray-600"
@@ -505,6 +510,7 @@ export default function Home() {
                   >
                     {copy.primaryCta}
                   </Link>
+
                   <Link
                     href="/services"
                     className={`rounded-xl px-7 py-4 text-center font-semibold border transition-all duration-200 ${
@@ -531,6 +537,7 @@ export default function Home() {
                     <div className="text-[#4ea85b] text-3xl font-noah-bold mb-4">
                       {item.step}
                     </div>
+
                     <h3
                       className={`text-xl font-semibold mb-3 ${
                         isBg ? "text-white" : "text-gray-900"
@@ -538,6 +545,7 @@ export default function Home() {
                     >
                       {item.title}
                     </h3>
+
                     <p
                       className={`leading-relaxed ${
                         isBg ? "text-white/70" : "text-gray-600"
@@ -567,6 +575,7 @@ export default function Home() {
               >
                 {copy.projectsTitle}
               </h2>
+
               <p
                 className={`mt-4 text-lg md:text-xl leading-relaxed ${
                   isBg ? "text-white/75" : "text-gray-600"
@@ -590,7 +599,10 @@ export default function Home() {
                       key={slide.id}
                       className="pl-2 md:pl-4 lg:pl-8 basis-[85%] md:basis-1/2 lg:basis-[45%] overflow-visible"
                     >
-                      <Link href={`/projects/${slide.id}`} className="block group">
+                      <Link
+                        href={`/projects/${slide.id}`}
+                        className="block group"
+                      >
                         <div
                           className={`relative aspect-[3/4] rounded-2xl shadow-lg transition-all duration-500 ${
                             isActive
@@ -679,6 +691,7 @@ export default function Home() {
                   >
                     {item.title}
                   </h3>
+
                   <p
                     className={`leading-relaxed ${
                       isBg ? "text-white/70" : "text-gray-600"
