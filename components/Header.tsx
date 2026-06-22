@@ -3,24 +3,45 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
   const { lang, setLang } = useLanguage();
   const pathname = usePathname();
   const t = translations[lang].nav;
 
   const handleCloseMenu = () => {
     setIsClosing(true);
+
     setTimeout(() => {
       setIsMenuOpen(false);
       setIsClosing(false);
     }, 300);
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 40);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      handleCloseMenu();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   const navigation = [
     { name: t.home, href: "/" },
@@ -35,65 +56,99 @@ export default function Header() {
     { name: t.contacts, href: "/contacts" },
   ];
 
+  const isActiveLink = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
+
   return (
     <header
-      className={`w-full relative z-50 ${
+      className={`sticky top-0 w-full z-50 transition-all duration-300 ${
         lang === "bg" ? "bg-[#13182c]" : "bg-white"
-      }`}
+      } ${isScrolled ? "shadow-xl" : "shadow-none"}`}
     >
       {/* ================= DESKTOP (>= xl / 1280px) ================= */}
-      <div className="hidden xl:block">
+      <div className="hidden xl:block relative">
+        {/* Зелената линия остава през логото, както беше */}
         <div
           className={`absolute left-0 right-0 ${
             lang === "en" ? "top-[50.9%]" : "top-[51%]"
           } -translate-y-1/2 ${
             lang === "en" ? "h-[0.5rem]" : "h-[0.40rem]"
           } bg-gradient-to-r from-[#62b946] to-[#0c5447] pointer-events-none z-20`}
-        ></div>
+        />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative py-4">
+          <div
+            className={`relative transition-all duration-300 ${
+              isScrolled ? "py-2" : "py-4"
+            }`}
+          >
             <div className="flex items-center justify-between relative z-10">
-              <Link href="/" className="flex items-center -ml-4">
-                <div className="pr-6 xl:pr-12">
+              <Link href="/" className="flex items-center -ml-4 shrink-0">
+                <div
+                  className={`transition-all duration-300 ${
+                    isScrolled ? "pr-6 xl:pr-8" : "pr-6 xl:pr-12"
+                  }`}
+                >
                   <Image
                     src={lang === "bg" ? "/logodark.png" : "/logo.webp"}
                     alt="Sensor Build Logo"
                     width={200}
                     height={80}
-                    className="h-auto w-auto bg-transparent"
+                    className={`h-auto bg-transparent transition-all duration-300 ${
+                      isScrolled ? "w-[125px]" : "w-[200px]"
+                    }`}
                     priority
                   />
                 </div>
               </Link>
 
-              <nav className="flex-1 flex justify-center -mt-10">
-                <div className="flex space-x-12">
-                  {navigation.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      className={`whitespace-nowrap text-lg font-bold transition-colors ${
-                        pathname === item.href
-                          ? item.highlight
-                            ? "text-[#62b946] border-b-2 border-[#62b946] pb-0.5"
+              <nav
+                className={`flex-1 flex justify-center transition-all duration-300 ${
+                  isScrolled ? "-mt-2" : "-mt-10"
+                }`}
+              >
+                <div
+                  className={`flex transition-all duration-300 ${
+                    isScrolled ? "space-x-8" : "space-x-12"
+                  }`}
+                >
+                  {navigation.map((item) => {
+                    const active = isActiveLink(item.href);
+
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className={`whitespace-nowrap font-bold transition-colors border-b-2 ${
+                          isScrolled ? "text-base pb-0.5" : "text-lg pb-0.5"
+                        } ${
+                          active
+                            ? item.highlight
+                              ? "text-[#62b946] border-[#62b946]"
+                              : lang === "bg"
+                              ? "text-white border-white"
+                              : "text-black border-black"
+                            : item.highlight
+                            ? "text-[#62b946] border-transparent hover:text-[#7fd15f]"
                             : lang === "bg"
-                            ? "text-white border-b-2 border-white pb-0.5"
-                            : "text-black border-b-2 border-black pb-0.5"
-                          : item.highlight
-                          ? "text-[#62b946] hover:text-[#7fd15f]"
-                          : lang === "bg"
-                          ? "text-white hover:text-[#4da855]"
-                          : "text-black hover:text-[#4da855]"
-                      }`}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
+                            ? "text-white border-transparent hover:text-[#4da855]"
+                            : "text-black border-transparent hover:text-[#4da855]"
+                        }`}
+                      >
+                        {item.name}
+                      </Link>
+                    );
+                  })}
                 </div>
               </nav>
 
-              <div className="flex items-center space-x-1 -mt-12 ml-6">
+              <div
+                className={`flex items-center space-x-1 ml-6 shrink-0 transition-all duration-300 ${
+                  isScrolled ? "-mt-2" : "-mt-12"
+                }`}
+              >
                 <button
                   onClick={() => setLang("bg")}
                   className={`px-3 py-1.5 text-xs font-semibold rounded-md text-white transition-all duration-200 ${
@@ -104,6 +159,7 @@ export default function Header() {
                 >
                   BG
                 </button>
+
                 <button
                   onClick={() => setLang("en")}
                   className={`px-3 py-1.5 text-xs font-semibold rounded-md text-white transition-all duration-200 ${
@@ -122,44 +178,56 @@ export default function Header() {
 
       {/* ================= MOBILE + TABLET (< xl / 1280px) ================= */}
       <div className="xl:hidden relative">
+        {/* Зелената линия остава през логото и на мобилна версия */}
         <div
           className={`absolute left-0 right-0 ${
             lang === "en" ? "top-[50.7%]" : "top-[50.6%]"
           } -translate-y-1/2 ${
             lang === "en" ? "h-[0.3rem]" : "h-[0.23rem]"
           } bg-gradient-to-r from-[#62b946] to-[#0c5447] pointer-events-none z-20`}
-        ></div>
+        />
 
-        <div className="flex items-center justify-between px-4 py-4 relative z-10">
-          <Link href="/" className="flex items-center ">
+        <div
+          className={`flex items-center justify-between px-4 relative z-10 transition-all duration-300 ${
+            isScrolled ? "py-2" : "py-4"
+          }`}
+        >
+          <Link href="/" className="flex items-center shrink-0">
             <Image
               src={lang === "bg" ? "/logodark.png" : "/logo.webp"}
               alt="Sensor Build Logo"
               width={120}
               height={48}
-              className="h-auto w-auto bg-transparent"
+              className={`h-auto bg-transparent transition-all duration-300 ${
+                isScrolled ? "w-[92px]" : "w-[120px]"
+              }`}
               priority
             />
           </Link>
 
-          <div className="flex items-center space-x-2 -mt-12">
+          <div
+            className={`flex items-center space-x-2 transition-all duration-300 ${
+              isScrolled ? "-mt-6" : "-mt-12"
+            }`}
+          >
             <div className="flex items-center space-x-1">
               <button
                 onClick={() => setLang("bg")}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-md text-white transition-all duration-200 ${
                   lang === "bg"
                     ? "bg-[#2d6b35] shadow-md"
-                    : "bg-[#388644]/40"
+                    : "bg-[#388644]/40 hover:bg-[#388644]/60"
                 }`}
               >
                 BG
               </button>
+
               <button
                 onClick={() => setLang("en")}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-md text-white transition-all duration-200 ${
                   lang === "en"
                     ? "bg-[#2d6b35] shadow-md"
-                    : "bg-[#388644]/40"
+                    : "bg-[#388644]/40 hover:bg-[#388644]/60"
                 }`}
               >
                 EN
@@ -170,6 +238,7 @@ export default function Header() {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-md transition-colors bg-transparent"
               aria-label="Toggle menu"
+              aria-expanded={isMenuOpen}
             >
               <div className="w-6 h-6 flex flex-col justify-center space-y-1.5">
                 <span
@@ -178,19 +247,21 @@ export default function Header() {
                       ? "bg-[#388644] rotate-45 translate-y-2"
                       : "bg-[#388644]"
                   }`}
-                ></span>
+                />
+
                 <span
                   className={`block h-0.5 w-6 transition-all ${
                     isMenuOpen ? "bg-[#388644] opacity-0" : "bg-[#388644]"
                   }`}
-                ></span>
+                />
+
                 <span
                   className={`block h-0.5 w-6 transition-all ${
                     isMenuOpen
                       ? "bg-[#388644] -rotate-45 -translate-y-2"
                       : "bg-[#388644]"
                   }`}
-                ></span>
+                />
               </div>
             </button>
           </div>
@@ -201,17 +272,25 @@ export default function Header() {
             <div
               className="fixed inset-0 bg-black/60 z-[100] transition-opacity duration-300"
               onClick={handleCloseMenu}
-            ></div>
+            />
 
             <nav
-              className={`fixed top-0 right-0 h-full w-80 bg-white shadow-xl z-[101] overflow-y-auto transform transition-transform duration-300 ease-out ${
+              className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-xl z-[101] overflow-y-auto transform transition-transform duration-300 ease-out ${
                 isClosing ? "translate-x-full" : "translate-x-0"
               }`}
               style={
                 !isClosing ? { animation: "slide-in-right 0.3s ease-out" } : {}
               }
             >
-              <div className="flex justify-end p-4">
+              <div className="flex items-center justify-between p-4 border-b border-gray-100">
+                <Image
+                  src="/logo.webp"
+                  alt="Sensor Build Logo"
+                  width={110}
+                  height={44}
+                  className="h-auto w-auto bg-transparent"
+                />
+
                 <button
                   onClick={handleCloseMenu}
                   className="p-2 rounded-md hover:bg-gray-100 transition-colors"
@@ -233,25 +312,27 @@ export default function Header() {
                 </button>
               </div>
 
-              <div className="flex flex-col px-4 pb-8">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={handleCloseMenu}
-                    className={`text-lg font-semibold py-4 px-4 rounded transition-colors ${
-                      pathname === item.href
-                        ? item.highlight
+              <div className="flex flex-col px-4 py-6">
+                {navigation.map((item) => {
+                  const active = isActiveLink(item.href);
+
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={handleCloseMenu}
+                      className={`text-lg font-semibold py-4 px-4 rounded-lg transition-colors ${
+                        active
                           ? "text-[#4da855] bg-[#4da855]/10"
-                          : "text-[#4da855] bg-[#4da855]/10"
-                        : item.highlight
-                        ? "text-[#2d6b35] hover:bg-[#4da855]/10"
-                        : "text-gray-800 hover:bg-gray-100"
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
+                          : item.highlight
+                          ? "text-[#2d6b35] hover:bg-[#4da855]/10"
+                          : "text-gray-800 hover:bg-gray-100"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  );
+                })}
               </div>
             </nav>
           </>
