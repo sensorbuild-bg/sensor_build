@@ -36,7 +36,7 @@ export default function Home() {
         tagline: "Прецизност, на която можете да се доверите!",
 
         primaryCta: "Заяви оглед",
-        secondaryCta: "Виж услуги и цени",
+        secondaryCta: "Виж цени",
 
         trust: [
           "Оглед на място",
@@ -154,7 +154,7 @@ export default function Home() {
         tagline: "Precision you can trust!",
 
         primaryCta: "Request a visit",
-        secondaryCta: "View services and prices",
+        secondaryCta: "View prices",
 
         trust: [
           "On-site visit",
@@ -342,7 +342,7 @@ export default function Home() {
     >
       <div className="relative z-[2] pt-16 md:pt-0 flex-grow">
         {/* HERO */}
-        <section className="relative h-[70vh] md:h-[80vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <section className="relative min-h-[78vh] md:min-h-[84vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-24 md:py-28 overflow-hidden">
           <div className="absolute inset-0 z-[1]">
             <Image
               src="/main.webp"
@@ -355,7 +355,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-black/30" />
           </div>
 
-          <div className="relative z-[2] text-center max-w-5xl mx-auto -mt-24 md:-mt-20">
+          <div className="relative z-[2] text-center max-w-5xl mx-auto -mt-10 md:-mt-14">
             <h1 className="text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-noah-bold mb-2 text-white drop-shadow-lg uppercase">
               {copy.title}
             </h1>
@@ -372,6 +372,22 @@ export default function Home() {
                   delay={copy.subtitle.length * 70 + 500}
                 />
               </span>
+            </div>
+
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                href="/contacts"
+                className="w-full sm:w-auto rounded-xl bg-[#388644] px-8 py-4 text-center text-white text-base md:text-lg font-semibold shadow-lg transition-all duration-200 hover:bg-[#2D6B35] hover:-translate-y-0.5"
+              >
+                {copy.primaryCta}
+              </Link>
+
+              <Link
+                href="/prices"
+                className="w-full sm:w-auto rounded-xl border border-white/35 bg-white/10 px-8 py-4 text-center text-white text-base md:text-lg font-semibold backdrop-blur-sm transition-all duration-200 hover:bg-white/20 hover:-translate-y-0.5"
+              >
+                {copy.secondaryCta}
+              </Link>
             </div>
           </div>
         </section>
