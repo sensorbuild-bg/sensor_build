@@ -26,7 +26,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      setIsScrolled(window.scrollY > 20);
     };
 
     handleScroll();
@@ -67,8 +67,8 @@ export default function Header() {
       } ${isScrolled ? "shadow-xl" : "shadow-none"}`}
     >
       {/* ================= DESKTOP (>= xl / 1280px) ================= */}
-      <div className="hidden xl:block relative">
-        {/* Зелената линия остава през логото, както е замислена */}
+      <div className="hidden xl:block relative h-[112px] overflow-hidden">
+        {/* Зелената линия остава през логото */}
         <div
           className={`absolute left-0 right-0 ${
             lang === "en" ? "top-[50.9%]" : "top-[51%]"
@@ -77,82 +77,80 @@ export default function Header() {
           } bg-gradient-to-r from-[#62b946] to-[#0c5447] pointer-events-none z-20`}
         />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative py-4">
-            <div className="flex items-center justify-between relative z-10">
-              <Link href="/" className="flex items-center -ml-4 shrink-0">
-                <div className="pr-6 xl:pr-12">
-                  <Image
-                    src={lang === "bg" ? "/logodark.png" : "/logo.webp"}
-                    alt="Sensor Build Logo"
-                    width={200}
-                    height={80}
-                    className="h-auto w-auto bg-transparent"
-                    priority
-                  />
-                </div>
-              </Link>
-
-              <nav className="flex-1 flex justify-center -mt-10">
-                <div className="flex space-x-12">
-                  {navigation.map((item) => {
-                    const active = isActiveLink(item.href);
-
-                    return (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className={`whitespace-nowrap text-lg font-bold transition-colors border-b-2 pb-0.5 ${
-                          active
-                            ? item.highlight
-                              ? "text-[#62b946] border-[#62b946]"
-                              : lang === "bg"
-                              ? "text-white border-white"
-                              : "text-black border-black"
-                            : item.highlight
-                            ? "text-[#62b946] border-transparent hover:text-[#7fd15f]"
-                            : lang === "bg"
-                            ? "text-white border-transparent hover:text-[#4da855]"
-                            : "text-black border-transparent hover:text-[#4da855]"
-                        }`}
-                      >
-                        {item.name}
-                      </Link>
-                    );
-                  })}
-                </div>
-              </nav>
-
-              <div className="flex items-center space-x-1 -mt-12 ml-6 shrink-0">
-                <button
-                  onClick={() => setLang("bg")}
-                  className={`px-3 py-1.5 text-xs font-semibold rounded-md text-white transition-all duration-200 ${
-                    lang === "bg"
-                      ? "bg-[#2d6b35] shadow-md"
-                      : "bg-[#388644]/40 hover:bg-[#388644]/60"
-                  }`}
-                >
-                  BG
-                </button>
-
-                <button
-                  onClick={() => setLang("en")}
-                  className={`px-3 py-1.5 text-xs font-semibold rounded-md text-white transition-all duration-200 ${
-                    lang === "en"
-                      ? "bg-[#2d6b35] shadow-md"
-                      : "bg-[#388644]/40 hover:bg-[#388644]/60"
-                  }`}
-                >
-                  EN
-                </button>
+        <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8">
+          <div className="relative h-full flex items-center justify-between z-30">
+            <Link href="/" className="flex items-center -ml-3 shrink-0">
+              <div className="pr-8 xl:pr-12">
+                <Image
+                  src={lang === "bg" ? "/logodark.png" : "/logo.webp"}
+                  alt="Sensor Build Logo"
+                  width={170}
+                  height={68}
+                  className="h-auto w-[170px] bg-transparent"
+                  priority
+                />
               </div>
+            </Link>
+
+            <nav className="flex-1 flex justify-center -mt-7">
+              <div className="flex space-x-9 2xl:space-x-11">
+                {navigation.map((item) => {
+                  const active = isActiveLink(item.href);
+
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`whitespace-nowrap text-base 2xl:text-lg font-bold transition-colors border-b-2 pb-0.5 ${
+                        active
+                          ? item.highlight
+                            ? "text-[#62b946] border-[#62b946]"
+                            : lang === "bg"
+                            ? "text-white border-white"
+                            : "text-black border-black"
+                          : item.highlight
+                          ? "text-[#62b946] border-transparent hover:text-[#7fd15f]"
+                          : lang === "bg"
+                          ? "text-white border-transparent hover:text-[#4da855]"
+                          : "text-black border-transparent hover:text-[#4da855]"
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  );
+                })}
+              </div>
+            </nav>
+
+            <div className="flex items-center space-x-1 -mt-8 ml-6 shrink-0">
+              <button
+                onClick={() => setLang("bg")}
+                className={`px-3 py-1.5 text-xs font-semibold rounded-md text-white transition-all duration-200 ${
+                  lang === "bg"
+                    ? "bg-[#2d6b35] shadow-md"
+                    : "bg-[#388644]/40 hover:bg-[#388644]/60"
+                }`}
+              >
+                BG
+              </button>
+
+              <button
+                onClick={() => setLang("en")}
+                className={`px-3 py-1.5 text-xs font-semibold rounded-md text-white transition-all duration-200 ${
+                  lang === "en"
+                    ? "bg-[#2d6b35] shadow-md"
+                    : "bg-[#388644]/40 hover:bg-[#388644]/60"
+                }`}
+              >
+                EN
+              </button>
             </div>
           </div>
         </div>
       </div>
 
       {/* ================= MOBILE + TABLET (< xl / 1280px) ================= */}
-      <div className="xl:hidden relative">
+      <div className="xl:hidden relative h-[84px] overflow-hidden">
         {/* Зелената линия остава през логото и на мобилна версия */}
         <div
           className={`absolute left-0 right-0 ${
@@ -162,19 +160,19 @@ export default function Header() {
           } bg-gradient-to-r from-[#62b946] to-[#0c5447] pointer-events-none z-20`}
         />
 
-        <div className="flex items-center justify-between px-4 py-4 relative z-10">
+        <div className="h-full flex items-center justify-between px-4 relative z-30">
           <Link href="/" className="flex items-center shrink-0">
             <Image
               src={lang === "bg" ? "/logodark.png" : "/logo.webp"}
               alt="Sensor Build Logo"
-              width={120}
-              height={48}
-              className="h-auto w-auto bg-transparent"
+              width={105}
+              height={42}
+              className="h-auto w-[105px] bg-transparent"
               priority
             />
           </Link>
 
-          <div className="flex items-center space-x-2 -mt-12">
+          <div className="flex items-center space-x-2 -mt-8">
             <div className="flex items-center space-x-1">
               <button
                 onClick={() => setLang("bg")}
