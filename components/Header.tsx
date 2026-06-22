@@ -75,9 +75,10 @@ export default function Header() {
         {/* 
           Най-горе: линията минава през логото.
           При скрол: линията отива долу, за да не минава през менюто.
+          z-40 я държи над линията на самото лого.
         */}
         <div
-          className={`absolute left-0 right-0 bg-gradient-to-r from-[#62b946] to-[#0c5447] pointer-events-none z-20 transition-all duration-300 ${
+          className={`absolute left-0 right-0 bg-gradient-to-r from-[#62b946] to-[#0c5447] pointer-events-none z-40 transition-all duration-300 ${
             isScrolled
               ? "bottom-0 h-[4px]"
               : lang === "en"
@@ -187,9 +188,10 @@ export default function Header() {
         {/* 
           Най-горе: линията минава през логото.
           При скрол: линията отива долу, за да не минава през бутоните.
+          z-40 я държи над линията на самото лого.
         */}
         <div
-          className={`absolute left-0 right-0 bg-gradient-to-r from-[#62b946] to-[#0c5447] pointer-events-none z-20 transition-all duration-300 ${
+          className={`absolute left-0 right-0 bg-gradient-to-r from-[#62b946] to-[#0c5447] pointer-events-none z-40 transition-all duration-300 ${
             isScrolled
               ? "bottom-0 h-[3px]"
               : lang === "en"
