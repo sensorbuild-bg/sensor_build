@@ -26,7 +26,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 40);
     };
 
     handleScroll();
@@ -62,38 +62,61 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 w-full z-50 transition-shadow duration-300 ${
+      className={`sticky top-0 w-full z-50 transition-all duration-300 ${
         lang === "bg" ? "bg-[#13182c]" : "bg-white"
       } ${isScrolled ? "shadow-xl" : "shadow-none"}`}
     >
       {/* ================= DESKTOP (>= xl / 1280px) ================= */}
-      <div className="hidden xl:block relative h-[112px] overflow-hidden">
-        {/* Зелената линия остава през логото */}
+      <div
+        className={`hidden xl:block relative transition-all duration-300 overflow-hidden ${
+          isScrolled ? "h-[82px]" : "h-[150px]"
+        }`}
+      >
+        {/* 
+          Най-горе: линията минава през логото.
+          При скрол: линията отива долу, за да не минава през менюто.
+        */}
         <div
-          className={`absolute left-0 right-0 ${
-            lang === "en" ? "top-[50.9%]" : "top-[51%]"
-          } -translate-y-1/2 ${
-            lang === "en" ? "h-[0.5rem]" : "h-[0.40rem]"
-          } bg-gradient-to-r from-[#62b946] to-[#0c5447] pointer-events-none z-20`}
+          className={`absolute left-0 right-0 bg-gradient-to-r from-[#62b946] to-[#0c5447] pointer-events-none z-20 transition-all duration-300 ${
+            isScrolled
+              ? "bottom-0 h-[4px]"
+              : lang === "en"
+              ? "top-[50.9%] -translate-y-1/2 h-[0.5rem]"
+              : "top-[51%] -translate-y-1/2 h-[0.40rem]"
+          }`}
         />
 
         <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8">
           <div className="relative h-full flex items-center justify-between z-30">
-            <Link href="/" className="flex items-center -ml-3 shrink-0">
-              <div className="pr-8 xl:pr-12">
+            <Link href="/" className="flex items-center -ml-4 shrink-0">
+              <div
+                className={`transition-all duration-300 ${
+                  isScrolled ? "pr-6 xl:pr-8" : "pr-6 xl:pr-12"
+                }`}
+              >
                 <Image
                   src={lang === "bg" ? "/logodark.png" : "/logo.webp"}
                   alt="Sensor Build Logo"
-                  width={170}
-                  height={68}
-                  className="h-auto w-[170px] bg-transparent"
+                  width={200}
+                  height={80}
+                  className={`h-auto bg-transparent transition-all duration-300 ${
+                    isScrolled ? "w-[115px]" : "w-[200px]"
+                  }`}
                   priority
                 />
               </div>
             </Link>
 
-            <nav className="flex-1 flex justify-center -mt-7">
-              <div className="flex space-x-9 2xl:space-x-11">
+            <nav
+              className={`flex-1 flex justify-center transition-all duration-300 ${
+                isScrolled ? "mt-0" : "-mt-10"
+              }`}
+            >
+              <div
+                className={`flex transition-all duration-300 ${
+                  isScrolled ? "space-x-8 2xl:space-x-10" : "space-x-12"
+                }`}
+              >
                 {navigation.map((item) => {
                   const active = isActiveLink(item.href);
 
@@ -101,7 +124,9 @@ export default function Header() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`whitespace-nowrap text-base 2xl:text-lg font-bold transition-colors border-b-2 pb-0.5 ${
+                      className={`whitespace-nowrap font-bold transition-colors border-b-2 ${
+                        isScrolled ? "text-base pb-1" : "text-lg pb-0.5"
+                      } ${
                         active
                           ? item.highlight
                             ? "text-[#62b946] border-[#62b946]"
@@ -122,7 +147,11 @@ export default function Header() {
               </div>
             </nav>
 
-            <div className="flex items-center space-x-1 -mt-8 ml-6 shrink-0">
+            <div
+              className={`flex items-center space-x-1 ml-6 shrink-0 transition-all duration-300 ${
+                isScrolled ? "mt-0" : "-mt-12"
+              }`}
+            >
               <button
                 onClick={() => setLang("bg")}
                 className={`px-3 py-1.5 text-xs font-semibold rounded-md text-white transition-all duration-200 ${
@@ -150,14 +179,23 @@ export default function Header() {
       </div>
 
       {/* ================= MOBILE + TABLET (< xl / 1280px) ================= */}
-      <div className="xl:hidden relative h-[84px] overflow-hidden">
-        {/* Зелената линия остава през логото и на мобилна версия */}
+      <div
+        className={`xl:hidden relative transition-all duration-300 overflow-hidden ${
+          isScrolled ? "h-[64px]" : "h-[100px]"
+        }`}
+      >
+        {/* 
+          Най-горе: линията минава през логото.
+          При скрол: линията отива долу, за да не минава през бутоните.
+        */}
         <div
-          className={`absolute left-0 right-0 ${
-            lang === "en" ? "top-[50.7%]" : "top-[50.6%]"
-          } -translate-y-1/2 ${
-            lang === "en" ? "h-[0.3rem]" : "h-[0.23rem]"
-          } bg-gradient-to-r from-[#62b946] to-[#0c5447] pointer-events-none z-20`}
+          className={`absolute left-0 right-0 bg-gradient-to-r from-[#62b946] to-[#0c5447] pointer-events-none z-20 transition-all duration-300 ${
+            isScrolled
+              ? "bottom-0 h-[3px]"
+              : lang === "en"
+              ? "top-[50.7%] -translate-y-1/2 h-[0.3rem]"
+              : "top-[50.6%] -translate-y-1/2 h-[0.23rem]"
+          }`}
         />
 
         <div className="h-full flex items-center justify-between px-4 relative z-30">
@@ -165,14 +203,20 @@ export default function Header() {
             <Image
               src={lang === "bg" ? "/logodark.png" : "/logo.webp"}
               alt="Sensor Build Logo"
-              width={105}
-              height={42}
-              className="h-auto w-[105px] bg-transparent"
+              width={120}
+              height={48}
+              className={`h-auto bg-transparent transition-all duration-300 ${
+                isScrolled ? "w-[82px]" : "w-[120px]"
+              }`}
               priority
             />
           </Link>
 
-          <div className="flex items-center space-x-2 -mt-8">
+          <div
+            className={`flex items-center space-x-2 transition-all duration-300 ${
+              isScrolled ? "mt-0" : "-mt-12"
+            }`}
+          >
             <div className="flex items-center space-x-1">
               <button
                 onClick={() => setLang("bg")}
