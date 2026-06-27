@@ -55,7 +55,9 @@ export default function Services() {
                 service.title.toLowerCase().includes('освет') ||
                 service.title.toLowerCase().includes('lighting');
 
-              const href = service.href || `/services/${service.slug}`;
+              const href = isLighting
+                ? '/osvetlenie'
+                : service.href || `/services/${service.slug}`;
 
               return (
                 <Link
@@ -65,16 +67,9 @@ export default function Services() {
                 >
                   <AnimatedDiv
                     className={`relative h-full rounded-lg p-6 transition-all duration-300 cursor-pointer
-                      ${
-                        isLighting
-                          ? `
-                            border-2 border-[#62b946]
-                            shadow-[0_0_0_2px_rgba(98,185,70,0.25)]
-                            hover:shadow-[0_0_25px_rgba(98,185,70,0.35)]
-                            hover:scale-[1.02]
-                          `
-                          : 'border-2 border-[#388644] hover:shadow-[0_0_20px_rgba(56,134,68,0.25)] hover:scale-[1.02]'
-                      }
+                      border-2 border-[#388644]
+                      hover:shadow-[0_0_20px_rgba(56,134,68,0.25)]
+                      hover:scale-[1.02]
                       ${lang === 'bg' ? 'bg-[#1a2342]' : 'bg-white'}
                     `}
                   >
@@ -85,7 +80,7 @@ export default function Services() {
                     >
                       {service.title}
 
-                      <span className={`${isLighting ? 'text-[#62b946]' : 'text-[#388644]'} text-lg ml-2 transition-transform duration-300 group-hover:translate-x-1`}>
+                      <span className="text-[#62b946] text-lg ml-2 transition-transform duration-300 group-hover:translate-x-1">
                         →
                       </span>
                     </h3>
