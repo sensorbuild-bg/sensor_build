@@ -5,17 +5,29 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
 import AnimatedDiv from '@/components/AnimatedDiv';
 
+type ServiceItem = {
+  title: string;
+  desc: string;
+  slug?: string;
+  href?: string;
+  longDesc?: string;
+  images?: string[];
+  content?: string[];
+};
+
 export default function Services() {
   const { lang } = useLanguage();
   const t = translations[lang].services;
 
+  const services = t.services as ServiceItem[];
+
   // Подреждане на осветлението второ
-  const lightingIndex = t.services.findIndex((s) =>
+  const lightingIndex = services.findIndex((s) =>
     s.title.toLowerCase().includes('освет') ||
     s.title.toLowerCase().includes('lighting')
   );
 
-  const orderedServices = [...t.services];
+  const orderedServices = [...services];
 
   if (lightingIndex > -1) {
     const [lighting] = orderedServices.splice(lightingIndex, 1);
@@ -43,10 +55,14 @@ export default function Services() {
                 service.title.toLowerCase().includes('освет') ||
                 service.title.toLowerCase().includes('lighting');
 
-              const href = service.href || `/uslugi/${service.slug}`;
+              const href = service.href || `/services/${service.slug}`;
 
               return (
-                <Link key={service.slug || index} href={href} className="block h-full group">
+                <Link
+                  key={service.slug || index}
+                  href={href}
+                  className="block h-full group"
+                >
                   <AnimatedDiv
                     className={`relative h-full rounded-lg p-6 transition-all duration-300 cursor-pointer
                       ${
