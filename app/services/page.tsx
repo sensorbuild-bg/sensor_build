@@ -77,6 +77,18 @@ export default function Services() {
                   ? '/osvetlenie'
                   : service.href || `/services/${service.slug}`;
 
+              const ctaText = isInteriorRenovation
+                ? lang === 'bg'
+                  ? 'Виж проекти'
+                  : 'View projects'
+                : isLighting
+                  ? lang === 'bg'
+                    ? 'Към осветление'
+                    : 'Go to lighting'
+                  : lang === 'bg'
+                    ? 'Виж повече'
+                    : 'View more';
+
               return (
                 <Link
                   key={service.slug || index}
@@ -84,28 +96,49 @@ export default function Services() {
                   className="block h-full group"
                 >
                   <AnimatedDiv
-                    className={`relative h-full rounded-lg p-6 transition-all duration-300 cursor-pointer
+                    className={`relative h-full min-h-[210px] rounded-lg p-6 transition-all duration-300 cursor-pointer
                       border-2 border-[#388644]
-                      hover:shadow-[0_0_20px_rgba(56,134,68,0.25)]
+                      hover:border-[#62b946]
+                      hover:shadow-[0_0_24px_rgba(98,185,70,0.28)]
                       hover:scale-[1.02]
                       ${lang === 'bg' ? 'bg-[#1a2342]' : 'bg-white'}
                     `}
                   >
-                    <h3
-                      className={`text-xl font-semibold mb-3 flex items-center justify-between
-                        ${lang === 'bg' ? 'text-white' : 'text-gray-900'}
-                      `}
-                    >
-                      {service.title}
+                    <div className="flex h-full flex-col justify-between gap-8">
 
-                      <span className="text-[#62b946] text-lg ml-2 transition-transform duration-300 group-hover:translate-x-1">
-                        →
-                      </span>
-                    </h3>
+                      <div>
+                        <h3
+                          className={`text-xl md:text-2xl font-semibold mb-4 pr-10
+                            ${lang === 'bg' ? 'text-white' : 'text-gray-900'}
+                          `}
+                        >
+                          {service.title}
+                        </h3>
 
-                    <p className={lang === 'bg' ? 'text-white/90' : 'text-gray-600'}>
-                      {service.desc}
-                    </p>
+                        <p
+                          className={`text-base md:text-lg leading-relaxed ${
+                            lang === 'bg' ? 'text-white/90' : 'text-gray-600'
+                          }`}
+                        >
+                          {service.desc}
+                        </p>
+                      </div>
+
+                      <div className="flex items-center justify-between pt-2">
+                        <span className="text-[#62b946] font-semibold text-sm md:text-base">
+                          {ctaText}
+                        </span>
+
+                        <span
+                          className="w-10 h-10 rounded-full border border-[#62b946] text-[#62b946]
+                          flex items-center justify-center text-xl transition-all duration-300
+                          group-hover:bg-[#62b946] group-hover:text-white group-hover:translate-x-1"
+                        >
+                          →
+                        </span>
+                      </div>
+
+                    </div>
                   </AnimatedDiv>
                 </Link>
               );
