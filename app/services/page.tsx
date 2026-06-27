@@ -40,24 +40,42 @@ export default function Services() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="text-center mb-12">
-            <h1 className={`text-4xl md:text-5xl font-noah-bold mb-4 ${lang === 'bg' ? 'text-white' : 'text-gray-900'}`}>
+            <h1
+              className={`text-4xl md:text-5xl font-noah-bold mb-4 ${
+                lang === 'bg' ? 'text-white' : 'text-gray-900'
+              }`}
+            >
               {t.title}
             </h1>
 
-            <p className={`text-lg max-w-3xl mx-auto ${lang === 'bg' ? 'text-white' : 'text-gray-600'}`}>
+            <p
+              className={`text-lg max-w-3xl mx-auto ${
+                lang === 'bg' ? 'text-white' : 'text-gray-600'
+              }`}
+            >
               {t.description}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {orderedServices.map((service, index) => {
-              const isLighting =
-                service.title.toLowerCase().includes('освет') ||
-                service.title.toLowerCase().includes('lighting');
+              const titleLower = service.title.toLowerCase();
 
-              const href = isLighting
-                ? '/osvetlenie'
-                : service.href || `/services/${service.slug}`;
+              const isLighting =
+                titleLower.includes('освет') ||
+                titleLower.includes('lighting');
+
+              const isInteriorRenovation =
+                titleLower.includes('вътрешни ремонти') ||
+                titleLower.includes('interior renovations') ||
+                service.slug === 'vutreshni-remonti' ||
+                service.slug === 'interior-renovations';
+
+              const href = isInteriorRenovation
+                ? '/projects'
+                : isLighting
+                  ? '/osvetlenie'
+                  : service.href || `/services/${service.slug}`;
 
               return (
                 <Link
@@ -95,11 +113,19 @@ export default function Services() {
           </div>
 
           <div className="text-center mt-12">
-            <p className={`max-w-2xl mx-auto ${lang === 'bg' ? 'text-white' : 'text-gray-600'}`}>
+            <p
+              className={`max-w-2xl mx-auto ${
+                lang === 'bg' ? 'text-white' : 'text-gray-600'
+              }`}
+            >
               {t.miniText}
             </p>
 
-            <p className={`max-w-2xl mx-auto mt-4 ${lang === 'bg' ? 'text-white' : 'text-gray-600'}`}>
+            <p
+              className={`max-w-2xl mx-auto mt-4 ${
+                lang === 'bg' ? 'text-white' : 'text-gray-600'
+              }`}
+            >
               {t.contactText}
             </p>
           </div>
