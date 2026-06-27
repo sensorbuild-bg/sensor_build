@@ -24,8 +24,6 @@ export default function Services() {
 
   return (
     <div className={`${lang === 'bg' ? 'bg-[#13182c]' : 'bg-white'}`}>
-
-      {/* ================= SERVICES ================= */}
       <div className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -45,47 +43,42 @@ export default function Services() {
                 service.title.toLowerCase().includes('освет') ||
                 service.title.toLowerCase().includes('lighting');
 
-              const Card = (
-                <AnimatedDiv
-                  className={`relative rounded-lg p-6 transition-all duration-300
-                    ${
-                      isLighting
-                        ? `
-                          border-2 border-[#62b946]
-                          shadow-[0_0_0_2px_rgba(98,185,70,0.25)]
-                          hover:shadow-[0_0_25px_rgba(98,185,70,0.35)]
-                          hover:scale-[1.02]
-                          cursor-pointer
-                        `
-                        : 'border-2 border-[#388644] hover:shadow-lg'
-                    }
-                    ${lang === 'bg' ? 'bg-[#1a2342]' : 'bg-white'}
-                  `}
-                >
-                  <h3
-                    className={`text-xl font-semibold mb-3 flex items-center justify-between
-                      ${lang === 'bg' ? 'text-white' : 'text-gray-900'}
+              const href = service.href || `/uslugi/${service.slug}`;
+
+              return (
+                <Link key={service.slug || index} href={href} className="block h-full group">
+                  <AnimatedDiv
+                    className={`relative h-full rounded-lg p-6 transition-all duration-300 cursor-pointer
+                      ${
+                        isLighting
+                          ? `
+                            border-2 border-[#62b946]
+                            shadow-[0_0_0_2px_rgba(98,185,70,0.25)]
+                            hover:shadow-[0_0_25px_rgba(98,185,70,0.35)]
+                            hover:scale-[1.02]
+                          `
+                          : 'border-2 border-[#388644] hover:shadow-[0_0_20px_rgba(56,134,68,0.25)] hover:scale-[1.02]'
+                      }
+                      ${lang === 'bg' ? 'bg-[#1a2342]' : 'bg-white'}
                     `}
                   >
-                    {service.title}
+                    <h3
+                      className={`text-xl font-semibold mb-3 flex items-center justify-between
+                        ${lang === 'bg' ? 'text-white' : 'text-gray-900'}
+                      `}
+                    >
+                      {service.title}
 
-                    {isLighting && (
-                      <span className="text-[#62b946] text-lg ml-2">→</span>
-                    )}
-                  </h3>
+                      <span className={`${isLighting ? 'text-[#62b946]' : 'text-[#388644]'} text-lg ml-2 transition-transform duration-300 group-hover:translate-x-1`}>
+                        →
+                      </span>
+                    </h3>
 
-                  <p className={lang === 'bg' ? 'text-white/90' : 'text-gray-600'}>
-                    {service.desc}
-                  </p>
-                </AnimatedDiv>
-              );
-
-              return isLighting ? (
-                <Link key={index} href="/osvetlenie" className="block">
-                  {Card}
+                    <p className={lang === 'bg' ? 'text-white/90' : 'text-gray-600'}>
+                      {service.desc}
+                    </p>
+                  </AnimatedDiv>
                 </Link>
-              ) : (
-                <div key={index}>{Card}</div>
               );
             })}
           </div>
@@ -102,7 +95,6 @@ export default function Services() {
 
         </div>
       </div>
-
     </div>
   );
 }
