@@ -55,6 +55,14 @@ export default function ServiceDetailPage() {
   const images = service.images || [];
   const hasImages = images.length > 0;
 
+  const goToPreviousImage = () => {
+    setActiveImage((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const goToNextImage = () => {
+    setActiveImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
   return (
     <div
       className={`${
@@ -79,15 +87,38 @@ export default function ServiceDetailPage() {
 
           {hasImages ? (
             <div className="mb-14">
-              <div className="relative w-full max-w-3xl mx-auto h-[260px] sm:h-[360px] md:h-[430px] rounded-lg overflow-hidden border border-[#388644]">
+
+              <div className="relative w-full max-w-4xl mx-auto h-[260px] sm:h-[380px] md:h-[520px] rounded-lg overflow-hidden border border-[#388644] bg-[#0f1427]">
                 <Image
                   src={images[activeImage]}
                   alt={service.title}
                   fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 800px"
+                  className="object-contain"
+                  sizes="(max-width: 768px) 100vw, 900px"
                   priority
                 />
+
+                {images.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={goToPreviousImage}
+                      aria-label={lang === 'bg' ? 'Предишна снимка' : 'Previous image'}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-lg bg-[#1a2342]/90 border border-white/10 text-white text-4xl flex items-center justify-center transition-all duration-300 hover:bg-[#62b946] hover:scale-105"
+                    >
+                      ‹
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={goToNextImage}
+                      aria-label={lang === 'bg' ? 'Следваща снимка' : 'Next image'}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-lg bg-[#1a2342]/90 border border-white/10 text-white text-4xl flex items-center justify-center transition-all duration-300 hover:bg-[#62b946] hover:scale-105"
+                    >
+                      ›
+                    </button>
+                  </>
+                )}
               </div>
 
               {images.length > 1 && (
@@ -97,7 +128,7 @@ export default function ServiceDetailPage() {
                       type="button"
                       key={index}
                       onClick={() => setActiveImage(index)}
-                      className={`relative w-24 h-20 sm:w-32 sm:h-24 rounded-md overflow-hidden border-2 transition-all duration-300 ${
+                      className={`relative w-24 h-20 sm:w-32 sm:h-24 rounded-md overflow-hidden border-2 bg-[#0f1427] transition-all duration-300 ${
                         activeImage === index
                           ? 'border-[#62b946] opacity-100'
                           : 'border-transparent opacity-50 hover:opacity-90'
@@ -107,7 +138,7 @@ export default function ServiceDetailPage() {
                         src={image}
                         alt={`${service.title} ${index + 1}`}
                         fill
-                        className="object-cover"
+                        className="object-contain"
                         sizes="150px"
                       />
                     </button>
