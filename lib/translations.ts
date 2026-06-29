@@ -39,55 +39,198 @@ export const translations = {
       services: [
         {
           title: 'Цялостни или частични вътрешни ремонти',
+          slug: 'vutreshni-remonti',
+          href: '/projects',
           desc: 'Професионални ремонти с внимание към всеки детайл.',
+          longDesc:
+            'Извършваме цялостни и частични вътрешни ремонти на жилища, апартаменти, къщи и работни пространства. Работим по ясен план, с внимание към детайла и с фокус върху качествено изпълнение от подготовката до финалния завършек.',
+          images: [],
+          content: [
+            'Подготовка и защита на обекта преди започване на ремонтните дейности.',
+            'Корекции по стени, тавани, подове и съществуващи инсталации според нуждите на проекта.',
+            'Организирано изпълнение на отделните етапи с внимание към срокове, чистота и финален резултат.',
+          ],
         },
         {
           title: 'Монтаж на осветление',
+          slug: 'osvetlenie',
+          href: '/osvetlenie',
           desc: 'Съвременни осветителни решения.',
+          longDesc:
+            'Извършваме монтаж на различни видове осветление – стандартни осветителни тела, LED системи, скрито осветление, спотове и декоративни решения.',
+          images: [],
+          content: [
+            'Планиране на осветителните точки според функцията на помещението.',
+            'Монтаж на осветителни тела, LED ленти, спотове и декоративно осветление.',
+            'Проверка на връзките, захранването и правилната работа на всяка точка.',
+          ],
         },
         {
           title: 'Ремонти на офисни пространства',
+          slug: 'ofisni-prostranstva',
           desc: 'Структурно окабеляване, СОТ, ПБ, интернет, видеонаблюдение и аварийно осветление.',
+          longDesc:
+            'Извършваме ремонти и преустройства на офисни пространства, като съчетаваме довършителни работи с изграждане на необходимите технически системи за модерна, удобна и безопасна работна среда.',
+          images: [
+            '/services/ofisni-prostranstva/01-main-ofisni-prostranstva.webp',
+            '/services/ofisni-prostranstva/02-emergency.webp',
+            '/services/ofisni-prostranstva/03-emergency-3.webp',
+          ],
+          content: [
+            'Планираме разпределението на електрически, интернет и слаботокови точки според нуждите на работното пространство.',
+            'Изграждаме структурно окабеляване, интернет мрежа, видеонаблюдение, СОТ и други системи за сигурност.',
+            'Монтираме аварийно и работно осветление, съобразено с функционалността на помещението.',
+            'Изпълняваме довършителни работи, така че офисът да бъде подреден, практичен и готов за използване.',
+          ],
         },
         {
           title: 'Ел. инсталации',
+          slug: 'el-instalacii',
           desc: 'Безопасни и надеждни електрически инсталации.',
+          longDesc:
+            'Изграждаме и подменяме електрически инсталации с акцент върху безопасност, правилно разпределение на точките и надеждна работа на системата.',
+          images: [
+            '/project2/20250806_190332_main-ezgif.com-jpg-to-webp-converter.webp',
+            '/project2/20250506_115318-ezgif.com-jpg-to-webp-converter.webp',
+            '/project2/20250806_190601-ezgif.com-jpg-to-webp-converter.webp',
+            '/project2/20250908_091236-ezgif.com-jpg-to-webp-converter.webp',
+          ],
+          content: [
+            'Планиране на контакти, ключове, осветителни точки и захранвания.',
+            'Полагане на кабели и изграждане на силнотокови и слаботокови линии.',
+            'Проверка на инсталацията за безопасност, натоварване и коректна работа.',
+          ],
         },
         {
           title: 'ВиК инсталации',
+          slug: 'vik-instalacii',
           desc: 'Водопроводни и канализационни системи.',
+          longDesc:
+            'Изграждаме и ремонтираме водопроводни и канализационни инсталации за бани, кухни, мокри помещения и цялостни жилищни обекти.',
+          images: [
+            '/project3/20250723_174911_main.webp',
+            '/project3/20250723_174903.webp',
+            '/project3/20251013_135225.webp',
+          ],
+          content: [
+            'Планиране на трасета за водопровод и канализация.',
+            'Полагане на тръби с правилни наклони и надеждни връзки.',
+            'Проверка на системата преди затваряне на стените и подовете.',
+          ],
         },
         {
           title: 'Гипсокартон',
+          slug: 'gipsokarton',
           desc: 'Изграждане на предстенни обшивки, окачени тавани и декоративни елементи.',
+          longDesc:
+            'Изпълняваме конструкции от гипсокартон за стени, тавани, предстенни обшивки, скрито осветление и декоративни решения.',
+          images: [
+            '/project5/20251109_145613_main-ezgif.com-jpg-to-webp-converter.webp',
+            '/project5/20251109_084251-ezgif.com-jpg-to-webp-converter.webp',
+            '/project5/20251207-living-room-gypsum-before.webp',
+            '/project5/20251223-living-room-gypsum-after.webp',
+          ],
+          content: [
+            'Измерване, нивелиране и подготовка на конструкцията.',
+            'Монтаж на метални профили и гипсокартонени плоскости.',
+            'Възможност за топло- и звукоизолация според нуждите на помещението.',
+          ],
         },
         {
           title: 'Шпакловки',
+          slug: 'shpaklovki',
           desc: 'Прецизно изравняване на стени и тавани.',
+          longDesc:
+            'Изпълняваме шпакловки за стени и тавани с цел постигане на равна, гладка и готова за боядисване повърхност.',
+          images: [],
+          content: [
+            'Подготовка на основата и корекция на неравности.',
+            'Полагане на шпакловъчни материали според състоянието на стените.',
+            'Финално заглаждане и подготовка за боядисване.',
+          ],
         },
         {
           title: 'Боядисване',
+          slug: 'boyadisvane',
           desc: 'Качествено боядисване с модерни материали.',
+          longDesc:
+            'Извършваме боядисване на стени и тавани с качествени материали, равномерно покритие и чист финален резултат.',
+          images: [],
+          content: [
+            'Защита на подове, мебели, дограма и съседни повърхности.',
+            'Подготовка на стените преди боядисване.',
+            'Нанасяне на боя с равномерен и завършен вид.',
+          ],
         },
         {
           title: 'Подови настилки',
+          slug: 'podovi-nastilki',
           desc: 'Монтаж на различни видове подови настилки.',
+          longDesc:
+            'Извършваме монтаж на подови настилки според вида на помещението, основата и желания финален ефект.',
+          images: [],
+          content: [
+            'Подготовка и преглед на основата преди монтаж.',
+            'Монтаж на настилки според техническите изисквания на материала.',
+            'Финално оформяне на детайли, преходи и завършващи елементи.',
+          ],
         },
         {
           title: 'Фаянс, теракот, гранитогрес',
+          slug: 'fayans-terakot-granitogres',
           desc: 'Професионален монтаж на облицовки.',
+          longDesc:
+            'Изпълняваме монтаж на фаянс, теракот и гранитогрес за бани, кухни, коридори и други помещения.',
+          images: [],
+          content: [
+            'Подготовка и нивелиране на основата.',
+            'Прецизно разпределение на плочките и контрол на фугите.',
+            'Финално фугиране и оформяне на детайли.',
+          ],
         },
         {
           title: 'Подово отопление',
+          slug: 'podovo-otoplenie',
           desc: 'Изграждане на ефективни отоплителни системи.',
+          longDesc:
+            'Изграждаме подово отопление, което осигурява равномерно затопляне, комфорт и ефективно използване на енергията.',
+          images: [
+            '/project4/20251008_150415_main-ezgif.com-jpg-to-webp-converter.webp',
+            '/project4/20251008_150718-ezgif.com-jpg-to-webp-converter.webp',
+            '/project4/20251008_152831-ezgif.com-jpg-to-webp-converter.webp',
+            '/project4/20251016_181739-ezgif.com-jpg-to-webp-converter.webp',
+          ],
+          content: [
+            'Подготовка на основата и поставяне на изолационни подложки.',
+            'Монтаж на тръби, колекторна кутия и управление.',
+            'Проверка на системата преди полагане на замазка.',
+          ],
         },
         {
           title: 'Бани',
+          slug: 'bani',
           desc: 'Цялостно изграждане и ремонт на бани – ВиК, хидроизолация, облицовки и довършителни работи.',
+          longDesc:
+            'Извършваме цялостни ремонти на бани – от ВиК инсталации и подготовка на основата до хидроизолация, облицовки и финални довършителни работи.',
+          images: [],
+          content: [
+            'Изграждане или подмяна на ВиК инсталация.',
+            'Подготовка на основата и изпълнение на хидроизолация.',
+            'Монтаж на облицовки, санитария и довършителни елементи.',
+          ],
         },
         {
           title: 'Други',
+          slug: 'drugi',
           desc: 'Допълнителни услуги според нуждите на клиента.',
+          longDesc:
+            'Предлагаме и допълнителни строително-ремонтни дейности според конкретните нужди на обекта и клиента.',
+          images: [],
+          content: [
+            'Оглед на обекта и уточняване на конкретните дейности.',
+            'Предложение за подходящо техническо решение.',
+            'Изпълнение според обема и спецификата на проекта.',
+          ],
         },
       ],
       miniText:
@@ -308,55 +451,198 @@ export const translations = {
       services: [
         {
           title: 'Complete or Partial Interior Renovations',
+          slug: 'interior-renovations',
+          href: '/projects',
           desc: 'Professional renovations with attention to every detail.',
+          longDesc:
+            'We carry out complete and partial interior renovations of homes, apartments, houses and workspaces. We work according to a clear plan, with attention to detail and a focus on quality execution from preparation to final finish.',
+          images: [],
+          content: [
+            'Preparation and protection of the site before renovation work begins.',
+            'Corrections to walls, ceilings, floors and existing installations according to the needs of the project.',
+            'Organized execution of each stage with attention to deadlines, cleanliness and final result.',
+          ],
         },
         {
           title: 'Lighting Installation',
+          slug: 'lighting',
+          href: '/osvetlenie',
           desc: 'Modern lighting solutions.',
+          longDesc:
+            'We install different types of lighting — standard fixtures, LED systems, hidden lighting, spotlights and decorative lighting solutions.',
+          images: [],
+          content: [
+            'Planning of lighting points according to the function of the space.',
+            'Installation of fixtures, LED strips, spotlights and decorative lighting.',
+            'Testing the connections, power supply and proper operation of each lighting point.',
+          ],
         },
         {
           title: 'Office Space Renovations',
+          slug: 'ofisni-prostranstva',
           desc: 'Structured cabling, security systems, fire safety, internet, video surveillance and emergency lighting.',
+          longDesc:
+            'We carry out renovations and transformations of office spaces, combining finishing works with the installation of the necessary technical systems for a modern, convenient and safe working environment.',
+          images: [
+            '/services/ofisni-prostranstva/01-main-ofisni-prostranstva.webp',
+            '/services/ofisni-prostranstva/02-emergency.webp',
+            '/services/ofisni-prostranstva/03-emergency-3.webp',
+          ],
+          content: [
+            'We plan the layout of electrical, internet and low-voltage points according to the needs of the workspace.',
+            'We install structured cabling, internet networks, video surveillance, security systems and other safety systems.',
+            'We install emergency and working lighting, adapted to the function of the space.',
+            'We carry out finishing works so the office is organized, practical and ready for use.',
+          ],
         },
         {
           title: 'Electrical Installations',
+          slug: 'electrical-installations',
           desc: 'Safe and reliable electrical installations.',
+          longDesc:
+            'We build and replace electrical installations with a focus on safety, proper distribution of points and reliable system operation.',
+          images: [
+            '/project2/20250806_190332_main-ezgif.com-jpg-to-webp-converter.webp',
+            '/project2/20250506_115318-ezgif.com-jpg-to-webp-converter.webp',
+            '/project2/20250806_190601-ezgif.com-jpg-to-webp-converter.webp',
+            '/project2/20250908_091236-ezgif.com-jpg-to-webp-converter.webp',
+          ],
+          content: [
+            'Planning of sockets, switches, lighting points and power supplies.',
+            'Cable installation and construction of power and low-voltage lines.',
+            'Testing the installation for safety, load capacity and proper operation.',
+          ],
         },
         {
           title: 'Plumbing Installations',
+          slug: 'plumbing-installations',
           desc: 'Water supply and sewage systems.',
+          longDesc:
+            'We build and repair water supply and sewage installations for bathrooms, kitchens, wet rooms and complete residential properties.',
+          images: [
+            '/project3/20250723_174911_main.webp',
+            '/project3/20250723_174903.webp',
+            '/project3/20251013_135225.webp',
+          ],
+          content: [
+            'Planning of water supply and sewage routes.',
+            'Installation of pipes with correct slopes and reliable connections.',
+            'Testing the system before closing walls and floors.',
+          ],
         },
         {
           title: 'Drywall',
+          slug: 'drywall',
           desc: 'Construction of drywall partitions, suspended ceilings and decorative elements.',
+          longDesc:
+            'We build drywall structures for walls, ceilings, partitions, hidden lighting and decorative solutions.',
+          images: [
+            '/project5/20251109_145613_main-ezgif.com-jpg-to-webp-converter.webp',
+            '/project5/20251109_084251-ezgif.com-jpg-to-webp-converter.webp',
+            '/project5/20251207-living-room-gypsum-before.webp',
+            '/project5/20251223-living-room-gypsum-after.webp',
+          ],
+          content: [
+            'Measuring, leveling and preparation of the structure.',
+            'Installation of metal profiles and drywall boards.',
+            'Option for thermal and sound insulation according to the needs of the room.',
+          ],
         },
         {
           title: 'Skim Coating',
+          slug: 'skim-coating',
           desc: 'Precise leveling of walls and ceilings.',
+          longDesc:
+            'We perform skim coating of walls and ceilings to achieve a flat, smooth surface ready for painting.',
+          images: [],
+          content: [
+            'Base preparation and correction of uneven areas.',
+            'Application of skim coating materials according to the condition of the walls.',
+            'Final smoothing and preparation for painting.',
+          ],
         },
         {
           title: 'Painting',
+          slug: 'painting',
           desc: 'High-quality painting with modern materials.',
+          longDesc:
+            'We paint walls and ceilings with quality materials, even coverage and a clean final result.',
+          images: [],
+          content: [
+            'Protection of floors, furniture, windows and adjacent surfaces.',
+            'Wall preparation before painting.',
+            'Application of paint with an even and finished appearance.',
+          ],
         },
         {
           title: 'Flooring',
+          slug: 'flooring',
           desc: 'Installation of different types of flooring.',
+          longDesc:
+            'We install flooring according to the type of room, the base and the desired final effect.',
+          images: [],
+          content: [
+            'Preparation and inspection of the base before installation.',
+            'Installation according to the technical requirements of the material.',
+            'Final detailing of transitions and finishing elements.',
+          ],
         },
         {
           title: 'Tiles and Granite Tiles',
+          slug: 'tiles-and-granite-tiles',
           desc: 'Professional installation of wall and floor coverings.',
+          longDesc:
+            'We install ceramic tiles, terracotta and granite tiles for bathrooms, kitchens, corridors and other spaces.',
+          images: [],
+          content: [
+            'Preparation and leveling of the base.',
+            'Precise tile layout and joint control.',
+            'Final grouting and detailing.',
+          ],
         },
         {
           title: 'Underfloor Heating',
+          slug: 'underfloor-heating',
           desc: 'Installation of efficient heating systems.',
+          longDesc:
+            'We install underfloor heating systems that provide even heating, comfort and efficient energy use.',
+          images: [
+            '/project4/20251008_150415_main-ezgif.com-jpg-to-webp-converter.webp',
+            '/project4/20251008_150718-ezgif.com-jpg-to-webp-converter.webp',
+            '/project4/20251008_152831-ezgif.com-jpg-to-webp-converter.webp',
+            '/project4/20251016_181739-ezgif.com-jpg-to-webp-converter.webp',
+          ],
+          content: [
+            'Base preparation and installation of insulation panels.',
+            'Installation of pipes, collector box and control system.',
+            'System check before screed application.',
+          ],
         },
         {
           title: 'Bathrooms',
+          slug: 'bathrooms',
           desc: 'Complete bathroom construction and renovation – plumbing, waterproofing, tiling and finishing works.',
+          longDesc:
+            'We carry out complete bathroom renovations — from plumbing installations and base preparation to waterproofing, tiling and final finishing works.',
+          images: [],
+          content: [
+            'Construction or replacement of plumbing installations.',
+            'Base preparation and waterproofing.',
+            'Installation of tiles, sanitary equipment and finishing elements.',
+          ],
         },
         {
           title: 'Other Services',
+          slug: 'other-services',
           desc: 'Additional services according to the client’s needs.',
+          longDesc:
+            'We also offer additional construction and renovation activities according to the specific needs of the site and the client.',
+          images: [],
+          content: [
+            'Site inspection and clarification of the specific activities.',
+            'Proposal of a suitable technical solution.',
+            'Execution according to the scope and specifics of the project.',
+          ],
         },
       ],
       miniText:
