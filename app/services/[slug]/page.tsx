@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
@@ -27,6 +27,35 @@ export default function ServiceDetailPage() {
   const servicesData = translations[lang].services.services as ServiceItem[];
   const service = servicesData.find((item) => item.slug === currentSlug);
 
+  const images = service?.images || [];
+  const hasImages = images.length > 0;
+  const imagesKey = images.join('|');
+
+  useEffect(() => {
+    setActiveImage(0);
+  }, [currentSlug]);
+
+  useEffect(() => {
+    if (!hasImages) return;
+
+    images.forEach((src) => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  }, [hasImages, imagesKey]);
+
+  const goToPreviousImage = () => {
+    if (!hasImages) return;
+
+    setActiveImage((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const goToNextImage = () => {
+    if (!hasImages) return;
+
+    setActiveImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
   if (!service) {
     return (
       <div
@@ -52,17 +81,6 @@ export default function ServiceDetailPage() {
     );
   }
 
-  const images = service.images || [];
-  const hasImages = images.length > 0;
-
-  const goToPreviousImage = () => {
-    setActiveImage((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-  };
-
-  const goToNextImage = () => {
-    setActiveImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-  };
-
   return (
     <div
       className={`${
@@ -87,7 +105,6 @@ export default function ServiceDetailPage() {
 
           {hasImages ? (
             <div className="mb-14">
-
               <div className="relative w-full max-w-4xl mx-auto h-[260px] sm:h-[380px] md:h-[520px] rounded-lg overflow-hidden border border-[#388644] bg-[#0f1427]">
                 <Image
                   src={images[activeImage]}
@@ -95,6 +112,7 @@ export default function ServiceDetailPage() {
                   fill
                   className="object-contain"
                   sizes="(max-width: 768px) 100vw, 900px"
+                  quality={75}
                   priority
                 />
 
@@ -126,7 +144,7 @@ export default function ServiceDetailPage() {
                   {images.map((image, index) => (
                     <button
                       type="button"
-                      key={index}
+                      key={image}
                       onClick={() => setActiveImage(index)}
                       className={`relative w-24 h-20 sm:w-32 sm:h-24 rounded-md overflow-hidden border-2 bg-[#0f1427] transition-all duration-300 ${
                         activeImage === index
@@ -140,6 +158,7 @@ export default function ServiceDetailPage() {
                         fill
                         className="object-contain"
                         sizes="150px"
+                        quality={55}
                       />
                     </button>
                   ))}
