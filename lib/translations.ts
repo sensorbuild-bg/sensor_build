@@ -162,7 +162,11 @@ export const translations = {
           desc: 'Качествено боядисване с модерни материали.',
           longDesc:
             'Извършваме боядисване на стени и тавани с качествени материали, равномерно покритие и чист финален резултат.',
-          images: [],
+          images: [
+           '/project1/main.webp',
+           '/project1/01.webp',
+           '/project1/02.webp',
+          ],
           content: [
             'Защита на подове, мебели, дограма и съседни повърхности.',
             'Подготовка на стените преди боядисване.',
@@ -580,7 +584,11 @@ export const translations = {
       desc: 'High-quality painting with modern materials.',
       longDesc:
         'We paint walls and ceilings with quality materials, even coverage and a clean final result.',
-      images: [],
+         images: [
+           '/project1/main.webp',
+           '/project1/01.webp',
+           '/project1/02.webp',
+          ],
       content: [
         'Protection of floors, furniture, windows and adjacent surfaces.',
         'Wall preparation before painting.',
