@@ -150,6 +150,7 @@ export const translations = {
   longDesc:
     'Изпълняваме подови замазки за жилищни и работни пространства, като осигуряваме равна, здрава и стабилна основа за последващо полагане на настилки. Работим с внимание към нивата, дебелините и правилната подготовка на основата.',
   images: [
+    '/services/zamazki/main-zamazka.webp',
     '/services/zamazki/zamazka-1.webp',
     '/services/zamazki/zamazka-2.webp',
     '/services/zamazki/zamazka-3.webp',
@@ -590,6 +591,7 @@ export const translations = {
   longDesc:
     'We execute floor screeds for residential and working spaces, providing a level, strong and stable base for the installation of future floor finishes. We work with attention to levels, thicknesses and proper base preparation.',
   images: [
+    '/services/zamazki/main-zamazka.webp',
     '/services/zamazki/zamazka-1.webp',
     '/services/zamazki/zamazka-2.webp',
     '/services/zamazki/zamazka-3.webp',
