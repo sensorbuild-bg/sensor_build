@@ -94,6 +94,9 @@ export const translations = {
             '/project2/20250506_115318-ezgif.com-jpg-to-webp-converter.webp',
             '/project2/20250806_190601-ezgif.com-jpg-to-webp-converter.webp',
             '/project2/20250908_091236-ezgif.com-jpg-to-webp-converter.webp',
+            '/services/el-instalacii/el-tablo-1.webp'
+            '/services/el-instalacii/el-tablo-2.webp'
+            
           ],
           content: [
             'Планиране на контакти, ключове, осветителни точки и захранвания.',
@@ -510,6 +513,8 @@ export const translations = {
         '/project2/20250506_115318-ezgif.com-jpg-to-webp-converter.webp',
         '/project2/20250806_190601-ezgif.com-jpg-to-webp-converter.webp',
         '/project2/20250908_091236-ezgif.com-jpg-to-webp-converter.webp',
+       '/services/el-instalacii/el-tablo-1.webp'
+       '/services/el-instalacii/el-tablo-2.webp'
       ],
       content: [
         'Planning of sockets, switches, lighting points and power supplies.',
