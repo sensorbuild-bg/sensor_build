@@ -94,7 +94,7 @@ export const translations = {
             '/project2/20250506_115318-ezgif.com-jpg-to-webp-converter.webp',
             '/project2/20250806_190601-ezgif.com-jpg-to-webp-converter.webp',
             '/project2/20250908_091236-ezgif.com-jpg-to-webp-converter.webp',
-            '/services/el-instalacii/el-tablo-1.webp'
+            '/services/el-instalacii/el-tablo-1.webp',
             '/services/el-instalacii/el-tablo-2.webp'
             
           ],
@@ -513,7 +513,7 @@ export const translations = {
         '/project2/20250506_115318-ezgif.com-jpg-to-webp-converter.webp',
         '/project2/20250806_190601-ezgif.com-jpg-to-webp-converter.webp',
         '/project2/20250908_091236-ezgif.com-jpg-to-webp-converter.webp',
-       '/services/el-instalacii/el-tablo-1.webp'
+       '/services/el-instalacii/el-tablo-1.webp',
        '/services/el-instalacii/el-tablo-2.webp'
       ],
       content: [
