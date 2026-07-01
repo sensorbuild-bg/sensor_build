@@ -144,6 +144,20 @@ export const translations = {
           ],
         },
         {
+  title: 'Замазки',
+  slug: 'zamazki',
+  desc: 'Изпълнение на подови замазки за равна и стабилна основа.',
+  longDesc:
+    'Изпълняваме подови замазки за жилищни и работни пространства, като осигуряваме равна, здрава и стабилна основа за последващо полагане на настилки. Работим с внимание към нивата, дебелините и правилната подготовка на основата.',
+  images: [],
+  content: [
+    'Подготовка и почистване на основата преди изпълнение на замазката.',
+    'Нивелиране и определяне на необходимите височини според проекта и бъдещата настилка.',
+    'Изпълнение на замазка с равна повърхност и добра носимоспособност.',
+    'Подходяща основа за плочки, ламинат, паркет, винил и други подови настилки.',
+  ],
+},
+        {
           title: 'Шпакловки',
           slug: 'shpaklovki',
           desc: 'Прецизно изравняване на стени и тавани.',
@@ -565,6 +579,20 @@ export const translations = {
         'Option for thermal and sound insulation according to the needs of the room.',
       ],
     },
+    {
+  title: 'Floor Screeds',
+  slug: 'zamazki',
+  desc: 'Execution of floor screeds for a level and stable base.',
+  longDesc:
+    'We execute floor screeds for residential and working spaces, providing a level, strong and stable base for the installation of future floor finishes. We work with attention to levels, thicknesses and proper base preparation.',
+  images: [],
+  content: [
+    'Preparation and cleaning of the base before screed execution.',
+    'Leveling and defining the required heights according to the project and future flooring.',
+    'Execution of screed with a level surface and good load-bearing capacity.',
+    'Suitable base for tiles, laminate, parquet, vinyl and other floor finishes.',
+  ],
+},
     {
       title: 'Skim Coating',
       slug: 'shpaklovki',
