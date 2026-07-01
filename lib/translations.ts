@@ -125,6 +125,10 @@ export const translations = {
           longDesc:
             'Изпълняваме конструкции от гипсокартон за стени, тавани, предстенни обшивки, скрито осветление и декоративни решения.',
           images: [
+            '/services/gipsokarton/main-gipsokarton.webp',
+            '/services/gipsokarton/konstrukcia-1.webp',
+            '/services/gipsokarton/konstrukcia-tavan.webp',
+            '/services/gipsokarton/tavan-gipsokarton.webp',
             '/project5/20251109_145613_main-ezgif.com-jpg-to-webp-converter.webp',
             '/project5/20251109_084251-ezgif.com-jpg-to-webp-converter.webp',
             '/project5/20251207-living-room-gypsum-before.webp',
@@ -537,6 +541,10 @@ export const translations = {
       longDesc:
         'We build drywall structures for walls, ceilings, partitions, hidden lighting and decorative solutions.',
       images: [
+        '/services/gipsokarton/main-gipsokarton.webp',
+        '/services/gipsokarton/konstrukcia-1.webp',
+        '/services/gipsokarton/konstrukcia-tavan.webp',
+        '/services/gipsokarton/tavan-gipsokarton.webp',
         '/project5/20251109_145613_main-ezgif.com-jpg-to-webp-converter.webp',
         '/project5/20251109_084251-ezgif.com-jpg-to-webp-converter.webp',
         '/project5/20251207-living-room-gypsum-before.webp',
