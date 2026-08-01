@@ -168,13 +168,14 @@ export const translations = {
           desc: 'Прецизно изравняване на стени и тавани.',
           longDesc:
             'Изпълняваме шпакловки за стени и тавани с цел постигане на равна, гладка и готова за боядисване повърхност.',
+
           images: [
-            '/images/services/shpaklovki/shpaklovki-1.webp",
-            '/images/services/shpaklovki/shpaklovki-2.webp",
-            '/images/services/shpaklovki/shpaklovki-3.webp",
-            '/images/services/shpaklovki/shpaklovki-4.webp",
-            '/images/services/shpaklovki/shpaklovki-5.webp",
-          ],
+  '/images/services/shpaklovki/shpaklovki-1.webp',
+  '/images/services/shpaklovki/shpaklovki-2.webp',
+  '/images/services/shpaklovki/shpaklovki-3.webp',
+  '/images/services/shpaklovki/shpaklovki-4.webp',
+  '/images/services/shpaklovki/shpaklovki-5.webp',
+],
           content: [
             'Подготовка на основата и корекция на неравности.',
             'Полагане на шпакловъчни материали според състоянието на стените.',
@@ -615,13 +616,13 @@ export const translations = {
       desc: 'Precise leveling of walls and ceilings.',
       longDesc:
         'We perform skim coating of walls and ceilings to achieve a flat, smooth surface ready for painting.',
-      images: [
-         '/images/services/shpaklovki/shpaklovki-1.webp",
-            '/images/services/shpaklovki/shpaklovki-2.webp",
-            '/images/services/shpaklovki/shpaklovki-3.webp",
-            '/images/services/shpaklovki/shpaklovki-4.webp",
-            '/images/services/shpaklovki/shpaklovki-5.webp",
-      ],
+     images: [
+  '/images/services/shpaklovki/shpaklovki-1.webp',
+  '/images/services/shpaklovki/shpaklovki-2.webp',
+  '/images/services/shpaklovki/shpaklovki-3.webp',
+  '/images/services/shpaklovki/shpaklovki-4.webp',
+  '/images/services/shpaklovki/shpaklovki-5.webp',
+],
       content: [
         'Base preparation and correction of uneven areas.',
         'Application of skim coating materials according to the condition of the walls.',
