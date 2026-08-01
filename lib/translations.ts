@@ -169,13 +169,13 @@ export const translations = {
           longDesc:
             'Изпълняваме шпакловки за стени и тавани с цел постигане на равна, гладка и готова за боядисване повърхност.',
 
-         iimages: [
-  '/services/shpaklovki/shpaklovki-1.webp',
-  '/services/shpaklovki/shpaklovki-2.webp',
-  '/services/shpaklovki/shpaklovki-3.webp',
-  '/services/shpaklovki/shpaklovki-4.webp',
-  '/services/shpaklovki/shpaklovki-5.webp',
-],
+ images: [
+    '/services/shpaklovki/shpaklovki-1.webp',
+    '/services/shpaklovki/shpaklovki-2.webp',
+    '/services/shpaklovki/shpaklovki-3.webp',
+    '/services/shpaklovki/shpaklovki-4.webp',
+    '/services/shpaklovki/shpaklovki-5.webp',
+  ],
           content: [
             'Подготовка на основата и корекция на неравности.',
             'Полагане на шпакловъчни материали според състоянието на стените.',
