@@ -80,7 +80,10 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         serviceType: seo.heading.bg,
         description: seo.description,
         provider: {
+          '@type': 'GeneralContractor',
           '@id': 'https://www.sensorbuild.bg/#business',
+          name: 'Sensor Build',
+          url: 'https://www.sensorbuild.bg/',
         },
         areaServed: {
           '@type': 'City',
