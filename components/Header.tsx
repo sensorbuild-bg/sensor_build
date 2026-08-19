@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
 
@@ -12,12 +12,17 @@ export default function Header() {
   const [isClosing, setIsClosing] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  // Пазим текущото scroll състояние,
+  // за да избегнем постоянно превключване около една граница.
+  const isScrolledRef = useRef(false);
+
   const { lang, setLang } = useLanguage();
   const pathname = usePathname();
   const t = translations[lang].nav;
 
   const handleCloseMenu = () => {
     setIsClosing(true);
+
     setTimeout(() => {
       setIsMenuOpen(false);
       setIsClosing(false);
@@ -25,20 +30,55 @@ export default function Header() {
   };
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+    // Header-ът се свива чак след 120px,
+    // но се разгъва отново чак когато стигнем почти най-горе.
+    const COLLAPSE_AT = 120;
+    const EXPAND_AT = 20;
+
+    let ticking = false;
+
+    const updateHeader = () => {
+      const scrollY = window.scrollY;
+
+      if (!isScrolledRef.current && scrollY > COLLAPSE_AT) {
+        isScrolledRef.current = true;
+        setIsScrolled(true);
+      } else if (isScrolledRef.current && scrollY < EXPAND_AT) {
+        isScrolledRef.current = false;
+        setIsScrolled(false);
+      }
+
+      ticking = false;
     };
 
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateHeader);
+        ticking = true;
+      }
+    };
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Проверка още при зареждането на страницата
+    if (window.scrollY > COLLAPSE_AT) {
+      isScrolledRef.current = true;
+      setIsScrolled(true);
+    } else {
+      isScrolledRef.current = false;
+      setIsScrolled(false);
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   useEffect(() => {
     if (isMenuOpen) {
       handleCloseMenu();
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
@@ -57,28 +97,33 @@ export default function Header() {
 
   const isActiveLink = (href: string) => {
     if (href === "/") return pathname === "/";
+
     return pathname === href || pathname.startsWith(`${href}/`);
   };
 
   return (
     <header
-      className={`sticky top-0 w-full z-50 transition-all duration-300 ${
+      className={`sticky top-0 w-full z-50 ${
         lang === "bg" ? "bg-[#13182c]" : "bg-white"
       } ${isScrolled ? "shadow-xl" : "shadow-none"}`}
     >
       {/* ================= DESKTOP (>= xl / 1280px) ================= */}
       <div
-        className={`hidden xl:block relative transition-all duration-300 overflow-hidden ${
+        className={`hidden xl:block relative overflow-hidden transition-[height] duration-300 ease-in-out ${
           isScrolled ? "h-[82px]" : "h-[150px]"
         }`}
       >
         {/* 
-          Най-горе: линията минава през логото.
-          При скрол: линията отива долу, за да не минава през менюто.
-          z-40 я държи над линията на самото лого.
+          Най-горе:
+          линията минава през линията на логото.
+
+          При скрол:
+          линията отива в долната част на header-а.
+
+          z-40 държи зелената линия над логото.
         */}
         <div
-          className={`absolute left-0 right-0 bg-gradient-to-r from-[#62b946] to-[#0c5447] pointer-events-none z-40 transition-all duration-300 ${
+          className={`absolute left-0 right-0 bg-gradient-to-r from-[#62b946] to-[#0c5447] pointer-events-none z-40 transition-all duration-300 ease-in-out ${
             isScrolled
               ? "bottom-0 h-[4px]"
               : lang === "en"
@@ -89,9 +134,10 @@ export default function Header() {
 
         <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8">
           <div className="relative h-full flex items-center justify-between z-30">
+            {/* LOGO */}
             <Link href="/" className="flex items-center -ml-4 shrink-0">
               <div
-                className={`transition-all duration-300 ${
+                className={`transition-all duration-300 ease-in-out ${
                   isScrolled ? "pr-6 xl:pr-8" : "pr-6 xl:pr-12"
                 }`}
               >
@@ -100,7 +146,7 @@ export default function Header() {
                   alt="Sensor Build Logo"
                   width={200}
                   height={80}
-                  className={`h-auto bg-transparent transition-all duration-300 ${
+                  className={`h-auto bg-transparent transition-[width] duration-300 ease-in-out ${
                     isScrolled ? "w-[115px]" : "w-[200px]"
                   }`}
                   priority
@@ -108,14 +154,17 @@ export default function Header() {
               </div>
             </Link>
 
+            {/* NAVIGATION */}
             <nav
-              className={`flex-1 flex justify-center transition-all duration-300 ${
+              className={`flex-1 flex justify-center transition-[margin] duration-300 ease-in-out ${
                 isScrolled ? "mt-0" : "-mt-10"
               }`}
             >
               <div
-                className={`flex transition-all duration-300 ${
-                  isScrolled ? "space-x-8 2xl:space-x-10" : "space-x-12"
+                className={`flex transition-all duration-300 ease-in-out ${
+                  isScrolled
+                    ? "space-x-8 2xl:space-x-10"
+                    : "space-x-12"
                 }`}
               >
                 {navigation.map((item) => {
@@ -148,8 +197,9 @@ export default function Header() {
               </div>
             </nav>
 
+            {/* LANGUAGE */}
             <div
-              className={`flex items-center space-x-1 ml-6 shrink-0 transition-all duration-300 ${
+              className={`flex items-center space-x-1 ml-6 shrink-0 transition-[margin] duration-300 ease-in-out ${
                 isScrolled ? "mt-0" : "-mt-12"
               }`}
             >
@@ -181,17 +231,17 @@ export default function Header() {
 
       {/* ================= MOBILE + TABLET (< xl / 1280px) ================= */}
       <div
-        className={`xl:hidden relative transition-all duration-300 overflow-hidden ${
+        className={`xl:hidden relative overflow-hidden transition-[height] duration-300 ease-in-out ${
           isScrolled ? "h-[64px]" : "h-[100px]"
         }`}
       >
         {/* 
-          Най-горе: линията минава през логото.
-          При скрол: линията отива долу, за да не минава през бутоните.
-          z-40 я държи над линията на самото лого.
+          На мобилно:
+          линията също минава през логото в началото,
+          а при scroll отива долу.
         */}
         <div
-          className={`absolute left-0 right-0 bg-gradient-to-r from-[#62b946] to-[#0c5447] pointer-events-none z-40 transition-all duration-300 ${
+          className={`absolute left-0 right-0 bg-gradient-to-r from-[#62b946] to-[#0c5447] pointer-events-none z-40 transition-all duration-300 ease-in-out ${
             isScrolled
               ? "bottom-0 h-[3px]"
               : lang === "en"
@@ -201,21 +251,23 @@ export default function Header() {
         />
 
         <div className="h-full flex items-center justify-between px-4 relative z-30">
+          {/* MOBILE LOGO */}
           <Link href="/" className="flex items-center shrink-0">
             <Image
               src={lang === "bg" ? "/logodark.png" : "/logo.webp"}
               alt="Sensor Build Logo"
               width={120}
               height={48}
-              className={`h-auto bg-transparent transition-all duration-300 ${
+              className={`h-auto bg-transparent transition-[width] duration-300 ease-in-out ${
                 isScrolled ? "w-[82px]" : "w-[120px]"
               }`}
               priority
             />
           </Link>
 
+          {/* MOBILE CONTROLS */}
           <div
-            className={`flex items-center space-x-2 transition-all duration-300 ${
+            className={`flex items-center space-x-2 transition-[margin] duration-300 ease-in-out ${
               isScrolled ? "mt-0" : "-mt-12"
             }`}
           >
@@ -243,6 +295,7 @@ export default function Header() {
               </button>
             </div>
 
+            {/* HAMBURGER */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-md transition-colors bg-transparent"
@@ -260,7 +313,9 @@ export default function Header() {
 
                 <span
                   className={`block h-0.5 w-6 transition-all ${
-                    isMenuOpen ? "bg-[#388644] opacity-0" : "bg-[#388644]"
+                    isMenuOpen
+                      ? "bg-[#388644] opacity-0"
+                      : "bg-[#388644]"
                   }`}
                 />
 
@@ -276,6 +331,7 @@ export default function Header() {
           </div>
         </div>
 
+        {/* MOBILE MENU */}
         {isMenuOpen && (
           <>
             <div
@@ -288,7 +344,9 @@ export default function Header() {
                 isClosing ? "translate-x-full" : "translate-x-0"
               }`}
               style={
-                !isClosing ? { animation: "slide-in-right 0.3s ease-out" } : {}
+                !isClosing
+                  ? { animation: "slide-in-right 0.3s ease-out" }
+                  : {}
               }
             >
               <div className="flex items-center justify-between p-4 border-b border-gray-100">

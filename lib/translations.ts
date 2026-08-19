@@ -433,7 +433,7 @@ export const translations = {
       email: 'Имейл',
       workingHours: 'Работно време',
       workingHoursText: {
-        weekdays: 'Понеделник - Петък: 09:00 - 18:00',
+        weekdays: 'Понеделник - Петък: 09:00 - 17:00',
         saturday: 'Събота: Почивен ден',
         sunday: 'Неделя: Почивен ден',
       },
@@ -879,7 +879,7 @@ images: [
       email: 'Email',
       workingHours: 'Working hours',
       workingHoursText: {
-        weekdays: 'Monday - Friday: 09:00 - 18:00',
+        weekdays: 'Monday - Friday: 09:00 - 17:00',
         saturday: 'Saturday: Day off',
         sunday: 'Sunday: Day off',
       },
