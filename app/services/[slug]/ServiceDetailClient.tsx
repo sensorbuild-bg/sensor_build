@@ -17,6 +17,57 @@ type ServiceItem = {
   content?: string[];
 };
 
+const serviceHeadings: Record<string, { bg: string; en: string }> = {
+  'el-instalacii': {
+    bg: 'Електроинсталации в София',
+    en: 'Electrical installations in Sofia',
+  },
+  'vik-instalacii': {
+    bg: 'ВиК инсталации в София',
+    en: 'Plumbing installations in Sofia',
+  },
+  gipsokarton: {
+    bg: 'Монтаж на гипсокартон в София',
+    en: 'Drywall installation in Sofia',
+  },
+  zamazki: {
+    bg: 'Подови замазки в София',
+    en: 'Floor screeds in Sofia',
+  },
+  shpaklovki: {
+    bg: 'Шпакловка на стени и тавани в София',
+    en: 'Wall and ceiling skimming in Sofia',
+  },
+  boyadisvane: {
+    bg: 'Боядисване на стени и тавани в София',
+    en: 'Wall and ceiling painting in Sofia',
+  },
+  'podovi-nastilki': {
+    bg: 'Монтаж на подови настилки в София',
+    en: 'Flooring installation in Sofia',
+  },
+  'fayans-terakot-granitogres': {
+    bg: 'Лепене на плочки и гранитогрес в София',
+    en: 'Tile and porcelain stoneware installation in Sofia',
+  },
+  'podovo-otoplenie': {
+    bg: 'Водно подово отопление в София',
+    en: 'Hydronic underfloor heating in Sofia',
+  },
+  bani: {
+    bg: 'Ремонт на баня в София',
+    en: 'Bathroom renovation in Sofia',
+  },
+  'ofisni-prostranstva': {
+    bg: 'Ремонт на офис в София',
+    en: 'Office renovation in Sofia',
+  },
+  drugi: {
+    bg: 'Допълнителни ремонтни услуги',
+    en: 'Additional renovation services',
+  },
+};
+
 export default function ServiceDetailClient() {
   const { slug } = useParams();
   const { lang } = useLanguage();
@@ -26,6 +77,9 @@ export default function ServiceDetailClient() {
 
   const servicesData = translations[lang].services.services as ServiceItem[];
   const service = servicesData.find((item) => item.slug === currentSlug);
+
+  const pageHeading =
+    (currentSlug && serviceHeadings[currentSlug]?.[lang]) || service?.title || '';
 
   const images = service?.images || [];
   const hasImages = images.length > 0;
@@ -90,7 +144,7 @@ export default function ServiceDetailClient() {
       <div className="py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-noah-bold text-center mb-10">
-            {service.title}
+            {pageHeading}
           </h1>
 
           {hasImages ? (
@@ -98,7 +152,7 @@ export default function ServiceDetailClient() {
               <div className="relative w-full max-w-4xl mx-auto h-[260px] sm:h-[380px] md:h-[520px] rounded-lg overflow-hidden border border-[#388644] bg-[#0f1427]">
                 <Image
                   src={images[activeImage]}
-                  alt={`${service.title} - изпълнение от Sensor Build`}
+                  alt={`${pageHeading} - изпълнение от Sensor Build`}
                   fill
                   className="object-contain"
                   sizes="(max-width: 768px) 100vw, 900px"
@@ -136,7 +190,7 @@ export default function ServiceDetailClient() {
                       type="button"
                       key={image}
                       onClick={() => setActiveImage(index)}
-                      aria-label={`${service.title} - снимка ${index + 1}`}
+                      aria-label={`${pageHeading} - снимка ${index + 1}`}
                       className={`relative w-24 h-20 sm:w-32 sm:h-24 rounded-md overflow-hidden border-2 bg-[#0f1427] transition-all duration-300 ${
                         activeImage === index
                           ? 'border-[#62b946] opacity-100'
@@ -145,7 +199,7 @@ export default function ServiceDetailClient() {
                     >
                       <Image
                         src={image}
-                        alt={`${service.title} - снимка ${index + 1}`}
+                        alt={`${pageHeading} - снимка ${index + 1}`}
                         fill
                         className="object-contain"
                         sizes="150px"
