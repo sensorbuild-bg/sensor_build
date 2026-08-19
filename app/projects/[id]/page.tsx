@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import ProjectClient from './ProjectClient';
 
 type PageProps = {
@@ -47,16 +48,18 @@ const projectSeo: Record<
   },
 };
 
+export function generateStaticParams() {
+  return Object.keys(projectSeo).map((id) => ({ id }));
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { id } = await params;
   const seo = projectSeo[id];
 
   if (!seo) {
     return {
-      title: 'Ремонтен проект в София',
-      alternates: {
-        canonical: `/projects/${id}`,
-      },
+      title: 'Проектът не е намерен',
+      robots: { index: false, follow: true },
     };
   }
 
@@ -70,7 +73,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: `${seo.title} | Sensor Build`,
       description: seo.description,
       url: `/projects/${id}`,
-      type: 'article',
+      type: 'website',
       images: [
         {
           url: seo.image,
@@ -81,6 +84,40 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default function ProjectPage() {
-  return <ProjectClient />;
+export default async function ProjectPage({ params }: PageProps) {
+  const { id } = await params;
+  const seo = projectSeo[id];
+
+  if (!seo) notFound();
+
+  const breadcrumbData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Проекти',
+        item: 'https://www.sensorbuild.bg/projects',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: seo.title,
+        item: `https://www.sensorbuild.bg/projects/${id}`,
+      },
+    ],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbData).replace(/</g, '\\u003c'),
+        }}
+      />
+      <ProjectClient />
+    </>
+  );
 }
