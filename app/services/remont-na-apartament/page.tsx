@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
+import { business } from '@/lib/business';
 import RemontNaApartamentClient from './RemontNaApartamentClient';
 
-const pageUrl = 'https://www.sensorbuild.bg/services/remont-na-apartament';
+const pageUrl = `${business.url}/services/remont-na-apartament`;
 
 export const metadata: Metadata = {
   title: 'Ремонт на апартамент в София',
@@ -35,7 +36,7 @@ const structuredData = {
           '@type': 'ListItem',
           position: 1,
           name: 'Услуги',
-          item: 'https://www.sensorbuild.bg/services',
+          item: `${business.url}/services`,
         },
         {
           '@type': 'ListItem',
@@ -55,13 +56,23 @@ const structuredData = {
         'Цялостни и частични ремонти на апартаменти в София, включително ВиК и електроинсталации, гипсокартон, шпакловки, боядисване, бани, замазки и настилки.',
       provider: {
         '@type': 'GeneralContractor',
-        '@id': 'https://www.sensorbuild.bg/#business',
-        name: 'Sensor Build',
-        url: 'https://www.sensorbuild.bg/',
+        '@id': `${business.url}/#business`,
+        name: business.name,
+        legalName: business.legalName,
+        url: `${business.url}/`,
+        telephone: business.phoneE164,
+        email: business.email,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: business.address.street,
+          addressLocality: business.address.city,
+          postalCode: business.address.postalCode,
+          addressCountry: business.address.countryCode,
+        },
       },
       areaServed: {
         '@type': 'City',
-        name: 'София',
+        name: business.address.city,
       },
     },
   ],
