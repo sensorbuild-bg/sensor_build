@@ -23,6 +23,35 @@ export const metadata: Metadata = {
   },
 };
 
+const breadcrumbData = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Услуги',
+      item: 'https://www.sensorbuild.bg/services',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Ремонт на апартамент в София',
+      item: 'https://www.sensorbuild.bg/services/remont-na-apartament',
+    },
+  ],
+};
+
 export default function RemontNaApartamentPage() {
-  return <RemontNaApartamentClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbData).replace(/</g, '\\u003c'),
+        }}
+      />
+      <RemontNaApartamentClient />
+    </>
+  );
 }
