@@ -7,7 +7,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import ThemeProvider from "@/components/ThemeProvider";
 import { Analytics } from "@vercel/analytics/next";
 import GlobalBackButton from "@/components/GlobalBackButton";
-import Script from "next/script"; // ✅ ДОБАВЕНО
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,8 +20,42 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sensor Build - Строителство и ремонти",
-  description: "Sensor Build - професионално строителство и ремонти",
+  metadataBase: new URL("https://www.sensorbuild.bg"),
+
+  title: {
+    default: "Ремонти и строителство в София | Sensor Build",
+    template: "%s | Sensor Build",
+  },
+
+  description:
+    "Цялостни и частични ремонти в София – гипсокартон, шпакловки, боядисване, ВиК, електроинсталации, бани, настилки и подово отопление.",
+
+  openGraph: {
+    type: "website",
+    locale: "bg_BG",
+    siteName: "Sensor Build",
+    title: "Ремонти и строителство в София | Sensor Build",
+    description:
+      "Цялостни и частични ремонти в София – гипсокартон, шпакловки, боядисване, ВиК, електроинсталации, бани, настилки и подово отопление.",
+    images: [
+      {
+        url: "/logo.webp",
+        alt: "Sensor Build - строителство и ремонти",
+      },
+    ],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -31,13 +65,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="bg">
-      
-      {/* ✅ GOOGLE ANALYTICS */}
       <head>
+        {/* GOOGLE ANALYTICS */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-8XJ5QBF4L2"
           strategy="afterInteractive"
         />
+
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
@@ -48,24 +82,22 @@ export default function RootLayout({
         </Script>
       </head>
 
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <LanguageProvider>
           <ThemeProvider>
-            
             <Header />
 
-            {/* 🔙 BackButton – горе */}
+            {/* BackButton – горе */}
             <GlobalBackButton />
 
-            <main className="min-h-screen">
-              {children}
-            </main>
+            <main className="min-h-screen">{children}</main>
 
-            {/* 🔙 BackButton – долу */}
+            {/* BackButton – долу */}
             <GlobalBackButton />
 
             <Footer />
-
           </ThemeProvider>
         </LanguageProvider>
 
