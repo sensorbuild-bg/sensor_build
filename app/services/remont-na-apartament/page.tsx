@@ -54,7 +54,10 @@ const structuredData = {
       description:
         'Цялостни и частични ремонти на апартаменти в София, включително ВиК и електроинсталации, гипсокартон, шпакловки, боядисване, бани, замазки и настилки.',
       provider: {
+        '@type': 'GeneralContractor',
         '@id': 'https://www.sensorbuild.bg/#business',
+        name: 'Sensor Build',
+        url: 'https://www.sensorbuild.bg/',
       },
       areaServed: {
         '@type': 'City',
