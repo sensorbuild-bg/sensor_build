@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { business } from '@/lib/business';
 import { isServiceSlug, serviceSeo, serviceSlugs } from '@/lib/serviceSeo';
 import ServiceDetailClient from './ServiceDetailClient';
 
@@ -50,7 +51,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   if (!isServiceSlug(slug)) notFound();
 
   const seo = serviceSeo[slug];
-  const serviceUrl = `https://www.sensorbuild.bg/services/${slug}`;
+  const serviceUrl = `${business.url}/services/${slug}`;
 
   const structuredData = {
     '@context': 'https://schema.org',
@@ -62,7 +63,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             '@type': 'ListItem',
             position: 1,
             name: 'Услуги',
-            item: 'https://www.sensorbuild.bg/services',
+            item: `${business.url}/services`,
           },
           {
             '@type': 'ListItem',
@@ -81,13 +82,23 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         description: seo.description,
         provider: {
           '@type': 'GeneralContractor',
-          '@id': 'https://www.sensorbuild.bg/#business',
-          name: 'Sensor Build',
-          url: 'https://www.sensorbuild.bg/',
+          '@id': `${business.url}/#business`,
+          name: business.name,
+          legalName: business.legalName,
+          url: `${business.url}/`,
+          telephone: business.phoneE164,
+          email: business.email,
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: business.address.street,
+            addressLocality: business.address.city,
+            postalCode: business.address.postalCode,
+            addressCountry: business.address.countryCode,
+          },
         },
         areaServed: {
           '@type': 'City',
-          name: 'София',
+          name: business.address.city,
         },
       },
     ],
