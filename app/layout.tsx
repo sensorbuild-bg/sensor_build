@@ -61,7 +61,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="bg">
+    <html lang="bg" className="lang-bg">
       <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-8XJ5QBF4L2"
@@ -78,7 +78,7 @@ export default function RootLayout({
         </Script>
       </head>
 
-      <body className="antialiased">
+      <body className="lang-bg antialiased">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-black"
