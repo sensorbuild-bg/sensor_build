@@ -89,13 +89,6 @@ export default function ServiceDetailClient() {
     >
       <div className="py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link
-            href="/services"
-            className="inline-block mb-8 text-[#62b946] font-semibold hover:underline"
-          >
-            ← {lang === 'bg' ? 'Назад към услугите' : 'Back to services'}
-          </Link>
-
           <h1 className="text-4xl md:text-5xl font-noah-bold text-center mb-10">
             {service.title}
           </h1>
