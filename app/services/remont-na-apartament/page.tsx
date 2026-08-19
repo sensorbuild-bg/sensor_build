@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import RemontNaApartamentClient from './RemontNaApartamentClient';
 
+const pageUrl = 'https://www.sensorbuild.bg/services/remont-na-apartament';
+
 export const metadata: Metadata = {
   title: 'Ремонт на апартамент в София',
   description:
@@ -23,21 +25,41 @@ export const metadata: Metadata = {
   },
 };
 
-const breadcrumbData = {
+const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
+  '@graph': [
     {
-      '@type': 'ListItem',
-      position: 1,
-      name: 'Услуги',
-      item: 'https://www.sensorbuild.bg/services',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Услуги',
+          item: 'https://www.sensorbuild.bg/services',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Ремонт на апартамент в София',
+          item: pageUrl,
+        },
+      ],
     },
     {
-      '@type': 'ListItem',
-      position: 2,
+      '@type': 'Service',
+      '@id': `${pageUrl}#service`,
+      url: pageUrl,
       name: 'Ремонт на апартамент в София',
-      item: 'https://www.sensorbuild.bg/services/remont-na-apartament',
+      serviceType: 'Цялостен и частичен ремонт на апартамент',
+      description:
+        'Цялостни и частични ремонти на апартаменти в София, включително ВиК и електроинсталации, гипсокартон, шпакловки, боядисване, бани, замазки и настилки.',
+      provider: {
+        '@id': 'https://www.sensorbuild.bg/#business',
+      },
+      areaServed: {
+        '@type': 'City',
+        name: 'София',
+      },
     },
   ],
 };
@@ -48,7 +70,7 @@ export default function RemontNaApartamentPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbData).replace(/</g, '\\u003c'),
+          __html: JSON.stringify(structuredData).replace(/</g, '\\u003c'),
         }}
       />
       <RemontNaApartamentClient />
