@@ -8,10 +8,10 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-century-gothic: "Century Gothic", "CenturyGothic", AppleGothic, sans-serif;
-  --font-noah-bold: "Century Gothic", "CenturyGothic", AppleGothic, sans-serif;
+  --font-sans: "Century Gothic", "CenturyGothic", AppleGothic, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --font-century-gothic: "Century Gothic", "CenturyGothic", AppleGothic, Arial, sans-serif;
+  --font-noah-bold: "Century Gothic", "CenturyGothic", AppleGothic, Arial, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
