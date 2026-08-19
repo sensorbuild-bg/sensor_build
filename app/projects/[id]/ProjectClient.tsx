@@ -43,7 +43,7 @@ export default function ProjectClient() {
 
   useEffect(() => {
     if (!project) {
-      router.push('/projects');
+      router.replace('/projects');
     }
   }, [project, router]);
 
@@ -75,13 +75,6 @@ export default function ProjectClient() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <Link
-          href="/projects"
-          className="inline-block mb-8 text-[#62b946] font-semibold hover:underline"
-        >
-          ← {lang === 'bg' ? 'Назад към проектите' : 'Back to projects'}
-        </Link>
-
         <h1
           className={`text-4xl md:text-5xl font-noah-bold mb-8 ${
             lang === 'bg' ? 'text-white' : 'text-gray-900'
