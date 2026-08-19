@@ -162,19 +162,11 @@ export default function ServiceDetailClient() {
                 </div>
               )}
             </div>
-          ) : (
-            <div className="max-w-3xl mx-auto mb-14 rounded-lg border border-[#388644] bg-[#1a2342] p-10 text-center">
-              <p className="text-white/80">
-                {lang === 'bg'
-                  ? 'Снимки към тази услуга ще бъдат добавени скоро.'
-                  : 'Photos for this service will be added soon.'}
-              </p>
-            </div>
-          )}
+          ) : null}
 
           <div className="max-w-5xl mx-auto">
             <p
-              className={`text-2xl leading-relaxed mb-10 ${
+              className={`text-xl md:text-2xl leading-relaxed ${
                 lang === 'bg' ? 'text-white' : 'text-gray-700'
               }`}
             >
@@ -182,28 +174,59 @@ export default function ServiceDetailClient() {
             </p>
 
             {service.content && service.content.length > 0 && (
-              <div className="space-y-5">
-                {service.content.map((item, index) => (
-                  <p
-                    key={index}
-                    className={`text-lg leading-relaxed ${
-                      lang === 'bg' ? 'text-white/90' : 'text-gray-700'
-                    }`}
-                  >
-                    {item}
-                  </p>
-                ))}
-              </div>
+              <section className="mt-12" aria-labelledby="service-scope-heading">
+                <h2
+                  id="service-scope-heading"
+                  className="text-2xl md:text-3xl font-noah-bold mb-6"
+                >
+                  {lang === 'bg' ? 'Какво включва услугата?' : 'What does the service include?'}
+                </h2>
+
+                <ul className="space-y-4">
+                  {service.content.map((item, index) => (
+                    <li
+                      key={index}
+                      className={`flex gap-3 text-lg leading-relaxed ${
+                        lang === 'bg' ? 'text-white/90' : 'text-gray-700'
+                      }`}
+                    >
+                      <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#62b946]" aria-hidden="true" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
             )}
 
-            <div className="mt-12 text-center">
-              <Link
-                href="/contacts"
-                className="inline-flex items-center justify-center rounded-xl bg-[#388644] px-8 py-4 text-white text-lg font-semibold transition-colors hover:bg-[#2d6b35]"
+            <section className="mt-14" aria-labelledby="service-next-heading">
+              <h2
+                id="service-next-heading"
+                className="text-2xl md:text-3xl font-noah-bold text-center"
               >
-                {lang === 'bg' ? 'Заяви оглед' : 'Request a site visit'}
-              </Link>
-            </div>
+                {lang === 'bg' ? 'Следваща стъпка за вашия ремонт' : 'Next step for your renovation'}
+              </h2>
+
+              <div className="mt-7 flex flex-col sm:flex-row flex-wrap justify-center gap-4">
+                <Link
+                  href="/services/remont-na-apartament"
+                  className="inline-flex items-center justify-center rounded-xl border border-[#62b946] px-7 py-4 text-[#62b946] font-semibold transition-colors hover:bg-[#62b946] hover:text-white"
+                >
+                  {lang === 'bg' ? 'Цялостен ремонт на апартамент' : 'Complete apartment renovation'}
+                </Link>
+                <Link
+                  href="/projects"
+                  className="inline-flex items-center justify-center rounded-xl border border-[#62b946] px-7 py-4 text-[#62b946] font-semibold transition-colors hover:bg-[#62b946] hover:text-white"
+                >
+                  {lang === 'bg' ? 'Виж изпълнени проекти' : 'View completed projects'}
+                </Link>
+                <Link
+                  href="/contacts"
+                  className="inline-flex items-center justify-center rounded-xl bg-[#388644] px-8 py-4 text-white font-semibold transition-colors hover:bg-[#2d6b35]"
+                >
+                  {lang === 'bg' ? 'Заяви оглед' : 'Request a site visit'}
+                </Link>
+              </div>
+            </section>
           </div>
         </div>
       </div>
