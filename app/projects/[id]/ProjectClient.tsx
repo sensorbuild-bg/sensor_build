@@ -98,7 +98,7 @@ export default function ProjectClient() {
                             className="w-full h-full object-contain rounded-lg"
                             sizes="(max-width: 640px) 100vw, 448px"
                             quality={75}
-                            priority={index === 0}
+                            preload={index === 0}
                           />
                         </CardContent>
                       </Card>
