@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
+import { business } from "@/lib/business";
 
 function PhoneIcon() {
   return (
@@ -128,42 +129,40 @@ export default function Footer() {
 
           <address className="flex flex-col items-center gap-4 not-italic md:flex-row md:flex-wrap md:justify-center md:gap-x-10">
             <a
-              href="tel:+359878344006"
+              href={`tel:${business.phoneE164}`}
               className="flex items-center gap-3 text-[#4da855] transition-colors hover:text-[#7dff94]"
             >
               <PhoneIcon />
-              <span className="text-sm font-medium">+359 878 344 006</span>
+              <span className="text-sm font-medium">{business.phoneDisplay}</span>
             </a>
 
             <a
-              href="mailto:sensorbuild@gmail.com"
+              href={`mailto:${business.email}`}
               className="flex items-center gap-3 text-[#4da855] transition-colors hover:text-[#7dff94]"
             >
               <EmailIcon />
-              <span className="text-sm font-medium">sensorbuild@gmail.com</span>
+              <span className="text-sm font-medium">{business.email}</span>
             </a>
 
             <a
-              href="https://maps.app.goo.gl/GQd1NkYntmNriNnG9"
+              href={business.mapUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-center text-sm font-medium text-gray-300 transition-colors hover:text-[#7dff94]"
             >
-              {isBg
-                ? "ж.к. Сухата река 219А, 1505 София"
-                : "Suhata Reka 219A, 1505 Sofia"}
+              {isBg ? business.address.bg : business.address.en}
             </a>
           </address>
 
           <p className="text-center text-sm text-gray-400">
             {isBg
-              ? "Работно време: Понеделник – Петък, 09:00 – 17:00"
-              : "Working hours: Monday – Friday, 09:00 – 17:00"}
+              ? `Работно време: Понеделник – Петък, ${business.workingHours.weekdays}`
+              : `Working hours: Monday – Friday, ${business.workingHours.weekdays}`}
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
             <a
-              href="https://www.facebook.com/profile.php?id=61582272743716"
+              href={business.social.facebook}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#4da855] transition-colors hover:text-[#7dff94]"
@@ -174,7 +173,7 @@ export default function Footer() {
             </a>
 
             <a
-              href="https://www.instagram.com/sensorbuild/"
+              href={business.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#4da855] transition-colors hover:text-[#7dff94]"
@@ -185,7 +184,7 @@ export default function Footer() {
             </a>
 
             <a
-              href="https://www.linkedin.com/company/sensor-build/"
+              href={business.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#4da855] transition-colors hover:text-[#7dff94]"
