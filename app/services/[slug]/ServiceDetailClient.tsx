@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
+import { isServiceSlug, serviceSeo } from '@/lib/serviceSeo';
 
 type ServiceItem = {
   title: string;
@@ -15,57 +16,6 @@ type ServiceItem = {
   longDesc?: string;
   images?: string[];
   content?: string[];
-};
-
-const serviceHeadings: Record<string, { bg: string; en: string }> = {
-  'el-instalacii': {
-    bg: 'Електроинсталации в София',
-    en: 'Electrical installations in Sofia',
-  },
-  'vik-instalacii': {
-    bg: 'ВиК инсталации в София',
-    en: 'Plumbing installations in Sofia',
-  },
-  gipsokarton: {
-    bg: 'Монтаж на гипсокартон в София',
-    en: 'Drywall installation in Sofia',
-  },
-  zamazki: {
-    bg: 'Подови замазки в София',
-    en: 'Floor screeds in Sofia',
-  },
-  shpaklovki: {
-    bg: 'Шпакловка на стени и тавани в София',
-    en: 'Wall and ceiling skimming in Sofia',
-  },
-  boyadisvane: {
-    bg: 'Боядисване на стени и тавани в София',
-    en: 'Wall and ceiling painting in Sofia',
-  },
-  'podovi-nastilki': {
-    bg: 'Монтаж на подови настилки в София',
-    en: 'Flooring installation in Sofia',
-  },
-  'fayans-terakot-granitogres': {
-    bg: 'Лепене на плочки и гранитогрес в София',
-    en: 'Tile and porcelain stoneware installation in Sofia',
-  },
-  'podovo-otoplenie': {
-    bg: 'Водно подово отопление в София',
-    en: 'Hydronic underfloor heating in Sofia',
-  },
-  bani: {
-    bg: 'Ремонт на баня в София',
-    en: 'Bathroom renovation in Sofia',
-  },
-  'ofisni-prostranstva': {
-    bg: 'Ремонт на офис в София',
-    en: 'Office renovation in Sofia',
-  },
-  drugi: {
-    bg: 'Допълнителни ремонтни услуги',
-    en: 'Additional renovation services',
-  },
 };
 
 export default function ServiceDetailClient() {
@@ -79,7 +29,9 @@ export default function ServiceDetailClient() {
   const service = servicesData.find((item) => item.slug === currentSlug);
 
   const pageHeading =
-    (currentSlug && serviceHeadings[currentSlug]?.[lang]) || service?.title || '';
+    currentSlug && isServiceSlug(currentSlug)
+      ? serviceSeo[currentSlug].heading[lang]
+      : service?.title || '';
 
   const images = service?.images || [];
   const hasImages = images.length > 0;
