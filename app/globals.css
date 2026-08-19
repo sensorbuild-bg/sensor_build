@@ -135,21 +135,21 @@ body.lang-en {
   animation: fadeInUpSoft 700ms ease-out both;
 }
 
-@keyframes typewriterReveal {
-  from {
-    clip-path: inset(0 100% 0 0);
+@keyframes typewriterCursorBlink {
+  0%,
+  45% {
+    opacity: 1;
   }
-  to {
-    clip-path: inset(0 0 0 0);
+  50%,
+  100% {
+    opacity: 0;
   }
 }
 
-.typewriter-reveal {
+.typewriter-cursor {
   display: inline-block;
-  max-width: 100%;
-  will-change: clip-path;
-  animation: typewriterReveal var(--typewriter-duration, 1200ms) steps(28, end)
-    var(--typewriter-delay, 0ms) both;
+  margin-left: 0.05em;
+  animation: typewriterCursorBlink 700ms step-end infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -160,9 +160,5 @@ body.lang-en {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-
-  .typewriter-reveal {
-    clip-path: none !important;
   }
 }
