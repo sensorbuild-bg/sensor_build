@@ -1,14 +1,12 @@
 import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import ServiceDetailClient from './ServiceDetailClient';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
-const seoBySlug: Record<
-  string,
-  { title: string; description: string }
-> = {
+const seoBySlug: Record<string, { title: string; description: string }> = {
   'el-instalacii': {
     title: 'Електроинсталации в София',
     description:
@@ -71,18 +69,18 @@ const seoBySlug: Record<
   },
 };
 
+export function generateStaticParams() {
+  return Object.keys(seoBySlug).map((slug) => ({ slug }));
+}
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const seo = seoBySlug[slug];
 
   if (!seo) {
     return {
-      title: 'Ремонтни услуги в София',
-      description:
-        'Строителни и ремонтни услуги в София от Sensor Build – оглед, ясна оферта и професионално изпълнение.',
-      alternates: {
-        canonical: `/services/${slug}`,
-      },
+      title: 'Страницата не е намерена',
+      robots: { index: false, follow: true },
     };
   }
 
@@ -92,6 +90,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     alternates: {
       canonical: `/services/${slug}`,
     },
+    robots:
+      slug === 'drugi'
+        ? {
+            index: false,
+            follow: true,
+          }
+        : undefined,
     openGraph: {
       title: `${seo.title} | Sensor Build`,
       description: seo.description,
@@ -101,6 +106,40 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default function ServiceDetailPage() {
-  return <ServiceDetailClient />;
+export default async function ServiceDetailPage({ params }: PageProps) {
+  const { slug } = await params;
+  const seo = seoBySlug[slug];
+
+  if (!seo) notFound();
+
+  const breadcrumbData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Услуги',
+        item: 'https://www.sensorbuild.bg/services',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: seo.title,
+        item: `https://www.sensorbuild.bg/services/${slug}`,
+      },
+    ],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbData).replace(/</g, '\\u003c'),
+        }}
+      />
+      <ServiceDetailClient />
+    </>
+  );
 }
