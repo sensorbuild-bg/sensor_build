@@ -99,7 +99,7 @@ export default function ServiceDetailClient() {
                   className="object-contain"
                   sizes="(max-width: 768px) 100vw, 900px"
                   quality={75}
-                  priority
+                  preload
                 />
 
                 {images.length > 1 && (
