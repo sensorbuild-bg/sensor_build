@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { indexedServiceSlugs, serviceSeo } from '@/lib/serviceSeo';
 import ServicesClient from './ServicesClient';
 
 export const metadata: Metadata = {
@@ -17,6 +18,39 @@ export const metadata: Metadata = {
   },
 };
 
+const serviceItems = [
+  {
+    name: 'Ремонт на апартамент в София',
+    url: 'https://www.sensorbuild.bg/services/remont-na-apartament',
+  },
+  ...indexedServiceSlugs.map((slug) => ({
+    name: serviceSeo[slug].heading.bg,
+    url: `https://www.sensorbuild.bg/services/${slug}`,
+  })),
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Ремонтни услуги на Sensor Build в София',
+  itemListElement: serviceItems.map((service, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: service.name,
+    url: service.url,
+  })),
+};
+
 export default function ServicesPage() {
-  return <ServicesClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, '\\u003c'),
+        }}
+      />
+      <ServicesClient />
+    </>
+  );
 }
