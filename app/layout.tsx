@@ -5,7 +5,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BackButton from "@/components/BackButton";
 import { LanguageProvider } from "@/contexts/LanguageContext";
-import ThemeProvider from "@/components/ThemeProvider";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
 
@@ -99,16 +98,14 @@ export default function RootLayout({
         </a>
 
         <LanguageProvider>
-          <ThemeProvider>
-            <Header />
-            <BackButton />
+          <Header />
+          <BackButton />
 
-            <main id="main-content" className="min-h-screen">
-              {children}
-            </main>
+          <main id="main-content" className="min-h-screen">
+            {children}
+          </main>
 
-            <Footer />
-          </ThemeProvider>
+          <Footer />
         </LanguageProvider>
 
         <Analytics />
