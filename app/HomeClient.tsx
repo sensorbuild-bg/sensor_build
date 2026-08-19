@@ -355,10 +355,15 @@ export default function Home() {
             <div className="absolute inset-0 bg-black/30" />
           </div>
 
-          <div className="relative z-[2] text-center max-w-5xl mx-auto -mt-10 md:-mt-14">
-            <h1 className="text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-noah-bold mb-2 text-white drop-shadow-lg uppercase">
-              {copy.title}
-            </h1>
+         <div className="text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-noah-bold mb-2 text-white drop-shadow-lg uppercase">
+  {copy.title}
+</div>
+
+<h1 className="text-2xl sm:text-xl md:text-3xl mb-8 text-white/90 drop-shadow-md font-semibold">
+  {isBg
+    ? "Ремонти и строителство в София"
+    : "Construction and Renovations in Sofia"}
+</h1>
 
             <h2 className="text-2xl sm:text-xl md:text-3xl mb-8 text-white/90 drop-shadow-md">
               <TypewriterText text={copy.subtitle} speed={70} />
