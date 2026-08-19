@@ -67,7 +67,7 @@ export default function ProjectsClient() {
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                       sizes="(max-width: 768px) 280px, (max-width: 1024px) 50vw, 33vw"
                       quality={75}
-                      priority={index === 0}
+                      preload={index === 0}
                     />
                     <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                       <span className="text-white opacity-0 group-hover:opacity-100 font-semibold bg-black/50 px-4 py-2 rounded transition-opacity">
