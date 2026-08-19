@@ -1,11 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
+import { isProjectId, projectSeo } from '@/lib/projectSeo';
 import {
   Carousel,
   CarouselContent,
@@ -18,9 +19,9 @@ import { Card, CardContent } from '@/components/ui/card';
 
 export default function ProjectClient() {
   const params = useParams();
-  const router = useRouter();
   const { lang } = useLanguage();
   const projectId = parseInt(params.id as string);
+  const projectKey = String(projectId);
   const t = translations[lang].projects;
 
   const projects = [
@@ -40,12 +41,6 @@ export default function ProjectClient() {
 
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    if (!project) {
-      router.replace('/projects');
-    }
-  }, [project, router]);
 
   useEffect(() => {
     if (!api) return;
@@ -68,6 +63,11 @@ export default function ProjectClient() {
 
   if (!project) return null;
 
+  const pageHeading =
+    lang === 'bg' && isProjectId(projectKey)
+      ? projectSeo[projectKey].title
+      : project.title;
+
   return (
     <div
       className={`min-h-screen ${
@@ -80,7 +80,7 @@ export default function ProjectClient() {
             lang === 'bg' ? 'text-white' : 'text-gray-900'
           }`}
         >
-          {project.title}
+          {pageHeading}
         </h1>
 
         {images.length > 0 && (
@@ -94,10 +94,13 @@ export default function ProjectClient() {
                         <CardContent className="flex aspect-[3/4] items-center justify-center p-0">
                           <Image
                             src={image}
-                            alt={`${project.imageTitle} - снимка ${index + 1}`}
+                            alt={`${pageHeading} - снимка ${index + 1}`}
                             width={800}
                             height={1067}
                             className="w-full h-full object-contain rounded-lg"
+                            sizes="(max-width: 640px) 100vw, 448px"
+                            quality={75}
+                            priority={index === 0}
                           />
                         </CardContent>
                       </Card>
@@ -125,7 +128,7 @@ export default function ProjectClient() {
                     type="button"
                     key={image}
                     onClick={() => scrollTo(index)}
-                    aria-label={`${project.imageTitle} - снимка ${index + 1}`}
+                    aria-label={`${pageHeading} - снимка ${index + 1}`}
                     className={`relative flex-shrink-0 w-20 h-20 md:w-24 md:h-24 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
                       current === index
                         ? 'border-[#388644] scale-110 shadow-lg'
@@ -134,10 +137,11 @@ export default function ProjectClient() {
                   >
                     <Image
                       src={image}
-                      alt={`${project.imageTitle} - миниатюра ${index + 1}`}
+                      alt={`${pageHeading} - миниатюра ${index + 1}`}
                       fill
                       className="object-cover"
                       sizes="96px"
+                      quality={55}
                     />
                     {current === index && (
                       <div className="absolute inset-0 bg-[#388644]/20" />
