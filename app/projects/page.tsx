@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { projectIds, projectSeo } from '@/lib/projectSeo';
 import ProjectsClient from './ProjectsClient';
 
 export const metadata: Metadata = {
@@ -17,6 +18,29 @@ export const metadata: Metadata = {
   },
 };
 
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Изпълнени проекти на Sensor Build',
+  itemListElement: projectIds.map((id, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: projectSeo[id].title,
+    url: `https://www.sensorbuild.bg/projects/${id}`,
+    image: `https://www.sensorbuild.bg${projectSeo[id].image}`,
+  })),
+};
+
 export default function ProjectsPage() {
-  return <ProjectsClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, '\\u003c'),
+        }}
+      />
+      <ProjectsClient />
+    </>
+  );
 }
