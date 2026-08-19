@@ -50,22 +50,42 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   if (!isServiceSlug(slug)) notFound();
 
   const seo = serviceSeo[slug];
+  const serviceUrl = `https://www.sensorbuild.bg/services/${slug}`;
 
-  const breadcrumbData = {
+  const structuredData = {
     '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
+    '@graph': [
       {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Услуги',
-        item: 'https://www.sensorbuild.bg/services',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Услуги',
+            item: 'https://www.sensorbuild.bg/services',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: seo.title,
+            item: serviceUrl,
+          },
+        ],
       },
       {
-        '@type': 'ListItem',
-        position: 2,
-        name: seo.title,
-        item: `https://www.sensorbuild.bg/services/${slug}`,
+        '@type': 'Service',
+        '@id': `${serviceUrl}#service`,
+        url: serviceUrl,
+        name: seo.heading.bg,
+        serviceType: seo.heading.bg,
+        description: seo.description,
+        provider: {
+          '@id': 'https://www.sensorbuild.bg/#business',
+        },
+        areaServed: {
+          '@type': 'City',
+          name: 'София',
+        },
       },
     ],
   };
@@ -75,7 +95,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbData).replace(/</g, '\\u003c'),
+          __html: JSON.stringify(structuredData).replace(/</g, '\\u003c'),
         }}
       />
       <ServiceDetailClient />
