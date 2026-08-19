@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-/* Noah Bold font - using Century Gothic as fallback since font files are not available */
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -30,13 +28,11 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Noah Bold font class for headings */
 .font-noah-bold {
   font-family: var(--font-noah-bold);
   font-weight: 700;
 }
 
-/* Dark theme for Bulgarian language */
 body.lang-bg {
   background: #13182c;
   color: #ffffff;
@@ -52,19 +48,11 @@ body.lang-bg p {
   color: #ffffff !important;
 }
 
-/* Keep green color for tagline text - but exclude navigation */
 body.lang-bg p[class*="text-[#388644]"],
 body.lang-bg [class*="text-[#388644]"],
 body.lang-bg p[class*="text-[#4da855]"],
 body.lang-bg [class*="text-[#4da855]"] {
   color: #4da855 !important;
-}
-
-/* Override for navigation - keep white text on Bulgarian */
-body.lang-bg header nav a[class*="text-white"],
-body.lang-bg header nav a.text-white,
-body.lang-bg header nav a {
-  color: #ffffff !important;
 }
 
 body.lang-bg .bg-white {
@@ -79,18 +67,11 @@ body.lang-bg .border-gray-200 {
   border-color: #2d3a5a !important;
 }
 
-/* Light theme for English language */
 body.lang-en {
   background: #ffffff !important;
   color: #171717;
 }
 
-/* Transparent background for logos */
-img[alt="Sensor Build Logo"] {
-  background: transparent !important;
-}
-
-/* Expand down animation from logo height */
 @keyframes expand-down {
   from {
     transform: scaleY(0);
@@ -108,7 +89,6 @@ img[alt="Sensor Build Logo"] {
   animation: expand-down 0.3s ease-out;
 }
 
-/* Slide in from right animation */
 @keyframes slide-in-right {
   from {
     transform: translateX(100%);
@@ -118,7 +98,6 @@ img[alt="Sensor Build Logo"] {
   }
 }
 
-/* Slide out to right animation */
 @keyframes slide-out-right {
   from {
     transform: translateX(0);
@@ -151,10 +130,27 @@ img[alt="Sensor Build Logo"] {
 }
 
 @keyframes fadeInUpSoft {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-fadeInUpSoft {
   animation: fadeInUpSoft 700ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
