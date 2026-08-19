@@ -56,7 +56,7 @@ export default function Contacts() {
               {t.phone}
             </h2>
             <a
-              href="tel:+359878344020"
+              href="tel:+359878344006"
               className="inline-block px-8 py-4 bg-[#388644] text-white text-lg font-semibold rounded-lg hover:bg-[#2d6b35] transition-colors mb-4"
             >
               {t.callNow}
@@ -66,10 +66,10 @@ export default function Contacts() {
                 lang === "bg" ? "text-white" : "text-gray-600"
               }`}
             >
-              +359 878 344 020
+              +359 878 344 006
             </p>
             <a
-              href="viber://chat?number=+359878344020"
+              href="viber://chat?number=+359878344006"
               className="text-[#388644] hover:underline"
             >
               {t.viber}
