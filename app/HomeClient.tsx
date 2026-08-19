@@ -22,7 +22,7 @@ type Slide = {
   labelEn: string;
 };
 
-export default function Home() {
+export default function HomeClient() {
   const { lang } = useLanguage();
   const isBg = lang === "bg";
 
@@ -31,8 +31,13 @@ export default function Home() {
 
   const copy = isBg
     ? {
-        title: "SENSOR BUILD",
-        subtitle: "Строителство и ремонти",
+        brand: "SENSOR BUILD",
+
+        seoTitle: "Ремонти и строителство в София",
+
+        subtitle:
+          "Цялостни и частични ремонти с ясен план, техническо изпълнение и внимание към детайла.",
+
         tagline: "Прецизност, на която можете да се доверите!",
 
         primaryCta: "Заяви оглед",
@@ -45,44 +50,59 @@ export default function Home() {
           "Чисто предаване",
         ],
 
-        servicesTitle: "Какво можем да направим за вас?",
+        servicesTitle: "Ремонтни услуги в София",
+
         servicesSubtitle:
           "Подхождаме към всеки ремонт с ясен план, техническо мислене и внимание към детайла.",
+
+        localServicesText:
+          "Извършваме цялостни и частични ремонти в София, като съчетаваме различните строително-ремонтни дейности в последователен и добре организиран процес.",
+
         services: [
           {
             title: "Основни и освежителни ремонти",
-            desc: "От къртене, почистване и извозване до шпакловка, боядисване и финални довършителни работи за жилища, офиси и търговски пространства.",
+            desc: "Цялостни и частични ремонти на жилища, офиси и търговски пространства – от подготовката и демонтажните дейности до финалните довършителни работи.",
             href: "/services",
           },
           {
-            title: "Ел. и ВиК инсталации",
-            desc: "Изграждане, преработка и подготовка на инсталации според нуждите на обекта.",
-            href: "/services",
+            title: "Електроинсталации",
+            desc: "Изграждане и преработка на електроинсталации, нови електрически точки, контакти, ключове, осветление и електрически табла.",
+            href: "/services/el-instalacii",
+          },
+          {
+            title: "ВиК инсталации",
+            desc: "Изграждане и подмяна на водопроводни и канализационни инсталации за бани, кухни и други помещения.",
+            href: "/services/vik-instalacii",
           },
           {
             title: "Гипсокартон и сухо строителство",
-            desc: "Окачени тавани, предстенни обшивки, декоративни елементи, ниши и конструктивни решения.",
-            href: "/services",
+            desc: "Предстенни обшивки, преградни стени, окачени тавани, ниши, куфари и други решения от гипсокартон.",
+            href: "/services/gipsokarton",
           },
           {
-            title: "Шпакловки и боядисване",
-            desc: "Подготовка на основата, финишни слоеве и чисто завършване на стените и таваните.",
-            href: "/services",
+            title: "Шпакловки",
+            desc: "Подготовка и шпакловане на стени и тавани, финишни слоеве, шлайфане и подготовка за боядисване.",
+            href: "/services/shpaklovki",
+          },
+          {
+            title: "Боядисване",
+            desc: "Подготовка, грундиране и боядисване на стени и тавани при ново строителство и освежителни ремонти.",
+            href: "/services/boyadisvane",
           },
           {
             title: "Подово отопление",
-            desc: "Изпълнение на подово отопление според системата на обекта — с подготовка на основата и съобразяване с последващите настилки.",
-            href: "/services",
+            desc: "Изграждане на подово отопление с подготовка на основата и съобразяване с последващите подови слоеве и настилки.",
+            href: "/services/podovo-otoplenie",
           },
           {
             title: "Подови настилки",
-            desc: "Подготовка на основата и монтаж на подови покрития според помещението, натоварването и желания финален вид.",
-            href: "/services",
+            desc: "Подготовка на основата и монтаж на подови настилки според помещението, натоварването и желания краен резултат.",
+            href: "/services/podovi-nastilki",
           },
           {
-            title: "Ремонти на бани",
-            desc: "ВиК, подготовка на основи, хидроизолация, облицовки, настилки и довършителни работи за цялостно завършване на баня.",
-            href: "/services",
+            title: "Ремонт на бани",
+            desc: "Цялостни ремонти на бани – ВиК, подготовка на основите, хидроизолация, облицовки, настилки и довършителни работи.",
+            href: "/services/bani",
           },
           {
             title: "Осветление с монтаж",
@@ -92,8 +112,10 @@ export default function Home() {
         ],
 
         processTitle: "Как протича работата?",
+
         processSubtitle:
           "Ремонтът не трябва да започва с хаос. Започва с оглед, уточняване и ясен план.",
+
         process: [
           {
             step: "01",
@@ -118,11 +140,14 @@ export default function Home() {
         ],
 
         projectsTitle: "Реални проекти и процес на работа",
+
         projectsSubtitle:
-          "Вижте част от изпълнените дейности — от инсталации и подготвителни работи до завършен детайл.",
+          "Вижте част от изпълнените дейности – от инсталации и подготвителни работи до завършен детайл.",
+
         openProject: "Отвори проект",
 
         whyTitle: "Защо Sensor Build?",
+
         why: [
           {
             title: "Не започваме „на око“",
@@ -142,15 +167,22 @@ export default function Home() {
           },
         ],
 
-        finalTitle: "Планирате ремонт?",
+        finalTitle: "Планирате ремонт в София?",
+
         finalText:
-          "Обадете се или ни пишете, за да уточним обекта, дейностите и възможностите за изпълнение.",
+          "Обадете се или ни пишете, за да уточним обекта, необходимите дейности и възможностите за изпълнение.",
+
         finalPrimary: "Свържи се с нас",
         finalSecondary: "Виж цени",
       }
     : {
-        title: "SENSOR BUILD",
-        subtitle: "Construction and Renovations",
+        brand: "SENSOR BUILD",
+
+        seoTitle: "Construction and Renovations in Sofia",
+
+        subtitle:
+          "Complete and partial renovations with a clear plan, technical execution and attention to detail.",
+
         tagline: "Precision you can trust!",
 
         primaryCta: "Request a visit",
@@ -163,44 +195,59 @@ export default function Home() {
           "Clean handover",
         ],
 
-        servicesTitle: "What can we do for you?",
+        servicesTitle: "Renovation services in Sofia",
+
         servicesSubtitle:
           "We approach every renovation with a clear plan, technical thinking and attention to detail.",
+
+        localServicesText:
+          "We carry out complete and partial renovations in Sofia, combining the different construction and finishing activities into a well-organized process.",
+
         services: [
           {
             title: "Full and refresh renovations",
-            desc: "From demolition, cleaning and disposal to plastering, painting and final finishing works for homes, offices and commercial spaces.",
+            desc: "Complete and partial renovations of homes, offices and commercial spaces, from preparation and demolition to final finishing works.",
             href: "/services",
           },
           {
-            title: "Electrical and plumbing works",
-            desc: "Installation, rework and preparation of systems according to the needs of the site.",
-            href: "/services",
+            title: "Electrical installations",
+            desc: "Installation and renovation of electrical systems, sockets, switches, lighting points and electrical panels.",
+            href: "/services/el-instalacii",
+          },
+          {
+            title: "Plumbing installations",
+            desc: "Installation and replacement of water supply and drainage systems for bathrooms, kitchens and other spaces.",
+            href: "/services/vik-instalacii",
           },
           {
             title: "Drywall and suspended ceilings",
-            desc: "Suspended ceilings, wall linings, decorative elements, niches and practical solutions.",
-            href: "/services",
+            desc: "Wall linings, partition walls, suspended ceilings, niches, service boxes and other drywall solutions.",
+            href: "/services/gipsokarton",
           },
           {
-            title: "Skimming and painting",
-            desc: "Surface preparation, finishing layers and clean completion of walls and ceilings.",
-            href: "/services",
+            title: "Skimming and plaster finishing",
+            desc: "Preparation and skimming of walls and ceilings, finishing layers, sanding and preparation for painting.",
+            href: "/services/shpaklovki",
+          },
+          {
+            title: "Painting",
+            desc: "Preparation, priming and painting of walls and ceilings for new construction and renovation projects.",
+            href: "/services/boyadisvane",
           },
           {
             title: "Underfloor heating",
-            desc: "Execution of underfloor heating according to the system of the site, with base preparation and coordination with the following floor layers.",
-            href: "/services",
+            desc: "Installation of underfloor heating with proper base preparation and coordination with subsequent floor layers.",
+            href: "/services/podovo-otoplenie",
           },
           {
             title: "Floor coverings",
-            desc: "Base preparation and installation of floor coverings according to the room, load and desired final look.",
-            href: "/services",
+            desc: "Base preparation and installation of floor coverings according to the room, load and desired final appearance.",
+            href: "/services/podovi-nastilki",
           },
           {
             title: "Bathroom renovations",
-            desc: "Plumbing, base preparation, waterproofing, wall and floor tiling, and finishing works for complete bathroom renovation.",
-            href: "/services",
+            desc: "Complete bathroom renovations including plumbing, waterproofing, tiling, flooring and finishing works.",
+            href: "/services/bani",
           },
           {
             title: "Lighting with installation",
@@ -210,8 +257,10 @@ export default function Home() {
         ],
 
         processTitle: "How does the work process go?",
+
         processSubtitle:
           "A renovation should not start with chaos. It starts with a site visit, clarification and a clear plan.",
+
         process: [
           {
             step: "01",
@@ -236,11 +285,14 @@ export default function Home() {
         ],
 
         projectsTitle: "Real projects and work process",
+
         projectsSubtitle:
-          "See part of our completed work — from installations and preparation to final details.",
+          "See part of our completed work – from installations and preparation to final details.",
+
         openProject: "Open project",
 
         whyTitle: "Why Sensor Build?",
+
         why: [
           {
             title: "We do not start by guessing",
@@ -260,9 +312,11 @@ export default function Home() {
           },
         ],
 
-        finalTitle: "Planning a renovation?",
+        finalTitle: "Planning a renovation in Sofia?",
+
         finalText:
-          "Call or message us so we can clarify the site, the activities and the execution options.",
+          "Call or message us so we can clarify the site, the required works and the execution options.",
+
         finalPrimary: "Contact us",
         finalSecondary: "View prices",
       };
@@ -346,35 +400,42 @@ export default function Home() {
           <div className="absolute inset-0 z-[1]">
             <Image
               src="/main.webp"
-              alt="Sensor Build - строителство и ремонти"
+              alt={
+                isBg
+                  ? "Ремонти и строителство в София - Sensor Build"
+                  : "Construction and renovations in Sofia - Sensor Build"
+              }
               fill
+              sizes="100vw"
               className="object-cover"
               priority
               quality={90}
             />
+
             <div className="absolute inset-0 bg-black/30" />
           </div>
 
-         <div className="text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-noah-bold mb-2 text-white drop-shadow-lg uppercase">
-  {copy.title}
-</div>
+          <div className="relative z-[2] text-center max-w-5xl mx-auto -mt-10 md:-mt-14">
+            {/* Brand - визуално остава голямо */}
+            <div className="text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-noah-bold mb-3 text-white drop-shadow-lg uppercase">
+              {copy.brand}
+            </div>
 
-<h1 className="text-2xl sm:text-xl md:text-3xl mb-8 text-white/90 drop-shadow-md font-semibold">
-  {isBg
-    ? "Ремонти и строителство в София"
-    : "Construction and Renovations in Sofia"}
-</h1>
+            {/* Главното SEO заглавие на страницата */}
+            <h1 className="text-2xl sm:text-2xl md:text-4xl mb-5 text-white drop-shadow-md font-semibold">
+              {copy.seoTitle}
+            </h1>
 
-            <h2 className="text-2xl sm:text-xl md:text-3xl mb-8 text-white/90 drop-shadow-md">
-              <TypewriterText text={copy.subtitle} speed={70} />
-            </h2>
+            <div className="text-lg sm:text-xl md:text-2xl mb-8 text-white/90 drop-shadow-md">
+              <TypewriterText text={copy.subtitle} speed={40} />
+            </div>
 
             <div className="mb-8 flex justify-center">
               <span className="inline-flex items-center px-5 py-2 rounded-xl bg-white/60 backdrop-blur-sm border border-white/25 shadow-sm text-[#2D6B35] text-lg sm:text-xl md:text-2xl font-semibold drop-shadow-sm">
                 <TypewriterText
                   text={copy.tagline}
                   speed={70}
-                  delay={copy.subtitle.length * 70 + 500}
+                  delay={copy.subtitle.length * 40 + 500}
                 />
               </span>
             </div>
@@ -423,6 +484,7 @@ export default function Home() {
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#388644] text-white text-lg">
                     ✓
                   </span>
+
                   <span>{item}</span>
                 </div>
               ))}
@@ -437,7 +499,7 @@ export default function Home() {
           }`}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-3xl text-center mb-12">
+            <div className="mx-auto max-w-4xl text-center mb-12">
               <h2
                 className={`text-3xl md:text-5xl font-noah-bold ${
                   isBg ? "text-white" : "text-gray-900"
@@ -452,6 +514,14 @@ export default function Home() {
                 }`}
               >
                 {copy.servicesSubtitle}
+              </p>
+
+              <p
+                className={`mt-4 text-base md:text-lg leading-relaxed ${
+                  isBg ? "text-white/65" : "text-gray-600"
+                }`}
+              >
+                {copy.localServicesText}
               </p>
             </div>
 
@@ -487,7 +557,10 @@ export default function Home() {
                     </p>
 
                     <div className="mt-6 inline-flex items-center text-[#4ea85b] font-semibold">
-                      {isBg ? "Виж повече" : "View more"}
+                      {isBg
+                        ? `Виж ${service.title}`
+                        : `View ${service.title}`}
+
                       <span className="ml-2 transition-transform group-hover:translate-x-1">
                         →
                       </span>
@@ -540,7 +613,7 @@ export default function Home() {
                         : "border-gray-300 text-gray-900 hover:bg-gray-100"
                     }`}
                   >
-                    {isBg ? "Виж услугите" : "View services"}
+                    {isBg ? "Виж ремонтните услуги" : "View renovation services"}
                   </Link>
                 </div>
               </div>
@@ -581,7 +654,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* PROJECTS SLIDESHOW */}
+        {/* PROJECTS */}
         <section
           className={`relative py-16 md:py-24 ${
             isBg ? "bg-[#13182c]" : "bg-gray-50"
@@ -608,7 +681,11 @@ export default function Home() {
 
             <Carousel
               setApi={setApi}
-              opts={{ align: "center", loop: true, containScroll: "trimSnaps" }}
+              opts={{
+                align: "center",
+                loop: true,
+                containScroll: "trimSnaps",
+              }}
               className="w-full"
             >
               <CarouselContent className="-ml-2 md:-ml-4 lg:-ml-8 py-10 overflow-visible">
@@ -639,6 +716,7 @@ export default function Home() {
                               className="object-cover transition-transform duration-500 group-hover:scale-105"
                               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 45vw"
                             />
+
                             <div className="absolute inset-0 bg-black/25" />
                           </div>
 
@@ -669,6 +747,7 @@ export default function Home() {
                            text-white hover:bg-[#13182c]/95 hover:scale-105
                            transition-all duration-200"
               />
+
               <CarouselNext
                 className="right-3 md:right-4 top-1/2 -translate-y-1/2
                            h-11 w-11 md:h-12 md:w-12
