@@ -35,20 +35,10 @@ export default function ServiceDetailClient() {
 
   const images = service?.images || [];
   const hasImages = images.length > 0;
-  const imagesKey = images.join('|');
 
   useEffect(() => {
     setActiveImage(0);
   }, [currentSlug]);
-
-  useEffect(() => {
-    if (!hasImages) return;
-
-    images.forEach((src) => {
-      const img = new window.Image();
-      img.src = src;
-    });
-  }, [hasImages, imagesKey]);
 
   const goToPreviousImage = () => {
     if (!hasImages) return;
