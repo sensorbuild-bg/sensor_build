@@ -101,13 +101,6 @@ export default function RemontNaApartamentClient() {
     <div className={isBg ? 'bg-[#13182c] text-white' : 'bg-white text-gray-900'}>
       <section className="py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link
-            href="/services"
-            className="inline-block mb-8 text-[#62b946] font-semibold hover:underline"
-          >
-            ← {isBg ? 'Назад към услугите' : 'Back to services'}
-          </Link>
-
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-6xl font-noah-bold">
               {isBg
@@ -174,7 +167,7 @@ export default function RemontNaApartamentClient() {
                 <div className="text-[#62b946] text-2xl font-bold mb-3">
                   {String(index + 1).padStart(2, '0')}
                 </div>
-                <h2 className="text-xl font-semibold mb-3">{stage.title}</h2>
+                <h3 className="text-xl font-semibold mb-3">{stage.title}</h3>
                 <p className={isBg ? 'text-white/75 leading-relaxed' : 'text-gray-600 leading-relaxed'}>
                   {stage.text}
                 </p>
