@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
+import { projectIds, projectSeo } from '@/lib/projectSeo';
 import AnimatedDiv from '@/components/AnimatedDiv';
 
 export default function ProjectsClient() {
@@ -48,60 +49,54 @@ export default function ProjectsClient() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {projects.map((project, index) => (
-            <AnimatedDiv key={index}>
-              <Link
-                href={`/projects/${index}`}
-                className="relative cursor-pointer group rounded-lg shadow-md hover:shadow-xl transition-shadow block"
-              >
-                {(project as any).mainImage ? (
-                  <>
-                    <div className="aspect-[3/4] relative overflow-hidden bg-gray-100 rounded-lg max-w-[280px] mx-auto md:max-w-none">
-                      <Image
-                        src={(project as any).mainImage}
-                        alt={`${project.imageTitle} - изпълнен проект от Sensor Build`}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                        sizes="(max-width: 768px) 280px, (max-width: 1024px) 50vw, 33vw"
-                      />
-                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <span className="text-white opacity-0 group-hover:opacity-100 font-semibold bg-black/50 px-4 py-2 rounded transition-opacity">
-                          {t.openProject}
-                        </span>
-                      </div>
-                    </div>
+          {projects.map((project, index) => {
+            const projectId = projectIds[index];
+            const canonicalProject = projectSeo[projectId];
 
-                    <div
-                      className={`mt-4 text-center ${
-                        lang === 'bg' ? 'text-white' : 'text-gray-900'
-                      }`}
-                    >
-                      <h2 className="text-xl font-semibold leading-snug break-words whitespace-normal">
-                        {project.imageTitle}
-                      </h2>
-
-                      <div className="mt-4 flex justify-center">
-                        <span className="inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold bg-[#388644] text-white shadow-md hover:bg-[#2d6b35] hover:scale-105 transform transition-all duration-300">
-                          {lang === 'bg'
-                            ? `Виж проект: ${project.title}`
-                            : `View project: ${project.title}`}
-                        </span>
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <div className="aspect-video bg-gradient-to-br from-[#388644] to-[#2d6b35] flex items-center justify-center rounded-lg">
-                    <div className="text-center p-6">
-                      <h2 className="text-2xl font-bold text-white mb-2">
-                        {project.imageTitle}
-                      </h2>
-                      <p className="text-white/90 text-sm">{t.clickForMore}</p>
+            return (
+              <AnimatedDiv key={projectId}>
+                <Link
+                  href={`/projects/${projectId}`}
+                  className="relative cursor-pointer group rounded-lg shadow-md hover:shadow-xl transition-shadow block"
+                >
+                  <div className="aspect-[3/4] relative overflow-hidden bg-gray-100 rounded-lg max-w-[280px] mx-auto md:max-w-none">
+                    <Image
+                      src={canonicalProject.image}
+                      alt={`${project.imageTitle} - изпълнен проект от Sensor Build`}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      sizes="(max-width: 768px) 280px, (max-width: 1024px) 50vw, 33vw"
+                      quality={75}
+                      priority={index === 0}
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <span className="text-white opacity-0 group-hover:opacity-100 font-semibold bg-black/50 px-4 py-2 rounded transition-opacity">
+                        {t.openProject}
+                      </span>
                     </div>
                   </div>
-                )}
-              </Link>
-            </AnimatedDiv>
-          ))}
+
+                  <div
+                    className={`mt-4 text-center ${
+                      lang === 'bg' ? 'text-white' : 'text-gray-900'
+                    }`}
+                  >
+                    <h2 className="text-xl font-semibold leading-snug break-words whitespace-normal">
+                      {project.imageTitle}
+                    </h2>
+
+                    <div className="mt-4 flex justify-center">
+                      <span className="inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-semibold bg-[#388644] text-white shadow-md hover:bg-[#2d6b35] hover:scale-105 transform transition-all duration-300">
+                        {lang === 'bg'
+                          ? `Виж проект: ${project.title}`
+                          : `View project: ${project.title}`}
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              </AnimatedDiv>
+            );
+          })}
         </div>
       </div>
     </div>
