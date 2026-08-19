@@ -66,7 +66,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const servicePages: MetadataRoute.Sitemap = serviceSlugs.map((slug) => ({
     url: `${baseUrl}/services/${slug}`,
     lastModified: new Date(),
-    changeFrequency: 'monthly',
+    changeFrequency: 'monthly' as const,
     priority: slug === 'remont-na-apartament' ? 0.95 : 0.8,
   }));
 
