@@ -80,9 +80,12 @@ export default async function ProjectPage({ params }: PageProps) {
         description: seo.description,
         image: `https://www.sensorbuild.bg${seo.image}`,
         creator: {
+          '@type': 'GeneralContractor',
           '@id': 'https://www.sensorbuild.bg/#business',
+          name: 'Sensor Build',
+          url: 'https://www.sensorbuild.bg/',
         },
-        about: {
+        locationCreated: {
           '@type': 'Place',
           name: 'София, България',
         },
