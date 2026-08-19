@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { projectIds } from '@/lib/projectSeo';
 import { indexedServiceSlugs } from '@/lib/serviceSeo';
 
 const baseUrl = 'https://www.sensorbuild.bg';
@@ -23,12 +24,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}/services/${slug}`,
   }));
 
-  const projectPages: MetadataRoute.Sitemap = Array.from(
-    { length: 6 },
-    (_, index) => ({
-      url: `${baseUrl}/projects/${index}`,
-    })
-  );
+  const projectPages: MetadataRoute.Sitemap = projectIds.map((id) => ({
+    url: `${baseUrl}/projects/${id}`,
+  }));
 
   return [...staticPages, ...servicePages, ...projectPages];
 }
