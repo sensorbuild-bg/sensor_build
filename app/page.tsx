@@ -74,12 +74,6 @@ const structuredData = {
           opens: "09:00",
           closes: "17:00",
         },
-        {
-          "@type": "OpeningHoursSpecification",
-          dayOfWeek: ["Saturday", "Sunday"],
-          opens: "00:00",
-          closes: "00:00",
-        },
       ],
       sameAs: [
         "https://www.facebook.com/profile.php?id=61582272743716",
