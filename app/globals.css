@@ -98,15 +98,6 @@ body.lang-en {
   }
 }
 
-@keyframes slide-out-right {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(100%);
-  }
-}
-
 .animate-slide-in-right {
   animation: slide-in-right 0.3s ease-out;
 }
@@ -144,6 +135,22 @@ body.lang-en {
   animation: fadeInUpSoft 700ms ease-out both;
 }
 
+@keyframes typewriterReveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.typewriter-reveal {
+  display: inline-block;
+  max-width: 100%;
+  animation: typewriterReveal var(--typewriter-duration, 1200ms) steps(24, end)
+    var(--typewriter-delay, 0ms) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -152,5 +159,9 @@ body.lang-en {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .typewriter-reveal {
+    clip-path: none !important;
   }
 }
