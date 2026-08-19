@@ -34,10 +34,11 @@ export default function ProjectClient() {
   ];
 
   const project = projects[projectId];
+  const canonicalProject = isProjectId(projectKey)
+    ? projectSeo[projectKey]
+    : null;
 
-  const images =
-    (project as any)?.images ||
-    ((project as any)?.mainImage ? [(project as any).mainImage] : []);
+  const images = canonicalProject?.images ?? [];
 
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
@@ -61,12 +62,9 @@ export default function ProjectClient() {
     api?.scrollTo(index);
   };
 
-  if (!project) return null;
+  if (!project || !canonicalProject) return null;
 
-  const pageHeading =
-    lang === 'bg' && isProjectId(projectKey)
-      ? projectSeo[projectKey].title
-      : project.title;
+  const pageHeading = lang === 'bg' ? canonicalProject.title : project.title;
 
   return (
     <div
@@ -88,7 +86,7 @@ export default function ProjectClient() {
             <div className="flex justify-center mb-6">
               <Carousel setApi={setApi} className="w-full max-w-md relative">
                 <CarouselContent>
-                  {images.map((image: string, index: number) => (
+                  {images.map((image, index) => (
                     <CarouselItem key={image}>
                       <Card className="border-0 shadow-none bg-transparent">
                         <CardContent className="flex aspect-[3/4] items-center justify-center p-0">
@@ -123,7 +121,7 @@ export default function ProjectClient() {
 
             {images.length > 1 && (
               <div className="flex justify-center gap-3 overflow-x-auto pb-2 px-4">
-                {images.map((image: string, index: number) => (
+                {images.map((image, index) => (
                   <button
                     type="button"
                     key={image}
