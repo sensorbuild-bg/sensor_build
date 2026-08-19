@@ -1,18 +1,16 @@
 import type { Metadata } from "next";
 import HomeClient from "./HomeClient";
+import { business } from "@/lib/business";
 
 export const metadata: Metadata = {
   title: {
     absolute: "Ремонти и строителство в София | Sensor Build",
   },
-
   description:
     "Цялостни и частични ремонти в София – гипсокартон, шпакловки, боядисване, ВиК, електроинсталации, бани, настилки и подово отопление.",
-
   alternates: {
     canonical: "/",
   },
-
   openGraph: {
     title: "Ремонти и строителство в София | Sensor Build",
     description:
@@ -34,32 +32,32 @@ const structuredData = {
   "@graph": [
     {
       "@type": "WebSite",
-      "@id": "https://www.sensorbuild.bg/#website",
-      url: "https://www.sensorbuild.bg/",
-      name: "Sensor Build",
+      "@id": `${business.url}/#website`,
+      url: `${business.url}/`,
+      name: business.name,
       alternateName: "Сензор Билд",
       inLanguage: "bg-BG",
     },
     {
       "@type": "GeneralContractor",
-      "@id": "https://www.sensorbuild.bg/#business",
-      name: "Sensor Build",
-      legalName: "Сензор Билд ЕООД",
-      url: "https://www.sensorbuild.bg/",
-      image: "https://www.sensorbuild.bg/main.webp",
-      logo: "https://www.sensorbuild.bg/logo.webp",
-      telephone: "+359878344006",
-      email: "sensorbuild@gmail.com",
+      "@id": `${business.url}/#business`,
+      name: business.name,
+      legalName: business.legalName,
+      url: `${business.url}/`,
+      image: `${business.url}/main.webp`,
+      logo: `${business.url}/logo.webp`,
+      telephone: business.phoneE164,
+      email: business.email,
       address: {
         "@type": "PostalAddress",
-        streetAddress: "ж.к. Сухата река 219А",
-        addressLocality: "София",
-        postalCode: "1505",
-        addressCountry: "BG",
+        streetAddress: business.address.street,
+        addressLocality: business.address.city,
+        postalCode: business.address.postalCode,
+        addressCountry: business.address.countryCode,
       },
       areaServed: {
         "@type": "City",
-        name: "София",
+        name: business.address.city,
       },
       openingHoursSpecification: [
         {
@@ -71,14 +69,14 @@ const structuredData = {
             "Thursday",
             "Friday",
           ],
-          opens: "09:00",
-          closes: "17:00",
+          opens: business.workingHours.opens,
+          closes: business.workingHours.closes,
         },
       ],
       sameAs: [
-        "https://www.facebook.com/profile.php?id=61582272743716",
-        "https://www.instagram.com/sensorbuild/",
-        "https://www.linkedin.com/company/sensor-build/",
+        business.social.facebook,
+        business.social.instagram,
+        business.social.linkedin,
       ],
     },
   ],
