@@ -2,48 +2,42 @@
 
 import { useLanguage } from "@/contexts/LanguageContext";
 import { translations } from "@/lib/translations";
+import { business } from "@/lib/business";
 import AnimatedDiv from "@/components/AnimatedDiv";
 import Image from "next/image";
 
 export default function ContactsClient() {
   const { lang } = useLanguage();
   const t = translations[lang].contacts;
+  const isBg = lang === "bg";
 
   return (
-    <div
-      className={`py-16 md:py-24 ${
-        lang === "bg" ? "bg-[#13182c]" : "bg-white"
-      }`}
-    >
+    <div className={`py-16 md:py-24 ${isBg ? "bg-[#13182c]" : "bg-white"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* PAGE TITLE */}
         <div className="text-center mb-12">
           <h1
             className={`text-4xl md:text-5xl font-bold mb-4 ${
-              lang === "bg" ? "text-white" : "text-gray-900"
+              isBg ? "text-white" : "text-gray-900"
             }`}
           >
-            {t.title}
+            {isBg ? "Контакти за ремонт в София" : "Renovation contacts in Sofia"}
           </h1>
 
           <p
             className={`max-w-2xl mx-auto text-lg leading-relaxed ${
-              lang === "bg" ? "text-gray-300" : "text-gray-600"
+              isBg ? "text-gray-300" : "text-gray-600"
             }`}
           >
-            {lang === "bg"
+            {isBg
               ? "Свържете се със Sensor Build за оглед, консултация или оферта за цялостни и частични ремонти в София."
-              : "Contact Sensor Build for an inspection, consultation or quotation for complete and partial renovations in Sofia."}
+              : "Contact Sensor Build for a site visit, consultation or quotation for complete and partial renovations in Sofia."}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-
-          {/* PHONE */}
           <AnimatedDiv
             className={`rounded-lg p-8 text-center ${
-              lang === "bg" ? "bg-[#1a2342]" : "bg-gray-50"
+              isBg ? "bg-[#1a2342]" : "bg-gray-50"
             }`}
           >
             <div className="w-16 h-16 bg-[#388644] rounded-full flex items-center justify-center mx-auto mb-4">
@@ -65,39 +59,34 @@ export default function ContactsClient() {
 
             <h2
               className={`text-2xl font-semibold mb-4 ${
-                lang === "bg" ? "text-white" : "text-gray-900"
+                isBg ? "text-white" : "text-gray-900"
               }`}
             >
               {t.phone}
             </h2>
 
             <a
-              href="tel:+359878344006"
+              href={`tel:${business.phoneE164}`}
               className="inline-block px-8 py-4 bg-[#388644] text-white text-lg font-semibold rounded-lg hover:bg-[#2d6b35] transition-colors mb-4"
             >
               {t.callNow}
             </a>
 
-            <p
-              className={`mb-2 ${
-                lang === "bg" ? "text-white" : "text-gray-600"
-              }`}
-            >
-              +359 878 344 006
+            <p className={`mb-2 ${isBg ? "text-white" : "text-gray-600"}`}>
+              {business.phoneDisplay}
             </p>
 
             <a
-              href="viber://chat?number=+359878344006"
+              href={`viber://chat?number=${business.phoneE164}`}
               className="text-[#62b946] hover:underline"
             >
               {t.viber}
             </a>
           </AnimatedDiv>
 
-          {/* MESSENGER */}
           <AnimatedDiv
             className={`rounded-lg p-8 text-center ${
-              lang === "bg" ? "bg-[#1a2342]" : "bg-gray-50"
+              isBg ? "bg-[#1a2342]" : "bg-gray-50"
             }`}
           >
             <div className="w-16 h-16 bg-[#388644] rounded-full flex items-center justify-center mx-auto mb-4">
@@ -113,14 +102,14 @@ export default function ContactsClient() {
 
             <h2
               className={`text-2xl font-semibold mb-4 ${
-                lang === "bg" ? "text-white" : "text-gray-900"
+                isBg ? "text-white" : "text-gray-900"
               }`}
             >
               {t.messenger}
             </h2>
 
             <a
-              href="https://www.facebook.com/profile.php?id=61582272743716"
+              href={business.social.facebook}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-8 py-4 bg-[#0084ff] text-white text-lg font-semibold rounded-lg hover:bg-[#0066cc] transition-colors"
@@ -129,10 +118,9 @@ export default function ContactsClient() {
             </a>
           </AnimatedDiv>
 
-          {/* EMAIL */}
           <AnimatedDiv
             className={`rounded-lg p-8 text-center ${
-              lang === "bg" ? "bg-[#1a2342]" : "bg-gray-50"
+              isBg ? "bg-[#1a2342]" : "bg-gray-50"
             }`}
           >
             <div className="w-16 h-16 bg-[#388644] rounded-full flex items-center justify-center mx-auto mb-4">
@@ -154,24 +142,23 @@ export default function ContactsClient() {
 
             <h2
               className={`text-2xl font-semibold mb-4 ${
-                lang === "bg" ? "text-white" : "text-gray-900"
+                isBg ? "text-white" : "text-gray-900"
               }`}
             >
               {t.email}
             </h2>
 
             <a
-              href="mailto:sensorbuild@gmail.com"
+              href={`mailto:${business.email}`}
               className="text-[#62b946] hover:underline text-lg"
             >
-              sensorbuild@gmail.com
+              {business.email}
             </a>
           </AnimatedDiv>
 
-          {/* WORKING HOURS */}
           <AnimatedDiv
             className={`rounded-lg p-8 text-center ${
-              lang === "bg" ? "bg-[#1a2342]" : "bg-gray-50"
+              isBg ? "bg-[#1a2342]" : "bg-gray-50"
             }`}
           >
             <div className="w-16 h-16 bg-[#388644] rounded-full flex items-center justify-center mx-auto mb-4">
@@ -193,33 +180,32 @@ export default function ContactsClient() {
 
             <h2
               className={`text-2xl font-semibold mb-4 ${
-                lang === "bg" ? "text-white" : "text-gray-900"
+                isBg ? "text-white" : "text-gray-900"
               }`}
             >
               {t.workingHours}
             </h2>
 
-            <div
-              className={`space-y-2 ${
-                lang === "bg" ? "text-white" : "text-gray-600"
-              }`}
-            >
-              <p>{t.workingHoursText.weekdays}</p>
-              <p>{t.workingHoursText.saturday}</p>
-              <p>{t.workingHoursText.sunday}</p>
+            <div className={`space-y-2 ${isBg ? "text-white" : "text-gray-600"}`}>
+              <p>
+                {isBg
+                  ? `Понеделник – Петък: ${business.workingHours.weekdays}`
+                  : `Monday – Friday: ${business.workingHours.weekdays}`}
+              </p>
+              <p>{isBg ? "Събота: Почивен ден" : "Saturday: Closed"}</p>
+              <p>{isBg ? "Неделя: Почивен ден" : "Sunday: Closed"}</p>
             </div>
           </AnimatedDiv>
 
-          {/* LOCATION */}
           <a
-            href="https://maps.app.goo.gl/GQd1NkYntmNriNnG9"
+            href={business.mapUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="block md:col-span-2"
           >
             <AnimatedDiv
               className={`rounded-lg p-8 text-center cursor-pointer transition-all hover:shadow-lg hover:scale-[1.02] ${
-                lang === "bg" ? "bg-[#1a2342]" : "bg-gray-50"
+                isBg ? "bg-[#1a2342]" : "bg-gray-50"
               }`}
             >
               <div className="w-16 h-16 bg-[#388644] rounded-full flex items-center justify-center mx-auto mb-4">
@@ -247,27 +233,24 @@ export default function ContactsClient() {
 
               <h2
                 className={`text-2xl font-semibold mb-4 ${
-                  lang === "bg" ? "text-white" : "text-gray-900"
+                  isBg ? "text-white" : "text-gray-900"
                 }`}
               >
                 {t.location}
               </h2>
 
-              <p
-                className={lang === "bg" ? "text-white" : "text-gray-600"}
-              >
-                {t.locationText}
+              <p className={isBg ? "text-white" : "text-gray-600"}>
+                {isBg ? business.address.bg : business.address.en}
               </p>
             </AnimatedDiv>
           </a>
         </div>
 
-        {/* PARTNERS */}
         <div className="mt-16 md:mt-24">
           <div className="text-center mb-8">
             <h2
               className={`text-3xl md:text-4xl font-bold mb-4 ${
-                lang === "bg" ? "text-white" : "text-gray-900"
+                isBg ? "text-white" : "text-gray-900"
               }`}
             >
               {t.partners}
@@ -284,11 +267,7 @@ export default function ContactsClient() {
               >
                 <Image
                   src={lang === "en" ? "/partner1_en.png" : "/partner1_bg.png"}
-                  alt={
-                    lang === "bg"
-                      ? "Партньор на Sensor Build"
-                      : "Sensor Build partner"
-                  }
+                  alt={isBg ? "Park Decor – партньор на Sensor Build" : "Park Decor – Sensor Build partner"}
                   width={300}
                   height={300}
                   className="rounded-lg shadow-lg cursor-pointer"
