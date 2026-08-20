@@ -21,5 +21,7 @@ export default function LightingLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  // The catalog still carries legacy top padding from the old fixed-header layout.
+  // Offset it here so the current sticky header does not create a large empty gap.
+  return <div className="-mt-[110px] md:-mt-[120px]">{children}</div>;
 }
