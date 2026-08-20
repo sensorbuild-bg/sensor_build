@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { isProjectId, projectIds, projectSeo } from '@/lib/projectSeo';
+import { notFound, permanentRedirect } from 'next/navigation';
+import { projectIds, projectSeo, resolveProjectId } from '@/lib/projectSeo';
 import ProjectClient from './ProjectClient';
 
 type PageProps = {
@@ -8,31 +8,33 @@ type PageProps = {
 };
 
 export function generateStaticParams() {
-  return projectIds.map((id) => ({ id }));
+  return projectIds.map((id) => ({ id: projectSeo[id].slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { id } = await params;
+  const { id: identifier } = await params;
+  const projectId = resolveProjectId(identifier);
 
-  if (!isProjectId(id)) {
+  if (!projectId) {
     return {
       title: 'Проектът не е намерен',
       robots: { index: false, follow: true },
     };
   }
 
-  const seo = projectSeo[id];
+  const seo = projectSeo[projectId];
+  const canonicalPath = `/projects/${seo.slug}`;
 
   return {
     title: seo.title,
     description: seo.description,
     alternates: {
-      canonical: `/projects/${id}`,
+      canonical: canonicalPath,
     },
     openGraph: {
       title: `${seo.title} | Sensor Build`,
       description: seo.description,
-      url: `/projects/${id}`,
+      url: canonicalPath,
       type: 'article',
       images: [
         {
@@ -45,12 +47,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ProjectPage({ params }: PageProps) {
-  const { id } = await params;
+  const { id: identifier } = await params;
+  const projectId = resolveProjectId(identifier);
 
-  if (!isProjectId(id)) notFound();
+  if (!projectId) notFound();
 
-  const seo = projectSeo[id];
-  const projectUrl = `https://www.sensorbuild.bg/projects/${id}`;
+  const seo = projectSeo[projectId];
+
+  if (identifier !== seo.slug) {
+    permanentRedirect(`/projects/${seo.slug}`);
+  }
+
+  const projectUrl = `https://www.sensorbuild.bg/projects/${seo.slug}`;
 
   const structuredData = {
     '@context': 'https://schema.org',
@@ -78,7 +86,9 @@ export default async function ProjectPage({ params }: PageProps) {
         url: projectUrl,
         name: seo.title,
         description: seo.description,
-        image: `https://www.sensorbuild.bg${seo.image}`,
+        image: seo.images.map(
+          (image) => `https://www.sensorbuild.bg${image}`
+        ),
         creator: {
           '@type': 'GeneralContractor',
           '@id': 'https://www.sensorbuild.bg/#business',
