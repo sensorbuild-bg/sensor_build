@@ -1,5 +1,6 @@
 export const projectSeo = {
   '0': {
+    slug: 'osvezhitelen-remont',
     title: 'Освежителен ремонт на жилище в София',
     description:
       'Реален проект за освежителен ремонт – защита на обекта, корекции по стените, електрически точки, боядисване и чисто финално предаване.',
@@ -13,6 +14,7 @@ export const projectSeo = {
     ],
   },
   '1': {
+    slug: 'elektroinstalacia',
     title: 'Изграждане на електроинсталация в София',
     description:
       'Реален проект за цялостна електроинсталация – планиране на точки, силнотокови и слаботокови линии, табла, тестване и защита.',
@@ -25,6 +27,7 @@ export const projectSeo = {
     ],
   },
   '2': {
+    slug: 'vik-instalacia',
     title: 'Изграждане на ВиК инсталация в София',
     description:
       'Реален проект за ВиК инсталации – водопровод, канализация, трасета, санитарни точки и проверка на системата преди завършване.',
@@ -36,6 +39,7 @@ export const projectSeo = {
     ],
   },
   '3': {
+    slug: 'podovo-otoplenie',
     title: 'Изграждане на подово отопление в София',
     description:
       'Реален проект за водно подово отопление – подготовка, изолация, полагане на тръби, колектор и проверка на системата.',
@@ -48,6 +52,7 @@ export const projectSeo = {
     ],
   },
   '4': {
+    slug: 'gipsokarton',
     title: 'Монтаж на гипсокартон в София – реален проект',
     description:
       'Реален проект с гипсокартон – конструкция, обшивки, тавани и детайли, изпълнени от Sensor Build.',
@@ -60,6 +65,7 @@ export const projectSeo = {
     ],
   },
   '5': {
+    slug: 'osvetlenie',
     title: 'Монтаж на осветление в София – реален проект',
     description:
       'Реален проект за монтаж на осветление с изпълнени осветителни точки и завършващи дейности от Sensor Build.',
@@ -77,7 +83,16 @@ export const projectSeo = {
 export type ProjectId = keyof typeof projectSeo;
 
 export const projectIds = Object.keys(projectSeo) as ProjectId[];
+export const projectSlugs = projectIds.map((id) => projectSeo[id].slug);
 
 export function isProjectId(id: string): id is ProjectId {
   return id in projectSeo;
+}
+
+export function resolveProjectId(identifier: string): ProjectId | null {
+  if (isProjectId(identifier)) return identifier;
+
+  return (
+    projectIds.find((id) => projectSeo[id].slug === identifier) ?? null
+  );
 }
