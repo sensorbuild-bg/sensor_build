@@ -24,7 +24,6 @@ export default function ServiceDetailClient() {
   const [activeImage, setActiveImage] = useState(0);
 
   const currentSlug = Array.isArray(slug) ? slug[0] : slug;
-
   const servicesData = translations[lang].services.services as ServiceItem[];
   const service = servicesData.find((item) => item.slug === currentSlug);
 
@@ -40,6 +39,8 @@ export default function ServiceDetailClient() {
     setActiveImage(0);
   }, [currentSlug]);
 
+  if (!service) return null;
+
   const goToPreviousImage = () => {
     if (!hasImages) return;
     setActiveImage((prev) => (prev === 0 ? images.length - 1 : prev - 1));
@@ -50,51 +51,20 @@ export default function ServiceDetailClient() {
     setActiveImage((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
-  if (!service) {
-    return (
-      <div
-        className={`${
-          lang === 'bg'
-            ? 'bg-[#13182c] text-white'
-            : 'bg-white text-gray-900'
-        } min-h-screen py-24`}
-      >
-        <div className="max-w-5xl mx-auto px-4">
-          <h1 className="text-4xl font-noah-bold mb-6">
-            {lang === 'bg' ? 'Услугата не е намерена' : 'Service not found'}
-          </h1>
-
-          <Link
-            href="/services"
-            className="text-[#62b946] font-semibold hover:underline"
-          >
-            ← {lang === 'bg' ? 'Назад към услугите' : 'Back to services'}
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div
-      className={`${
-        lang === 'bg'
-          ? 'bg-[#13182c] text-white'
-          : 'bg-white text-gray-900'
-      } min-h-screen`}
-    >
-      <div className="py-16 md:py-24">
+    <div className={`${lang === 'bg' ? 'bg-[#13182c] text-white' : 'bg-white text-gray-900'} min-h-screen`}>
+      <div className="py-10 md:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-noah-bold text-center mb-10">
+          <h1 className="mx-auto max-w-4xl text-3xl sm:text-4xl md:text-5xl font-noah-bold text-center leading-tight">
             {pageHeading}
           </h1>
 
-          {hasImages ? (
-            <div className="mb-14">
-              <div className="relative w-full max-w-4xl mx-auto h-[260px] sm:h-[380px] md:h-[520px] rounded-lg overflow-hidden border border-[#388644] bg-[#0f1427]">
+          {hasImages && (
+            <div className="mt-7 md:mt-10">
+              <div className="relative mx-auto h-[230px] w-full max-w-4xl overflow-hidden rounded-2xl border border-[#388644]/70 bg-[#0f1427] sm:h-[360px] md:h-[500px]">
                 <Image
                   src={images[activeImage]}
-                  alt={`${pageHeading} - изпълнение от Sensor Build`}
+                  alt={`${pageHeading} – изпълнение от Sensor Build`}
                   fill
                   className="object-contain"
                   sizes="(max-width: 768px) 100vw, 900px"
@@ -108,16 +78,15 @@ export default function ServiceDetailClient() {
                       type="button"
                       onClick={goToPreviousImage}
                       aria-label={lang === 'bg' ? 'Предишна снимка' : 'Previous image'}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-lg bg-[#1a2342]/90 border border-white/10 text-white text-4xl flex items-center justify-center transition-all duration-300 hover:bg-[#62b946] hover:scale-105"
+                      className="absolute left-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-[#13182c]/85 text-3xl text-white shadow-lg backdrop-blur transition hover:bg-[#388644] sm:left-4 sm:h-12 sm:w-12"
                     >
                       ‹
                     </button>
-
                     <button
                       type="button"
                       onClick={goToNextImage}
                       aria-label={lang === 'bg' ? 'Следваща снимка' : 'Next image'}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 rounded-lg bg-[#1a2342]/90 border border-white/10 text-white text-4xl flex items-center justify-center transition-all duration-300 hover:bg-[#62b946] hover:scale-105"
+                      className="absolute right-2 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-[#13182c]/85 text-3xl text-white shadow-lg backdrop-blur transition hover:bg-[#388644] sm:right-4 sm:h-12 sm:w-12"
                     >
                       ›
                     </button>
@@ -126,58 +95,46 @@ export default function ServiceDetailClient() {
               </div>
 
               {images.length > 1 && (
-                <div className="flex justify-center gap-3 mt-6 flex-wrap">
+                <div className="mx-auto mt-3 flex max-w-4xl gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mt-4 sm:gap-3">
                   {images.map((image, index) => (
                     <button
                       type="button"
                       key={image}
                       onClick={() => setActiveImage(index)}
-                      aria-label={`${pageHeading} - снимка ${index + 1}`}
-                      className={`relative w-24 h-20 sm:w-32 sm:h-24 rounded-md overflow-hidden border-2 bg-[#0f1427] transition-all duration-300 ${
+                      aria-label={`${pageHeading} – снимка ${index + 1}`}
+                      aria-current={activeImage === index ? 'true' : undefined}
+                      className={`relative h-16 w-20 shrink-0 overflow-hidden rounded-lg border-2 bg-[#0f1427] transition sm:h-20 sm:w-28 ${
                         activeImage === index
                           ? 'border-[#62b946] opacity-100'
-                          : 'border-transparent opacity-50 hover:opacity-90'
+                          : 'border-transparent opacity-55 hover:opacity-90'
                       }`}
                     >
-                      <Image
-                        src={image}
-                        alt={`${pageHeading} - снимка ${index + 1}`}
-                        fill
-                        className="object-contain"
-                        sizes="150px"
-                        quality={55}
-                      />
+                      <Image src={image} alt="" fill className="object-cover" sizes="112px" quality={55} />
                     </button>
                   ))}
                 </div>
               )}
             </div>
-          ) : null}
+          )}
 
-          <div className="max-w-5xl mx-auto">
-            <p
-              className={`text-xl md:text-2xl leading-relaxed ${
-                lang === 'bg' ? 'text-white' : 'text-gray-700'
-              }`}
-            >
+          <div className="mx-auto mt-8 max-w-4xl md:mt-12">
+            <p className={`text-lg md:text-xl leading-relaxed ${lang === 'bg' ? 'text-white/85' : 'text-gray-700'}`}>
               {service.longDesc || service.desc}
             </p>
 
             {service.content && service.content.length > 0 && (
-              <section className="mt-12" aria-labelledby="service-scope-heading">
-                <h2
-                  id="service-scope-heading"
-                  className="text-2xl md:text-3xl font-noah-bold mb-6"
-                >
-                  {lang === 'bg' ? 'Какво включва услугата?' : 'What does the service include?'}
+              <section className="mt-8 md:mt-10" aria-labelledby="service-scope-heading">
+                <h2 id="service-scope-heading" className="text-2xl md:text-3xl font-noah-bold">
+                  {lang === 'bg' ? 'Какво включва?' : 'What is included?'}
                 </h2>
-
-                <ul className="space-y-4">
+                <ul className="mt-4 grid gap-3 md:grid-cols-2">
                   {service.content.map((item, index) => (
                     <li
                       key={index}
-                      className={`flex gap-3 text-lg leading-relaxed ${
-                        lang === 'bg' ? 'text-white/90' : 'text-gray-700'
+                      className={`flex gap-3 rounded-xl border p-4 text-base leading-relaxed ${
+                        lang === 'bg'
+                          ? 'border-white/10 bg-[#1a2342] text-white/80'
+                          : 'border-gray-200 bg-gray-50 text-gray-700'
                       }`}
                     >
                       <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#62b946]" aria-hidden="true" />
@@ -188,31 +145,15 @@ export default function ServiceDetailClient() {
               </section>
             )}
 
-            <section className="mt-14" aria-labelledby="service-next-heading">
-              <h2
-                id="service-next-heading"
-                className="text-2xl md:text-3xl font-noah-bold text-center"
-              >
-                {lang === 'bg' ? 'Следваща стъпка за вашия ремонт' : 'Next step for your renovation'}
+            <section className={`mt-9 rounded-2xl border p-5 md:mt-12 md:p-7 ${lang === 'bg' ? 'border-white/10 bg-[#1a2342]' : 'border-gray-200 bg-gray-50'}`} aria-labelledby="service-next-heading">
+              <h2 id="service-next-heading" className="text-2xl font-noah-bold text-center">
+                {lang === 'bg' ? 'Имате подобен обект?' : 'Have a similar project?'}
               </h2>
-
-              <div className="mt-7 flex flex-col sm:flex-row flex-wrap justify-center gap-4">
-                <Link
-                  href="/services/remont-na-apartament"
-                  className="inline-flex items-center justify-center rounded-xl border border-[#62b946] px-7 py-4 text-[#62b946] font-semibold transition-colors hover:bg-[#62b946] hover:text-white"
-                >
-                  {lang === 'bg' ? 'Цялостен ремонт на апартамент' : 'Complete apartment renovation'}
+              <div className="mt-5 flex flex-col sm:flex-row flex-wrap justify-center gap-3">
+                <Link href="/projects" className="inline-flex items-center justify-center rounded-xl border border-[#62b946] px-6 py-3 font-semibold text-[#62b946] transition hover:bg-[#62b946] hover:text-white">
+                  {lang === 'bg' ? 'Виж проекти' : 'View projects'}
                 </Link>
-                <Link
-                  href="/projects"
-                  className="inline-flex items-center justify-center rounded-xl border border-[#62b946] px-7 py-4 text-[#62b946] font-semibold transition-colors hover:bg-[#62b946] hover:text-white"
-                >
-                  {lang === 'bg' ? 'Виж изпълнени проекти' : 'View completed projects'}
-                </Link>
-                <Link
-                  href="/contacts"
-                  className="inline-flex items-center justify-center rounded-xl bg-[#388644] px-8 py-4 text-white font-semibold transition-colors hover:bg-[#2d6b35]"
-                >
+                <Link href="/contacts" className="inline-flex items-center justify-center rounded-xl bg-[#388644] px-7 py-3 font-semibold text-white transition hover:bg-[#2d6b35]">
                   {lang === 'bg' ? 'Заяви оглед' : 'Request a site visit'}
                 </Link>
               </div>
