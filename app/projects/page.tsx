@@ -26,7 +26,7 @@ const structuredData = {
     '@type': 'ListItem',
     position: index + 1,
     name: projectSeo[id].title,
-    url: `https://www.sensorbuild.bg/projects/${id}`,
+    url: `https://www.sensorbuild.bg/projects/${projectSeo[id].slug}`,
     image: `https://www.sensorbuild.bg${projectSeo[id].image}`,
   })),
 };
