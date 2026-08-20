@@ -1,185 +1,117 @@
-"use client";
+import type { Metadata } from 'next';
+import { notFound, permanentRedirect } from 'next/navigation';
+import { projectIds, projectSeo, resolveProjectId } from '@/lib/projectSeo';
+import ProjectClient from './ProjectClient';
 
-import { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
-import Image from "next/image";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { translations } from "@/lib/translations";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  type CarouselApi,
-} from "@/components/ui/carousel";
-import { Card, CardContent } from "@/components/ui/card";
+type PageProps = {
+  params: Promise<{ id: string }>;
+};
 
-export default function ProjectPage() {
-  const params = useParams();
-  const router = useRouter();
-  const { lang } = useLanguage();
-  const projectId = parseInt(params.id as string);
-  const t = translations[lang].projects;
+export function generateStaticParams() {
+  return projectIds.map((id) => ({ id: projectSeo[id].slug }));
+}
 
-  const projects = [
-    t.project1,
-    t.project2,
-    t.project3,
-    t.project4,
-    t.project5,
-    t.project6,
-  ];
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { id: identifier } = await params;
+  const projectId = resolveProjectId(identifier);
 
-  const project = projects[projectId];
+  if (!projectId) {
+    return {
+      title: 'Проектът не е намерен',
+      robots: { index: false, follow: true },
+    };
+  }
 
-  const images =
-    (project as any).images ||
-    ((project as any).mainImage ? [(project as any).mainImage] : []);
+  const seo = projectSeo[projectId];
+  const canonicalPath = `/projects/${seo.slug}`;
 
-  const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
+  return {
+    title: seo.title,
+    description: seo.description,
+    alternates: {
+      canonical: canonicalPath,
+    },
+    openGraph: {
+      title: `${seo.title} | Sensor Build`,
+      description: seo.description,
+      url: canonicalPath,
+      type: 'article',
+      images: [
+        {
+          url: seo.image,
+          alt: seo.title,
+        },
+      ],
+    },
+  };
+}
 
-  useEffect(() => {
-    if (!project) {
-      router.push("/projects");
-    }
-  }, [project, router]);
+export default async function ProjectPage({ params }: PageProps) {
+  const { id: identifier } = await params;
+  const projectId = resolveProjectId(identifier);
 
-  useEffect(() => {
-    if (!api) return;
+  if (!projectId) notFound();
 
-    setCurrent(api.selectedScrollSnap());
+  const seo = projectSeo[projectId];
 
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap());
-    });
-  }, [api]);
+  if (identifier !== seo.slug) {
+    permanentRedirect(`/projects/${seo.slug}`);
+  }
 
-  const scrollTo = (index: number) => {
-    api?.scrollTo(index);
+  const projectUrl = `https://www.sensorbuild.bg/projects/${seo.slug}`;
+
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Проекти',
+            item: 'https://www.sensorbuild.bg/projects',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: seo.title,
+            item: projectUrl,
+          },
+        ],
+      },
+      {
+        '@type': 'CreativeWork',
+        '@id': `${projectUrl}#project`,
+        url: projectUrl,
+        name: seo.title,
+        description: seo.description,
+        image: seo.images.map(
+          (image) => `https://www.sensorbuild.bg${image}`
+        ),
+        creator: {
+          '@type': 'GeneralContractor',
+          '@id': 'https://www.sensorbuild.bg/#business',
+          name: 'Sensor Build',
+          url: 'https://www.sensorbuild.bg/',
+        },
+        locationCreated: {
+          '@type': 'Place',
+          name: 'София, България',
+        },
+      },
+    ],
   };
 
-  if (!project) return null;
-
   return (
-    <div
-      className={`min-h-screen ${
-        lang === "bg" ? "bg-[#13182c]" : "bg-white"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-       
-        {/* Title */}
-        <h1
-          className={`text-4xl md:text-5xl font-noah-bold mb-8 ${
-            lang === "bg" ? "text-white" : "text-gray-900"
-          }`}
-        >
-          {project.title}
-        </h1>
-
-        {/* Carousel */}
-        {images.length > 0 && (
-          <div className="mb-12">
-            <div className="flex justify-center mb-6">
-              <Carousel setApi={setApi} className="w-full max-w-md relative">
-                <CarouselContent>
-                  {images.map((image: string, index: number) => (
-                    <CarouselItem key={index}>
-                      <Card className="border-0 shadow-none bg-transparent">
-                        <CardContent className="flex aspect-[3/4] items-center justify-center p-0">
-                          <Image
-                            src={image}
-                            alt={`${project.imageTitle} ${index + 1}`}
-                            width={800}
-                            height={1067}
-                            className="w-full h-full object-contain rounded-lg"
-                          />
-                        </CardContent>
-                      </Card>
-                    </CarouselItem>
-                  ))}
-                </CarouselContent>
-
-                {images.length > 1 && (
-                  <>
-                 <CarouselPrevious
-  className="absolute left-4 top-1/2 -translate-y-1/2
-             h-12 w-12
-             flex items-center justify-center
-             p-0
-             rounded-lg
-             bg-[#13182c]/80 backdrop-blur-sm
-             border border-white/20 shadow-lg
-             text-white
-             hover:bg-[#13182c] hover:scale-105
-             transition-all duration-300"
-/>
-
-<CarouselNext
-  className="absolute right-4 top-1/2 -translate-y-1/2
-             h-12 w-12
-             flex items-center justify-center
-             p-0
-             rounded-lg
-             bg-[#13182c]/80 backdrop-blur-sm
-             border border-white/20 shadow-lg
-             text-white
-             hover:bg-[#13182c] hover:scale-105
-             transition-all duration-300"
-/>
-                  </>
-                )}
-              </Carousel>
-            </div>
-
-            {/* Thumbnails */}
-            {images.length > 1 && (
-              <div className="flex justify-center gap-3 overflow-x-auto pb-2 px-4">
-                {images.map((image: string, index: number) => (
-                  <button
-                    key={index}
-                    onClick={() => scrollTo(index)}
-                    className={`relative flex-shrink-0 w-20 h-20 md:w-24 md:h-24 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
-                      current === index
-                        ? "border-[#388644] scale-110 shadow-lg"
-                        : "border-transparent opacity-60 hover:opacity-100 hover:scale-105"
-                    }`}
-                  >
-                    <Image
-                      src={image}
-                      alt={`Thumbnail ${index + 1}`}
-                      fill
-                      className="object-cover"
-                      sizes="80px"
-                    />
-                    {current === index && (
-                      <div className="absolute inset-0 bg-[#388644]/20" />
-                    )}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Content */}
-        <div className="max-w-4xl mx-auto">
-          <div className="space-y-6">
-            {project.content.map((paragraph, index) => (
-              <p
-                key={index}
-                className={`text-lg leading-relaxed ${
-                  lang === "bg" ? "text-white" : "text-gray-700"
-                }`}
-              >
-                {paragraph}
-              </p>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, '\\u003c'),
+        }}
+      />
+      <ProjectClient />
+    </>
   );
 }

@@ -20,30 +20,32 @@ export default function HowWeWork() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className={`text-4xl md:text-5xl font-noah-bold mb-4 ${lang === 'bg' ? 'text-white' : 'text-gray-900'}`}>
-            {t.title}
+            {lang === 'bg' ? 'Как работим при ремонт в София' : 'How we work on renovations in Sofia'}
           </h1>
+          <p className={`text-lg max-w-3xl mx-auto leading-relaxed ${lang === 'bg' ? 'text-white/80' : 'text-gray-600'}`}>
+            {lang === 'bg'
+              ? 'Следваме ясен процес от първоначалния оглед и офертата до изпълнението по етапи и финалното предаване на обекта.'
+              : 'We follow a clear process from the initial site visit and quotation through staged execution and final handover.'}
+          </p>
         </div>
 
         <div className="space-y-12">
           {steps.map((step, index) => (
-            <AnimatedDiv key={index} className="flex flex-col md:flex-row items-start gap-8">
-              {/* Step Number Circle */}
-              <div className="flex-shrink-0">
+            <AnimatedDiv key={step.number} className="flex flex-col md:flex-row items-start gap-8">
+              <div className="flex-shrink-0" aria-hidden="true">
                 <div className="w-20 h-20 bg-[#388644] rounded-full flex items-center justify-center">
                   <span className="text-white text-3xl font-bold">{step.number}</span>
                 </div>
-                {/* Connecting Line (except for last step) */}
                 {index < steps.length - 1 && (
-                  <div className="hidden md:block w-1 h-24 bg-[#388644] mx-auto mt-4"></div>
+                  <div className="hidden md:block w-1 h-24 bg-[#388644] mx-auto mt-4" />
                 )}
               </div>
 
-              {/* Step Content */}
               <div className="flex-1">
                 <h2 className={`text-2xl md:text-3xl font-semibold mb-4 ${lang === 'bg' ? 'text-white' : 'text-gray-900'}`}>
                   {step.title}
                 </h2>
-                <p className={`text-lg leading-relaxed ${lang === 'bg' ? 'text-white' : 'text-gray-600'}`}>
+                <p className={`text-lg leading-relaxed ${lang === 'bg' ? 'text-white/90' : 'text-gray-600'}`}>
                   {step.description}
                 </p>
               </div>

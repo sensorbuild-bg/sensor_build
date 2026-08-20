@@ -11,9 +11,6 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-
-  // Пазим текущото scroll състояние,
-  // за да избегнем постоянно превключване около една граница.
   const isScrolledRef = useRef(false);
 
   const { lang, setLang } = useLanguage();
@@ -30,11 +27,8 @@ export default function Header() {
   };
 
   useEffect(() => {
-    // Header-ът се свива чак след 120px,
-    // но се разгъва отново чак когато стигнем почти най-горе.
     const COLLAPSE_AT = 120;
     const EXPAND_AT = 20;
-
     let ticking = false;
 
     const updateHeader = () => {
@@ -58,7 +52,6 @@ export default function Header() {
       }
     };
 
-    // Проверка още при зареждането на страницата
     if (window.scrollY > COLLAPSE_AT) {
       isScrolledRef.current = true;
       setIsScrolled(true);
@@ -97,9 +90,11 @@ export default function Header() {
 
   const isActiveLink = (href: string) => {
     if (href === "/") return pathname === "/";
-
     return pathname === href || pathname.startsWith(`${href}/`);
   };
+
+  const homeLabel = lang === "bg" ? "Sensor Build – начало" : "Sensor Build – home";
+  const menuLabel = lang === "bg" ? "Основна навигация" : "Main navigation";
 
   return (
     <header
@@ -107,21 +102,11 @@ export default function Header() {
         lang === "bg" ? "bg-[#13182c]" : "bg-white"
       } ${isScrolled ? "shadow-xl" : "shadow-none"}`}
     >
-      {/* ================= DESKTOP (>= xl / 1280px) ================= */}
       <div
         className={`hidden xl:block relative overflow-hidden transition-[height] duration-300 ease-in-out ${
           isScrolled ? "h-[82px]" : "h-[150px]"
         }`}
       >
-        {/* 
-          Най-горе:
-          линията минава през линията на логото.
-
-          При скрол:
-          линията отива в долната част на header-а.
-
-          z-40 държи зелената линия над логото.
-        */}
         <div
           className={`absolute left-0 right-0 bg-gradient-to-r from-[#62b946] to-[#0c5447] pointer-events-none z-40 transition-all duration-300 ease-in-out ${
             isScrolled
@@ -134,8 +119,11 @@ export default function Header() {
 
         <div className="max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8">
           <div className="relative h-full flex items-center justify-between z-30">
-            {/* LOGO */}
-            <Link href="/" className="flex items-center -ml-4 shrink-0">
+            <Link
+              href="/"
+              aria-label={homeLabel}
+              className="flex items-center -ml-4 shrink-0"
+            >
               <div
                 className={`transition-all duration-300 ease-in-out ${
                   isScrolled ? "pr-6 xl:pr-8" : "pr-6 xl:pr-12"
@@ -143,19 +131,18 @@ export default function Header() {
               >
                 <Image
                   src={lang === "bg" ? "/logodark.png" : "/logo.webp"}
-                  alt="Sensor Build Logo"
+                  alt="Sensor Build"
                   width={200}
                   height={80}
                   className={`h-auto bg-transparent transition-[width] duration-300 ease-in-out ${
                     isScrolled ? "w-[115px]" : "w-[200px]"
                   }`}
-                  priority
                 />
               </div>
             </Link>
 
-            {/* NAVIGATION */}
             <nav
+              aria-label={menuLabel}
               className={`flex-1 flex justify-center transition-[margin] duration-300 ease-in-out ${
                 isScrolled ? "mt-0" : "-mt-10"
               }`}
@@ -174,6 +161,7 @@ export default function Header() {
                     <Link
                       key={item.href}
                       href={item.href}
+                      aria-current={active ? "page" : undefined}
                       className={`whitespace-nowrap font-bold transition-colors border-b-2 ${
                         isScrolled ? "text-base pb-1" : "text-lg pb-0.5"
                       } ${
@@ -197,14 +185,17 @@ export default function Header() {
               </div>
             </nav>
 
-            {/* LANGUAGE */}
             <div
               className={`flex items-center space-x-1 ml-6 shrink-0 transition-[margin] duration-300 ease-in-out ${
                 isScrolled ? "mt-0" : "-mt-12"
               }`}
+              aria-label={lang === "bg" ? "Избор на език" : "Language selection"}
             >
               <button
+                type="button"
                 onClick={() => setLang("bg")}
+                aria-pressed={lang === "bg"}
+                aria-label="Български"
                 className={`px-3 py-1.5 text-xs font-semibold rounded-md text-white transition-all duration-200 ${
                   lang === "bg"
                     ? "bg-[#2d6b35] shadow-md"
@@ -215,7 +206,10 @@ export default function Header() {
               </button>
 
               <button
+                type="button"
                 onClick={() => setLang("en")}
+                aria-pressed={lang === "en"}
+                aria-label="English"
                 className={`px-3 py-1.5 text-xs font-semibold rounded-md text-white transition-all duration-200 ${
                   lang === "en"
                     ? "bg-[#2d6b35] shadow-md"
@@ -229,17 +223,11 @@ export default function Header() {
         </div>
       </div>
 
-      {/* ================= MOBILE + TABLET (< xl / 1280px) ================= */}
       <div
         className={`xl:hidden relative overflow-hidden transition-[height] duration-300 ease-in-out ${
           isScrolled ? "h-[64px]" : "h-[100px]"
         }`}
       >
-        {/* 
-          На мобилно:
-          линията също минава през логото в началото,
-          а при scroll отива долу.
-        */}
         <div
           className={`absolute left-0 right-0 bg-gradient-to-r from-[#62b946] to-[#0c5447] pointer-events-none z-40 transition-all duration-300 ease-in-out ${
             isScrolled
@@ -251,29 +239,36 @@ export default function Header() {
         />
 
         <div className="h-full flex items-center justify-between px-4 relative z-30">
-          {/* MOBILE LOGO */}
-          <Link href="/" className="flex items-center shrink-0">
+          <Link
+            href="/"
+            aria-label={homeLabel}
+            className="flex items-center shrink-0"
+          >
             <Image
               src={lang === "bg" ? "/logodark.png" : "/logo.webp"}
-              alt="Sensor Build Logo"
+              alt="Sensor Build"
               width={120}
               height={48}
               className={`h-auto bg-transparent transition-[width] duration-300 ease-in-out ${
                 isScrolled ? "w-[82px]" : "w-[120px]"
               }`}
-              priority
             />
           </Link>
 
-          {/* MOBILE CONTROLS */}
           <div
             className={`flex items-center space-x-2 transition-[margin] duration-300 ease-in-out ${
               isScrolled ? "mt-0" : "-mt-12"
             }`}
           >
-            <div className="flex items-center space-x-1">
+            <div
+              className="flex items-center space-x-1"
+              aria-label={lang === "bg" ? "Избор на език" : "Language selection"}
+            >
               <button
+                type="button"
                 onClick={() => setLang("bg")}
+                aria-pressed={lang === "bg"}
+                aria-label="Български"
                 className={`px-3 py-1.5 text-xs font-semibold rounded-md text-white transition-all duration-200 ${
                   lang === "bg"
                     ? "bg-[#2d6b35] shadow-md"
@@ -284,7 +279,10 @@ export default function Header() {
               </button>
 
               <button
+                type="button"
                 onClick={() => setLang("en")}
+                aria-pressed={lang === "en"}
+                aria-label="English"
                 className={`px-3 py-1.5 text-xs font-semibold rounded-md text-white transition-all duration-200 ${
                   lang === "en"
                     ? "bg-[#2d6b35] shadow-md"
@@ -295,14 +293,15 @@ export default function Header() {
               </button>
             </div>
 
-            {/* HAMBURGER */}
             <button
+              type="button"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-md transition-colors bg-transparent"
-              aria-label="Toggle menu"
+              aria-label={lang === "bg" ? "Отвори меню" : "Open menu"}
               aria-expanded={isMenuOpen}
+              aria-controls="mobile-navigation"
             >
-              <div className="w-6 h-6 flex flex-col justify-center space-y-1.5">
+              <div className="w-6 h-6 flex flex-col justify-center space-y-1.5" aria-hidden="true">
                 <span
                   className={`block h-0.5 w-6 transition-all ${
                     isMenuOpen
@@ -331,15 +330,17 @@ export default function Header() {
           </div>
         </div>
 
-        {/* MOBILE MENU */}
         {isMenuOpen && (
           <>
             <div
               className="fixed inset-0 bg-black/60 z-[100] transition-opacity duration-300"
               onClick={handleCloseMenu}
+              aria-hidden="true"
             />
 
             <nav
+              id="mobile-navigation"
+              aria-label={menuLabel}
               className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-xl z-[101] overflow-y-auto transform transition-transform duration-300 ease-out ${
                 isClosing ? "translate-x-full" : "translate-x-0"
               }`}
@@ -350,24 +351,28 @@ export default function Header() {
               }
             >
               <div className="flex items-center justify-between p-4 border-b border-gray-100">
-                <Image
-                  src="/logo.webp"
-                  alt="Sensor Build Logo"
-                  width={110}
-                  height={44}
-                  className="h-auto w-auto bg-transparent"
-                />
+                <Link href="/" aria-label={homeLabel} onClick={handleCloseMenu}>
+                  <Image
+                    src="/logo.webp"
+                    alt="Sensor Build"
+                    width={110}
+                    height={44}
+                    className="h-auto w-auto bg-transparent"
+                  />
+                </Link>
 
                 <button
+                  type="button"
                   onClick={handleCloseMenu}
                   className="p-2 rounded-md hover:bg-gray-100 transition-colors"
-                  aria-label="Close menu"
+                  aria-label={lang === "bg" ? "Затвори меню" : "Close menu"}
                 >
                   <svg
                     className="w-6 h-6 text-gray-700"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
+                    aria-hidden="true"
                   >
                     <path
                       strokeLinecap="round"
@@ -388,6 +393,7 @@ export default function Header() {
                       key={item.href}
                       href={item.href}
                       onClick={handleCloseMenu}
+                      aria-current={active ? "page" : undefined}
                       className={`text-lg font-semibold py-4 px-4 rounded-lg transition-colors ${
                         active
                           ? "text-[#4da855] bg-[#4da855]/10"

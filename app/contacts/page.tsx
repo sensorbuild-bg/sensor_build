@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { business } from "@/lib/business";
 import ContactsClient from "./ContactsClient";
 
 export const metadata: Metadata = {
@@ -19,6 +20,39 @@ export const metadata: Metadata = {
   },
 };
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": `${business.url}/contacts#contact-page`,
+  url: `${business.url}/contacts`,
+  name: "Контакти | Sensor Build",
+  mainEntity: {
+    "@type": "GeneralContractor",
+    "@id": `${business.url}/#business`,
+    name: business.name,
+    url: `${business.url}/`,
+    telephone: business.phoneE164,
+    email: business.email,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: business.address.street,
+      addressLocality: business.address.city,
+      postalCode: business.address.postalCode,
+      addressCountry: business.address.countryCode,
+    },
+  },
+};
+
 export default function ContactsPage() {
-  return <ContactsClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+        }}
+      />
+      <ContactsClient />
+    </>
+  );
 }
