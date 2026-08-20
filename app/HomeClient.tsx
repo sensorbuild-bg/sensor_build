@@ -16,7 +16,7 @@ type VisualCard = {
 };
 
 type ProjectCard = {
-  id: number;
+  slug: string;
   titleBg: string;
   titleEn: string;
   image: string;
@@ -75,25 +75,25 @@ const featuredServices: VisualCard[] = [
 
 const projectCards: ProjectCard[] = [
   {
-    id: 0,
+    slug: "osvezhitelen-remont",
     titleBg: "Освежителен ремонт",
     titleEn: "Refresh renovation",
     image: "/project1/main.webp",
   },
   {
-    id: 1,
+    slug: "elektroinstalacia",
     titleBg: "Електроинсталация",
     titleEn: "Electrical installation",
     image: "/project2/20250806_190332_main-ezgif.com-jpg-to-webp-converter.webp",
   },
   {
-    id: 3,
+    slug: "podovo-otoplenie",
     titleBg: "Подово отопление",
     titleEn: "Underfloor heating",
     image: "/project4/20251008_150415_main-ezgif.com-jpg-to-webp-converter.webp",
   },
   {
-    id: 4,
+    slug: "gipsokarton",
     titleBg: "Гипсокартон",
     titleEn: "Drywall",
     image: "/project5/20251109_145613_main-ezgif.com-jpg-to-webp-converter.webp",
@@ -262,7 +262,7 @@ export default function HomeClient() {
 
           <div className="mt-8 flex gap-4 overflow-x-auto snap-x snap-mandatory pb-3 md:grid md:grid-cols-2 lg:grid-cols-4 md:overflow-visible md:pb-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {projectCards.map((project) => (
-              <Link key={project.id} href={`/projects/${project.id}`} className="group relative w-[72vw] max-w-[300px] shrink-0 snap-center overflow-hidden rounded-2xl shadow-lg md:w-auto md:max-w-none">
+              <Link key={project.slug} href={`/projects/${project.slug}`} className="group relative w-[72vw] max-w-[300px] shrink-0 snap-center overflow-hidden rounded-2xl shadow-lg md:w-auto md:max-w-none">
                 <div className="relative aspect-[4/3]">
                   <Image src={project.image} alt={`${isBg ? project.titleBg : project.titleEn} – проект на Sensor Build`} fill sizes="(max-width: 767px) 72vw, (max-width: 1023px) 50vw, 25vw" className="object-cover transition-transform duration-500 group-hover:scale-105" quality={75} />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
