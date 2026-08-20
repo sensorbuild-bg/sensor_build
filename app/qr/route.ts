@@ -6,5 +6,8 @@ export function GET(request: NextRequest) {
   target.searchParams.set('utm_medium', 'qr');
   target.searchParams.set('utm_campaign', 'branded_van');
 
-  return NextResponse.redirect(target, 307);
+  const response = NextResponse.redirect(target, 307);
+  response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+
+  return response;
 }
