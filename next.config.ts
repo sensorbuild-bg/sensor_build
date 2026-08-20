@@ -24,6 +24,36 @@ const nextConfig: NextConfig = {
         destination: "/osvetlenie",
         permanent: true,
       },
+      {
+        source: "/projects/0",
+        destination: "/projects/osvezhitelen-remont",
+        permanent: true,
+      },
+      {
+        source: "/projects/1",
+        destination: "/projects/elektroinstalacia",
+        permanent: true,
+      },
+      {
+        source: "/projects/2",
+        destination: "/projects/vik-instalacia",
+        permanent: true,
+      },
+      {
+        source: "/projects/3",
+        destination: "/projects/podovo-otoplenie",
+        permanent: true,
+      },
+      {
+        source: "/projects/4",
+        destination: "/projects/gipsokarton",
+        permanent: true,
+      },
+      {
+        source: "/projects/5",
+        destination: "/projects/osvetlenie",
+        permanent: true,
+      },
     ];
   },
 };
