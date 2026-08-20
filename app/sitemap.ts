@@ -1,8 +1,22 @@
 import type { MetadataRoute } from 'next';
 import { projectIds, projectSeo } from '@/lib/projectSeo';
 import { indexedServiceSlugs } from '@/lib/serviceSeo';
+import { translations } from '@/lib/translations';
 
 const baseUrl = 'https://www.sensorbuild.bg';
+
+type ServiceWithImages = {
+  slug?: string;
+  images?: string[];
+};
+
+const bgServices = translations.bg.services.services as ServiceWithImages[];
+
+function getServiceImages(slug: string) {
+  return (
+    bgServices.find((service) => service.slug === slug)?.images ?? []
+  ).map((image) => `${baseUrl}${image}`);
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
@@ -39,9 +53,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const servicePages: MetadataRoute.Sitemap = indexedServiceSlugs.map((slug) => ({
-    url: `${baseUrl}/services/${slug}`,
-  }));
+  const servicePages: MetadataRoute.Sitemap = indexedServiceSlugs.map((slug) => {
+    const images = getServiceImages(slug);
+
+    return {
+      url: `${baseUrl}/services/${slug}`,
+      ...(images.length > 0 ? { images } : {}),
+    };
+  });
 
   const projectPages: MetadataRoute.Sitemap = projectIds.map((id) => ({
     url: `${baseUrl}/projects/${projectSeo[id].slug}`,
