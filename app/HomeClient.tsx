@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
-import TypewriterText from "@/components/TypewriterText";
 import { business } from "@/lib/business";
 
 type VisualCard = {
@@ -100,6 +99,49 @@ const projectCards: ProjectCard[] = [
   },
 ];
 
+function ArrowIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="h-5 w-5">
+      <path d="M5 12h13M13 7l5 5-5 5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function VisitIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="h-5 w-5">
+      <path d="M4 11.5 12 5l8 6.5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8.5Z" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+      <path d="M9 21v-6h6v6" stroke="currentColor" strokeWidth="1.7" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function ProjectsIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="h-5 w-5">
+      <path d="M2.5 12s3.3-6 9.5-6 9.5 6 9.5 6-3.3 6-9.5 6-9.5-6-9.5-6Z" stroke="currentColor" strokeWidth="1.7" />
+      <circle cx="12" cy="12" r="2.5" stroke="currentColor" strokeWidth="1.7" />
+    </svg>
+  );
+}
+
+function PhoneIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="h-5 w-5">
+      <path d="M7.4 3.5 10 7.3 8.5 9.5c1.2 2.5 3.1 4.4 5.7 5.7l2.2-1.5 3.8 2.6c.4.3.6.8.4 1.3-.5 1.4-1.8 2.9-3.5 3-6 .2-13.8-7.6-13.6-13.6.1-1.7 1.6-3 3-3.5.4-.2.8 0 .9 0Z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="h-5 w-5">
+      <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.7" />
+      <path d="m4.5 7 7.5 6 7.5-6" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export default function HomeClient() {
   const { lang } = useLanguage();
   const isBg = lang === "bg";
@@ -109,7 +151,6 @@ export default function HomeClient() {
         brand: "SENSOR BUILD",
         seoTitle: "Ремонти и строителство в София",
         subtitle: "Цялостни и частични ремонти на жилища, офиси и търговски пространства.",
-        tagline: "Прецизност, на която можете да се доверите!",
         primaryCta: "Заяви оглед",
         secondaryCta: "Виж проекти",
         servicesTitle: "Какво можем да направим за вас",
@@ -130,7 +171,6 @@ export default function HomeClient() {
         brand: "SENSOR BUILD",
         seoTitle: "Construction and Renovations in Sofia",
         subtitle: "Complete and partial renovations of homes, offices and commercial spaces.",
-        tagline: "Precision you can trust!",
         primaryCta: "Request a visit",
         secondaryCta: "View projects",
         servicesTitle: "What we can do for you",
@@ -166,39 +206,71 @@ export default function HomeClient() {
 
   return (
     <div className={`min-h-screen pb-20 md:pb-0 ${isBg ? "bg-[#13182c]" : "bg-white"}`}>
-      <section className="relative min-h-[64svh] md:min-h-[76vh] flex items-center justify-center overflow-hidden px-4 py-14 sm:px-6 md:py-20 lg:px-8">
+      <section className="relative flex min-h-[calc(100svh-100px)] items-center justify-center overflow-hidden px-5 py-9 sm:px-6 md:min-h-[calc(100vh-150px)] md:py-14 lg:px-8">
         <Image
           src="/main.webp"
           alt={isBg ? "Ремонти и строителство в София – Sensor Build" : "Construction and renovations in Sofia – Sensor Build"}
           fill
           sizes="100vw"
-          className="object-cover"
+          className="object-cover object-center"
           quality={90}
           preload
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/40 to-black/60" />
 
-        <div className="relative z-10 mx-auto w-full max-w-5xl text-center">
-          <div className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-noah-bold text-white drop-shadow-lg uppercase">
-            {copy.brand}
+        <div className="absolute inset-0 bg-black/38" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#090d16]/45 via-transparent to-[#090d16]/70" />
+        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/30 to-transparent" />
+
+        <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center text-center text-white">
+          <div className="select-none">
+            <div className="text-[clamp(2.9rem,12vw,5.8rem)] font-light uppercase leading-[0.9] tracking-[0.16em] text-white/95 drop-shadow-[0_2px_18px_rgba(0,0,0,0.28)]">
+              SENSOR
+            </div>
+            <div className="mt-3 text-[clamp(1rem,4vw,1.7rem)] font-light uppercase tracking-[0.48em] text-white/90">
+              BUILD
+            </div>
+            <div className="mx-auto mt-6 h-[2px] w-20 bg-[#62b946] shadow-[0_0_16px_rgba(98,185,70,0.35)] sm:w-24" />
           </div>
-          <h1 className="mt-3 text-2xl sm:text-3xl md:text-4xl font-semibold text-white drop-shadow-md">
-            {copy.seoTitle}
+
+          <h1 className="mt-8 max-w-[12ch] text-[clamp(2.35rem,9vw,4.6rem)] font-light leading-[1.05] tracking-[-0.02em] text-white drop-shadow-[0_2px_20px_rgba(0,0,0,0.3)] sm:max-w-[16ch] md:mt-10">
+            {isBg ? (
+              <>
+                Ремонти и <span className="sm:whitespace-nowrap">строителство</span> в София
+              </>
+            ) : (
+              <>Construction and Renovations in Sofia</>
+            )}
           </h1>
-          <p className="mx-auto mt-4 max-w-3xl text-base sm:text-lg md:text-xl leading-relaxed text-white/90 drop-shadow-md">
+
+          <p className="mt-5 max-w-xl text-[0.98rem] font-light leading-relaxed text-white/82 sm:text-lg md:mt-6 md:text-xl">
             {copy.subtitle}
           </p>
-          <div className="mt-5 flex justify-center">
-            <span className="inline-flex min-h-11 items-center rounded-xl border border-white/30 bg-white/85 px-4 py-2 text-sm sm:text-base md:text-lg font-semibold text-[#2D6B35] shadow-lg backdrop-blur-sm">
-              <TypewriterText text={copy.tagline} speed={38} delay={60} />
-            </span>
-          </div>
-          <div className="mt-7 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
-            <Link href="/contacts" className="rounded-xl bg-[#388644] px-7 py-3.5 text-center text-white text-base font-semibold shadow-lg transition hover:bg-[#2d6b35] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
-              {copy.primaryCta}
+
+          <div className="mt-8 grid w-full max-w-[440px] gap-3 md:mt-10">
+            <Link
+              href="/contacts"
+              className="group flex min-h-14 items-center rounded-full border border-[#62b946]/75 bg-black/10 px-5 text-white backdrop-blur-[2px] transition duration-300 hover:border-[#7bd567] hover:bg-black/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#62b946]"
+            >
+              <span className="flex w-10 justify-start text-[#62b946]">
+                <VisitIcon />
+              </span>
+              <span className="flex-1 text-center text-base font-medium tracking-wide sm:text-lg">{copy.primaryCta}</span>
+              <span className="flex w-10 justify-end text-[#62b946] transition-transform duration-300 group-hover:translate-x-1">
+                <ArrowIcon />
+              </span>
             </Link>
-            <Link href="/projects" className="rounded-xl border border-white/40 bg-black/15 px-7 py-3.5 text-center text-white text-base font-semibold backdrop-blur-sm transition hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
-              {copy.secondaryCta}
+
+            <Link
+              href="/projects"
+              className="group flex min-h-14 items-center rounded-full border border-white/38 bg-black/10 px-5 text-white backdrop-blur-[2px] transition duration-300 hover:border-white/65 hover:bg-black/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+            >
+              <span className="flex w-10 justify-start text-[#62b946]">
+                <ProjectsIcon />
+              </span>
+              <span className="flex-1 text-center text-base font-medium tracking-wide sm:text-lg">{copy.secondaryCta}</span>
+              <span className="flex w-10 justify-end text-white/65 transition-transform duration-300 group-hover:translate-x-1">
+                <ArrowIcon />
+              </span>
             </Link>
           </div>
         </div>
@@ -309,13 +381,22 @@ export default function HomeClient() {
         </div>
       </section>
 
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-[#101629]/95 p-2.5 shadow-[0_-8px_30px_rgba(0,0,0,0.22)] backdrop-blur md:hidden">
-        <div className="mx-auto grid max-w-md grid-cols-2 gap-2">
-          <a href={`tel:${business.phoneE164}`} className="flex min-h-12 items-center justify-center rounded-xl bg-[#388644] px-4 font-semibold text-white" aria-label={`${copy.call}: ${business.phoneDisplay}`}>
-            <span aria-hidden="true" className="mr-2">☎</span>{copy.call}
+      <div className="fixed inset-x-4 bottom-4 z-50 md:hidden">
+        <div className="mx-auto grid max-w-md grid-cols-2 overflow-hidden rounded-full border border-white/20 bg-[#0e1425]/88 shadow-[0_12px_34px_rgba(0,0,0,0.28)] backdrop-blur-md">
+          <a
+            href={`tel:${business.phoneE164}`}
+            className="flex min-h-14 items-center justify-center gap-3 border-r border-white/15 px-4 font-medium text-white transition hover:bg-white/8"
+            aria-label={`${copy.call}: ${business.phoneDisplay}`}
+          >
+            <span className="text-[#62b946]"><PhoneIcon /></span>
+            <span>{copy.call}</span>
           </a>
-          <Link href="/contacts" className="flex min-h-12 items-center justify-center rounded-xl border border-white/20 bg-white/10 px-4 font-semibold text-white">
-            <span aria-hidden="true" className="mr-2">✉</span>{copy.message}
+          <Link
+            href="/contacts"
+            className="flex min-h-14 items-center justify-center gap-3 px-4 font-medium text-white transition hover:bg-white/8"
+          >
+            <span className="text-[#62b946]"><MailIcon /></span>
+            <span>{copy.message}</span>
           </Link>
         </div>
       </div>
