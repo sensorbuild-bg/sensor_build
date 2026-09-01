@@ -197,6 +197,12 @@ export default function Footer() {
 
           <div className="text-center">
             <p className="text-sm text-gray-400">{t.copyright}</p>
+            <Link
+              href="/privacy-policy"
+              className="mt-2 inline-block text-xs text-gray-500 transition-colors hover:text-gray-300"
+            >
+              {isBg ? "Политика за поверителност" : "Privacy policy"}
+            </Link>
           </div>
         </div>
       </div>
