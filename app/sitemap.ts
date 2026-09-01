@@ -51,6 +51,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/how-we-work`,
     },
+    {
+      url: `${baseUrl}/privacy-policy`,
+    },
   ];
 
   const servicePages: MetadataRoute.Sitemap = indexedServiceSlugs.map((slug) => {
