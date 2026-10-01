@@ -36,6 +36,8 @@ export const projectSeo = {
       '/project3/20250723_174911_main.webp',
       '/project3/20250723_174903.webp',
       '/project3/20251013_135225.webp',
+      '/project3/vik-instalacia-banya-razvodki-01.webp',
+      '/project3/vik-instalacia-banya-razvodki-02.webp',
     ],
   },
   '3': {
