@@ -114,6 +114,8 @@ export const translations = {
             '/project3/20250723_174911_main.webp',
             '/project3/20250723_174903.webp',
             '/project3/20251013_135225.webp',
+            '/project3/vik-instalacia-banya-razvodki-01.webp',
+            '/project3/vik-instalacia-banya-razvodki-02.webp',
           ],
           content: [
             'Планиране на трасета за водопровод и канализация.',
@@ -347,6 +349,8 @@ export const translations = {
           '/project3/20250723_174911_main.webp',
           '/project3/20250723_174903.webp',
           '/project3/20251013_135225.webp',
+          '/project3/vik-instalacia-banya-razvodki-01.webp',
+          '/project3/vik-instalacia-banya-razvodki-02.webp',
         ],
         content: [
           'Извършваме изграждане и ремонт на цялостни водопроводни и канализационни инсталации с акцент върху дълготрайност и безпроблемна експлоатация. Какво включват дейностите:',
@@ -562,6 +566,8 @@ export const translations = {
         '/project3/20250723_174911_main.webp',
         '/project3/20250723_174903.webp',
         '/project3/20251013_135225.webp',
+        '/project3/vik-instalacia-banya-razvodki-01.webp',
+        '/project3/vik-instalacia-banya-razvodki-02.webp',
       ],
       content: [
         'Planning of water supply and sewage routes.',
@@ -793,6 +799,8 @@ images: [
           '/project3/20250723_174911_main.webp',
           '/project3/20250723_174903.webp',
           '/project3/20251013_135225.webp',
+          '/project3/vik-instalacia-banya-razvodki-01.webp',
+          '/project3/vik-instalacia-banya-razvodki-02.webp',
         ],
         content: [
           'We build and repair complete water supply and drainage systems focused on durability and problem-free operation. The process includes:',
