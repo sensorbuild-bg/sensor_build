@@ -43,6 +43,23 @@ export default function BathroomMediaClient() {
           </p>
         </div>
 
+        <section
+          aria-labelledby="bathroom-renovation-heading"
+          className={`mb-12 rounded-2xl border p-5 sm:p-7 md:mb-14 md:p-9 ${isBg ? "border-white/10 bg-[#1a2342]" : "border-gray-200 bg-gray-50"}`}
+        >
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[.18em] text-[#62b946]">
+            {isBg ? "Изпълнени дейности" : "Completed works"}
+          </p>
+          <h2 id="bathroom-renovation-heading" className="text-2xl font-semibold md:text-3xl">
+            {isBg ? "Основен ремонт на баня – от къртенето до последния детайл" : "Complete bathroom renovation – from demolition to the final detail"}
+          </h2>
+          <div className={`mt-5 space-y-4 text-base leading-relaxed ${isBg ? "text-white/80" : "text-gray-700"}`}>
+            {(isBg ? project.detailsBg : project.detailsEn).map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
+        </section>
+
         <section aria-labelledby="bathroom-video-title" className="mb-14">
           <div className="mb-5 flex items-center justify-between gap-3">
             <h2 id="bathroom-video-title" className="text-2xl font-semibold">
