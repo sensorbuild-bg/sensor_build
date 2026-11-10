@@ -3,17 +3,17 @@
 import { useState } from "react";
 import Link from "next/link";
 import RealPanoramaViewer from "@/components/RealPanoramaViewer";
+import RealBathroomGallery from "@/components/RealBathroomGallery";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import { getBathroomProject } from "@/lib/bathroomProjects";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const VIDEO_WEBM = "/projects/bathroom/sensorbuild-bathroom-loop.webm";
-const VIDEO_MP4 = "/projects/bathroom/sensorbuild-bathroom-loop.mp4";
-const POSTER = "/projects/bathroom/sensorbuild-bathroom-loop-poster.webp";
-const PANORAMA = "/projects/bathroom/sensorbuild-bathroom-360.webp";
+const project = getBathroomProject("zavarshena-banya")!;
+const VIDEO_WEBM = project.videoWebm;
+const VIDEO_MP4 = project.videoMp4;
+const POSTER = project.videoPoster;
+const PANORAMA = project.panorama;
 
-/**
- * Draft-only showcase. Media binaries must exist under public/projects/bathroom
- * before the project is linked from /projects or promoted from preview.
- */
 export default function BathroomMediaClient() {
   const { lang } = useLanguage();
   const isBg = lang === "bg";
@@ -24,11 +24,11 @@ export default function BathroomMediaClient() {
     <main className={isBg ? "min-h-screen bg-[#13182c] text-white" : "min-h-screen bg-white text-[#13182c]"}>
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 md:py-16 lg:px-8">
         <Link
-          href="/projects"
+          href="/services/bani"
           className="mb-7 inline-flex items-center gap-2 text-sm font-semibold text-[#62b946] hover:underline"
         >
           <span aria-hidden="true">←</span>
-          {isBg ? "Всички проекти" : "All projects"}
+          {isBg ? "Всички бани" : "All bathrooms"}
         </Link>
 
         <div className="mb-8 max-w-3xl">
@@ -36,12 +36,10 @@ export default function BathroomMediaClient() {
             SENSOR BUILD
           </p>
           <h1 className="text-3xl font-semibold tracking-tight md:text-5xl">
-            {isBg ? "Завършена баня – видео и 360° разходка" : "Finished bathroom – video and 360° tour"}
+            {isBg ? project.titleBg : project.titleEn}
           </h1>
           <p className={`mt-4 text-base leading-relaxed md:text-lg ${isBg ? "text-white/75" : "text-gray-600"}`}>
-            {isBg
-              ? "Реални кадри от изпълнения обект – без генерирани елементи и без промяна на разпределението."
-              : "Real footage of the completed work, with no generated elements or alterations to the layout."}
+            {isBg ? project.descriptionBg : project.descriptionEn}
           </p>
         </div>
 
@@ -105,6 +103,27 @@ export default function BathroomMediaClient() {
           </p>
         </section>
 
+        <RealBathroomGallery project={project} isBg={isBg} />
+
+        <section aria-labelledby="bathroom-before-after-heading" className="mt-12 mb-12 md:mt-16">
+          <h2 id="bathroom-before-after-heading" className="text-2xl font-semibold md:text-3xl">
+            {isBg ? "Преди и след ремонта" : "Before and after"}
+          </h2>
+          {project.beforeAfterPairs.length > 0 ? (
+            <div className="mt-6 space-y-8">
+              {project.beforeAfterPairs.map((pair) => (
+                <BeforeAfterSlider key={pair.before} pair={pair} isBg={isBg} />
+              ))}
+            </div>
+          ) : (
+            <p className={`mt-3 max-w-3xl text-sm leading-relaxed ${isBg ? "text-white/65" : "text-gray-600"}`}>
+              {isBg
+                ? "В момента показваме реални кадри от завършената баня. Когато имаме снимки от същите ъгли преди ремонта, тук ще може да сравнявате „Преди/След“ с плъзгач."
+                : "The completed bathroom is documented above. When matching photos from before the renovation are available, this section will offer an interactive before/after comparison."}
+            </p>
+          )}
+        </section>
+
         <div className="flex flex-wrap gap-3">
           <Link
             href="/contacts"
@@ -113,10 +132,10 @@ export default function BathroomMediaClient() {
             {isBg ? "Заяви оглед" : "Request a visit"}
           </Link>
           <Link
-            href="/projects"
+            href="/services/bani"
             className={`rounded-xl border px-6 py-3 text-center font-semibold transition ${isBg ? "border-white/25 hover:bg-white/10" : "border-gray-300 hover:bg-gray-100"}`}
           >
-            {isBg ? "Други проекти" : "More projects"}
+            {isBg ? "Други бани" : "More bathrooms"}
           </Link>
         </div>
       </div>
