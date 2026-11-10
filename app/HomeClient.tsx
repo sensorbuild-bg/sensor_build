@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { business } from "@/lib/business";
+import HomepageBathroomShowcase from "@/components/HomepageBathroomShowcase";
 
 type VisualCard = {
   titleBg: string;
@@ -287,6 +288,8 @@ export default function HomeClient() {
           </div>
         </div>
       </section>
+
+      <HomepageBathroomShowcase />
 
       <section className={`py-12 md:py-20 ${isBg ? "bg-[#13182c]" : "bg-gray-50"}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
