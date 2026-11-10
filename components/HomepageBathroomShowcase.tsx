@@ -2,14 +2,12 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
-import RealPanoramaViewer from "@/components/RealPanoramaViewer";
 
 const MEDIA_PATH = "/projects/bathroom";
 
 /**
  * Homepage showcase for the real finished bathroom.
  * The video is vertical 9:16, deliberately never stretched into a wide frame.
- * The panorama is the original real 2:1 360-degree photo.
  */
 export default function HomepageBathroomShowcase() {
   const { lang } = useLanguage();
@@ -34,12 +32,12 @@ export default function HomepageBathroomShowcase() {
           </h2>
           <p className={`mt-4 text-base leading-relaxed md:text-lg ${bg ? "text-white/75" : "text-gray-600"}`}>
             {bg
-              ? "Реални кадри от изпълнението ни. Първо вижте кратката видеоразходка, след това разгледайте пространството на 360°."
-              : "Real footage of our work. Watch the short walkthrough, then look around the bathroom in 360°."}
+              ? "Реални кадри от изпълнението ни. Разгледайте видеото, а за снимки и интерактивна 360° разходка отворете целия проект."
+              : "Real footage of our work. Watch the walkthrough, then open the full project to see photos and an interactive 360° tour."}
           </p>
         </div>
 
-        <div className="mb-12 grid items-center gap-6 md:mb-16 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-12">
+        <div className="grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-12">
           <div className="mx-auto w-full max-w-[360px] overflow-hidden rounded-[24px] border border-white/10 bg-black shadow-[0_20px_60px_rgba(0,0,0,.25)]">
             <video
               className="block aspect-[9/16] w-full bg-[#0a0d14] object-contain"
@@ -77,30 +75,6 @@ export default function HomepageBathroomShowcase() {
           </div>
         </div>
 
-        <div className={`mb-5 flex flex-wrap items-end justify-between gap-3 ${bg ? "text-white" : "text-[#13182c]"}`}>
-          <div>
-            <p className="mb-2 text-xs font-semibold uppercase tracking-[.16em] text-[#62b946]">
-              {bg ? "Интерактивна разходка" : "Interactive walkthrough"}
-            </p>
-            <h3 className="text-2xl font-semibold md:text-3xl">
-              {bg ? "Банята на 360°" : "Bathroom in 360°"}
-            </h3>
-          </div>
-          <p className={`text-sm ${bg ? "text-white/70" : "text-gray-600"}`}>
-            {bg ? "Завъртете с мишка или пръст" : "Drag with your mouse or finger"}
-          </p>
-        </div>
-
-        <RealPanoramaViewer
-          src={`${MEDIA_PATH}/sensorbuild-bathroom-360.webp`}
-          label={bg ? "360 градусова панорама на реална баня, изпълнена от Sensor Build" : "360-degree panorama of a real Sensor Build bathroom"}
-        />
-
-        <p className={`mt-3 text-xs ${bg ? "text-white/55" : "text-gray-500"}`}>
-          {bg
-            ? "360° кадърът е от реално заснемане. Възможни са съединителни шевове от първоначалната панорама."
-            : "The 360° photo is captured on site. Some original panorama stitching seams may remain."}
-        </p>
       </div>
     </section>
   );
