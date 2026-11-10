@@ -1,8 +1,9 @@
 /**
  * Add one object per finished bathroom.
  *
- * Once a matching before image exists, add an entry to beforeAfterPairs
- * with photos captured from the same viewpoint. No simulated "before" shots.
+ * Before/after photos are authentic photographs of the same room.
+ * If viewpoints differ, show them side-by-side instead of overlaying them.
+ * Never use simulated "before" shots.
  */
 export type BathroomComparison = {
   before: string;
@@ -56,27 +57,27 @@ export const bathroomProjects: BathroomProject[] = [
     panorama: "/projects/bathroom/sensorbuild-bathroom-360.webp",
     gallery: [
       {
-        src: "/projects/bathroom/gallery/sensorbuild-bathroom-bathtub-vanity.webp",
+        src: "/projects/bathroom/gallery/banya-sled-obzor.webp",
         altBg: "Завършена баня след основен ремонт – вана, мивка, мебели и подови плочки с дървесен декор",
         altEn: "Completed bathroom after full renovation – bathtub, vanity and wood-effect floor tiles",
       },
       {
-        src: "/projects/bathroom/gallery/sensorbuild-bathroom-hexagonal-shower-tiles.webp",
+        src: "/projects/bathroom/gallery/banya-sled-mivka-dush.webp",
         altBg: "Детайл на шестоъгълни плочки в душ зоната, преход към дървесен декор и шкаф с огледало",
         altEn: "Hexagonal shower tiles transitioning to wood-effect decor beside the mirrored cabinet",
       },
       {
-        src: "/projects/bathroom/gallery/sensorbuild-bathroom-wall-hung-toilet.webp",
+        src: "/projects/bathroom/gallery/banya-sled-toaletna.webp",
         altBg: "Стенна тоалетна с вградено казанче, мивка и облицовка с мраморен ефект",
         altEn: "Wall-hung toilet with concealed cistern, vanity and marble-effect wall tiles",
       },
       {
-        src: "/projects/bathroom/gallery/sensorbuild-bathroom-entrance-wood-floor.webp",
+        src: "/projects/bathroom/gallery/banya-sled-vrata.webp",
         altBg: "Завършен ремонт на баня – входна врата, душ хигиенен смесител и под с дървесен декор",
         altEn: "Finished bathroom entrance with hygiene shower and wood-effect flooring",
       },
       {
-        src: "/projects/bathroom/gallery/sensorbuild-bathroom-ceiling-lighting.webp",
+        src: "/projects/bathroom/gallery/banya-sled-osvetlenie.webp",
         altBg: "Окачен таван с вградени осветителни тела в ремонтирана баня",
         altEn: "Recessed ceiling lights in a newly renovated bathroom",
       },
@@ -111,8 +112,22 @@ export const bathroomProjects: BathroomProject[] = [
         altEn: "Finished bathroom cabinetry and sanitary fixtures",
       },
     ],
-    // Add actual "before" photos in matching angles when they are available.
-    beforeAfterPairs: [],
+    // Comparable areas of the real bathroom, photographed from different angles.
+    // Display side-by-side; do not overlay with a split-view slider.
+    beforeAfterPairs: [
+      {
+        before: "/projects/bathroom/gallery/banya-predi-dush-zona.webp",
+        after: "/projects/bathroom/gallery/banya-sled-obzor.webp",
+        titleBg: "Душ зона и общ изглед на банята",
+        titleEn: "Shower area and overall bathroom view",
+      },
+      {
+        before: "/projects/bathroom/gallery/banya-predi-mivka.webp",
+        after: "/projects/bathroom/gallery/banya-sled-mivka-dush.webp",
+        titleBg: "Зона с мивка, огледало и облицовки",
+        titleEn: "Vanity, mirror and wall finishes",
+      },
+    ],
   },
 ];
 
