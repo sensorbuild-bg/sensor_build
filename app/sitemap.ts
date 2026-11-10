@@ -73,7 +73,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const bathroomPages: MetadataRoute.Sitemap = bathroomProjects.map((bathroom) => ({
     url: `${baseUrl}${bathroom.href}`,
-    images: [bathroom.cover, ...bathroom.gallery.map((photo) => photo.src)].map(
+    images: [
+      bathroom.cover,
+      ...bathroom.gallery.map((photo) => photo.src),
+      ...bathroom.beforeAfterPairs.flatMap((pair) => [pair.before, pair.after]),
+    ].filter((image, index, all) => all.indexOf(image) === index).map(
       (image) => `${baseUrl}${image}`
     ),
   }));
