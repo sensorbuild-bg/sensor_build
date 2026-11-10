@@ -7,8 +7,8 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const VIDEO_WEBM = "/projects/bathroom/sensorbuild-bathroom-loop.webm";
 const VIDEO_MP4 = "/projects/bathroom/sensorbuild-bathroom-loop.mp4";
-const POSTER = "/projects/bathroom/sensorbuild-bathroom-loop-poster.jpg";
-const PANORAMA = "/projects/bathroom/sensorbuild-bathroom-360.jpg";
+const POSTER = "/projects/bathroom/sensorbuild-bathroom-loop-poster.webp";
+const PANORAMA = "/projects/bathroom/sensorbuild-bathroom-360.webp";
 
 /**
  * Draft-only showcase. Media binaries must exist under public/projects/bathroom
