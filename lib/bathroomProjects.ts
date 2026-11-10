@@ -56,6 +56,31 @@ export const bathroomProjects: BathroomProject[] = [
     panorama: "/projects/bathroom/sensorbuild-bathroom-360.webp",
     gallery: [
       {
+        src: "/projects/bathroom/gallery/sensorbuild-bathroom-bathtub-vanity.webp",
+        altBg: "Завършена баня след основен ремонт – вана, мивка, мебели и подови плочки с дървесен декор",
+        altEn: "Completed bathroom after full renovation – bathtub, vanity and wood-effect floor tiles",
+      },
+      {
+        src: "/projects/bathroom/gallery/sensorbuild-bathroom-hexagonal-shower-tiles.webp",
+        altBg: "Детайл на шестоъгълни плочки в душ зоната, преход към дървесен декор и шкаф с огледало",
+        altEn: "Hexagonal shower tiles transitioning to wood-effect decor beside the mirrored cabinet",
+      },
+      {
+        src: "/projects/bathroom/gallery/sensorbuild-bathroom-wall-hung-toilet.webp",
+        altBg: "Стенна тоалетна с вградено казанче, мивка и облицовка с мраморен ефект",
+        altEn: "Wall-hung toilet with concealed cistern, vanity and marble-effect wall tiles",
+      },
+      {
+        src: "/projects/bathroom/gallery/sensorbuild-bathroom-entrance-wood-floor.webp",
+        altBg: "Завършен ремонт на баня – входна врата, душ хигиенен смесител и под с дървесен декор",
+        altEn: "Finished bathroom entrance with hygiene shower and wood-effect flooring",
+      },
+      {
+        src: "/projects/bathroom/gallery/sensorbuild-bathroom-ceiling-lighting.webp",
+        altBg: "Окачен таван с вградени осветителни тела в ремонтирана баня",
+        altEn: "Recessed ceiling lights in a newly renovated bathroom",
+      },
+      {
         src: "/projects/bathroom/gallery/frame-02.webp",
         altBg: "Реален кадър на санитария, мебели и подова настилка в завършената баня",
         altEn: "Real view of bathroom sanitary fittings, vanity and flooring",
