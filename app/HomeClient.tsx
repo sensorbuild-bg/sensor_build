@@ -75,10 +75,10 @@ const featuredServices: VisualCard[] = [
 
 const projectCards: ProjectCard[] = [
   {
-    slug: "osvezhitelen-remont",
-    titleBg: "Освежителен ремонт",
-    titleEn: "Refresh renovation",
-    image: "/project1/main.webp",
+    slug: "zavarshena-banya",
+    titleBg: "Завършена баня",
+    titleEn: "Finished bathroom",
+    image: "/projects/bathroom/sensorbuild-bathroom-360.webp",
   },
   {
     slug: "elektroinstalacia",
