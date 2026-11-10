@@ -18,6 +18,8 @@ export type BathroomProject = {
   titleEn: string;
   descriptionBg: string;
   descriptionEn: string;
+  detailsBg: string[];
+  detailsEn: string[];
   cover: string;
   videoWebm: string;
   videoMp4: string;
@@ -34,9 +36,19 @@ export const bathroomProjects: BathroomProject[] = [
     titleBg: "Завършена баня с мраморни и дървесни декори",
     titleEn: "Completed bathroom with marble and wood-effect finishes",
     descriptionBg:
-      "Реално изпълнена баня с вана, вградени шкафове, облицовки и санитария. Разгледайте кратко видео, интерактивна 360° панорама и снимки от обекта.",
+      "Цялостен основен ремонт на баня – от къртенето и новите ВиК и електроинсталации до облицовките, монтажа на мебели и санитария. Отличителен детайл е преходът от шестоъгълни плочки в душ зоната към дървесен декор.",
     descriptionEn:
-      "A completed bathroom with a bathtub, cabinetry, wall and floor finishes, and sanitary fittings. Explore the video, interactive 360° panorama and site photos.",
+      "Complete bathroom renovation – from demolition, plumbing and electrical works to tiling, furniture and sanitary fittings. The shower features hexagonal tiles transitioning into wood-effect finishes.",
+    detailsBg: [
+      "Извършен е основен ремонт на банята – от къртенето и подготовката на помещението, през ВиК и електроинсталационните работи и полагането на облицовките, до окончателния монтаж на мебелите и санитарното оборудване.",
+      "Особен акцент в проекта е оформлението на душ зоната. Там са използвани шестоъгълни плочки, които постепенно преливат в плочки с дървесен декор, а след това преминават в цели плочки с дървесна визия.",
+      "Основната стенна облицовка е с формат 30 × 60 см, а подовите плочки са с размер 15 × 90 см. Съчетанието между мраморните повърхности и дървесните текстури създава завършен и хармоничен интериор.",
+    ],
+    detailsEn: [
+      "The bathroom underwent a complete renovation – from demolition and preparation through plumbing and electrical installation works and tiling, to the final installation of furniture and sanitary fittings.",
+      "A distinctive feature is the shower area, where hexagonal tiles gradually transition into wood-effect tiles and then into full wood-effect tiles.",
+      "The main wall tiles measure 30 × 60 cm and the floor tiles measure 15 × 90 cm. Marble-effect surfaces and wood textures create a cohesive interior.",
+    ],
     cover: "/projects/bathroom/sensorbuild-bathroom-360.webp",
     videoWebm: "/projects/bathroom/sensorbuild-bathroom-loop.webm",
     videoMp4: "/projects/bathroom/sensorbuild-bathroom-loop.mp4",
