@@ -5,14 +5,14 @@ import BathroomMediaClient from "./BathroomMediaClient";
 const project = getBathroomProject("zavarshena-banya")!;
 
 export const metadata: Metadata = {
-  title: "Завършена баня – видео, снимки и 360° оглед | Sensor Build",
+  title: "Основен ремонт на баня – видео, снимки и 360° | Sensor Build",
   description:
-    "Разгледайте завършена баня с мраморни и дървесни декори от Sensor Build. Видеоразходка, интерактивна 360° панорама, снимки и детайли от изпълнението.",
+    "Основен ремонт на баня от къртене до монтаж на мебели и санитария: ВиК, електроинсталации, плочки 60 × 30 и 90 × 15 см и шестоъгълен декор в душ зоната.",
   alternates: { canonical: project.href },
   openGraph: {
-    title: "Завършена баня – реален обект | Sensor Build",
+    title: "Основен ремонт на баня – изпълнен проект | Sensor Build",
     description:
-      "Реална завършена баня: видео, 360° панорама и снимки. Вижте изпълнението на Sensor Build.",
+      "Реален основен ремонт на баня с ВиК, електроинсталации, шестоъгълни плочки в душ зоната и преход към дървесен декор. Видео, снимки и 360°.",
     url: project.href,
     type: "article",
     images: [{ url: project.cover, alt: "Завършена баня с мраморни и дървесни декори" }],
