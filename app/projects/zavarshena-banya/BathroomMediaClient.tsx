@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import RealPanoramaViewer from "@/components/RealPanoramaViewer";
 import RealBathroomGallery from "@/components/RealBathroomGallery";
-import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { getBathroomProject } from "@/lib/bathroomProjects";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -124,21 +124,44 @@ export default function BathroomMediaClient() {
 
         <section aria-labelledby="bathroom-before-after-heading" className="mt-12 mb-12 md:mt-16">
           <h2 id="bathroom-before-after-heading" className="text-2xl font-semibold md:text-3xl">
-            {isBg ? "Преди и след ремонта" : "Before and after"}
+            {isBg ? "Преди и след ремонта" : "Before and after the renovation"}
           </h2>
-          {project.beforeAfterPairs.length > 0 ? (
-            <div className="mt-6 space-y-8">
-              {project.beforeAfterPairs.map((pair) => (
-                <BeforeAfterSlider key={pair.before} pair={pair} isBg={isBg} />
-              ))}
-            </div>
-          ) : (
-            <p className={`mt-3 max-w-3xl text-sm leading-relaxed ${isBg ? "text-white/65" : "text-gray-600"}`}>
-              {isBg
-                ? "В момента показваме реални кадри от завършената баня. Когато имаме снимки от същите ъгли преди ремонта, тук ще може да сравнявате „Преди/След“ с плъзгач."
-                : "The completed bathroom is documented above. When matching photos from before the renovation are available, this section will offer an interactive before/after comparison."}
-            </p>
-          )}
+          <p className={`mt-3 max-w-3xl text-sm leading-relaxed ${isBg ? "text-white/70" : "text-gray-600"}`}>
+            {isBg
+              ? "Истински снимки от същата баня преди и след основния ремонт. Ракурсите не са напълно еднакви, затова ги показваме една до друга, без изкуствено наслагване."
+              : "Authentic photos of the same bathroom before and after the renovation. The camera angles differ, so the photos are shown side by side rather than artificially overlaid."}
+          </p>
+          <div className="mt-7 space-y-8 md:space-y-12">
+            {project.beforeAfterPairs.map((pair) => (
+              <figure key={pair.before} className={`overflow-hidden rounded-2xl border ${isBg ? "border-white/10 bg-[#1a2342]" : "border-gray-200 bg-gray-50"}`}>
+                <figcaption className="px-4 py-4 text-base font-semibold sm:px-6 md:text-lg">
+                  {isBg ? pair.titleBg : pair.titleEn}
+                </figcaption>
+                <div className="grid gap-3 p-3 pt-0 sm:grid-cols-2 sm:gap-4 sm:p-5 sm:pt-0">
+                  {[
+                    { src: pair.before, name: isBg ? "Преди ремонта" : "Before renovation" },
+                    { src: pair.after, name: isBg ? "След ремонта" : "After renovation" },
+                  ].map((photo) => (
+                    <div key={photo.src} className="overflow-hidden rounded-xl bg-[#0c1120]">
+                      <div className="relative aspect-[3/4]">
+                        <Image
+                          src={photo.src}
+                          alt={`${photo.name} – ${isBg ? pair.titleBg : pair.titleEn}, Sensor Build`}
+                          fill
+                          sizes="(max-width: 639px) 100vw, 50vw"
+                          className="object-contain"
+                          quality={95}
+                        />
+                      </div>
+                      <p className="border-t border-white/10 px-4 py-3 text-center text-sm font-semibold text-white">
+                        {photo.name}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </figure>
+            ))}
+          </div>
         </section>
 
         <div className="flex flex-wrap gap-3">
