@@ -42,12 +42,12 @@ export const bathroomProjects: BathroomProject[] = [
     detailsBg: [
       "Извършен е основен ремонт на банята – от къртенето и подготовката на помещението, през ВиК и електроинсталационните работи и полагането на облицовките, до окончателния монтаж на мебелите и санитарното оборудване.",
       "Особен акцент в проекта е оформлението на душ зоната. Там са използвани шестоъгълни плочки, които постепенно преливат в плочки с дървесен декор, а след това преминават в цели плочки с дървесна визия.",
-      "Основната стенна облицовка е с формат 30 × 60 см, а подовите плочки са с размер 15 × 90 см. Съчетанието между мраморните повърхности и дървесните текстури създава завършен и хармоничен интериор.",
+      "Основната стенна облицовка е с формат 60 × 30 см, а подовите плочки са с размер 90 × 15 см. Съчетанието между мраморните повърхности и дървесните текстури създава завършен и хармоничен интериор.",
     ],
     detailsEn: [
       "The bathroom underwent a complete renovation – from demolition and preparation through plumbing and electrical installation works and tiling, to the final installation of furniture and sanitary fittings.",
       "A distinctive feature is the shower area, where hexagonal tiles gradually transition into wood-effect tiles and then into full wood-effect tiles.",
-      "The main wall tiles measure 30 × 60 cm and the floor tiles measure 15 × 90 cm. Marble-effect surfaces and wood textures create a cohesive interior.",
+      "The main wall tiles measure 60 × 30 cm and the floor tiles measure 90 × 15 cm. Marble-effect surfaces and wood textures create a cohesive interior.",
     ],
     cover: "/projects/bathroom/sensorbuild-bathroom-360.webp",
     videoWebm: "/projects/bathroom/sensorbuild-bathroom-loop.webm",
