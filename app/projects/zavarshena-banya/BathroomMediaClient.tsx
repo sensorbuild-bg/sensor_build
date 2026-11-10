@@ -5,7 +5,8 @@ import Link from "next/link";
 import RealPanoramaViewer from "@/components/RealPanoramaViewer";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const VIDEO = "/projects/bathroom/sensorbuild-bathroom-loop.mp4";
+const VIDEO_WEBM = "/projects/bathroom/sensorbuild-bathroom-loop.webm";
+const VIDEO_MP4 = "/projects/bathroom/sensorbuild-bathroom-loop.mp4";
 const POSTER = "/projects/bathroom/sensorbuild-bathroom-loop-poster.jpg";
 const PANORAMA = "/projects/bathroom/sensorbuild-bathroom-360.jpg";
 
@@ -68,7 +69,8 @@ export default function BathroomMediaClient() {
                 className="aspect-[9/16] w-full object-contain"
                 aria-label={isBg ? "Видео от завършена баня на Sensor Build" : "Sensor Build finished bathroom video"}
               >
-                <source src={VIDEO} type="video/mp4" />
+                <source src={VIDEO_WEBM} type="video/webm" />
+                <source src={VIDEO_MP4} type="video/mp4" />
               </video>
             ) : (
               <div className="flex aspect-[9/16] items-center justify-center px-6 text-center text-sm text-white/80">
@@ -78,7 +80,7 @@ export default function BathroomMediaClient() {
           </div>
           {videoLoaded && !videoFailed && (
             <p className={`mt-3 text-center text-xs ${isBg ? "text-white/55" : "text-gray-500"}`}>
-              {isBg ? "Автоматично пускане · Без звук · Непрекъснато повтаряне" : "Autoplay · Muted · Seamless loop"}
+              {isBg ? "Автоматично пускане · Без звук · Непрекъснато повтаряне · WebM/MP4" : "Autoplay · Muted · Continuous loop · WebM/MP4"}
             </p>
           )}
         </section>
