@@ -50,7 +50,7 @@ export const bathroomProjects: BathroomProject[] = [
       "A distinctive feature is the shower area, where hexagonal tiles gradually transition into wood-effect tiles and then into full wood-effect tiles.",
       "The main wall tiles measure 60 × 30 cm and the floor tiles measure 90 × 15 cm. Marble-effect surfaces and wood textures create a cohesive interior.",
     ],
-    cover: "/projects/bathroom/sensorbuild-bathroom-360.webp",
+    cover: "/projects/bathroom/gallery/banya-sled-mivka-dush.webp",
     videoWebm: "/projects/bathroom/sensorbuild-bathroom-loop.webm",
     videoMp4: "/projects/bathroom/sensorbuild-bathroom-loop.mp4",
     videoPoster: "/projects/bathroom/sensorbuild-bathroom-loop-poster.webp",
@@ -80,36 +80,6 @@ export const bathroomProjects: BathroomProject[] = [
         src: "/projects/bathroom/gallery/banya-sled-osvetlenie.webp",
         altBg: "Окачен таван с вградени осветителни тела в ремонтирана баня",
         altEn: "Recessed ceiling lights in a newly renovated bathroom",
-      },
-      {
-        src: "/projects/bathroom/gallery/frame-02.webp",
-        altBg: "Реален кадър на санитария, мебели и подова настилка в завършената баня",
-        altEn: "Real view of bathroom sanitary fittings, vanity and flooring",
-      },
-      {
-        src: "/projects/bathroom/gallery/frame-05.webp",
-        altBg: "Мивка, огледален шкаф и вана с мраморни облицовки",
-        altEn: "Washbasin, mirrored cabinet and bathtub with marble-effect tiles",
-      },
-      {
-        src: "/projects/bathroom/gallery/frame-08.webp",
-        altBg: "Вана, душ и стени с мраморен ефект",
-        altEn: "Bathtub, shower and marble-effect wall tiles",
-      },
-      {
-        src: "/projects/bathroom/gallery/frame-11.webp",
-        altBg: "Подробен изглед на мивка и смесители",
-        altEn: "Close-up of washbasin and fixtures",
-      },
-      {
-        src: "/projects/bathroom/gallery/frame-14.webp",
-        altBg: "Огледало и шкафове в завършена баня",
-        altEn: "Mirrored cabinet and vanity in the completed bathroom",
-      },
-      {
-        src: "/projects/bathroom/gallery/frame-16.webp",
-        altBg: "Завършени мебели и санитария в баня",
-        altEn: "Finished bathroom cabinetry and sanitary fixtures",
       },
     ],
     // Comparable areas of the real bathroom, photographed from different angles.
