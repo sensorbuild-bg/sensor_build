@@ -20,7 +20,7 @@ export default function BathroomMediaClient() {
   const [videoFailed, setVideoFailed] = useState(false);
 
   return (
-    <main className={isBg ? "min-h-screen bg-[#13182c] text-white" : "min-h-screen bg-white text-[#13182c]"}>
+    <div className={isBg ? "min-h-screen bg-[#13182c] text-white" : "min-h-screen bg-white text-[#13182c]"}>
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 md:py-16 lg:px-8">
         <Link
           href="/services/bani"
@@ -169,6 +169,6 @@ export default function BathroomMediaClient() {
           </Link>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
