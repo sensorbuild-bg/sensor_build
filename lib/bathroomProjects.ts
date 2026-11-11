@@ -57,8 +57,8 @@ export const bathroomProjects: BathroomProject[] = [
     panorama: "/projects/bathroom/sensorbuild-bathroom-360.webp",
     gallery: [
       {
-        src: "/projects/bathroom/gallery/banya-sled-obzor.webp",
-        altBg: "Завършена баня след основен ремонт – вана, мивка, мебели и подови плочки с дървесен декор",
+        src: "/projects/bathroom/gallery/banya-sled-obzor-izpravena.webp",
+        altBg: "Завършена баня след основен ремонт – общ изглед към вана, мивка, мебели и облицовки с дървесен декор",
         altEn: "Completed bathroom after full renovation – bathtub, vanity and wood-effect floor tiles",
       },
       {
