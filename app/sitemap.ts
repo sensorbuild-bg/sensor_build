@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { projectIds, projectSeo } from '@/lib/projectSeo';
+import { bathroomProjects } from '@/lib/bathroomProjects';
 import { indexedServiceSlugs } from '@/lib/serviceSeo';
 import { translations } from '@/lib/translations';
 
@@ -70,5 +71,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     images: projectSeo[id].images.map((image) => `${baseUrl}${image}`),
   }));
 
-  return [...staticPages, ...servicePages, ...projectPages];
+  const bathroomPages: MetadataRoute.Sitemap = bathroomProjects.map((bathroom) => ({
+    url: `${baseUrl}${bathroom.href}`,
+    images: [
+      bathroom.cover,
+      ...bathroom.gallery.map((photo) => photo.src),
+      ...bathroom.beforeAfterPairs.flatMap((pair) => [pair.before, pair.after]),
+    ].filter((image, index, all) => all.indexOf(image) === index).map(
+      (image) => `${baseUrl}${image}`
+    ),
+  }));
+
+  return [...staticPages, ...servicePages, ...projectPages, ...bathroomPages];
 }

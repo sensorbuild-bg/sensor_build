@@ -21,13 +21,16 @@ export default function ServicesClient() {
   const isBg = lang === 'bg';
   const services = t.services as ServiceItem[];
 
-  const orderedServices = [...services].sort((a, b) => {
-    const aInterior = a.slug === 'vutreshni-remonti' || a.slug === 'interior-renovations';
-    const bInterior = b.slug === 'vutreshni-remonti' || b.slug === 'interior-renovations';
-    if (aInterior) return -1;
-    if (bInterior) return 1;
-    return 0;
-  });
+  // "Бани" is intentionally second. New services retain their original order.
+  const serviceRank = (slug?: string) => {
+    if (slug === 'vutreshni-remonti' || slug === 'interior-renovations') return 0;
+    if (slug === 'bani') return 1;
+    return 2;
+  };
+
+  const orderedServices = [...services].sort(
+    (a, b) => serviceRank(a.slug) - serviceRank(b.slug)
+  );
 
   const resolveHref = (service: ServiceItem) => {
     const titleLower = service.title.toLowerCase();
@@ -44,6 +47,9 @@ export default function ServicesClient() {
   };
 
   const resolveImage = (service: ServiceItem) => {
+    if (service.slug === 'bani') {
+      return '/projects/bathroom/gallery/banya-sled-mivka-dush.webp';
+    }
     if (service.images?.[0]) return service.images[0];
 
     const titleLower = service.title.toLowerCase();

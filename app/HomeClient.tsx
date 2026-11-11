@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { business } from "@/lib/business";
+import HomepageBathroomShowcase from "@/components/HomepageBathroomShowcase";
 
 type VisualCard = {
   titleBg: string;
@@ -31,20 +32,28 @@ const featuredServices: VisualCard[] = [
     image: "/project1/main.webp",
   },
   {
+    titleBg: "Бани",
+    titleEn: "Bathrooms",
+    descBg: "Разгледайте реални ремонти на бани с видео, 360° оглед и снимки.",
+    descEn: "Explore real bathroom renovations with video, a 360° tour and photos.",
+    href: "/services/bani",
+    image: "/projects/bathroom/gallery/banya-sled-mivka-dush.webp",
+  },
+  {
+    titleBg: "Осветление",
+    titleEn: "Lighting",
+    descBg: "Осветителни решения и монтаж с внимание към всеки детайл.",
+    descEn: "Lighting solutions and professional installation with attention to detail.",
+    href: "/osvetlenie",
+    image: "/project6/20250925_132227_main.webp",
+  },
+  {
     titleBg: "Гипсокартон",
     titleEn: "Drywall",
     descBg: "Предстенни обшивки, тавани, ниши и решения за интериора.",
     descEn: "Wall linings, ceilings, niches and interior drywall solutions.",
     href: "/services/gipsokarton",
     image: "/services/gipsokarton/main-gipsokarton.webp",
-  },
-  {
-    titleBg: "Шпакловки",
-    titleEn: "Skimming",
-    descBg: "Равни и подготвени за боядисване стени и тавани.",
-    descEn: "Smooth walls and ceilings prepared for painting.",
-    href: "/services/shpaklovki",
-    image: "/services/shpaklovki/shpaklovki-1.webp",
   },
   {
     titleBg: "Електроинсталации",
@@ -62,22 +71,14 @@ const featuredServices: VisualCard[] = [
     href: "/services/vik-instalacii",
     image: "/project3/20250723_174911_main.webp",
   },
-  {
-    titleBg: "Подово отопление",
-    titleEn: "Underfloor heating",
-    descBg: "Водно подово отопление с прецизно изпълнение на всеки слой.",
-    descEn: "Water underfloor heating with precise execution of every layer.",
-    href: "/services/podovo-otoplenie",
-    image: "/project4/20251008_150415_main-ezgif.com-jpg-to-webp-converter.webp",
-  },
 ];
 
 const projectCards: ProjectCard[] = [
   {
-    slug: "osvezhitelen-remont",
-    titleBg: "Освежителен ремонт",
-    titleEn: "Refresh renovation",
-    image: "/project1/main.webp",
+    slug: "zavarshena-banya",
+    titleBg: "Завършена баня",
+    titleEn: "Finished bathroom",
+    image: "/projects/bathroom/gallery/banya-sled-mivka-dush.webp",
   },
   {
     slug: "elektroinstalacia",
@@ -287,6 +288,8 @@ export default function HomeClient() {
           </div>
         </div>
       </section>
+
+      <HomepageBathroomShowcase />
 
       <section className={`py-12 md:py-20 ${isBg ? "bg-[#13182c]" : "bg-gray-50"}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

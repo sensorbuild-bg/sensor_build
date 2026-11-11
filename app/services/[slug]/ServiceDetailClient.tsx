@@ -7,6 +7,7 @@ import { useParams } from 'next/navigation';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
 import { isServiceSlug, serviceSeo } from '@/lib/serviceSeo';
+import BathroomsCatalogue from '@/components/BathroomsCatalogue';
 
 type ServiceItem = {
   title: string;
@@ -38,6 +39,8 @@ export default function ServiceDetailClient() {
   useEffect(() => {
     setActiveImage(0);
   }, [currentSlug]);
+
+  if (currentSlug === 'bani') return <BathroomsCatalogue />;
 
   if (!service) return null;
 

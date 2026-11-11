@@ -5,19 +5,36 @@ import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { translations } from '@/lib/translations';
 import { projectIds, projectSeo } from '@/lib/projectSeo';
+import { bathroomProjects } from '@/lib/bathroomProjects';
 import AnimatedDiv from '@/components/AnimatedDiv';
 
 export default function ProjectsClient() {
   const { lang } = useLanguage();
   const t = translations[lang].projects;
 
-  const projects = [
-    t.project1,
+  const bathroom = bathroomProjects[0];
+  // Show the finished bathroom in place of the refresh renovation card.
+  // Keep the older project page available by direct URL, without featuring it.
+  const existingProjects = [
     t.project2,
     t.project3,
     t.project4,
     t.project5,
     t.project6,
+  ];
+  const projects = [
+    {
+      key: bathroom.slug,
+      href: bathroom.href,
+      image: bathroom.cover,
+      title: lang === 'bg' ? bathroom.titleBg : bathroom.titleEn,
+    },
+    ...projectIds.slice(1).map((projectId, index) => ({
+      key: projectId,
+      href: `/projects/${projectSeo[projectId].slug}`,
+      image: projectSeo[projectId].image,
+      title: existingProjects[index].imageTitle,
+    })),
   ];
 
   return (
@@ -43,26 +60,23 @@ export default function ProjectsClient() {
             }`}
           >
             {lang === 'bg'
-              ? 'Реални обекти на Sensor Build – ремонти, електро- и ВиК инсталации, подово отопление, гипсокартон и осветление.'
-              : 'Real Sensor Build projects including renovations, electrical and plumbing installations, underfloor heating, drywall and lighting.'}
+              ? 'Реални обекти на Sensor Build – завършена баня, електро- и ВиК инсталации, подово отопление, гипсокартон и осветление.'
+              : 'Real Sensor Build projects including a completed bathroom, electrical and plumbing installations, underfloor heating, drywall and lighting.'}
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {projects.map((project, index) => {
-            const projectId = projectIds[index];
-            const canonicalProject = projectSeo[projectId];
-
             return (
-              <AnimatedDiv key={projectId}>
+              <AnimatedDiv key={project.key}>
                 <Link
-                  href={`/projects/${canonicalProject.slug}`}
+                  href={project.href}
                   className="relative cursor-pointer group overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-shadow block"
                 >
                   <div className="aspect-[16/10] sm:aspect-[4/3] relative overflow-hidden bg-gray-100">
                     <Image
-                      src={canonicalProject.image}
-                      alt={`${project.imageTitle} - изпълнен проект от Sensor Build`}
+                      src={project.image}
+                      alt={`${project.title} - изпълнен проект от Sensor Build`}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -73,7 +87,7 @@ export default function ProjectsClient() {
 
                     <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 md:p-5">
                       <h2 className="text-base md:text-xl font-semibold leading-snug text-white">
-                        {project.imageTitle}
+                        {project.title}
                       </h2>
                       <span
                         className="shrink-0 text-2xl text-[#7bd567] transition-transform group-hover:translate-x-1"
