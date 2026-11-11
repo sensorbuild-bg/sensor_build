@@ -37,16 +37,16 @@ export const bathroomProjects: BathroomProject[] = [
     titleBg: "Завършена баня с мраморни и дървесни декори",
     titleEn: "Completed bathroom with marble and wood-effect finishes",
     descriptionBg:
-      "Цялостен основен ремонт на баня – от къртенето и новите ВиК и електроинсталации до облицовките, монтажа на мебели и санитария. Отличителен детайл е преходът от шестоъгълни плочки в душ зоната към дървесен декор.",
+      "Цялостен основен ремонт на баня – от къртенето, изграждането на предстенна обшивка и полагането на хидроизолация до новите ВиК и електроинсталации, облицовките и монтажа на мебели и санитария. Отличителен детайл е преходът от шестоъгълни плочки в душ зоната към дървесен декор.",
     descriptionEn:
-      "Complete bathroom renovation – from demolition, plumbing and electrical works to tiling, furniture and sanitary fittings. The shower features hexagonal tiles transitioning into wood-effect finishes.",
+      "Complete bathroom renovation – from demolition and the construction of wall lining and application of waterproofing to plumbing, electrical works, tiling, furniture and sanitary fittings. The shower features hexagonal tiles transitioning into wood-effect finishes.",
     detailsBg: [
-      "Извършен е основен ремонт на банята – от къртенето и подготовката на помещението, през ВиК и електроинсталационните работи и полагането на облицовките, до окончателния монтаж на мебелите и санитарното оборудване.",
+      "Извършен е основен ремонт на банята – от къртенето и подготовката на помещението, през изграждането на предстенна обшивка, изпълнението на ВиК и електроинсталациите и полагането на хидроизолация, до облицоването с плочки и окончателния монтаж на мебелите и санитарното оборудване.",
       "Особен акцент в проекта е оформлението на душ зоната. Там са използвани шестоъгълни плочки, които постепенно преливат в плочки с дървесен декор, а след това преминават в цели плочки с дървесна визия.",
       "Основната стенна облицовка е с формат 60 × 30 см, а подовите плочки са с размер 90 × 15 см. Съчетанието между мраморните повърхности и дървесните текстури създава завършен и хармоничен интериор.",
     ],
     detailsEn: [
-      "The bathroom underwent a complete renovation – from demolition and preparation through plumbing and electrical installation works and tiling, to the final installation of furniture and sanitary fittings.",
+      "The bathroom underwent a complete renovation – from demolition and preparation, through wall lining construction, plumbing and electrical installation works and waterproofing, to tiling and the final installation of furniture and sanitary fittings.",
       "A distinctive feature is the shower area, where hexagonal tiles gradually transition into wood-effect tiles and then into full wood-effect tiles.",
       "The main wall tiles measure 60 × 30 cm and the floor tiles measure 90 × 15 cm. Marble-effect surfaces and wood textures create a cohesive interior.",
     ],
