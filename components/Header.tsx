@@ -341,7 +341,7 @@ export default function Header() {
             <nav
               id="mobile-navigation"
               aria-label={menuLabel}
-              className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-xl z-[101] overflow-y-auto transform transition-transform duration-300 ease-out ${
+              className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-[#13182c] text-white shadow-xl z-[101] overflow-y-auto transform transition-transform duration-300 ease-out ${
                 isClosing ? "translate-x-full" : "translate-x-0"
               }`}
               style={
@@ -350,25 +350,25 @@ export default function Header() {
                   : {}
               }
             >
-              <div className="flex items-center justify-between p-4 border-b border-gray-100">
+              <div className="flex items-center justify-between p-4 border-b border-white/15">
                 <Link href="/" aria-label={homeLabel} onClick={handleCloseMenu}>
                   <Image
-                    src="/logo.webp"
+                    src="/logodark.png"
                     alt="Sensor Build"
-                    width={110}
-                    height={44}
-                    className="h-auto w-auto bg-transparent"
+                    width={120}
+                    height={120}
+                    className="h-24 w-24 object-contain bg-transparent"
                   />
                 </Link>
 
                 <button
                   type="button"
                   onClick={handleCloseMenu}
-                  className="p-2 rounded-md hover:bg-gray-100 transition-colors"
+                  className="p-2 rounded-md hover:bg-white/10 transition-colors"
                   aria-label={lang === "bg" ? "Затвори меню" : "Close menu"}
                 >
                   <svg
-                    className="w-6 h-6 text-gray-700"
+                    className="w-6 h-6 text-white"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -394,12 +394,8 @@ export default function Header() {
                       href={item.href}
                       onClick={handleCloseMenu}
                       aria-current={active ? "page" : undefined}
-                      className={`text-lg font-semibold py-4 px-4 rounded-lg transition-colors ${
-                        active
-                          ? "text-[#4da855] bg-[#4da855]/10"
-                          : item.highlight
-                          ? "text-[#2d6b35] hover:bg-[#4da855]/10"
-                          : "text-gray-800 hover:bg-gray-100"
+                      className={`text-lg font-semibold py-4 px-4 rounded-lg transition-colors text-[#62b946] hover:text-[#8ade78] hover:bg-white/10 ${
+                        active ? "bg-[#62b946]/15 text-[#8ade78]" : ""
                       }`}
                     >
                       {item.name}
