@@ -37,7 +37,7 @@ const featuredServices: VisualCard[] = [
     descBg: "Разгледайте реални ремонти на бани с видео, 360° оглед и снимки.",
     descEn: "Explore real bathroom renovations with video, a 360° tour and photos.",
     href: "/services/bani",
-    image: "/projects/bathroom/sensorbuild-bathroom-360.webp",
+    image: "/projects/bathroom/gallery/banya-sled-mivka-dush.webp",
   },
   {
     titleBg: "Осветление",
@@ -78,7 +78,7 @@ const projectCards: ProjectCard[] = [
     slug: "zavarshena-banya",
     titleBg: "Завършена баня",
     titleEn: "Finished bathroom",
-    image: "/projects/bathroom/sensorbuild-bathroom-360.webp",
+    image: "/projects/bathroom/gallery/banya-sled-mivka-dush.webp",
   },
   {
     slug: "elektroinstalacia",
