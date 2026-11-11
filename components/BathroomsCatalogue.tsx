@@ -13,6 +13,22 @@ export default function BathroomsCatalogue() {
   const { lang } = useLanguage();
   const isBg = lang === "bg";
 
+  const renovationStages = isBg
+    ? [
+        { title: "Къртене и подготовка", text: "Премахване на старите покрития и преценка на състоянието на основите преди новите работи." },
+        { title: "ВиК и електроинсталации", text: "Планиране на местата на санитарията, водопроводните точки, контактите и осветлението." },
+        { title: "Предстенни обшивки и хидроизолация", text: "Подготовка на подходяща основа и изпълнение на хидроизолация в необходимите мокри зони." },
+        { title: "Плочки и довършване", text: "Разпределение и полагане на облицовките, фугиране и изпълнение на преходите между материалите." },
+        { title: "Монтаж на мебели и санитария", text: "Монтаж на мивка, тоалетна, смесители, шкафове и останалите предвидени елементи." },
+      ]
+    : [
+        { title: "Demolition and preparation", text: "Removal of old finishes and assessment of existing substrates before new work begins." },
+        { title: "Plumbing and electrical work", text: "Planning positions for sanitary fittings, water connections, sockets and lighting." },
+        { title: "Wall linings and waterproofing", text: "Preparing suitable surfaces and applying waterproofing in the required wet areas." },
+        { title: "Tiling and finishes", text: "Laying tiles, grouting and carefully forming transitions between materials." },
+        { title: "Fixtures and furniture", text: "Installing the basin, toilet, taps, cabinetry and other specified fittings." },
+      ];
+
   return (
     <main className={`min-h-screen ${isBg ? "bg-[#13182c] text-white" : "bg-white text-[#13182c]"}`}>
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
@@ -21,12 +37,12 @@ export default function BathroomsCatalogue() {
             SENSOR BUILD
           </p>
           <h1 className="text-3xl font-noah-bold md:text-5xl">
-            {isBg ? "Ремонт на бани – изпълнени обекти" : "Bathroom renovations – completed projects"}
+            {isBg ? "Ремонт на бани в София – изпълнени обекти" : "Bathroom renovations – completed projects"}
           </h1>
           <p className={`mt-5 text-base leading-relaxed md:text-lg ${isBg ? "text-white/75" : "text-gray-600"}`}>
             {isBg
-              ? "Разгледайте реални ремонти на бани от Sensor Build. Всеки обект има собствена страница със снимки, видео и 360° разходка, когато са налични."
-              : "Browse real Sensor Build bathroom renovations. Each project has its own page with photos, video and a 360° tour where available."}
+              ? "Извършваме основни ремонти на бани в София – от къртенето, ВиК и електроинсталациите до хидроизолацията, облицовките и монтажа на санитария. Разгледайте изпълнения ни обект със снимки, видео и 360° оглед."
+              : "We carry out complete bathroom renovations in Sofia, from demolition and installations to waterproofing, tiling and sanitary fittings. Explore a completed project with photos, video and a 360° tour."}
           </p>
         </div>
 
@@ -65,6 +81,44 @@ export default function BathroomsCatalogue() {
                 </div>
               </Link>
             ))}
+          </div>
+        </section>
+
+        <section aria-labelledby="bathroom-renovation-stages" className="mt-12 md:mt-16">
+          <h2 id="bathroom-renovation-stages" className="text-2xl font-semibold md:text-3xl">
+            {isBg ? "Какво включва основният ремонт на баня?" : "What is included in a complete bathroom renovation?"}
+          </h2>
+          <p className={`mt-3 max-w-4xl leading-relaxed ${isBg ? "text-white/75" : "text-gray-600"}`}>
+            {isBg
+              ? "Конкретните дейности зависят от състоянието и разпределението на помещението. Обикновено работата преминава през следните етапи:"
+              : "The scope depends on the condition and layout of the room. Work typically follows these stages:"}
+          </p>
+          <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {renovationStages.map((step, index) => (
+              <li
+                key={step.title}
+                className={`rounded-2xl border p-5 ${isBg ? "border-white/10 bg-[#1a2342]" : "border-gray-200 bg-gray-50"}`}
+              >
+                <span className="text-sm font-bold text-[#62b946]">{String(index + 1).padStart(2, "0")}</span>
+                <h3 className="mt-2 text-lg font-semibold">{step.title}</h3>
+                <p className={`mt-2 text-sm leading-relaxed ${isBg ? "text-white/70" : "text-gray-600"}`}>{step.text}</p>
+              </li>
+            ))}
+          </ol>
+          <div className={`mt-7 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm ${isBg ? "text-white/80" : "text-gray-700"}`}>
+            <span className="font-semibold">{isBg ? "Свързани услуги:" : "Related services:"}</span>
+            <Link href="/services/vik-instalacii" className="text-[#62b946] hover:underline">
+              {isBg ? "ВиК инсталации" : "Plumbing"}
+            </Link>
+            <Link href="/services/el-instalacii" className="text-[#62b946] hover:underline">
+              {isBg ? "Електроинсталации" : "Electrical"}
+            </Link>
+            <Link href="/services/fayans-terakot-granitogres" className="text-[#62b946] hover:underline">
+              {isBg ? "Лепене на плочки" : "Tiling"}
+            </Link>
+            <Link href="/prices" className="text-[#62b946] hover:underline">
+              {isBg ? "Ориентировъчни цени" : "Indicative prices"}
+            </Link>
           </div>
         </section>
 
