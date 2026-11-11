@@ -30,7 +30,7 @@ export default function BathroomsCatalogue() {
       ];
 
   return (
-    <main className={`min-h-screen ${isBg ? "bg-[#13182c] text-white" : "bg-white text-[#13182c]"}`}>
+    <div className={`min-h-screen ${isBg ? "bg-[#13182c] text-white" : "bg-white text-[#13182c]"}`}>
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
         <div className="mx-auto mb-10 max-w-3xl text-center md:mb-14">
           <p className="mb-3 text-xs font-bold uppercase tracking-[.22em] text-[#62b946]">
@@ -139,6 +139,6 @@ export default function BathroomsCatalogue() {
           </Link>
         </aside>
       </div>
-    </main>
+    </div>
   );
 }
