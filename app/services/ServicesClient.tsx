@@ -48,7 +48,7 @@ export default function ServicesClient() {
 
   const resolveImage = (service: ServiceItem) => {
     if (service.slug === 'bani') {
-      return '/projects/bathroom/sensorbuild-bathroom-360.webp';
+      return '/projects/bathroom/gallery/banya-sled-mivka-dush.webp';
     }
     if (service.images?.[0]) return service.images[0];
 
