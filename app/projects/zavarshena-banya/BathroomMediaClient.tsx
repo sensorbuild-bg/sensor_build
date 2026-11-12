@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import RealPanoramaViewer from "@/components/RealPanoramaViewer";
 import RealBathroomGallery from "@/components/RealBathroomGallery";
+import BathroomStagesGallery from "@/components/BathroomStagesGallery";
 import { getBathroomProject } from "@/lib/bathroomProjects";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -153,6 +154,8 @@ export default function BathroomMediaClient() {
             ))}
           </div>
         </section>
+
+        <BathroomStagesGallery stages={project.renovationStages} isBg={isBg} />
 
         <div className="flex flex-wrap gap-3">
           <Link
