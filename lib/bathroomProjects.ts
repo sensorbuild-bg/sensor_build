@@ -12,6 +12,14 @@ export type BathroomComparison = {
   titleEn: string;
 };
 
+export type BathroomRenovationStage = {
+  src: string;
+  titleBg: string;
+  titleEn: string;
+  altBg: string;
+  altEn: string;
+};
+
 export type BathroomProject = {
   slug: string;
   href: string;
@@ -28,6 +36,7 @@ export type BathroomProject = {
   panorama: string;
   gallery: { src: string; altBg: string; altEn: string }[];
   beforeAfterPairs: BathroomComparison[];
+  renovationStages: BathroomRenovationStage[];
 };
 
 export const bathroomProjects: BathroomProject[] = [
@@ -91,11 +100,56 @@ export const bathroomProjects: BathroomProject[] = [
         titleBg: "Душ зона и общ изглед на банята",
         titleEn: "Shower area and overall bathroom view",
       },
+    ],
+    renovationStages: [
       {
-        before: "/projects/bathroom/gallery/banya-predi-mivka.webp",
-        after: "/projects/bathroom/gallery/banya-sled-mivka-dush.webp",
-        titleBg: "Зона с мивка, огледало и облицовки",
-        titleEn: "Vanity, mirror and wall finishes",
+        src: "/projects/bathroom/gallery/banya-etap-01-kartene.webp",
+        titleBg: "Къртене и подготовка",
+        titleEn: "Demolition and preparation",
+        altBg: "Баня след демонтаж на старите облицовки – открити стени и рамка за вградено казанче",
+        altEn: "Bathroom after demolition – stripped walls and concealed toilet cistern frame",
+      },
+      {
+        src: "/projects/bathroom/gallery/banya-etap-02-vik.webp",
+        titleBg: "Изграждане на ВиК разводки",
+        titleEn: "Plumbing installation",
+        altBg: "Нови ВиК трасета с изолирани водопроводни тръби и канализационни връзки",
+        altEn: "New insulated water supply pipework and drainage connections during bathroom renovation",
+      },
+      {
+        src: "/projects/bathroom/gallery/banya-etap-03-predstenna-konstrukcia.webp",
+        titleBg: "Конструкция за предстенна обшивка",
+        titleEn: "Wall lining framework",
+        altBg: "Метална конструкция за предстенна обшивка около ВиК инсталациите и вграденото казанче",
+        altEn: "Metal stud framing for bathroom wall lining around plumbing and concealed cistern",
+      },
+      {
+        src: "/projects/bathroom/gallery/banya-etap-04-gipsokarton.webp",
+        titleBg: "Обшивка с гипсокартон",
+        titleEn: "Plasterboard wall lining",
+        altBg: "Обшивка с влагоустойчив гипсокартон и обработени фуги в баня",
+        altEn: "Moisture-resistant plasterboard wall lining with treated joints in the bathroom",
+      },
+      {
+        src: "/projects/bathroom/gallery/banya-etap-05-hidroizolacia.webp",
+        titleBg: "Полагане на хидроизолация",
+        titleEn: "Waterproofing application",
+        altBg: "Хидроизолационно покритие върху стенната обшивка на баня преди полагането на плочки",
+        altEn: "Waterproofing coating on bathroom wall lining before tiling",
+      },
+      {
+        src: "/projects/bathroom/gallery/banya-etap-06-oblicovki.webp",
+        titleBg: "Полагане на стенни и подови плочки",
+        titleEn: "Wall and floor tiling",
+        altBg: "Облицована баня с мраморен ефект, дървесни плочки и шестоъгълни плочки в душ зоната преди окончателния монтаж",
+        altEn: "Bathroom tiling with marble effect, wood look tiles and hexagonal shower tiles before final fittings",
+      },
+      {
+        src: "/projects/bathroom/gallery/banya-etap-07-zavurshena-banya.webp",
+        titleBg: "Завършен ремонт",
+        titleEn: "Completed bathroom",
+        altBg: "Завършена баня след основен ремонт – нова мивка, шкафове, огледало, вана и душ",
+        altEn: "Completed bathroom renovation with new basin, vanity, mirrored cabinet, bathtub and shower",
       },
     ],
   },
