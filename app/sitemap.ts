@@ -14,6 +14,11 @@ type ServiceWithImages = {
 const bgServices = translations.bg.services.services as ServiceWithImages[];
 
 function getServiceImages(slug: string) {
+  // The bathroom service is a project catalogue, so index its actual cover photos.
+  if (slug === 'bani') {
+    return bathroomProjects.map((bathroom) => `${baseUrl}${bathroom.cover}`);
+  }
+
   return (
     bgServices.find((service) => service.slug === slug)?.images ?? []
   ).map((image) => `${baseUrl}${image}`);
@@ -37,7 +42,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/projects`,
-      images: projectIds.map((id) => `${baseUrl}${projectSeo[id].image}`),
+      images: [
+        ...bathroomProjects.map((bathroom) => `${baseUrl}${bathroom.cover}`),
+        ...projectIds.slice(1).map((id) => `${baseUrl}${projectSeo[id].image}`),
+      ],
     },
     {
       url: `${baseUrl}/prices`,
@@ -77,6 +85,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       bathroom.cover,
       ...bathroom.gallery.map((photo) => photo.src),
       ...bathroom.beforeAfterPairs.flatMap((pair) => [pair.before, pair.after]),
+      ...bathroom.renovationStages.map((stage) => stage.src),
     ].filter((image, index, all) => all.indexOf(image) === index).map(
       (image) => `${baseUrl}${image}`
     ),

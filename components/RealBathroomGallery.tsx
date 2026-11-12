@@ -38,8 +38,8 @@ export default function RealBathroomGallery({ project, isBg }: Props) {
       </h2>
       <p className={`mt-2 text-sm ${isBg ? "text-white/65" : "text-gray-600"}`}>
         {isBg
-          ? "Оригинални снимки от завършената баня. Натиснете снимка, за да я увеличите."
-          : "Original photos of the completed bathroom. Select a photo to enlarge it."}
+          ? "Снимки от завършената баня. Натиснете снимка, за да я увеличите."
+          : "Photos of the completed bathroom. Select a photo to enlarge it."}
       </p>
 
       <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-5">

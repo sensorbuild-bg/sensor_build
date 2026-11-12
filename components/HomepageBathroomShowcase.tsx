@@ -63,8 +63,8 @@ export default function HomepageBathroomShowcase() {
             </h3>
             <p className={`mt-4 max-w-lg leading-relaxed ${bg ? "text-white/75" : "text-gray-600"}`}>
               {bg
-                ? "Видеото се възпроизвежда автоматично и се повтаря без прекъсване. Запазени са реалните цветове, материали и пропорции на помещението."
-                : "The video plays automatically on a continuous loop, preserving the actual finishes, colours and room proportions."}
+                ? "Разгледайте изпълнението отблизо – облицовките, обзавеждането и завършващите детайли в обновената баня."
+                : "Take a closer look at the tiling, cabinetry and finishing details of the renovated bathroom."}
             </p>
             <Link
               href="/projects/zavarshena-banya"

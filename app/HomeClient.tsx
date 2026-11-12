@@ -367,6 +367,12 @@ export default function HomeClient() {
               </div>
             ))}
           </div>
+          <div className="mt-7 text-center">
+            <Link href="/how-we-work" className="inline-flex items-center gap-2 text-base font-semibold text-[#62b946] hover:underline">
+              {isBg ? "Вижте как протича ремонтът – от огледа до предаването" : "Explore our renovation process – from site visit to handover"}
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
         </div>
       </section>
 

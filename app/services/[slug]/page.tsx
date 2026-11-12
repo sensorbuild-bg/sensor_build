@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { business } from '@/lib/business';
+import { bathroomProjects } from '@/lib/bathroomProjects';
 import { isServiceSlug, serviceSeo, serviceSlugs } from '@/lib/serviceSeo';
 import ServiceDetailClient from './ServiceDetailClient';
 
@@ -41,6 +42,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: seo.description,
       url: `/services/${slug}`,
       type: 'website',
+      ...(slug === 'bani' ? {
+        images: [
+          {
+            url: bathroomProjects[0].cover,
+            alt: 'Ремонт на баня в София – завършен обект на Sensor Build',
+          },
+        ],
+      } : {}),
     },
   };
 }
@@ -101,6 +110,22 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           name: business.address.city,
         },
       },
+      ...(slug === 'bani'
+        ? [
+            {
+              '@type': 'ItemList',
+              '@id': `${serviceUrl}#completed-bathrooms`,
+              name: 'Завършени ремонти на бани – Sensor Build',
+              itemListElement: bathroomProjects.map((bathroom, index) => ({
+                '@type': 'ListItem',
+                position: index + 1,
+                name: bathroom.titleBg,
+                url: `${business.url}${bathroom.href}`,
+                image: `${business.url}${bathroom.cover}`,
+              })),
+            },
+          ]
+        : []),
     ],
   };
 

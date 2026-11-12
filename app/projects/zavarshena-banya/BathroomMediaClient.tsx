@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import RealPanoramaViewer from "@/components/RealPanoramaViewer";
 import RealBathroomGallery from "@/components/RealBathroomGallery";
+import BathroomStagesGallery from "@/components/BathroomStagesGallery";
 import { getBathroomProject } from "@/lib/bathroomProjects";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -18,10 +19,9 @@ export default function BathroomMediaClient() {
   const { lang } = useLanguage();
   const isBg = lang === "bg";
   const [videoFailed, setVideoFailed] = useState(false);
-  const [videoLoaded, setVideoLoaded] = useState(false);
 
   return (
-    <main className={isBg ? "min-h-screen bg-[#13182c] text-white" : "min-h-screen bg-white text-[#13182c]"}>
+    <div className={isBg ? "min-h-screen bg-[#13182c] text-white" : "min-h-screen bg-white text-[#13182c]"}>
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 md:py-16 lg:px-8">
         <Link
           href="/services/bani"
@@ -65,9 +65,6 @@ export default function BathroomMediaClient() {
             <h2 id="bathroom-video-title" className="text-2xl font-semibold">
               {isBg ? "Видеоразходка" : "Video walkthrough"}
             </h2>
-            <span className={`text-xs ${isBg ? "text-white/60" : "text-gray-500"}`}>
-              {isBg ? "Повтаря се автоматично" : "Automatically loops"}
-            </span>
           </div>
           <div className="mx-auto w-full max-w-[420px] overflow-hidden rounded-2xl border border-white/10 bg-[#0e1424] shadow-2xl">
             {!videoFailed ? (
@@ -79,7 +76,6 @@ export default function BathroomMediaClient() {
                 preload="metadata"
                 controls={false}
                 poster={POSTER}
-                onCanPlay={() => setVideoLoaded(true)}
                 onError={() => setVideoFailed(true)}
                 className="aspect-[9/16] w-full object-contain"
                 aria-label={isBg ? "Видео от завършена баня на Sensor Build" : "Sensor Build finished bathroom video"}
@@ -93,11 +89,6 @@ export default function BathroomMediaClient() {
               </div>
             )}
           </div>
-          {videoLoaded && !videoFailed && (
-            <p className={`mt-3 text-center text-xs ${isBg ? "text-white/55" : "text-gray-500"}`}>
-              {isBg ? "Автоматично пускане · Без звук · Непрекъснато повтаряне · WebM/MP4" : "Autoplay · Muted · Continuous loop · WebM/MP4"}
-            </p>
-          )}
         </section>
 
         <section aria-labelledby="bathroom-360-title" className="mb-12">
@@ -128,8 +119,8 @@ export default function BathroomMediaClient() {
           </h2>
           <p className={`mt-3 max-w-3xl text-sm leading-relaxed ${isBg ? "text-white/70" : "text-gray-600"}`}>
             {isBg
-              ? "Истински снимки от същата баня преди и след основния ремонт. Ракурсите не са напълно еднакви, затова ги показваме една до друга, без изкуствено наслагване."
-              : "Authentic photos of the same bathroom before and after the renovation. The camera angles differ, so the photos are shown side by side rather than artificially overlaid."}
+              ? "Снимки от същата баня преди и след основния ремонт. Ракурсите не са напълно еднакви, затова ги показваме една до друга, без изкуствено наслагване."
+              : "Photos of the same bathroom before and after the renovation. The camera angles differ, so the photos are shown side by side rather than artificially overlaid."}
           </p>
           <div className="mt-7 space-y-8 md:space-y-12">
             {project.beforeAfterPairs.map((pair) => (
@@ -164,6 +155,8 @@ export default function BathroomMediaClient() {
           </div>
         </section>
 
+        <BathroomStagesGallery stages={project.renovationStages} isBg={isBg} />
+
         <div className="flex flex-wrap gap-3">
           <Link
             href="/contacts"
@@ -179,6 +172,6 @@ export default function BathroomMediaClient() {
           </Link>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
