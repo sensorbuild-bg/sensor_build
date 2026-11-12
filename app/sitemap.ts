@@ -85,6 +85,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       bathroom.cover,
       ...bathroom.gallery.map((photo) => photo.src),
       ...bathroom.beforeAfterPairs.flatMap((pair) => [pair.before, pair.after]),
+      ...bathroom.renovationStages.map((stage) => stage.src),
     ].filter((image, index, all) => all.indexOf(image) === index).map(
       (image) => `${baseUrl}${image}`
     ),
