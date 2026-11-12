@@ -24,6 +24,7 @@ const projectImages = [
   project.cover,
   ...project.gallery.map((photo) => photo.src),
   ...project.beforeAfterPairs.flatMap((pair) => [pair.before, pair.after]),
+  ...project.renovationStages.map((stage) => stage.src),
 ].filter((image, index, all) => all.indexOf(image) === index);
 
 const structuredData = {
