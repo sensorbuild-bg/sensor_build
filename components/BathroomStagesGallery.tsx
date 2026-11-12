@@ -73,11 +73,11 @@ export default function BathroomStagesGallery({ stages, isBg }: Props) {
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
-              <figcaption className="flex items-center gap-3 p-4">
-                <span className="shrink-0 text-sm font-bold text-[#62b946]">{String(index + 1).padStart(2, "0")}</span>
-                <span className="text-base font-semibold">{isBg ? stage.titleBg : stage.titleEn}</span>
-              </figcaption>
             </button>
+            <figcaption className="flex items-center gap-3 p-4">
+              <span className="shrink-0 text-sm font-bold text-[#62b946]">{String(index + 1).padStart(2, "0")}</span>
+              <span className="text-base font-semibold">{isBg ? stage.titleBg : stage.titleEn}</span>
+            </figcaption>
           </figure>
         ))}
       </div>
