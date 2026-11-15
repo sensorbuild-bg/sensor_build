@@ -63,6 +63,12 @@ export default function BathroomMediaClient() {
                 >
                   {isBg ? "Виж етапите" : "See the stages"}
                 </a>
+                <Link
+                  href="/prices"
+                  className="rounded-xl border border-[#62b946]/80 bg-[#62b946]/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#62b946]/20"
+                >
+                  {isBg ? "Виж цена" : "See pricing"}
+                </Link>
               </div>
             </div>
           </div>
