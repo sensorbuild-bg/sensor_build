@@ -31,7 +31,7 @@ export default function PricesClient() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
           <AnimatedDiv
             className={`rounded-lg p-8 border-2 border-[#388644] ${
               isBg ? 'bg-[#1a2342]' : 'bg-white'
@@ -88,6 +88,51 @@ export default function PricesClient() {
               <li>• {isBg ? 'Бани' : 'Bathrooms'}</li>
               <li>• {isBg ? 'Други дейности според обекта' : 'Other works depending on the project'}</li>
             </ul>
+          </AnimatedDiv>
+
+          <AnimatedDiv
+            className={`rounded-lg p-8 border-2 border-[#62b946] ${
+              isBg ? 'bg-[#1a2342]' : 'bg-white'
+            }`}
+          >
+            <h2
+              className={`text-2xl font-bold mb-4 ${
+                isBg ? 'text-white' : 'text-gray-900'
+              }`}
+            >
+              {isBg ? 'Основен ремонт на баня' : 'Complete Bathroom Renovation'}
+            </h2>
+
+            <p className="text-[#62b946] text-xl font-semibold mb-2">
+              {isBg ? 'от 4 500€ / баня' : 'from €4,500 / bathroom'}
+            </p>
+            <p className={`mb-6 text-sm leading-relaxed ${isBg ? 'text-white/65' : 'text-gray-500'}`}>
+              {isBg
+                ? 'Ориентир за баня в ново строителство или при обект без необходимост от основно къртене и извозване.'
+                : 'Indicative price for a bathroom in new construction or a project without major demolition and removal.'}
+            </p>
+
+            <ul className={`space-y-3 ${isBg ? 'text-white/90' : 'text-gray-600'}`}>
+              <li>• {isBg ? 'ВиК и електроинсталации' : 'Plumbing and electrical installations'}</li>
+              <li>• {isBg ? 'Предстенни обшивки, куфари и ревизии' : 'Wall linings, service boxes and access panels'}</li>
+              <li>• {isBg ? 'Хидроизолация на мокрите зони' : 'Waterproofing of wet areas'}</li>
+              <li>• {isBg ? 'Окачен таван и подготовка за осветление' : 'Suspended ceiling and lighting preparation'}</li>
+              <li>• {isBg ? 'Полагане на стенни и подови плочки' : 'Wall and floor tiling'}</li>
+              <li>• {isBg ? 'Монтаж на санитария и мебели' : 'Installation of sanitary ware and furniture'}</li>
+            </ul>
+
+            <p className={`mt-5 text-sm leading-relaxed ${isBg ? 'text-white/65' : 'text-gray-500'}`}>
+              {isBg
+                ? 'При стара баня с къртене, демонтаж, извозване и допълнителна подготовка цената се определя индивидуално след оглед.'
+                : 'For an existing bathroom requiring demolition, removal and additional preparation, the price is determined individually after a site visit.'}
+            </p>
+
+            <Link
+              href="/projects/zavarshena-banya"
+              className="mt-7 inline-flex items-center text-sm font-semibold text-[#62b946] hover:underline"
+            >
+              {isBg ? 'Виж завършен проект →' : 'View completed project →'}
+            </Link>
           </AnimatedDiv>
         </div>
 
