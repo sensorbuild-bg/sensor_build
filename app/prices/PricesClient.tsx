@@ -108,19 +108,24 @@ export default function PricesClient() {
             </p>
             <p className={`mb-6 text-sm leading-relaxed ${isBg ? 'text-white/65' : 'text-gray-500'}`}>
               {isBg
-                ? 'Цялостно изпълнение от демонтажа до монтажа на санитарията и мебелите.'
-                : 'Complete execution from demolition through installation of sanitary ware and furniture.'}
+                ? 'Ориентир за баня в ново строителство или при обект без необходимост от основно къртене и извозване.'
+                : 'Indicative price for a bathroom in new construction or a project without major demolition and removal.'}
             </p>
 
             <ul className={`space-y-3 ${isBg ? 'text-white/90' : 'text-gray-600'}`}>
-              <li>• {isBg ? 'Къртене, демонтаж и извозване' : 'Demolition, dismantling and removal'}</li>
-              <li>• {isBg ? 'Нови ВиК и електроинсталации' : 'New plumbing and electrical installations'}</li>
+              <li>• {isBg ? 'ВиК и електроинсталации' : 'Plumbing and electrical installations'}</li>
               <li>• {isBg ? 'Предстенни обшивки, куфари и ревизии' : 'Wall linings, service boxes and access panels'}</li>
               <li>• {isBg ? 'Хидроизолация на мокрите зони' : 'Waterproofing of wet areas'}</li>
               <li>• {isBg ? 'Окачен таван и подготовка за осветление' : 'Suspended ceiling and lighting preparation'}</li>
               <li>• {isBg ? 'Полагане на стенни и подови плочки' : 'Wall and floor tiling'}</li>
               <li>• {isBg ? 'Монтаж на санитария и мебели' : 'Installation of sanitary ware and furniture'}</li>
             </ul>
+
+            <p className={`mt-5 text-sm leading-relaxed ${isBg ? 'text-white/65' : 'text-gray-500'}`}>
+              {isBg
+                ? 'При стара баня с къртене, демонтаж, извозване и допълнителна подготовка цената се определя индивидуално след оглед.'
+                : 'For an existing bathroom requiring demolition, removal and additional preparation, the price is determined individually after a site visit.'}
+            </p>
 
             <Link
               href="/projects/zavarshena-banya"
