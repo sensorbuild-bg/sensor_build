@@ -5,7 +5,7 @@ import ContactsClient from "./ContactsClient";
 export const metadata: Metadata = {
   title: "Контакти за ремонт в София",
   description:
-    "Свържете се със Sensor Build за цялостни и частични ремонти в София. Телефон, Viber, Messenger, имейл, местоположение и работно време.",
+    "Контакти на Sensor Build за ремонти в София – телефон, Viber, имейл, работно време и адрес с директен линк към снимките и отзивите в Google Maps.",
 
   alternates: {
     canonical: "/contacts",
@@ -33,6 +33,13 @@ const structuredData = {
     url: `${business.url}/`,
     telephone: business.phoneE164,
     email: business.email,
+    hasMap: business.googleBusinessProfileUrl,
+    sameAs: [
+      business.googleBusinessProfileUrl,
+      business.social.facebook,
+      business.social.instagram,
+      business.social.linkedin,
+    ],
     address: {
       "@type": "PostalAddress",
       streetAddress: business.address.street,
