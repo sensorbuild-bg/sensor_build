@@ -145,12 +145,14 @@ export default function Footer() {
             </a>
 
             <a
-              href={business.mapUrl}
+              href={business.googleBusinessProfileUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={isBg ? "Адрес и отзиви за Sensor Build в Google Maps" : "Sensor Build location and reviews on Google Maps"}
               className="text-center text-sm font-medium text-gray-300 transition-colors hover:text-[#7dff94]"
             >
-              {isBg ? business.address.bg : business.address.en}
+              <span className="block">{isBg ? business.address.bg : business.address.en}</span>
+              <span className="mt-1 block text-xs text-[#62b946]">{isBg ? "Профил и отзиви в Google ↗" : "Google profile and reviews ↗"}</span>
             </a>
           </address>
 
