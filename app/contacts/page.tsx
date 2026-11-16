@@ -42,9 +42,7 @@ const structuredData = {
     ],
     address: {
       "@type": "PostalAddress",
-      streetAddress: business.address.street,
       addressLocality: business.address.city,
-      postalCode: business.address.postalCode,
       addressCountry: business.address.countryCode,
     },
   },
