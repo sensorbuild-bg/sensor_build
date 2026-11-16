@@ -29,6 +29,37 @@ export default function BathroomsCatalogue() {
         { title: "Fixtures and furniture", text: "Installing the basin, toilet, taps, cabinetry and other specified fittings." },
       ];
 
+
+  const frequentlyAsked = isBg
+    ? [
+        {
+          question: "Трябва ли задължително да се подмени ВиК инсталацията?",
+          answer: "Зависи от състоянието на съществуващите тръби, връзките и новото разположение на санитарията. При оглед се уточнява кои участъци могат да се запазят и кои трябва да се преработят.",
+        },
+        {
+          question: "Защо хидроизолацията се изпълнява преди облицовките?",
+          answer: "Плочките и фугите не заменят хидроизолационната система. След подготовката на основата се обработват предвидените мокри зони и критичните детайли около ъгли, връзки и преминавания, преди да се положат плочките.",
+        },
+        {
+          question: "Какво влияе върху цената на основен ремонт на баня?",
+          answer: "Значение имат демонтажът, състоянието на основата, нуждата от нови ВиК и електрически точки, предстенните обшивки, размерите и разпределението на плочките, както и избраните мебели и санитария. Затова крайната оферта се уточнява според обекта.",
+        },
+      ]
+    : [
+        {
+          question: "Does the plumbing always need replacing?",
+          answer: "That depends on the existing pipes, connections and the proposed position of sanitary fittings. The site visit helps determine what can stay and what must change.",
+        },
+        {
+          question: "Why waterproof before tiling?",
+          answer: "Tiles and grout do not replace a waterproofing system. After surface preparation, the specified wet areas and details at corners and penetrations are treated before the tiles are laid.",
+        },
+        {
+          question: "What affects a complete bathroom renovation price?",
+          answer: "Removal works, existing substrates, new plumbing and electrical points, wall linings, tile layout and sizes, and chosen fittings all affect the scope. The final quotation therefore depends on the property.",
+        },
+      ];
+
   return (
     <div className={`min-h-screen ${isBg ? "bg-[#13182c] text-white" : "bg-white text-[#13182c]"}`}>
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-20 lg:px-8">
@@ -118,6 +149,38 @@ export default function BathroomsCatalogue() {
             </Link>
             <Link href="/prices" className="text-[#62b946] hover:underline">
               {isBg ? "Ориентировъчни цени" : "Indicative prices"}
+            </Link>
+          </div>
+        </section>
+
+        <section aria-labelledby="bathroom-planning-questions" className="mt-12 md:mt-16">
+          <h2 id="bathroom-planning-questions" className="text-2xl font-semibold md:text-3xl">
+            {isBg ? "Важни въпроси преди ремонт на баня" : "Important questions before renovating a bathroom"}
+          </h2>
+          <p className={`mt-3 max-w-4xl leading-relaxed ${isBg ? "text-white/75" : "text-gray-600"}`}>
+            {isBg
+              ? "Когато сравнявате оферти за ремонт на баня в София, уточнете не само квадратурата, а и как са предвидени инсталациите, хидроизолацията и подготовката на основите."
+              : "When comparing bathroom renovation quotations in Sofia, consider not just the floor area but also the services, waterproofing and substrate preparation included."}
+          </p>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {frequentlyAsked.map((item) => (
+              <article key={item.question} className={`rounded-2xl border p-5 ${isBg ? "border-white/10 bg-[#1a2342]" : "border-gray-200 bg-gray-50"}`}>
+                <h3 className="text-lg font-semibold">{item.question}</h3>
+                <p className={`mt-3 text-sm leading-relaxed ${isBg ? "text-white/70" : "text-gray-600"}`}>{item.answer}</p>
+              </article>
+            ))}
+          </div>
+          <p className={`mt-6 max-w-4xl leading-relaxed ${isBg ? "text-white/75" : "text-gray-600"}`}>
+            {isBg
+              ? "В завършения ни проект са документирани къртенето, новите ВиК разводки, металната конструкция, обшивката, хидроизолацията, облицовките и готовата баня."
+              : "Our completed bathroom project documents demolition, new plumbing, wall framing, lining, waterproofing, tiling and the finished room."}
+          </p>
+          <div className="mt-4 flex flex-wrap gap-x-6 gap-y-3">
+            <Link href={bathroomProjects[0].href} className="font-semibold text-[#62b946] hover:underline">
+              {isBg ? "Разгледай снимките от етапите" : "See the actual renovation stages"} →
+            </Link>
+            <Link href="/how-we-work" className="font-semibold text-[#62b946] hover:underline">
+              {isBg ? "Как протича работата с нас" : "How our process works"} →
             </Link>
           </div>
         </section>
