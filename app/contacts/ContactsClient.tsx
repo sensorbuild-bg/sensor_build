@@ -54,12 +54,12 @@ export default function ContactsClient() {
               isBg ? "border-white/10 bg-[#1a2342] text-white" : "border-gray-200 bg-gray-50 text-gray-900"
             }`}
           >
-            <p className="text-sm font-semibold uppercase tracking-wide text-[#62b946]">{isBg ? "Адрес и профил в Google" : "Address and Google Business Profile"}</p>
+            <p className="text-sm font-semibold uppercase tracking-wide text-[#62b946]">{isBg ? "Район на работа и Google профил" : "Service area and Google profile"}</p>
             <p className="mt-2 text-base leading-relaxed">{isBg ? business.address.bg : business.address.en}</p>
             <p className={`mt-2 text-sm leading-relaxed ${isBg ? "text-white/70" : "text-gray-600"}`}>
               {isBg
-                ? "Разгледайте местоположението ни, снимките и клиентските мнения в Google."
-                : "Explore our location, photos and customer feedback on Google."}
+                ? "Работим в София и региона. Разгледайте бизнес профила ни, снимките и клиентските отзиви в Google."
+                : "We serve Sofia and the surrounding area. Explore our Google Business Profile, photos and customer reviews."}
             </p>
             <span className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#62b946] group-hover:underline">
               {isBg ? "Виж отзивите в Google Maps" : "See reviews on Google Maps"}
