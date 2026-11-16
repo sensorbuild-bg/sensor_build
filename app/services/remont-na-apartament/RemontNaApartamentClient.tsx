@@ -31,6 +31,34 @@ export default function RemontNaApartamentClient() {
         { title: 'Coordination', text: 'Sequenced execution of connected works with attention to details.' },
       ];
 
+
+  // Practical information for clients planning a renovation; no fixed price or time promise.
+  const renovationSteps = isBg
+    ? [
+        { title: 'Оглед и уточняване на обхвата', text: 'Уточняваме кои помещения се ремонтират, кои покрития се запазват и къде са необходими нови водопроводни, канализационни и електрически точки. Тук се обсъждат и желанията за разпределение, осветление и настилки.' },
+        { title: 'Демонтаж и подготовка', text: 'Според състоянието на жилището се планират къртене, демонтаж на стари облицовки и подготовка на основите. Преди новите покрития се проверяват неравности и проблемни участъци.' },
+        { title: 'Инсталации, стени и подове', text: 'ВиК и електрическите трасета се съгласуват преди затваряне на предстенни обшивки и тавани. Следват необходимите замазки, гипсокартон и подготовка на стените; в мокрите помещения се предвижда хидроизолация.' },
+        { title: 'Довършителни работи и монтаж', text: 'След подготовката на основите се изпълняват облицовки, шпакловки, боядисване и настилки според технологичната последователност. В края се монтират предвидените елементи и се преглеждат завършващите детайли.' },
+      ]
+    : [
+        { title: 'Site visit and scope', text: 'We identify the rooms involved, finishes to be retained and new plumbing, drainage or electrical points. Layout, lighting and floor coverings are discussed before work is defined.' },
+        { title: 'Removal and substrate preparation', text: 'Depending on the property condition, old finishes are removed and existing surfaces are assessed. Uneven areas and defects are addressed before new finishes.' },
+        { title: 'Services, walls and floors', text: 'Plumbing and electrical routes are planned before lining walls or ceilings. Screeds, plasterboard and wall preparation follow, including waterproofing in the relevant wet areas.' },
+        { title: 'Finishes and installation', text: 'Tiling, skimming, painting and flooring follow the required installation sequence. Specified fixtures are installed and finishing details reviewed.' },
+      ];
+
+  const quotationFactors = isBg
+    ? [
+        { title: 'Състояние на обекта', text: 'Ново строителство и жилище със стари инсталации и облицовки изискват различни подготвителни дейности.' },
+        { title: 'Промени по инсталациите', text: 'Преместване на кухня или санитарни точки, нови електрически кръгове и осветление променят обхвата на работите.' },
+        { title: 'Облицовки и настилки', text: 'Форматът на плочките, сложните детайли, подготовката на основата и избраните настилки влияят върху количествата и труда.' },
+      ]
+    : [
+        { title: 'Current condition', text: 'A newly built apartment differs from an older property requiring removal and replacement of existing services and finishes.' },
+        { title: 'Service alterations', text: 'Relocating kitchen or bathroom connections, adding electrical circuits and changing lighting affect the scope.' },
+        { title: 'Finishes and flooring', text: 'Tile dimensions, detailed junctions, substrate preparation and selected floor coverings affect quantities and labour.' },
+      ];
+
   return (
     <div className={isBg ? 'bg-[#13182c] text-white' : 'bg-white text-gray-900'}>
       <section className="py-10 md:py-16">
@@ -107,6 +135,62 @@ export default function RemontNaApartamentClient() {
                 </Link>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="apartment-renovation-steps" className="py-10 md:py-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 id="apartment-renovation-steps" className="text-2xl font-noah-bold md:text-4xl">
+            {isBg ? 'Как протича основен ремонт на апартамент?' : 'How does a complete apartment renovation work?'}
+          </h2>
+          <p className={`mt-3 max-w-4xl leading-relaxed ${isBg ? 'text-white/75' : 'text-gray-600'}`}>
+            {isBg
+              ? 'Последователността зависи от конкретния обект, но координацията между инсталациите и довършителните дейности е решаваща. Типичните етапи са:'
+              : 'The sequence depends on the property, but coordinating services with finishing work is essential. Typical stages include:'}
+          </p>
+          <ol className="mt-7 grid gap-4 sm:grid-cols-2">
+            {renovationSteps.map((step, index) => (
+              <li key={step.title} className={`rounded-2xl border p-5 md:p-6 ${isBg ? 'border-white/10 bg-[#1a2342]' : 'border-gray-200 bg-gray-50'}`}>
+                <span className="text-sm font-bold text-[#62b946]">{String(index + 1).padStart(2, '0')}</span>
+                <h3 className="mt-2 text-lg font-semibold">{step.title}</h3>
+                <p className={`mt-2 text-sm leading-relaxed ${isBg ? 'text-white/70' : 'text-gray-600'}`}>{step.text}</p>
+              </li>
+            ))}
+          </ol>
+          <Link href="/how-we-work" className="mt-6 inline-flex items-center gap-2 font-semibold text-[#62b946] hover:underline">
+            {isBg ? 'Как организираме огледа, офертата и предаването' : 'Our process from site visit to handover'}
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+      </section>
+
+      <section aria-labelledby="apartment-quotation-factors" className={isBg ? 'bg-[#1a2342] py-10 md:py-14' : 'bg-gray-50 py-10 md:py-14'}>
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <h2 id="apartment-quotation-factors" className="text-2xl font-noah-bold md:text-3xl">
+            {isBg ? 'От какво зависи цената за ремонт на апартамент?' : 'What affects the cost of an apartment renovation?'}
+          </h2>
+          <p className={`mt-3 max-w-4xl leading-relaxed ${isBg ? 'text-white/75' : 'text-gray-600'}`}>
+            {isBg
+              ? 'Само квадратурата не е достатъчна за точна цена. Важни са състоянието на помещенията, обемът на демонтажа, промените по инсталациите и избраните материали.'
+              : 'Floor area alone is not enough for an accurate quote. Existing conditions, removal works, service changes and material selection all matter.'}
+          </p>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {quotationFactors.map((item) => (
+              <div key={item.title} className={`rounded-2xl border p-5 ${isBg ? 'border-white/10 bg-[#13182c]' : 'border-gray-200 bg-white'}`}>
+                <h3 className="font-semibold">{item.title}</h3>
+                <p className={`mt-2 text-sm leading-relaxed ${isBg ? 'text-white/75' : 'text-gray-600'}`}>{item.text}</p>
+              </div>
+            ))}
+          </div>
+          <p className={`mt-6 leading-relaxed ${isBg ? 'text-white/75' : 'text-gray-600'}`}>
+            {isBg
+              ? 'За по-полезно първоначално запитване посочете приблизителна площ, състояние на жилището, помещенията за ремонт и желаните промени. Снимки и примерни материали помагат да уточним обхвата преди огледа.'
+              : 'For a useful initial enquiry, share the approximate area, property condition, rooms involved and desired changes. Photos and material preferences help clarify scope before a visit.'}
+          </p>
+          <div className="mt-5 flex flex-wrap gap-x-6 gap-y-3">
+            <Link href="/prices" className="font-semibold text-[#62b946] hover:underline">{isBg ? 'Разгледай ориентировъчните цени' : 'See indicative prices'} →</Link>
+            <Link href="/projects/zavarshena-banya" className="font-semibold text-[#62b946] hover:underline">{isBg ? 'Реален пример: основен ремонт на баня' : 'Real example: complete bathroom renovation'} →</Link>
           </div>
         </div>
       </section>
