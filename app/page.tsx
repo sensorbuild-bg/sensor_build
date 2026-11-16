@@ -50,9 +50,7 @@ const structuredData = {
       email: business.email,
       address: {
         "@type": "PostalAddress",
-        streetAddress: business.address.street,
         addressLocality: business.address.city,
-        postalCode: business.address.postalCode,
         addressCountry: business.address.countryCode,
       },
       areaServed: {
@@ -74,6 +72,7 @@ const structuredData = {
         },
       ],
       sameAs: [
+        business.googleBusinessProfileUrl,
         business.social.facebook,
         business.social.instagram,
         business.social.linkedin,

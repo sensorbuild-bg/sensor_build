@@ -46,16 +46,25 @@ export default function ContactsClient() {
 
         <div className="mx-auto mt-5 grid max-w-4xl gap-3 md:grid-cols-2">
           <a
-            href={business.mapUrl}
+            href={business.googleBusinessProfileUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className={`rounded-2xl border p-5 transition hover:border-[#62b946] ${
+            aria-label={isBg ? "Сензор Билд – адрес, снимки и клиентски отзиви в Google Maps" : "Sensor Build – address, photos and customer reviews on Google Maps"}
+            className={`group rounded-2xl border p-5 transition hover:border-[#62b946] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#62b946] ${
               isBg ? "border-white/10 bg-[#1a2342] text-white" : "border-gray-200 bg-gray-50 text-gray-900"
             }`}
           >
-            <p className="text-sm font-semibold uppercase tracking-wide text-[#62b946]">{isBg ? "Адрес" : "Address"}</p>
+            <p className="text-sm font-semibold uppercase tracking-wide text-[#62b946]">{isBg ? "Район на работа и Google профил" : "Service area and Google profile"}</p>
             <p className="mt-2 text-base leading-relaxed">{isBg ? business.address.bg : business.address.en}</p>
-            <span className="mt-3 inline-flex text-sm font-semibold text-[#62b946]">{isBg ? "Отвори в Google Maps →" : "Open in Google Maps →"}</span>
+            <p className={`mt-2 text-sm leading-relaxed ${isBg ? "text-white/70" : "text-gray-600"}`}>
+              {isBg
+                ? "Работим в София и региона. Разгледайте бизнес профила ни, снимките и клиентските отзиви в Google."
+                : "We serve Sofia and the surrounding area. Explore our Google Business Profile, photos and customer reviews."}
+            </p>
+            <span className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#62b946] group-hover:underline">
+              {isBg ? "Виж отзивите в Google Maps" : "See reviews on Google Maps"}
+              <span aria-hidden="true">↗</span>
+            </span>
           </a>
 
           <div className={`rounded-2xl border p-5 ${isBg ? "border-white/10 bg-[#1a2342] text-white" : "border-gray-200 bg-gray-50 text-gray-900"}`}>

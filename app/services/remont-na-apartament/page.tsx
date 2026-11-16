@@ -7,14 +7,14 @@ const pageUrl = `${business.url}/services/remont-na-apartament`;
 export const metadata: Metadata = {
   title: 'Ремонт на апартамент в София',
   description:
-    'Цялостен и частичен ремонт на апартамент в София – ВиК, електроинсталации, гипсокартон, шпакловки, боядисване, бани, замазки и настилки.',
+    'Основен и цялостен ремонт на апартамент в София – ВиК, електро, бани, шпакловки и настилки. Вижте етапите и как се изготвя оферта.',
   alternates: {
     canonical: '/services/remont-na-apartament',
   },
   openGraph: {
     title: 'Ремонт на апартамент в София | Sensor Build',
     description:
-      'Цялостни и частични ремонти на апартаменти в София с ясен план, координирани етапи и оферта по дейности.',
+      'Ремонт на апартамент в София – етапи, дейности, фактори за цената, снимки от изпълнени обекти и запитване за оглед.',
     url: '/services/remont-na-apartament',
     type: 'website',
     images: [
@@ -64,9 +64,7 @@ const structuredData = {
         email: business.email,
         address: {
           '@type': 'PostalAddress',
-          streetAddress: business.address.street,
           addressLocality: business.address.city,
-          postalCode: business.address.postalCode,
           addressCountry: business.address.countryCode,
         },
       },
