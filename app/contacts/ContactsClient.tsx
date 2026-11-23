@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { business } from "@/lib/business";
+import { trackEvent } from "@/lib/analytics";
 
 export default function ContactsClient() {
   const { lang } = useLanguage();
@@ -25,6 +26,7 @@ export default function ContactsClient() {
         <div className="mx-auto mt-8 grid max-w-4xl gap-3 sm:grid-cols-2">
           <a
             href={`tel:${business.phoneE164}`}
+            onClick={() => trackEvent("contact_phone_click", { source: "contacts_page" })}
             className="flex min-h-20 items-center justify-center rounded-2xl bg-[#388644] px-6 text-center text-lg font-semibold text-white shadow-lg transition hover:bg-[#2d6b35]"
           >
             <span className="mr-3 text-2xl" aria-hidden="true">☎</span>
@@ -33,6 +35,7 @@ export default function ContactsClient() {
 
           <a
             href={`viber://chat?number=${business.phoneE164}`}
+            onClick={() => trackEvent("contact_viber_click", { source: "contacts_page" })}
             className={`flex min-h-20 items-center justify-center rounded-2xl border px-6 text-center text-lg font-semibold shadow-sm transition ${
               isBg
                 ? "border-white/10 bg-[#1a2342] text-white hover:border-[#62b946]"
@@ -78,7 +81,7 @@ export default function ContactsClient() {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className={`font-semibold ${isBg ? "text-white" : "text-gray-900"}`}>{isBg ? "Други начини за връзка" : "Other ways to contact us"}</p>
-              <a href={`mailto:${business.email}`} className="mt-1 block text-sm text-[#62b946] hover:underline">{business.email}</a>
+              <a href={`mailto:${business.email}`} onClick={() => trackEvent("contact_email_click", { source: "contacts_page" })} className="mt-1 block text-sm text-[#62b946] hover:underline">{business.email}</a>
             </div>
             <div className="flex flex-wrap gap-2">
               <a href={business.social.facebook} target="_blank" rel="noopener noreferrer" className="rounded-lg border border-[#62b946] px-4 py-2 text-sm font-semibold text-[#62b946] transition hover:bg-[#62b946] hover:text-white">Facebook</a>
