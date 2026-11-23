@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import AnimatedDiv from '@/components/AnimatedDiv';
+import { trackEvent } from '@/lib/analytics';
 
 export default function PricesClient() {
   const { lang } = useLanguage();
@@ -129,6 +130,7 @@ export default function PricesClient() {
 
             <Link
               href="/projects/zavarshena-banya"
+              onClick={() => trackEvent('bathroom_project_from_prices_click', { location: 'bathroom_price_card' })}
               className="mt-7 inline-flex items-center text-sm font-semibold text-[#62b946] hover:underline"
             >
               {isBg ? 'Виж завършен проект →' : 'View completed project →'}
@@ -158,6 +160,7 @@ export default function PricesClient() {
             </Link>
             <Link
               href="/contacts"
+              onClick={() => trackEvent('prices_request_visit_click', { location: 'prices_footer' })}
               className="inline-flex items-center justify-center rounded-md bg-[#2d6b35] px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-[#4da855] hover:scale-[1.02]"
             >
               {isBg ? 'Заяви оглед' : 'Request a site visit'}

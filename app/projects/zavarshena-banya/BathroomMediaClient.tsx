@@ -8,6 +8,7 @@ import RealBathroomGallery from "@/components/RealBathroomGallery";
 import BathroomStagesGallery from "@/components/BathroomStagesGallery";
 import { getBathroomProject } from "@/lib/bathroomProjects";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { trackEvent } from "@/lib/analytics";
 
 const project = getBathroomProject("zavarshena-banya")!;
 const VIDEO_WEBM = project.videoWebm;
@@ -53,18 +54,21 @@ export default function BathroomMediaClient() {
               <div className="mt-5 flex flex-wrap gap-3">
                 <Link
                   href="/contacts"
+                  onClick={() => trackEvent("bathroom_request_visit_click", { location: "hero" })}
                   className="rounded-xl bg-[#388644] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#2d6b35]"
                 >
                   {isBg ? "Заяви оглед" : "Request a visit"}
                 </Link>
                 <a
                   href="#etapi"
+                  onClick={() => trackEvent("bathroom_view_stages_click", { location: "hero" })}
                   className="rounded-xl border border-white/30 bg-black/15 px-5 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/10"
                 >
                   {isBg ? "Виж етапите" : "See the stages"}
                 </a>
                 <Link
                   href="/prices"
+                  onClick={() => trackEvent("bathroom_view_price_click", { location: "hero" })}
                   className="rounded-xl border border-[#62b946]/80 bg-[#62b946]/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#62b946]/20"
                 >
                   {isBg ? "Виж цена" : "See pricing"}
@@ -130,6 +134,7 @@ export default function BathroomMediaClient() {
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
               href="/contacts"
+              onClick={() => trackEvent("bathroom_request_visit_click", { location: "details" })}
               className="rounded-xl bg-[#388644] px-6 py-3 text-center font-semibold text-white transition hover:bg-[#2d6b35]"
             >
               {isBg ? "Заяви оглед" : "Request a visit"}
@@ -199,12 +204,14 @@ export default function BathroomMediaClient() {
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link
               href="/contacts"
+              onClick={() => trackEvent("bathroom_request_visit_click", { location: "bottom_cta" })}
               className="rounded-xl bg-[#388644] px-6 py-3 text-center font-semibold text-white transition hover:bg-[#2d6b35]"
             >
               {isBg ? "Заяви оглед" : "Request a visit"}
             </Link>
             <a
               href="tel:+359878344006"
+              onClick={() => trackEvent("bathroom_call_click", { location: "bottom_cta" })}
               className={`rounded-xl border px-6 py-3 text-center font-semibold transition ${isBg ? "border-white/25 hover:bg-white/10" : "border-gray-300 hover:bg-gray-100"}`}
             >
               {isBg ? "Обади се" : "Call us"}
